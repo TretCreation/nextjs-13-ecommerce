@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  role     Role    @default(USER_ROLE)
+  orders   Order[]
+}
+
+model Order {
+  id             Int             @id @default(autoincrement())
+  user           User            @relation(fields: [userId], references: [id])
+  userId         Int             @unique
+  status         String
+  transactionId  String
+  paymentAmount  Int
+  order_products Order_product[]
+}
+
+model Order_product {
+  id            Int     @id @default(autoincrement())
+  orderId       Int     @unique
+  order_product Order   @relation(fields: [orderId], references: [id])
+  productId     Int     @unique
+  product       Product @relation(fields: [productId], references: [id])
+  count         Int
+}
+
+model Product {
+  id            Int             @id @default(autoincrement())
+  name          String
+  price         Int
+  img           String
+  rating        String
+  brandId       Int
+  brand         Brand           @relation(fields: [brandId], references: [id])
+  typeId        Int
+  type          Type            @relation(fields: [typeId], references: [id])
+  product_info  Product_info[]
+  order_product Order_product[]
+}
+
+model Product_info {
+  id          Int     @id @default(autoincrement())
+  productId   Int     @unique
+  product     Product @relation(fields: [productId], references: [id])
+  title       String
+  description String
+}
+
+model Brand {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+model Type {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+enum Role {
+  USER_ROLE
+  ADMIN_ROLE
+}

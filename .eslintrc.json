@@ -1,0 +1,36 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb",
+        "airbnb-typescript",
+        "prettier"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "overrides": [
+    ],
+    "plugins": [
+        "react"
+    ],
+    "rules":{
+        "react/function-component-definition": "off",
+        "react/jsx-no-useless-fragment": "off",
+        "react/jsx-props-no-spreading": "off",
+        "arrow-body-style": "off", // "warn"
+        "jsx-a11y/anchor-is-valid": "off", // "warn"
+        "@typescript-eslint/no-unused-vars": "warn",
+        "import/prefer-default-export": "off",
+        "no-nested-ternary": "off"
+    }
+}
+
+// "indent": "off",
+        // "react/jsx-indent": "off",
+        // "react/jsx-indent-props": "off",
+        // "no-tabs": 0
+        // "react/jsx-uses-react": "error",
+        // "react/jsx-uses-vars": "error",
