@@ -1,22 +1,26 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IProducts } from '../../typing'
 
-async function getProducts() {
-	const res = await fetch(`${process.env.BASE_URL}/api/getProducts`)
-	if (!res.ok) {
-		console.log(res)
-	}
-	return res.json()
-}
+export default function ProductsList() {
+	const [products, setProducts] = useState({ elem: [] })
 
-export default async function ProductsList() {
-	const data = await getProducts()
+	useEffect(() => {
+		async function getProducts() {
+			const res = await fetch(`${process.env.BASE_URL}/api/getProducts`)
+			if (!res.ok) {
+				console.log(res)
+			}
+			const data = await res.json()
+			setProducts(data)
+		}
+		getProducts()
+	}, [])
 
 	return (
 		<div className='flex flex-row flex-wrap justify-between'>
-			{data.map((product: IProducts) => (
+			{products.elem.map((product: IProducts) => (
 				<div className='card'>
 					<Link href={`products/${product.id}`}>
 						<Image

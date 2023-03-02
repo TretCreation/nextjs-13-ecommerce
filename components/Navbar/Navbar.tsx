@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import classNames from 'classnames'
-import SearchBar from './SearchBar'
-import logo from '../public/logo.png'
+import SearchBar from '../SearchBar/SearchBar'
+import logo from '../../public/logo.png'
 
 const Navbar: NextPage = () => (
 	<>
