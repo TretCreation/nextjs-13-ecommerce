@@ -1,12 +1,6 @@
-'use client'
-
-import React, { Fragment } from 'react'
+import { Button, SearchBar } from '@/components'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import { Menu, Transition } from '@headlessui/react'
-import { Bars3Icon } from '@heroicons/react/24/solid'
-import classNames from 'classnames'
-import SearchBar from '../SearchBar/SearchBar'
 import logo from '../../public/logo.png'
 
 const Navbar: NextPage = () => (
@@ -14,7 +8,7 @@ const Navbar: NextPage = () => (
 		<nav className='w-full flex py-2 justify-between items-center navbar shadow-md'>
 			<div className='flex '>
 				<img src={logo.src} alt='logo' className='w-28' />
-				<Menu as='div' className='relative inline-block text-right'>
+				{/* <Menu as='div' className='relative inline-block text-right'>
 					<div>
 						<Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100'>
 							<Bars3Icon className='h-5 w-5' aria-hidden='true' />
@@ -36,7 +30,7 @@ const Navbar: NextPage = () => (
 									{({ active }) => (
 										<a
 											href='#'
-											className={classNames(
+											className={cn(
 												active
 													? 'bg-gray-100 text-gray-900'
 													: 'text-gray-700',
@@ -51,7 +45,7 @@ const Navbar: NextPage = () => (
 									{({ active }) => (
 										<a
 											href='#'
-											className={classNames(
+											className={cn(
 												active
 													? 'bg-gray-100 text-gray-900'
 													: 'text-gray-700',
@@ -66,7 +60,7 @@ const Navbar: NextPage = () => (
 									{({ active }) => (
 										<a
 											href='#'
-											className={classNames(
+											className={cn(
 												active
 													? 'bg-gray-100 text-gray-900'
 													: 'text-gray-700',
@@ -77,45 +71,22 @@ const Navbar: NextPage = () => (
 										</a>
 									)}
 								</Menu.Item>
-								{/* <form method='POST' action='#'>
-									<Menu.Item>
-										{({ active }) => (
-											<button
-												type='submit'
-												className={classNames(
-													active
-														? 'bg-gray-100 text-gray-900'
-														: 'text-gray-700',
-													'block w-full px-4 py-2 text-left text-sm'
-												)}
-											>
-												4
-											</button>
-										)}
-									</Menu.Item>
-								</form> */}
 							</div>
 						</Menu.Items>
 					</Transition>
-				</Menu>
+				</Menu> */}
 			</div>
 			<SearchBar />
 			<div>
 				<Link href='#' className=''>
-					<button
-						type='button'
-						className='mr-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
-					>
+					<Button appearance='outline' className='mr-2'>
 						Log In
-					</button>
+					</Button>
 				</Link>
 				<Link href='#'>
-					<button
-						type='button'
-						className='bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
-					>
+					<Button appearance='outline' className='mr-3'>
 						Sign Up
-					</button>
+					</Button>
 				</Link>
 			</div>
 		</nav>

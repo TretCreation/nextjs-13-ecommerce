@@ -1,7 +1,4 @@
-import React from 'react'
-import { Button } from '../../components'
-
-const Footer = () => {
+const Footer = (): JSX.Element => {
 	return (
 		<footer className='p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800'>
 			<span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
@@ -33,10 +30,6 @@ const Footer = () => {
 					</a>
 				</li>
 			</ul>
-			<Button>Test</Button>
-			<button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-gray-300 rounded'>
-				Test
-			</button>
 		</footer>
 	)
 }
