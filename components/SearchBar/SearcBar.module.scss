@@ -1,5 +1,11 @@
 .search-outline {
     @apply cursor-pointer relative z-10 h-12 w-full rounded-full border bg-transparent 
     pl-12 
-    outline-none focus:w-full focus:cursor-text focus:border-red-300 focus:pl-16 focus:pr-4
+    outline-none focus:w-full focus:cursor-text focus:border-red-300 
 }
+
+.search-icon {
+    @apply absolute top-0 bottom-0 m-auto ml-5 h-4
+}
+
+/* focus:pl-16 focus:pr-4 */
