@@ -1,11 +1,11 @@
-import { Search } from '../svgs'
+import { SearchIcon } from '../svgs'
 import styles from './SearcBar.module.scss'
 
 const SearchBar = (): JSX.Element => {
 	return (
-		<form action='' className='relative mx-auto w-max'>
+		<form action='' className='relative w-100'>
 			<i className={styles['search-icon']}>
-				<Search />
+				<SearchIcon />
 			</i>
 			<input
 				type='search'

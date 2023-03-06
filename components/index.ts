@@ -1,5 +1,5 @@
 export { default as Button } from './Button/Button'
 export { default as Footer } from './Footer/Footer'
-export { default as Navbar } from './Navbar/Navbar'
+export { default as Header } from './Header/Header'
 export { default as ProductsList } from './Products/ProductsList'
 export { default as SearchBar } from './SearchBar/SearchBar'

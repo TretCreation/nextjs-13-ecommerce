@@ -1,9 +1,9 @@
-import { Footer, Navbar, ProductsList } from '@/components'
+import { Footer, Header, ProductsList } from '@/components'
 
 const Home = () => {
 	return (
 		<>
-			<Navbar />
+			<Header />
 			<ProductsList />
 			<Footer />
 		</>
