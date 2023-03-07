@@ -2,7 +2,7 @@ import { Button } from '@/components'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { IProducts } from '../../typing'
+import { IProducts } from '../../../typing'
 import styles from './ProductList.module.scss'
 
 export default function ProductsList() {

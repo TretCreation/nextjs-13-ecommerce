@@ -1,4 +1,4 @@
-import { SearchIcon } from '../svgs'
+import { SearchIcon } from '../../svgs'
 import styles from './SearcBar.module.scss'
 
 const SearchBar = (): JSX.Element => {

@@ -1,8 +1,8 @@
 import { SearchBar } from '@/components'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import logo from '../../public/logo.png'
-import { AccountIcon, CartIcon, WishlistIcon } from '../svgs'
+import logo from '../../../public/logo.png'
+import { AccountIcon, CartIcon, WishlistIcon } from '../../svgs'
 const Header: NextPage = () => (
 	<>
 		<nav className='w-full flex py-2 justify-evenly items-center navbar shadow-md'>
