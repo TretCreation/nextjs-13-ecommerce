@@ -1,7 +1,9 @@
 .btn-primary {
-    @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-gray-300 rounded
+    @apply bg-primary text-white font-bold py-2 px-4 border rounded-md
 }
 
-.btn-outline {
-    @apply bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded
+/* .btn-primary//:  hover:bg-red-700 */
+
+.btn-primary-solid {
+    @apply bg-primary text-white font-semibold py-2 px-4 rounded-md
 }

@@ -1,17 +1,22 @@
+import { Button } from '@/components'
 import { SearchIcon } from '../../svgs'
-import styles from './SearcBar.module.scss'
+import styles from './SearchBar.module.scss'
 
 const SearchBar = (): JSX.Element => {
 	return (
-		<form action='' className='relative w-100'>
+		<form
+			action=''
+			className='flex relative w-100 border border-primary rounded-md'
+		>
 			<i className={styles['search-icon']}>
-				<SearchIcon />
+				<SearchIcon className='w-5 h-5' />
 			</i>
 			<input
 				type='search'
 				className={styles['search-outline']}
-				placeholder='Search'
+				placeholder='search'
 			/>
+			<Button appearance='primary-solid'>Search</Button>
 		</form>
 	)
 }

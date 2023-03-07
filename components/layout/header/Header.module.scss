@@ -1,3 +1,17 @@
 .nav {
-    @apply w-full flex py-2 justify-evenly items-center navbar shadow-md
+    @apply bg-white py-2.5 px-20
+}
+
+.nav-container {
+    @apply flex justify-between items-center
+}
+/* mx-16 */
+
+.nav-btn {
+    @apply flex justify-between 
+}
+
+
+.nav-btn-size {
+   @apply w-7 h-7
 }

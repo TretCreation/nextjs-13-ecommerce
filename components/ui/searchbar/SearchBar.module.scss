@@ -1,0 +1,9 @@
+.search-outline {
+    @apply cursor-pointer relative h-12 w-full rounded-md pl-2.5 outline-none focus:cursor-text
+}
+
+.search-icon {
+    @apply m-auto ml-4 h-4
+}
+
+/* focus:pl-16 focus:pr-4 */
