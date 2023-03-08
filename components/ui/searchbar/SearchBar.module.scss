@@ -1,3 +1,11 @@
+.form {
+    @apply flex relative border w-full max-w-xl border-primary-main rounded-md
+}
+
+.btn-search {
+    @apply rounded-btn-search rounded-l-none w-full max-w-btn-search border-0 
+}
+
 .search-outline {
     @apply cursor-pointer relative h-12 w-full rounded-md pl-2.5 outline-none focus:cursor-text
 }

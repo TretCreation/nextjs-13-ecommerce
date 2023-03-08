@@ -7,12 +7,32 @@ module.exports = {
 		'./app/**/*.{js,ts,jsx,tsx}'
 	],
 	theme: {
-		colors: {
-			primary: '#F53C57',
-			white: '#FFFFFF',
-			'dark-blue': '#152335'
-		},
-		extend: {}
+		extend: {
+			colors: {
+				primary: { main: '#F53C57' },
+				white: { main: '#FFFFFF' },
+				blue: { dark: '#152335' }
+			},
+			fontSize: {
+				l: '0.8rem'
+			},
+			container: {
+				screens: {
+					sm: '640px',
+					md: '768px',
+					lg: '1024px',
+					xl: '1280px',
+					'2xl': '1496px'
+				}
+			},
+			maxWidth: {
+				'btn-search': '7.5rem'
+			},
+			borderRadius: {
+				'btn-search': '0.25rem'
+			}
+		}
 	},
+
 	plugins: []
 }

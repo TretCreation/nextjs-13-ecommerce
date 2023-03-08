@@ -21,7 +21,7 @@ export default function ProductsList() {
 	}, [])
 
 	return (
-		<div className='flex flex-row flex-wrap justify-between'>
+		<div className='flex flex-row flex-wrap justify-between container mx-auto my-0'>
 			{products.map((product: IProducts) => (
 				<div className={styles.card}>
 					<Link href={`products/${product.id}`}>
