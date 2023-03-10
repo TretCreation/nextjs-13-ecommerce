@@ -12,7 +12,7 @@ const Button = ({
 		<button
 			className={cn(className, {
 				[styles['btn-primary']]: appearance === 'primary',
-				[styles['btn-primary-solid']]: appearance === 'primary-solid'
+				[styles['btn-solid']]: appearance === 'solid'
 			})}
 			{...props}
 		>

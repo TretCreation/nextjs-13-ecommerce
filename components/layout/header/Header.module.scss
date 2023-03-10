@@ -1,16 +1,19 @@
-.nav {
-    @apply flex bg-white-main container mx-auto my-0 justify-between items-center
-}
-/* .nav-container {
-    @apply flex justify-between items-center
+/* .nav {
+    @apply flex
 } */
-/* mx-16 */
 
-.nav-btn {
-    @apply flex justify-between 
+.nav-first {
+    @apply flex justify-between items-center container mx-auto my-0
 }
 
+.nav-first-btn {
+    @apply flex justify-between text-center font-light
+}
 
-.nav-btn-one {
-   @apply flex flex-col w-7 h-7 
+.nav-second {
+    @apply flex flex-row container mx-auto my-0
+}
+
+.nav-second-btn {
+    @apply flex justify-start text-center
 }

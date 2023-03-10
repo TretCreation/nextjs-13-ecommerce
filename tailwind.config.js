@@ -10,8 +10,12 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: { main: '#F53C57' },
-				white: { main: '#FFFFFF' },
+				white: { main: '#FFFFFF', dark: '#E4E6EB' },
 				blue: { dark: '#152335' }
+			},
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
+				roboto: ['Roboto', 'sans-serif']
 			},
 			fontSize: {
 				l: '0.8rem'
