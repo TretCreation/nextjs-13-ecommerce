@@ -1,5 +1,5 @@
 import { Button } from '@/components'
-import { MenuIcon } from '@/components/svgs'
+import { MenuIcon } from '@/public'
 import styles from './Dropdown.module.scss'
 
 const Dropdown = () => {

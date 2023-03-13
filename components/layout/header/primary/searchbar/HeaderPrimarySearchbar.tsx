@@ -1,6 +1,6 @@
 import { Button } from '@/components'
-import { SearchIcon } from '../../svgs'
-import styles from './SearchBar.module.scss'
+import { SearchIcon } from '../../../../../public'
+import styles from './HeaderPrimarySearchBar.module.scss'
 
 const SearchBar = (): JSX.Element => {
 	return (

@@ -1,5 +1,0 @@
-export { default as AccountIcon } from './account.svg'
-export { default as CartIcon } from './cart.svg'
-export { default as MenuIcon } from './menu.svg'
-export { default as SearchIcon } from './search.svg'
-export { default as WishlistIcon } from './wishlist.svg'
