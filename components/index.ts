@@ -9,7 +9,8 @@ export { default as HeaderPrimarySearchBar } from './layout/header/primary/searc
 export { default as HeaderSecondaryButtons } from './layout/header/secondary/buttons/HeaderSecondaryButtons'
 export { default as HeaderSecondaryDropdown } from './layout/header/secondary/dropdown/HeaderDropdown'
 export { default as HeaderSecondary } from './layout/header/secondary/HeaderSecondary'
+export { default as ProductsList } from './products/ProductsList'
 // UI
 export { default as Button } from './ui/button/Button'
 export { default as Dropdown } from './ui/dropdown/Dropdown'
-export { default as ProductsList } from './ui/products/ProductsList'
+export { default as Rating } from './ui/rating/Rating'

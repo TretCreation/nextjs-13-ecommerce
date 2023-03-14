@@ -1,5 +1,6 @@
 import { Button } from '@/components'
 import { MenuIcon } from '@/public'
+import React from 'react'
 import styles from './Dropdown.module.scss'
 
 const Dropdown = () => {

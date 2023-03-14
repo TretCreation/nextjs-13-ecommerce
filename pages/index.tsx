@@ -1,8 +1,8 @@
 import { Footer, Header, ProductsList } from '@/components'
+import React from 'react'
 
 const Home = () => {
 	return (
-		// <div className='max-w-screen-2xl mx-auto my-0'>
 		<>
 			<Header />
 			<ProductsList />

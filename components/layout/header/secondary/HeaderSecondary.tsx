@@ -1,4 +1,5 @@
 import { Dropdown, HeaderSecondaryButtons } from '@/components'
+import React from 'react'
 import styles from './HeaderSecondary.module.scss'
 
 const SecondaryHeader = () => {

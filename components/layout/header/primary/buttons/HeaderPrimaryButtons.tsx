@@ -1,5 +1,6 @@
 import { AccountIcon, CartIcon, WishlistIcon } from '@/public'
 import Link from 'next/link'
+import React from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons = () => {

@@ -3,6 +3,7 @@ import {
 	HeaderPrimaryLogo,
 	HeaderPrimarySearchBar
 } from '@/components'
+import React from 'react'
 import styles from './HeaderPrimary.module.scss'
 
 const HeaderPrimary = () => {

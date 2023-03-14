@@ -1,15 +1,15 @@
-import { Button } from '@/components'
+import { Button, Rating } from '@/components'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { IProducts } from '../../../typing'
+import React, { useEffect, useState } from 'react'
+import { IProducts } from '../../typing'
 import styles from './ProductList.module.scss'
 
 export default function ProductsList() {
 	const [products, setProducts] = useState([])
 
 	useEffect(() => {
-		async function getProducts() {
+		const getProducts = async () => {
 			const res = await fetch(`/api/getProducts`)
 			if (!res.ok) {
 				console.log(res)
@@ -40,6 +40,7 @@ export default function ProductsList() {
 								<h2 className='text-lg'>{product.name}</h2>
 							</Link>
 							<p>${product.price}</p>
+							<Rating rating={4} />
 							<Button appearance='primary'>Add to cart</Button>
 						</div>
 					</div>

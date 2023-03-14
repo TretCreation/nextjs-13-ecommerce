@@ -1,5 +1,6 @@
 import { Button } from '@/components'
 import Link from 'next/link'
+import React from 'react'
 import styles from './HeaderSecondaryButtons.module.scss'
 
 const HeaderSecondaryButtons = () => {
