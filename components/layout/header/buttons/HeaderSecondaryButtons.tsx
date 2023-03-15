@@ -1,11 +1,11 @@
 import { Button } from '@/components'
 import Link from 'next/link'
 import React from 'react'
-import styles from './HeaderSecondaryButtons.module.scss'
+import styles from './HeaderButtons.module.scss'
 
 const HeaderSecondaryButtons = () => {
 	return (
-		<div className={styles.btn}>
+		<div className={styles['btn-secondary']}>
 			<Link href='#'>
 				<Button appearance='solid'>Home</Button>
 			</Link>

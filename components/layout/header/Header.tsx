@@ -1,11 +1,26 @@
-import { HeaderPrimary, HeaderSecondary } from '@/components'
+import {
+	HeaderDropdown,
+	HeaderPrimaryButtons,
+	HeaderPrimaryLogo,
+	HeaderPrimarySearchBar,
+	HeaderSecondaryButtons
+} from '@/components'
 import { NextPage } from 'next'
-import React from 'react'
+import styles from './Header.module.scss'
 
 const Header: NextPage = () => (
 	<nav>
-		<HeaderPrimary />
-		<HeaderSecondary />
+		<div className={styles['nav-primary']}>
+			<HeaderPrimaryLogo />
+			<HeaderPrimarySearchBar />
+			<HeaderPrimaryButtons />
+		</div>
+		<div className='bg-blue-dark py-3'>
+			<div className={styles['nav-secondary']}>
+				<HeaderDropdown />
+				<HeaderSecondaryButtons />
+			</div>
+		</div>
 	</nav>
 )
 
