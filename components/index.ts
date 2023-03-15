@@ -1,5 +1,5 @@
 //?
-export { default as ProductsList } from './products/ProductsList'
+export { default as ProductsList } from './screens/products/ProductsList'
 
 // Footer
 export { default as Footer } from './layout/footer/Footer'
@@ -16,3 +16,6 @@ export { default as HeaderSecondaryDropdown } from './layout/header/dropdown/Hea
 // UI
 export { default as Button } from './ui/button/Button'
 export { default as Rating } from './ui/rating/Rating'
+
+// Screens
+export { default as Home } from './screens/Home'

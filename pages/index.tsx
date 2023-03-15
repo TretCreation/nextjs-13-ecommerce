@@ -1,14 +1,8 @@
-import { Footer, Header, ProductsList } from '@/components'
+import { Home } from '@/components'
 import React from 'react'
 
-const Home = () => {
-	return (
-		<>
-			<Header />
-			<ProductsList />
-			<Footer />
-		</>
-	)
+const HomePage = () => {
+	return <Home />
 }
 
-export default Home
+export default HomePage

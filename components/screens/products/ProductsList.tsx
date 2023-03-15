@@ -1,8 +1,9 @@
 import { Button, Rating } from '@/components'
+import { ProductService } from '@/services/ProductService'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { IProducts } from '../../typing'
+import { IProducts } from '../../../typing'
 import styles from './ProductList.module.scss'
 
 export default function ProductsList() {
@@ -10,11 +11,7 @@ export default function ProductsList() {
 
 	useEffect(() => {
 		const getProducts = async () => {
-			const res = await fetch(`/api/getProducts`)
-			if (!res.ok) {
-				console.log(res)
-			}
-			const data = await res.json()
+			const data = await ProductService.getAllProducts()
 			setProducts(data)
 		}
 		getProducts()
