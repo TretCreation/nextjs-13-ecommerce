@@ -1,6 +1,3 @@
-//?
-export { default as ProductsList } from './screens/products/ProductsList'
-
 // Footer
 export { default as Footer } from './layout/footer/Footer'
 
@@ -18,4 +15,6 @@ export { default as Button } from './ui/button/Button'
 export { default as Rating } from './ui/rating/Rating'
 
 // Screens
-export { default as Home } from './screens/Home'
+export { default as Home } from './screens/home/Home'
+export { default as ProductList } from './screens/product/ProductList'
+export { default as ProductItem } from './screens/product/ProductItem'
