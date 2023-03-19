@@ -6,8 +6,6 @@
         "es2021": true
     },
     "extends": [
-        // "airbnb",
-        // "airbnb-typescript",
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
@@ -29,19 +27,6 @@
             {
               "allowSingleExtends": true
             }
-          ]
-        // "import/extensions": ["error", "ignorePackages", {
-        //     "js": "never",
-        //     "jsx": "never",
-        //     "ts": "never",
-        //     "tsx": "never",
-        //     "mjs": "never",
-        //     "": "never"
-        //     }],
-        // "react/function-component-definition": "off",
-        // "arrow-body-style": "off", // "warn"
-        // "react-hooks/rules-of-hooks": "error",
-        // "react-hooks/exhaustive-deps": "warn"
-        // "arrow-body-style": ["error", "as-needed"],      
+          ]     
     }
 }
