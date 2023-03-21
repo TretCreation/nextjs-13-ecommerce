@@ -1,4 +1,4 @@
-import { Button } from '@/components'
+import { Button } from '@/src/components'
 import Link from 'next/link'
 import React from 'react'
 import styles from './HeaderButtons.module.scss'

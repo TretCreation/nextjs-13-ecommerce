@@ -3,6 +3,9 @@ const nextConfig = {
 	experimental: {
 		appDir: false
 	},
+	compilerOptions: {
+		baseUrl: 'src'
+	},
 
 	webpack(config) {
 		config.module.rules.push({

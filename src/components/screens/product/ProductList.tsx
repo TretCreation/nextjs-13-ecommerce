@@ -1,7 +1,7 @@
-import { ProductItem } from '@/components'
-import { ProductService } from '@/services/ProductService'
+import { ProductItem } from '@/src/components'
+import { ProductService } from '@/src/services/ProductService'
 import React, { useEffect, useState } from 'react'
-import { IProduct } from '../../../typing'
+import { IProduct } from '../../../interfaces/product.interface'
 
 export default function ProductList() {
 	const [products, setProducts] = useState<IProduct[]>([])

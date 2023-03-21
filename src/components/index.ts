@@ -1,7 +1,5 @@
-// Footer
+// Layout
 export { default as Footer } from './layout/footer/Footer'
-
-// Header
 export { default as HeaderPrimaryButtons } from './layout/header/buttons/HeaderPrimaryButtons'
 export { default as Header } from './layout/header/Header'
 export { default as HeaderDropdown } from './layout/header/dropdown/HeaderDropdown'

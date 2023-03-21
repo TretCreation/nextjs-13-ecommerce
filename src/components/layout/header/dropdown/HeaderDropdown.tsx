@@ -1,4 +1,4 @@
-import { Button } from '@/components'
+import { Button } from '@/src/components'
 import { MenuIcon } from '@/public'
 import React from 'react'
 import styles from './HeaderDropdown.module.scss'

@@ -4,7 +4,7 @@ import {
 	HeaderPrimaryLogo,
 	HeaderPrimarySearchBar,
 	HeaderSecondaryButtons
-} from '@/components'
+} from '@/src/components'
 import { NextPage } from 'next'
 import styles from './Header.module.scss'
 
