@@ -7,3 +7,11 @@ export interface IProduct {
 	brandId: number
 	typeId: number
 }
+
+export interface IProductProps {
+	products: IProduct[]
+}
+
+export interface IProductItemProps {
+	product: IProduct
+}

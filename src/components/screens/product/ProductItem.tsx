@@ -1,14 +1,10 @@
 import Button from '@/src/components/ui/button/Button'
 import Rating from '@/src/components/ui/rating/Rating'
-import { IProduct } from '@/src/interfaces/product.interface'
+import { IProduct, IProductItemProps } from '@/src/interfaces/product.interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import styles from './Product.module.scss'
-
-interface IProductItemProps {
-	product: IProduct
-}
 
 const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
 	return (

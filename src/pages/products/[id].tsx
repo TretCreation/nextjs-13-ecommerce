@@ -1,36 +1,46 @@
+import React, { FC } from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { ProductPage } from '@/src/components'
 import { ProductService } from '@/src/services/ProductService'
-import { IProduct } from '@/src/interfaces/product.interface'
-import { NextPage } from 'next'
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import styles from './Products.module.scss'
+import { IProduct, IProductProps } from '@/src/interfaces/product.interface'
 
-const CarPage: NextPage = () => {
-	// //!DELETE
-	// const [product, setProduct] = useState<IProduct>()
-
-	// useEffect(() => {
-	// 	const fetchProducts = async () => {
-	// 		const data = await ProductService.getById()
-	// 		setProduct(data)
-	// 	}
-	// 	fetchProducts()
-	// }, [])
-
+const Product: FC<IProductProps> = ({ products }) => {
+	console.log('Index Product: ', products)
 	return (
-		<div className={styles.main}>
-			<div className={styles.product}>
-				{/* <Image
-					src={product.img}
-					alt={product.name}
-					width={400}
-					height={0}
-				/> */}
-				Test
-			</div>
-			<div>Test</div>
-		</div>
+		<>
+			<ProductPage product={products} />
+		</>
 	)
 }
 
-export default CarPage
+// export const getStaticPath: GetStaticPaths = async () => {
+// 	return {
+// 		paths: [
+// 			{
+// 				params: { id: '1' }
+// 			},
+// 			{
+// 				params: { id: '2' }
+// 			}
+// 		],
+// 		fallback: false
+// 	}
+// }
+
+// export const getStaticProps: GetStaticProps<{
+// 	product: IProduct[]
+// }> = async context => {
+// 	const res = await ProductService.getAll()
+// 	const product: IProduct[] = res
+
+// 	console.log(`Product page: ${res}`)
+
+// 	return {
+// 		props: {
+// 			product
+// 		},
+// 		revalidate: 10
+// 	}
+// }
+
+export default Product

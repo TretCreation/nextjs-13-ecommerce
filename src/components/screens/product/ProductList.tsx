@@ -1,19 +1,11 @@
 import { ProductItem } from '@/src/components'
 import { ProductService } from '@/src/services/ProductService'
-import React, { useEffect, useState } from 'react'
-import { IProduct } from '../../../interfaces/product.interface'
+import axios from 'axios'
+import { GetStaticProps, NextPage } from 'next'
+import React, { useEffect, useState, FC } from 'react'
+import { IProduct, IProductProps } from '../../../interfaces/product.interface'
 
-export default function ProductList() {
-	const [products, setProducts] = useState<IProduct[]>([])
-
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const data = await ProductService.getAll()
-			setProducts(data)
-		}
-		fetchProducts()
-	}, [])
-
+const ProductList: NextPage<IProductProps> = ({ products }) => {
 	return (
 		<div className='flex flex-row flex-wrap justify-between'>
 			{products.length ? (
@@ -26,3 +18,5 @@ export default function ProductList() {
 		</div>
 	)
 }
+
+export default ProductList

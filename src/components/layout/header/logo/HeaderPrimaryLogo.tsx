@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const HeaderPrimaryLogo = () => {
 	return (
-		<Link href='#'>
+		<Link href='/'>
 			<Image
 				src={logo.src}
 				alt='logo'
