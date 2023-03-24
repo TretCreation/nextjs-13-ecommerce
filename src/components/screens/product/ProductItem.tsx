@@ -1,12 +1,12 @@
 import Button from '@/src/components/ui/button/Button'
 import Rating from '@/src/components/ui/rating/Rating'
-import { IProduct, IProductItemProps } from '@/src/interfaces/product.interface'
+import { IProductSingleProps } from '@/src/interfaces/product.interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import styles from './Product.module.scss'
 
-const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
+const ProductItem: React.FC<IProductSingleProps> = ({ product }) => {
 	return (
 		<div className={styles.card}>
 			<Link href={`products/${product.id}`}>

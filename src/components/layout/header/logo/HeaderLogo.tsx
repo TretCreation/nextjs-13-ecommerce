@@ -2,7 +2,7 @@ import { logo } from '@/public'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const HeaderPrimaryLogo = () => {
+const HeaderLogo = () => {
 	return (
 		<Link href='/'>
 			<Image
@@ -16,4 +16,4 @@ const HeaderPrimaryLogo = () => {
 	)
 }
 
-export default HeaderPrimaryLogo
+export default HeaderLogo

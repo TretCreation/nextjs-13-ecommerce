@@ -3,7 +3,7 @@ import { MenuIcon } from '@/public'
 import React from 'react'
 import styles from './HeaderDropdown.module.scss'
 
-const Dropdown = () => {
+const HeaderDropdown = () => {
 	return (
 		<>
 			<Button appearance='primary' className={styles.dropdown}>
@@ -14,4 +14,4 @@ const Dropdown = () => {
 	)
 }
 
-export default Dropdown
+export default HeaderDropdown

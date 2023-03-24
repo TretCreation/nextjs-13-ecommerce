@@ -1,46 +1,50 @@
-import React, { FC } from 'react'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import React from 'react'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ProductPage } from '@/src/components'
 import { ProductService } from '@/src/services/ProductService'
-import { IProduct, IProductProps } from '@/src/interfaces/product.interface'
+import {
+	IProductSingleProps
+} from '@/src/interfaces/product.interface'
+import { ParsedUrlQuery } from 'querystring'
 
-const Product: FC<IProductProps> = ({ products }) => {
-	console.log('Index Product: ', products)
+interface Params extends ParsedUrlQuery {
+	id: string
+}
+
+const Product: NextPage<IProductSingleProps> = ({ product }) => {
+
 	return (
 		<>
-			<ProductPage product={products} />
+			<ProductPage product={product} />
 		</>
 	)
 }
 
-// export const getStaticPath: GetStaticPaths = async () => {
-// 	return {
-// 		paths: [
-// 			{
-// 				params: { id: '1' }
-// 			},
-// 			{
-// 				params: { id: '2' }
-// 			}
-// 		],
-// 		fallback: false
-// 	}
-// }
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+	const products = await ProductService.getAll()
 
-// export const getStaticProps: GetStaticProps<{
-// 	product: IProduct[]
-// }> = async context => {
-// 	const res = await ProductService.getAll()
-// 	const product: IProduct[] = res
+	return {
+		paths: products.map(product => ({
+			params: {
+				id: String(product.id)
+			}
+		})),
+		fallback: 'blocking'
+	}
+}
 
-// 	console.log(`Product page: ${res}`)
-
-// 	return {
-// 		props: {
-// 			product
-// 		},
-// 		revalidate: 10
-// 	}
-// }
+export const getStaticProps: GetStaticProps<IProductSingleProps> = async ({
+	params
+}) => {
+	const product = await ProductService.getById(String(params?.id))
+	console.log('Product: ', product)
+	
+	return {
+		props: {
+			product
+		},
+		revalidate: 10
+	}
+}
 
 export default Product

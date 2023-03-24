@@ -12,6 +12,6 @@ export interface IProductProps {
 	products: IProduct[]
 }
 
-export interface IProductItemProps {
+export interface IProductSingleProps {
 	product: IProduct
 }

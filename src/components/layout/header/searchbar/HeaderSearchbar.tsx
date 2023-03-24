@@ -1,8 +1,8 @@
 import { Button } from '@/src/components'
 import { SearchIcon } from '../../../../../public'
-import styles from './HeaderPrimarySearchBar.module.scss'
+import styles from './HeaderSearchBar.module.scss'
 
-const SearchBar = (): JSX.Element => {
+const HeaderSearchBar = (): JSX.Element => {
 	return (
 		<form action='' className={styles.form}>
 			<i className={styles['search-icon']}>
@@ -20,4 +20,4 @@ const SearchBar = (): JSX.Element => {
 	)
 }
 
-export default SearchBar
+export default HeaderSearchBar

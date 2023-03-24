@@ -1,8 +1,6 @@
 import { ProductItem } from '@/src/components'
-import { ProductService } from '@/src/services/ProductService'
-import axios from 'axios'
-import { GetStaticProps, NextPage } from 'next'
-import React, { useEffect, useState, FC } from 'react'
+import { NextPage } from 'next'
+import React from 'react'
 import { IProduct, IProductProps } from '../../../interfaces/product.interface'
 
 const ProductList: NextPage<IProductProps> = ({ products }) => {
