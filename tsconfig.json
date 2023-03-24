@@ -39,7 +39,7 @@
     ".test/page.tsx",
     ".hide/prisma/products.ts",
     ".hide/prisma/script.ts"
-, "src/services/ProductService copy.mts"  ],
+, "src/services/ProductService copy.mts", "prisma/script.mts"  ],
   "exclude": [
     "node_modules"
   ]

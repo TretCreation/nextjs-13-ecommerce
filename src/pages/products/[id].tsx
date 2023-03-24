@@ -2,9 +2,7 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ProductPage } from '@/src/components'
 import { ProductService } from '@/src/services/ProductService'
-import {
-	IProductSingleProps
-} from '@/src/interfaces/product.interface'
+import { IProductSingleProps } from '@/src/interfaces/product.interface'
 import { ParsedUrlQuery } from 'querystring'
 
 interface Params extends ParsedUrlQuery {
@@ -12,7 +10,6 @@ interface Params extends ParsedUrlQuery {
 }
 
 const Product: NextPage<IProductSingleProps> = ({ product }) => {
-
 	return (
 		<>
 			<ProductPage product={product} />
@@ -37,8 +34,7 @@ export const getStaticProps: GetStaticProps<IProductSingleProps> = async ({
 	params
 }) => {
 	const product = await ProductService.getById(String(params?.id))
-	console.log('Product: ', product)
-	
+
 	return {
 		props: {
 			product

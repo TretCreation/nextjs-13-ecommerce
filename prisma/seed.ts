@@ -1,5 +1,11 @@
 import { PrismaClient } from '@prisma/client'
 
+// Add to package.json
+/*
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+*/
 const prisma = new PrismaClient()
 
 async function main() {

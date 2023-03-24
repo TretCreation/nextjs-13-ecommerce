@@ -1,9 +1,8 @@
 import { ProductItem } from '@/src/components'
-import { NextPage } from 'next'
-import React from 'react'
+import React, { FC } from 'react'
 import { IProduct, IProductProps } from '../../../interfaces/product.interface'
 
-const ProductList: NextPage<IProductProps> = ({ products }) => {
+const ProductList: FC<IProductProps> = ({ products }) => {
 	return (
 		<div className='flex flex-row flex-wrap justify-between'>
 			{products.length ? (

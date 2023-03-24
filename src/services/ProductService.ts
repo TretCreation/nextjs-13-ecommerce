@@ -18,8 +18,6 @@ export const ProductService = {
 	async getById(id?: string) {
 		try {
 			const res = await axios.get<IProduct>(`/products/${id}`)
-			console.log('res: ', res.data)
-
 			return res.data
 		} catch (error) {
 			console.log(error)

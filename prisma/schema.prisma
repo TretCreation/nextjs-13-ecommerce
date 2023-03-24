@@ -42,7 +42,7 @@ model Product {
   name          String
   price         Int
   img           String
-  rating        String
+  rating        Int
   brandId       Int
   brand         Brand           @relation(fields: [brandId], references: [id])
   typeId        Int
