@@ -1,8 +1,7 @@
 .btn-primary {
-    @apply bg-primary-main text-white-main py-2 px-4 font-light
+	@apply bg-primary-main py-2 px-4 font-light text-white-main;
 }
-/* .btn-primary//:  hover:bg-red-700 */
 
 .btn-solid {
-    @apply text-white-dark py-2 px-4 rounded-md font-light
+	@apply rounded-md py-2 px-4 font-light text-white-dark;
 }

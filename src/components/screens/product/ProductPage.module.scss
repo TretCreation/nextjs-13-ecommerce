@@ -1,0 +1,11 @@
+.main {
+	@apply flex justify-center;
+
+	.description {
+		@apply flex-col;
+
+		.a {
+			@apply font-semibold;
+		}
+	}
+}

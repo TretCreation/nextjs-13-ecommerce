@@ -9,7 +9,7 @@ const Home: NextPage<IProductProps> = ({ products }) => {
 	return (
 		<>
 			<div className='container mx-auto my-0'>
-				<h1 className={styles.h1}>BEST SELLERS</h1>
+				<h1 className={styles.header}>BEST SELLERS</h1>
 				<ProductList products={products} />
 				<Pagination />
 			</div>

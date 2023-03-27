@@ -1,4 +1,4 @@
-import { ProductItem } from '@/src/components'
+import { NoProducts, ProductItem } from '@/src/components'
 import React, { FC } from 'react'
 import { IProduct, IProductProps } from '../../../interfaces/product.interface'
 
@@ -10,7 +10,7 @@ const ProductList: FC<IProductProps> = ({ products }) => {
 					<ProductItem key={product.id} product={product} />
 				))
 			) : (
-				<p>There are no products :(</p>
+				<NoProducts />
 			)}
 		</div>
 	)

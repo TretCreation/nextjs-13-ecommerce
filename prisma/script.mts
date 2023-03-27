@@ -6,27 +6,28 @@ enum Brands {
 }
 
 enum Types {
-	Smartphones = 1
+	Smartphones = 1,
+	Laptops = 2
 }
 
 const prisma = new PrismaClient()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// //* Products
-// async function main() {
-// 	const product = await prisma.product.create({
-// 		data: {
-// 			name: 'IPhone 14 Pro Space Black',
-// 			price: 999,
-// 			img: '/assets/products/apple/iphone-14-pro/Apple-iPhone-14-Pro-Space-Black.png',
-// 			rating: 4,
-// 			brandId: Brands.Apple,
-// 			typeId: Types.Smartphones
-// 		}
-// 	})
-// 	console.log(product)
-// }
+//* Products
+async function main() {
+	const product = await prisma.product.create({
+		data: {
+			name: 'MacBook Air M2 Starlight',
+			price: 1199,
+			img: '/assets/products/apple/laptops/Apple-MacBook-Air-M2-Starlight.png',
+			rating: 5,
+			brandId: Brands.Apple,
+			typeId: Types.Laptops
+		}
+	})
+	console.log(product)
+}
 
 // //*Brands
 // async function main() {
@@ -43,16 +44,16 @@ const prisma = new PrismaClient()
 // async function main() {
 // 	const type = await prisma.type.create({
 // 		data: {
-// 			name: 'Smartphones'
+// 			name: 'Laptops'
 // 		}
 // 	})
 
 // 	console.log(type)
 // }
 
-// //? Main
-// main()
-// 	.catch(err => console.error(err.message))
-// 	.finally(async () => {
-// 		await prisma.$disconnect()
-// 	})
+//? Main
+main()
+	.catch(err => console.error(err.message))
+	.finally(async () => {
+		await prisma.$disconnect()
+	})

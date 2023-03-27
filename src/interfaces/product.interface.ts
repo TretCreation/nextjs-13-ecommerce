@@ -3,9 +3,14 @@ export interface IProduct {
 	name: string
 	price: number
 	img: string
-	rating: string
+	rating: number
 	brandId: number
 	typeId: number
+}
+
+export interface IProductSingle extends IProduct {
+	brand?: { id: number; name: string }
+	type?: { id: number; name: string }
 }
 
 export interface IProductProps {
@@ -13,5 +18,5 @@ export interface IProductProps {
 }
 
 export interface IProductSingleProps {
-	product: IProduct
+	product: IProductSingle
 }

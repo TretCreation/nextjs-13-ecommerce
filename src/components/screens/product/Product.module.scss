@@ -1,17 +1,3 @@
 .card {
-    @apply mb-5 w-60 block rounded-lg border shadow-md
-}
-
-//border-gray-200
-
-.main {
-    @apply flex justify-center
-}
-
-.img {
-    @apply flex
-}
-
-.description {
-    @apply flex
+	@apply mb-5 block w-60 rounded-lg border shadow-md;
 }

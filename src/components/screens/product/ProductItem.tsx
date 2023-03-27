@@ -23,7 +23,7 @@ const ProductItem: React.FC<IProductSingleProps> = ({ product }) => {
 					<h2 className='text-lg'>{product.name}</h2>
 				</Link>
 				<p>${product.price}</p>
-				<Rating rating={4} />
+				<Rating rating={product.rating} />
 				<Button appearance='primary'>Add to cart</Button>
 			</div>
 		</div>

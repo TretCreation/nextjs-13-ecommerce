@@ -1,7 +1,7 @@
 .nav-primary {
-    @apply flex justify-between items-center container mx-auto my-0
+	@apply container mx-auto my-0 flex items-center justify-between;
 }
 
 .nav-secondary {
-    @apply flex flex-row container mx-auto my-0
+	@apply container mx-auto my-0 flex flex-row;
 }

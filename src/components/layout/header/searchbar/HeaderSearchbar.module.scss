@@ -1,15 +1,15 @@
 .form {
-    @apply flex relative border w-full max-w-xl border-primary-main rounded-md
-}
+	@apply relative flex w-full max-w-xl rounded-md border border-primary-main;
 
-.btn-search {
-    @apply rounded-btn-search rounded-l-none w-full max-w-btn-search
-}
+	.icon {
+		@apply m-auto ml-4 h-4;
+	}
 
-.search-outline {
-    @apply cursor-pointer relative h-12 w-full rounded-md pl-2.5 outline-none focus:cursor-text
-}
+	.outline {
+		@apply relative h-12 w-full cursor-pointer rounded-md pl-2.5 outline-none focus:cursor-text;
+	}
 
-.search-icon {
-    @apply m-auto ml-4 h-4
+	.btn {
+		@apply w-full max-w-btn-search rounded-btn-search rounded-l-none;
+	}
 }

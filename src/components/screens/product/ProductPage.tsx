@@ -1,10 +1,10 @@
 import { IProductSingleProps } from '@/src/interfaces/product.interface'
 import Image from 'next/image'
-import React, { FC } from 'react'
-import styles from './Product.module.scss'
+import { FC } from 'react'
+import Rating from '../../ui/rating/Rating'
+import styles from './ProductPage.module.scss'
 
 const ProductPage: FC<IProductSingleProps> = ({ product }) => {
-
 	return (
 		<div className={styles.main}>
 			<div className={styles.img}>
@@ -14,9 +14,22 @@ const ProductPage: FC<IProductSingleProps> = ({ product }) => {
 					width={400}
 					height={0}
 				/>
-				Image
 			</div>
-			<div className={styles.description}>Description</div>
+			<div className={styles.description}>
+				<h1 className='text-2xl'>{product.name}</h1>
+				<Rating rating={product.rating} />
+				<p>
+					<a className={styles.a}>Availability:</a>
+				</p>
+				<p>
+					<a className={styles.a}>Brand:</a>
+					{product.brand.name}
+				</p>
+				<p>
+					<a className={styles.a}>Category:</a>
+					{product.type.name}
+				</p>
+			</div>
 		</div>
 	)
 }

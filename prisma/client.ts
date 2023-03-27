@@ -1,7 +1,9 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+/* eslint-disable @typescript-eslint/no-namespace */
+import { PrismaClient } from '@prisma/client'
 
 declare global {
 	namespace NodeJS {
+		// eslint-disable-next-line @typescript-eslint/no-empty-interface
 		interface Global {}
 	}
 }
