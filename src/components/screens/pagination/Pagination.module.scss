@@ -1,0 +1,7 @@
+.pagination {
+	@apply mb-4 flex justify-center;
+
+	.btn {
+		@apply mr-1 rounded-md border border-blue-dark bg-white-main px-3 py-2 leading-tight text-blue-dark hover:bg-gray-100 hover:text-gray-700;
+	}
+}

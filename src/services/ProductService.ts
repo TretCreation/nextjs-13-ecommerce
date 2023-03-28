@@ -1,8 +1,7 @@
-import { IProduct } from '../interfaces/product.interface'
 import axios from 'axios'
+import { IProduct } from '../interfaces/product.interface'
 
-const API_URL = `http://localhost:3000/api`
-axios.defaults.baseURL = API_URL
+axios.defaults.baseURL = process.env.API_URL
 
 export const ProductService = {
 	async getAll() {

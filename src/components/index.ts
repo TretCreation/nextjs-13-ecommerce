@@ -8,6 +8,7 @@ export { default as HeaderLogo } from './layout/header/logo/HeaderLogo'
 export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSearchbar'
 // Screens
 export { default as Home } from './screens/home/Home'
+export { default as Pagination } from './screens/pagination/Pagination'
 export { default as NoProducts } from './screens/product/NoProducts'
 export { default as ProductItem } from './screens/product/ProductItem'
 export { default as ProductList } from './screens/product/ProductList'

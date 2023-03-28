@@ -1,17 +1,22 @@
-import { ProductList } from '@/src/components'
+import { Pagination, ProductList } from '@/src/components'
 import { IProductProps } from '@/src/interfaces/product.interface'
-import { NextPage } from 'next'
-import React from 'react'
-import Pagination from '../../ui/pagination/Pagination'
+import { FC, useState } from 'react'
 import styles from './Home.module.scss'
 
-const Home: NextPage<IProductProps> = ({ products }) => {
+const Home: FC<IProductProps> = ({ products }) => {
+	const [page, setPage] = useState(1)
+	const handlePageChange = (count: number) => setPage(count)
+
 	return (
 		<>
-			<div className='container mx-auto my-0'>
+			<div className={styles.wrapper}>
 				<h1 className={styles.header}>BEST SELLERS</h1>
 				<ProductList products={products} />
-				<Pagination />
+				<Pagination
+					current={page}
+					onChange={handlePageChange}
+					limit={products.length === 8}
+				/>
 			</div>
 		</>
 	)
