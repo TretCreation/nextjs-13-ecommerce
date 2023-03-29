@@ -1,10 +1,11 @@
 import { NoProducts, ProductItem } from '@/src/components'
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { IProduct, IProductProps } from '../../../interfaces/product.interface'
+import styles from './ProductList.module.scss'
 
 const ProductList: FC<IProductProps> = ({ products }) => {
 	return (
-		<div className='flex flex-row flex-wrap justify-between'>
+		<div className={styles.wrapper}>
 			{products.length ? (
 				products.map((product: IProduct) => (
 					<ProductItem key={product.id} product={product} />

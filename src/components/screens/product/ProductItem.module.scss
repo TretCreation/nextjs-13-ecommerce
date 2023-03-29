@@ -1,0 +1,15 @@
+.card {
+	@apply mb-6 w-52 rounded-lg border-2 border-gray-300 shadow-sm; // block
+
+	.info {
+		@apply mt-3 flex flex-col items-center justify-center;
+
+		.title {
+			@apply text-lg;
+		}
+
+		.btn {
+			@apply w-full bg-gradient-to-r from-primary-main to-pink-500;
+		}
+	}
+}

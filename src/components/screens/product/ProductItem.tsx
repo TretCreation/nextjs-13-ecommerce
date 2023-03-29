@@ -4,7 +4,7 @@ import { IProductSingleProps } from '@/src/interfaces/product.interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import styles from './Product.module.scss'
+import styles from './ProductItem.module.scss'
 
 const ProductItem: React.FC<IProductSingleProps> = ({ product }) => {
 	return (
@@ -13,18 +13,17 @@ const ProductItem: React.FC<IProductSingleProps> = ({ product }) => {
 				<Image
 					src={product.img}
 					alt={product.name}
-					width={200}
+					width={400}
 					height={0}
-					className='rounded shadow'
 				/>
 			</Link>
-			<div className='flex flex-col items-center justify-center p-5'>
+			<div className={styles.info}>
 				<Link href={`products/${product.id}`}>
-					<h2 className='text-lg'>{product.name}</h2>
+					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
 				<p>${product.price}</p>
 				<Rating rating={product.rating} />
-				<Button appearance='primary'>Add to cart</Button>
+				<Button appearance='primary' className={styles.btn}>Add to cart</Button>
 			</div>
 		</div>
 	)

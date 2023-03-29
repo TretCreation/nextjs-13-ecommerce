@@ -1,21 +1,28 @@
 import { Pagination, ProductList } from '@/src/components'
-import { IProductProps } from '@/src/interfaces/product.interface'
+import { IProduct, IProductProps } from '@/src/interfaces/product.interface'
 import { FC, useState } from 'react'
+import { paginate } from '../pagination/paginate'
 import styles from './Home.module.scss'
 
 const Home: FC<IProductProps> = ({ products }) => {
-	const [page, setPage] = useState(1)
-	const handlePageChange = (count: number) => setPage(count)
+	const [currentPage, setCurrentPage] = useState(1)
+
+	const onChange = (page: number) => {
+		setCurrentPage(page)
+	}
+
+	const paginatedProducts: IProduct[] = paginate(products, currentPage, 10)
+	console.log(paginatedProducts)
 
 	return (
 		<>
 			<div className={styles.wrapper}>
 				<h1 className={styles.header}>BEST SELLERS</h1>
-				<ProductList products={products} />
+				<ProductList products={paginatedProducts} />
 				<Pagination
-					current={page}
-					onChange={handlePageChange}
-					limit={products.length === 8}
+					items={products.length}
+					pageSize={10}
+					onChange={onChange}
 				/>
 			</div>
 		</>
