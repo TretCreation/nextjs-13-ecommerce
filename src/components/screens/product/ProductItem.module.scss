@@ -9,7 +9,9 @@
 		}
 
 		.btn {
-			@apply w-full bg-gradient-to-r from-primary-main to-pink-500;
+			@apply w-full bg-primary-main;
+
+			// from-primary-main to-purple-500
 		}
 	}
 }

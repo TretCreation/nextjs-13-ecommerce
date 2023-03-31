@@ -1,3 +1,4 @@
+import { WishlistIcon } from '@/public'
 import Button from '@/src/components/ui/button/Button'
 import Rating from '@/src/components/ui/rating/Rating'
 import { IProductSingleProps } from '@/src/interfaces/product.interface'
@@ -21,9 +22,12 @@ const ProductItem: React.FC<IProductSingleProps> = ({ product }) => {
 				<Link href={`products/${product.id}`}>
 					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
+				<WishlistIcon className='fill-primary-main' />
 				<p>${product.price}</p>
 				<Rating rating={product.rating} />
-				<Button appearance='primary' className={styles.btn}>Add to cart</Button>
+				<Button appearance='primary' className={styles.btn}>
+					Add to cart
+				</Button>
 			</div>
 		</div>
 	)

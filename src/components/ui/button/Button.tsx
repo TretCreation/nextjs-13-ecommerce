@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import React from 'react'
 import styles from './Button.module.scss'
 import { ButtonProps } from './Button.props'
 
@@ -12,8 +11,9 @@ const Button = ({
 	return (
 		<button
 			className={cn(className, {
-				[styles['btn-primary']]: appearance === 'primary',
-				[styles['btn-solid']]: appearance === 'solid'
+				[styles.primary]: appearance === 'primary',
+				[styles.solid]: appearance === 'solid',
+				[styles.svg]: appearance === 'svg'
 			})}
 			{...props}
 		>

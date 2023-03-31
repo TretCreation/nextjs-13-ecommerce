@@ -1,5 +1,5 @@
 .wrapper {
-	@apply container mx-auto my-0;
+	@apply container relative mx-auto my-0;
 
 	.header {
 		@apply mt-7 mb-4 text-2xl text-blue-dark;

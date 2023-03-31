@@ -6,5 +6,5 @@ export interface ButtonProps
 		HTMLButtonElement
 	> {
 	children: ReactNode
-	appearance: 'primary' | 'solid'
+	appearance: 'primary' | 'solid' | 'svg'
 }

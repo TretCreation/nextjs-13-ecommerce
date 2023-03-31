@@ -11,8 +11,7 @@ const Home: FC<IProductProps> = ({ products }) => {
 		setCurrentPage(page)
 	}
 
-	const paginatedProducts: IProduct[] = paginate(products, currentPage, 10)
-	console.log(paginatedProducts)
+	const paginatedProducts: IProduct[] = paginate(products, currentPage, 16)
 
 	return (
 		<>
@@ -21,7 +20,7 @@ const Home: FC<IProductProps> = ({ products }) => {
 				<ProductList products={paginatedProducts} />
 				<Pagination
 					items={products.length}
-					pageSize={10}
+					pageSize={16}
 					onChange={onChange}
 				/>
 			</div>
