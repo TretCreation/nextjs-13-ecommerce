@@ -1,4 +1,5 @@
-import { FC, useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
+import { useScrollBlock } from '../..'
 // import useScrollBlock from '../../hooks/useScrollBlock'
 import styles from './Modal.module.scss'
 import ReactPortal from './ReactPortal'
@@ -16,7 +17,15 @@ const Modal: FC<ModalProps> = ({
 	isOpen,
 	handleClose
 }) => {
-	// const [isScrollLocked] = useScrollBlock()
+	// Lock scroll on modal
+	// useEffect(() => {
+	// 	document.body.style.overflow = 'hidden'
+	// 	return (): void => {
+	// 		document.body.style.overflow = 'unset'
+	// 	}
+	// }, [isOpen])
+
+	useScrollBlock()
 
 	// Close modal on escape
 	useEffect(() => {
@@ -28,14 +37,9 @@ const Modal: FC<ModalProps> = ({
 		}
 	}, [handleClose])
 
-	// if(!isScrollLocked) return null
-
 	return (
 		<ReactPortal wrapperId={wrapperId}>
 			<div className={styles.modal}></div>
-			<button onClick={handleClose} className='z-50'>
-				GOD SWAGG
-			</button>
 			<div className={styles.content}>{children}</div>
 		</ReactPortal>
 	)

@@ -1,6 +1,7 @@
 export { default as logo } from './logo.png'
 export { default as AccountIcon } from './svg/account.svg'
 export { default as CartIcon } from './svg/cart.svg'
+export { default as CrossIcon } from './svg/cross.svg'
 export { default as LeftArrowIcon } from './svg/left-arrow.svg'
 export { default as MenuIcon } from './svg/menu.svg'
 export { default as RightArrowIcon } from './svg/right-arrow.svg'

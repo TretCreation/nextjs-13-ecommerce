@@ -1,10 +1,26 @@
-import { Modal } from '@/src/components'
+import { CrossIcon } from '@/public'
+import { Button, Modal } from '@/src/components'
+import { FC } from 'react'
 import styles from './ModalAuth.module.scss'
 
-const ModalAuth = () => {
+interface IModalAuthProps {
+	handleClose: () => void
+	isOpen: boolean
+}
+
+const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
+	if (!isOpen) return null
+
 	return (
-		<Modal wrapperId='react-portal-modal'>
-			<div className={styles.test}>
+		<Modal
+			wrapperId='react-portal-modal'
+			handleClose={handleClose}
+			isOpen={isOpen}
+		>
+			<div className={styles.content}>
+				<Button appearance='svg'>
+					<CrossIcon onClick={handleClose} className='h-5 w-5' />
+				</Button>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					Maiores perspiciatis labore tempore explicabo autem

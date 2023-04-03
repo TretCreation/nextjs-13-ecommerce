@@ -1,9 +1,9 @@
 .modal {
-	@apply items-center fixed top-0 left-0 z-10 flex h-screen w-screen justify-center bg-neutral-800 opacity-50;
+	@apply fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-neutral-800 opacity-50;
 }
 
 .content {
-	@apply items-center z-20 box-border flex h-80 w-80 justify-center overflow-hidden rounded bg-red-500;
+	@apply relative z-20 m-auto box-border flex h-80 w-80 items-center justify-center rounded bg-white-main;
 
-	// fixed
+	// fixed overflow-hidden
 }

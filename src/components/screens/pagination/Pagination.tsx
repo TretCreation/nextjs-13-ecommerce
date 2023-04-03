@@ -15,6 +15,7 @@ const Pagination: FC<IPaginationProps> = ({ items, pageSize, onChange }) => {
 		<div className={styles.pagination}>
 			{pages.map((page: number) => (
 				<Button
+					key={page}
 					appearance='solid'
 					className={styles.btn}
 					onClick={() => onChange(page)}
