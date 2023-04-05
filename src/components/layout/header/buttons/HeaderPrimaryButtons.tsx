@@ -9,21 +9,21 @@ const HeaderPrimaryButtons: FC = () => {
 
 	return (
 		<div className={styles['btn-primary']}>
+			<Link href='/wishlist'>
+				<WishlistIcon className={styles.icon} />
+				<p className={styles.text}>Wishlist</p>
+			</Link>
+			<Link href='#'>
+				<CartIcon className={styles.icon} />
+				<p className='text-l'>Cart</p>
+			</Link>
 			<Button
 				appearance='svg'
 				onClick={() => setIsModalAuthOpen(!isModalAuthOpen)}
 			>
-				<WishlistIcon className={styles.icon} />
-				<p className={styles.text}>Wishlist</p>
-			</Button>
-			<Link href='#'>
-				<CartIcon className='mx-3 flex h-6 w-6' />
-				<p className='text-l'>Cart</p>
-			</Link>
-			<Link href='#'>
-				<AccountIcon className='mx-3 flex h-6 w-6' />
+				<AccountIcon className={styles.icon} />
 				<p className='text-l'>Account</p>
-			</Link>
+			</Button>
 			<ModalAuth
 				handleClose={() => setIsModalAuthOpen(!isModalAuthOpen)}
 				isOpen={isModalAuthOpen}

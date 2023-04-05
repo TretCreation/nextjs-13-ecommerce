@@ -1,0 +1,7 @@
+.list {
+	@apply fixed z-10 flex flex-col bg-primary-main;
+
+	.svg {
+		@apply h-5 w-5;
+	}
+}

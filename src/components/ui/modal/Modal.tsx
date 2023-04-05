@@ -1,23 +1,30 @@
 import React, { FC, useEffect } from 'react'
-import { useScrollBlock } from '../..'
-// import useScrollBlock from '../../hooks/useScrollBlock'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
+import useScrollBlock from '../../hooks/useScrollBlock'
 import styles from './Modal.module.scss'
 import ReactPortal from './ReactPortal'
 
 interface ModalProps {
 	children: React.ReactNode
 	wrapperId: string
-	isOpen: boolean
 	handleClose: () => void
+	ref?: any
 }
 
-const Modal: FC<ModalProps> = ({
-	children,
-	wrapperId,
-	isOpen,
-	handleClose
-}) => {
-	// Lock scroll on modal
+const Modal: FC<ModalProps> = ({ children, wrapperId, handleClose, ref }) => {
+	//* Close modal on click outside
+	useOnClickOutside(ref, () => handleClose())
+	console.log('ref [Modal]: ', ref)
+	console.log('ref.current [Modal]: ', ref.current)
+
+	useEffect(() => {
+		console.log('useEffect: ref ', ref)
+		console.log('useEffect: ref.current ', ref.current)
+	}, [])
+
+	//* Lock scroll on modal
+	useScrollBlock()
+	// &&
 	// useEffect(() => {
 	// 	document.body.style.overflow = 'hidden'
 	// 	return (): void => {
@@ -25,9 +32,7 @@ const Modal: FC<ModalProps> = ({
 	// 	}
 	// }, [isOpen])
 
-	useScrollBlock()
-
-	// Close modal on escape
+	//* Close modal on escape
 	useEffect(() => {
 		const closeOnEscapeKey = (e: KeyboardEvent) =>
 			e.key === 'Escape' ? handleClose() : null
@@ -40,7 +45,9 @@ const Modal: FC<ModalProps> = ({
 	return (
 		<ReactPortal wrapperId={wrapperId}>
 			<div className={styles.modal}></div>
-			<div className={styles.content}>{children}</div>
+			<div className={styles.deleted}>
+				<div className={styles.content}>{children}</div>
+			</div>
 		</ReactPortal>
 	)
 }

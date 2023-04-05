@@ -1,3 +1,6 @@
+// Hooks
+export { default as useScrollBlock } from './hooks/useScrollBlock'
+
 // Layout
 export { default as Footer } from './layout/footer/Footer'
 export { default as HeaderPrimaryButtons } from './layout/header/buttons/HeaderPrimaryButtons'
@@ -9,18 +12,15 @@ export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSear
 
 // Screens
 export { default as Home } from './screens/home/Home'
+export { default as ModalAuth } from './screens/modal/auth/ModalAuth'
 export { default as Pagination } from './screens/pagination/Pagination'
-export { default as NoProducts } from './screens/product/NoProducts'
-export { default as ProductItem } from './screens/product/ProductItem'
-export { default as ProductList } from './screens/product/ProductList'
+export { default as NoProducts } from './screens/product/product-empty/NoProducts'
+export { default as ProductItem } from './screens/product/product-item/ProductItem'
+export { default as ProductList } from './screens/product/product-list/ProductList'
 export { default as ProductPage } from './screens/product/ProductPage'
-export {default as ModalAuth} from './screens/modal/auth/ModalAuth'
+export { default as Wishlist } from './screens/wishlist/Wishlist'
 
 // UI
 export { default as Button } from './ui/button/Button'
-export { default as Rating } from './ui/rating/Rating'
 export { default as Modal } from './ui/modal/Modal'
-// export { default as ReactPortal} from './ui/modal/ReactPortal'
-
-// Hooks
-export {default as useScrollBlock} from './hooks/useScrollBlock'
+export { default as Rating } from './ui/rating/Rating'

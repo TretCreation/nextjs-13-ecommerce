@@ -26,7 +26,6 @@ const ReactPortal: FC<IReactPortalProps> = ({ children, wrapperId }) => {
 			element = createWrapperAndAppendToBody(wrapperId)
 		}
 		setWrapperElement(element)
-		console.log(element)
 
 		return () => {
 			if (systemCreated && element?.parentNode) {

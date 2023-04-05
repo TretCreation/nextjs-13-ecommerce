@@ -1,13 +1,13 @@
 import cn from 'classnames'
 import styles from './Button.module.scss'
-import { ButtonProps } from './Button.props'
+import { IButtonProps } from './Button.props'
 
 const Button = ({
 	appearance,
 	children,
 	className,
 	...props
-}: ButtonProps): JSX.Element => {
+}: IButtonProps): JSX.Element => {
 	return (
 		<button
 			className={cn(className, {

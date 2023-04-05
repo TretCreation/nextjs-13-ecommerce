@@ -1,0 +1,11 @@
+.item {
+	@apply flex flex-row bg-blue-400;
+
+	.svg {
+		@apply mr-1;
+	}
+
+	.text {
+		@apply text-white-main;
+	}
+}
