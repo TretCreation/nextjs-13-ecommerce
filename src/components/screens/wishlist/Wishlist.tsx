@@ -1,12 +1,17 @@
-import { FC } from 'react'
+import WishlistItem from './wishlist-item/WishlistItem'
 import styles from './Wishlist.module.scss'
 
-interface IWishlistProps {
-	delete?: string
-}
-
-const Wishlist: FC<IWishlistProps> = () => {
-	return <div className={styles.wishlist}>Wishlist</div>
+const Wishlist = () => {
+	return (
+		<div className={styles.wishlist}>
+			<div className={styles.info}>info</div>
+			<div className={styles.products}>
+				{products.map(product => (
+					<WishlistItem product={product} />
+				))}
+			</div>
+		</div>
+	)
 }
 
 export default Wishlist

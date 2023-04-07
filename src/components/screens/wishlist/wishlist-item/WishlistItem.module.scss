@@ -1,0 +1,23 @@
+.product {
+	@apply flex flex-row border;
+
+	/* .img {
+		@apply;
+	} */
+
+	.name {
+		@apply mx-48 mt-7 mb-4 text-center text-xl uppercase text-blue-dark;
+	}
+
+	.price {
+		@apply mx-24 text-center text-lg text-primary-main;
+	}
+
+	.btn {
+		@apply uppercase;
+	}
+
+	/* .svg {
+		@apply;
+	} */
+}

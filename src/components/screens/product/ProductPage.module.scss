@@ -1,6 +1,10 @@
 .main {
 	@apply flex justify-center;
 
+	.img {
+		@apply h-full w-full;
+	}
+
 	.description {
 		@apply flex-col;
 

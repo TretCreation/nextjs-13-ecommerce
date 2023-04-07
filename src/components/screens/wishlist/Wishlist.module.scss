@@ -1,3 +1,11 @@
 .wishlist {
-	@apply bg-red-200;
+	@apply container mx-auto my-0 mt-9 flex flex-row;
+
+	.info {
+		@apply w-96 flex-initial border;
+	}
+
+	.products {
+		@apply w-full border;
+	}
 }

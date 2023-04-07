@@ -1,5 +1,5 @@
 .item {
-	@apply flex flex-row bg-blue-400;
+	@apply my-1 flex flex-row bg-blue-400 py-2;
 
 	.svg {
 		@apply mr-1;

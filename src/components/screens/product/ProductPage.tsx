@@ -11,12 +11,13 @@ const ProductPage: FC<IProductSingleProps> = ({ product }) => {
 			<Head>
 				<title>{product.name}</title>
 			</Head>
-			<div className={styles.img}>
+			<div>
 				<Image
 					src={product.img}
 					alt={product.name}
 					width={400}
 					height={0}
+					className={styles.img}
 				/>
 			</div>
 			<div className={styles.description}>

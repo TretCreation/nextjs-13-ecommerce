@@ -1,6 +1,6 @@
 import { CrossIcon } from '@/public'
 import { Button, Modal } from '@/src/components'
-import { createRef, FC, useEffect, useRef } from 'react'
+import { FC } from 'react'
 import styles from './ModalAuth.module.scss'
 
 interface IModalAuthProps {
@@ -9,22 +9,10 @@ interface IModalAuthProps {
 }
 
 const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
-	const ref = useRef()
-
-	useEffect(() => {
-		console.log('UseEffect ref.current ', ref.current)
-	})
-
-	console.log('ref [ModalAuth]: ', ref)
-	console.log('ref [ModalAuth].current: ', ref.current)
 	if (!isOpen) return null
 
 	return (
-		<Modal
-			wrapperId='react-portal-modal'
-			handleClose={handleClose}
-			ref={ref}
-		>
+		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
 			<div className={styles.content}>
 				<Button appearance='svg'>
 					<CrossIcon onClick={handleClose} className='h-5 w-5' />

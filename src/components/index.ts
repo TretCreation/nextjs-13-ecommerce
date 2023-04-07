@@ -1,5 +1,8 @@
 // Hooks
 export { default as useScrollBlock } from './hooks/useScrollBlock'
+export { default as useOnClickOutside } from './hooks/useOnClickOutside'
+export { useAppDispatch } from './hooks/useAppDispatch'
+export { useAppSelector } from './hooks/useAppSelector'
 
 // Layout
 export { default as Footer } from './layout/footer/Footer'

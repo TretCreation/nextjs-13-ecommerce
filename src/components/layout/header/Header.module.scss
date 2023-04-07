@@ -1,7 +1,9 @@
-.nav-primary {
-	@apply container mx-auto my-0 flex items-center justify-between;
-}
+.nav {
+	.primary {
+		@apply container mx-auto my-0 flex items-center justify-between;
+	}
 
-.nav-secondary {
-	@apply container mx-auto my-0 flex flex-row;
+	.secondary {
+		@apply container mx-auto my-0 flex flex-row;
+	}
 }

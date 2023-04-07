@@ -1,28 +1,28 @@
-/* eslint-disable no-cond-assign */
+import { IProduct } from '@/src/interfaces/product.interface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface Wishlist {
-	id: number
-}
-
 interface WishlistState {
-	list: Wishlist[]
+	products: IProduct[]
 }
 
 const initialState: WishlistState = {
-	list: []
+	products: []
 }
 
 export const wishlistSlice = createSlice({
 	name: 'wishlist',
 	initialState,
 	reducers: {
-		toggleWishlist: (state, action: PayloadAction<any>) => {
+		toggleWishlist(state, action: PayloadAction<IProduct>) {
 			const product = action.payload
+			console.log('product', product)
 
-			if ((state = state.some(p => p.id === product.id)))
-				state = state.filter(p => p.id !== product.id)
+			const ifExist = state.some((p: number) => p.id === product.id)
+
+			if (ifExist) state = state.filter(p => p.id !== product.id)
 			else state.push(product)
 		}
 	}
 })
+
+export default wishlistSlice.reducer

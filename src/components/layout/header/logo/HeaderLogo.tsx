@@ -8,9 +8,10 @@ const HeaderLogo = () => {
 			<Image
 				src={logo.src}
 				alt='logo'
-				className=''
+				// className='h-full w-full'
 				width={160}
 				height={100}
+				priority
 			/>
 		</Link>
 	)
