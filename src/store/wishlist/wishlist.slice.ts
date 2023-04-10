@@ -1,28 +1,31 @@
 import { IProduct } from '@/src/interfaces/product.interface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface WishlistState {
-	products: IProduct[]
+interface IWishlistState {
+	wishProducts: IProduct[]
 }
 
-const initialState: WishlistState = {
-	products: []
+const initialState: IWishlistState = {
+	wishProducts: []
 }
 
 export const wishlistSlice = createSlice({
 	name: 'wishlist',
 	initialState,
 	reducers: {
-		toggleWishlist(state, action: PayloadAction<IProduct>) {
-			const product = action.payload
-			console.log('product', product)
+		toggleWishlist(state, { payload: product }: PayloadAction<IProduct>) {
+			const isExist = state.wishProducts.some(p => p.id === product.id)
 
-			const ifExist = state.some((p: number) => p.id === product.id)
-
-			if (ifExist) state = state.filter(p => p.id !== product.id)
-			else state.push(product)
+			if (isExist) {
+				const index = state.wishProducts.findIndex(
+					item => item.id === product.id
+				)
+				if (index !== -1) {
+					state.wishProducts.splice(index, 1)
+				}
+			} else state.wishProducts.push(product)
 		}
 	}
 })
 
-export default wishlistSlice.reducer
+export const { actions, reducer } = wishlistSlice

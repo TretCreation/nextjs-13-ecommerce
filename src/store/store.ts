@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import wishlistReducer from './wishlist/wishlist.slice'
+import { reducer as wishlistReducer } from './wishlist/wishlist.slice'
 
 const reducers = combineReducers({
-	wishlistReducer
+	wishlist: wishlistReducer
 })
 
 export const store = configureStore({

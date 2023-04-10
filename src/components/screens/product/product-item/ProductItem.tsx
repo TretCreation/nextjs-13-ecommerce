@@ -6,6 +6,7 @@ import {
 	useAppSelector
 } from '@/src/components'
 import { IProductSingleProps } from '@/src/interfaces/product.interface'
+import { actions } from '@/src/store/wishlist/wishlist.slice'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -13,9 +14,9 @@ import styles from './ProductItem.module.scss'
 
 const ProductItem: FC<IProductSingleProps> = ({ product }) => {
 	const dispatch = useAppDispatch()
-	const { products } = useAppSelector(state => state.wishlistReducer)
+	const { wishProducts } = useAppSelector(state => state.wishlist)
+	console.log('wishlist: ', wishProducts)
 
-	console.log(products)
 	return (
 		<div className={styles.card}>
 			<Link href={`products/${product.id}`} className={styles.img}>
@@ -34,7 +35,9 @@ const ProductItem: FC<IProductSingleProps> = ({ product }) => {
 				<Button appearance='svg'>
 					<WishlistIcon
 						className='fill-primary-main'
-						onClick={() => dispatch(products)}
+						onClick={() =>
+							dispatch(actions.toggleWishlist(product))
+						}
 					/>
 				</Button>
 				<p>${product.price}</p>

@@ -6,22 +6,22 @@ import { FC } from 'react'
 import styles from './WishlistItem.module.scss'
 
 interface IWishlistItemProps {
-	product: IProduct
+	wishProduct: IProduct
 }
 
-const WishlistItem: FC<IWishlistItemProps> = ({ product }) => {
+const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 	return (
 		<div className={styles.product}>
 			<Image
-				src={product.img}
-				alt={product.name}
+				src={wishProduct.img}
+				alt={wishProduct.name}
 				width={85}
 				height={0}
 				priority
 				className={styles.img}
 			/>
-			<div className={styles.name}>{product.name}</div>
-			<div className={styles.price}>${product.price}</div>
+			<div className={styles.name}>{wishProduct.name}</div>
+			<div className={styles.price}>${wishProduct.price}</div>
 			<Button appearance='primary' className={styles.btn}>
 				Add to cart
 			</Button>

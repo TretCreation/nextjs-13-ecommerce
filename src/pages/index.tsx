@@ -1,6 +1,5 @@
 import { Home } from '@/src/components'
 import { GetStaticProps, NextPage } from 'next'
-import React from 'react'
 import { IProductProps } from '../interfaces/product.interface'
 import { ProductService } from '../services/ProductService'
 
