@@ -1,0 +1,15 @@
+.btn {
+	@apply relative flex justify-between text-center font-light;
+
+	.icon {
+		@apply mx-3 flex h-6 w-6;
+	}
+
+	.text {
+		@apply text-l;
+	}
+
+	.span {
+		@apply absolute -top-1 justify-center rounded-full bg-primary-main px-1 align-middle text-l text-white-main;
+	}
+}

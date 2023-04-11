@@ -14,8 +14,10 @@ import styles from './ProductItem.module.scss'
 
 const ProductItem: FC<IProductSingleProps> = ({ product }) => {
 	const dispatch = useAppDispatch()
+
 	const { wishProducts } = useAppSelector(state => state.wishlist)
-	console.log('wishlist: ', wishProducts)
+
+	const isExist = wishProducts.some(p => p.id === product.id)
 
 	return (
 		<div className={styles.card}>
@@ -32,9 +34,9 @@ const ProductItem: FC<IProductSingleProps> = ({ product }) => {
 				<Link href={`products/${product.id}`}>
 					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
-				<Button appearance='svg'>
+				<Button appearance='svg' className={styles.svg}>
 					<WishlistIcon
-						className='fill-primary-main'
+						className={isExist ? styles.exist : styles['not-exist']}
 						onClick={() =>
 							dispatch(actions.toggleWishlist(product))
 						}

@@ -17,5 +17,15 @@
 
 			// from-primary-main to-purple-500
 		}
+
+		.svg {
+			.exist {
+				@apply fill-blue-500;
+			}
+
+			.not-exist {
+				@apply fill-primary-main;
+			}
+		}
 	}
 }
