@@ -1,8 +1,12 @@
 .form {
 	@apply relative flex w-full max-w-xl rounded-md border border-primary-main;
 
-	.icon {
+	.span {
 		@apply m-auto ml-4 h-4;
+
+		.icon {
+			@apply h-5 w-5;
+		}
 	}
 
 	.outline {

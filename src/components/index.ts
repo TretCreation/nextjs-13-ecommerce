@@ -11,7 +11,7 @@ export { default as HeaderSecondaryButtons } from './layout/header/buttons/Heade
 export { default as HeaderDropdown } from './layout/header/dropdown/HeaderDropdown'
 export { default as Header } from './layout/header/Header'
 export { default as HeaderLogo } from './layout/header/logo/HeaderLogo'
-export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSearchbar'
+export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSearchBar'
 
 // Screens
 export { default as Home } from './screens/home/Home'

@@ -15,7 +15,7 @@ const HeaderPrimaryButtons: FC = () => {
 				<span className={styles.span}>{wishProducts.length}</span>
 				<p className={styles.text}>Wishlist</p>
 			</Link>
-			<Link href='#'>
+			<Link href='/'>
 				<CartIcon className={styles.icon} />
 				<p className='text-l'>Cart</p>
 			</Link>
