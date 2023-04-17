@@ -1,5 +1,5 @@
 import { LaptopIcon, SmartphoneIcon } from '@/public'
-import { useOnClickOutside } from '@/src/components'
+import useOnClickOutside from '@/src/components/hooks/useOnClickOutside'
 import { createRef, FC, useEffect } from 'react'
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'
@@ -10,6 +10,12 @@ interface IDropdownListProps {
 }
 
 const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
+	// const { ref, isShow, setIsShow } = useOutside(false)
+
+	// function handleIsShow() {
+	// 	setIsShow(!isShow)
+	// }
+
 	if (!isOpen) return null
 
 	const ref = createRef<HTMLDivElement>()

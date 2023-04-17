@@ -8,15 +8,13 @@ export interface IProduct {
 	typeId: number
 }
 
-export interface IProductSingle extends IProduct {
+export interface IProductHomeProps {
+	products: IProduct[]
+	paginatedProducts: IProduct[]
+	countedProducts: number
+}
+
+export interface IProductPage extends IProduct {
 	brand?: { id: number; name: string }
 	type?: { id: number; name: string }
-}
-
-export interface IProductProps {
-	products: IProduct[]
-}
-
-export interface IProductSingleProps {
-	product: IProductSingle
 }

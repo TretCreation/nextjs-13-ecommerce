@@ -1,20 +1,15 @@
-import React from 'react'
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ProductPage } from '@/src/components'
+import { IProduct } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
-import { IProductSingleProps } from '@/src/interfaces/product.interface'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
 interface Params extends ParsedUrlQuery {
 	id: string
 }
 
-const Product: NextPage<IProductSingleProps> = ({ product }) => {
-	return (
-		<>
-			<ProductPage product={product} />
-		</>
-	)
+const Product: NextPage<{ product: IProduct }> = ({ product }) => {
+	return <ProductPage product={product} />
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
@@ -30,7 +25,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 	}
 }
 
-export const getStaticProps: GetStaticProps<IProductSingleProps> = async ({
+export const getStaticProps: GetStaticProps<{ product: IProduct }> = async ({
 	params
 }) => {
 	const product = await ProductService.getById(String(params?.id))

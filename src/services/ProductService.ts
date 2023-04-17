@@ -16,8 +16,28 @@ export const ProductService = {
 
 	async getById(id?: string) {
 		try {
-			const res = await axios.get<IProduct>(`/products/${id}`)
+			const res = await axios.get<IProduct>(`/product/${id}`)
 			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+
+	async getPaginatedProducts(page: number) {
+		try {
+			const res = await axios.get<IProduct[]>(`/products/page/${page}`)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+
+	async getCountedProducts() {
+		try {
+			const res = await axios.get<IProduct>(`/products/count`)
+			return res.data.id
 		} catch (error) {
 			console.log(error)
 			throw error

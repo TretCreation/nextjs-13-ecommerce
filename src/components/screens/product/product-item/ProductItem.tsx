@@ -5,14 +5,14 @@ import {
 	useAppDispatch,
 	useAppSelector
 } from '@/src/components'
-import { IProductSingleProps } from '@/src/interfaces/product.interface'
+import { IProduct } from '@/src/interfaces/product.interface'
 import { actions } from '@/src/store/wishlist/wishlist.slice'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import styles from './ProductItem.module.scss'
 
-const ProductItem: FC<IProductSingleProps> = ({ product }) => {
+const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	const dispatch = useAppDispatch()
 
 	const { wishProducts } = useAppSelector(state => state.wishlist)
@@ -21,7 +21,7 @@ const ProductItem: FC<IProductSingleProps> = ({ product }) => {
 
 	return (
 		<div className={styles.card}>
-			<Link href={`products/${product.id}`} className={styles.img}>
+			<Link href={`product/${product.id}`} className={styles.img}>
 				<Image
 					src={product.img}
 					alt={product.name}

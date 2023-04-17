@@ -1,11 +1,15 @@
-import { IProductSingleProps } from '@/src/interfaces/product.interface'
+import { IProductPage } from '@/src/interfaces/product.interface'
 import Head from 'next/head'
 import Image from 'next/image'
 import { FC } from 'react'
 import Rating from '../../ui/rating/Rating'
 import styles from './ProductPage.module.scss'
 
-const ProductPage: FC<IProductSingleProps> = ({ product }) => {
+export interface IProductPageProps {
+	product: IProductPage
+}
+
+const ProductPage: FC<IProductPageProps> = ({ product }) => {
 	return (
 		<div className={styles.main}>
 			<Head>
