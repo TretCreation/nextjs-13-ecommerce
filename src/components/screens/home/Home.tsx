@@ -9,25 +9,30 @@ const Home: FC<IProductHomeProps> = ({
 	paginatedProducts,
 	countedProducts
 }) => {
-	const [currentPage, setCurrentPage] = useState(1)
-	const [paginatedProductss, setPaginatedProductss] = useState<IProduct[]>([])
-	console.log(currentPage)
+	const [currentPage, setCurrentPage] = useState<number>(1)
+	const [clientPaginatedProducts, setClientPaginatedProducts] = useState<
+		IProduct[]
+	>([])
+
+	useEffect(() => {
+		setClientPaginatedProducts(paginatedProducts)
+	}, [])
 
 	useEffect(() => {
 		const fetchPaginatedProducts = async () => {
 			const res = await ProductService.getPaginatedProducts(currentPage)
 			console.log('res: ', res)
-			setPaginatedProductss(res)
+			console.log(currentPage)
+			setClientPaginatedProducts(res)
 		}
 		fetchPaginatedProducts()
 	}, [currentPage])
 
-	// const pProducts: IProduct[] = paginate(products, currentPage, 10)
 
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.header}>BEST SELLERS</h1>
-			<ProductList products={paginatedProducts} />
+			<ProductList products={clientPaginatedProducts} />
 			<Pagination
 				items={countedProducts}
 				pageSize={10}
