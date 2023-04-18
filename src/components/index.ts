@@ -15,7 +15,8 @@ export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSear
 
 // Screens
 export { default as Home } from './screens/home/Home'
-export { default as ModalAuth } from './screens/modal/auth/ModalAuth'
+export { default as ModalAuth } from './screens/auth/ModalAuth'
+export { default as ModalCart } from './screens/cart/ModalCart'
 export { default as Pagination } from './screens/pagination/Pagination'
 export { default as NoProducts } from './screens/product/product-empty/NoProducts'
 export { default as ProductItem } from './screens/product/product-item/ProductItem'

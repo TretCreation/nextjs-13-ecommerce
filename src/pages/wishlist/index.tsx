@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { Wishlist } from '../components'
+import { Wishlist } from '@/src/components'
 
 const WishlistPage: NextPage = () => {
 	return <Wishlist />
