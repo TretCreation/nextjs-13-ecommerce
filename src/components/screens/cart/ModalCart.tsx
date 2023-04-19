@@ -34,8 +34,7 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 					</p>
 				</div>
 			</div>
-
-			{/* Add: NoProducts */}
+			Add: NoProducts
 		</Modal>
 	)
 }
