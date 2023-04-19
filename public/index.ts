@@ -1,5 +1,4 @@
 // SVGs
-export { default as logo } from './logo.png'
 export { default as AccountIcon } from './svg/account.svg'
 export { default as CartIcon } from './svg/cart.svg'
 export { default as CrossIcon } from './svg/cross.svg'
@@ -12,4 +11,8 @@ export { default as RightArrowIcon } from './svg/right-arrow.svg'
 export { default as SearchIcon } from './svg/search.svg'
 export { default as StarIcon } from './svg/star.svg'
 export { default as WishlistIcon } from './svg/wishlist.svg'
+
+// PNG
+export { default as logo } from './logo.png'
+export { default as NoCartProduct } from './assets/cart/NoCartProduct.png'
 export { default as TestProduct } from './test-product.png'

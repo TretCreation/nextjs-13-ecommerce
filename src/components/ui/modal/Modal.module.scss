@@ -3,7 +3,7 @@
 }
 
 .content {
-	@apply relative z-20 m-auto box-border flex h-80 w-80 items-center justify-center rounded bg-white-main;
+	@apply relative z-20 m-auto box-border flex items-center justify-center rounded bg-white-main;
 
 	// fixed overflow-hidden
 }

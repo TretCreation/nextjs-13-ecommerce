@@ -18,7 +18,8 @@
 			// from-primary-main to-purple-500
 		}
 
-		.svg {
+		// Wishlist
+		.wishlist {
 			.exist {
 				@apply fill-blue-500;
 			}
@@ -26,6 +27,15 @@
 			.not-exist {
 				@apply fill-primary-main;
 			}
+		}
+
+		// Cart
+		.cart-exist {
+			@apply w-full bg-blue-500;
+		}
+
+		.cart-not-exist {
+			@apply w-full bg-primary-main;
 		}
 	}
 }

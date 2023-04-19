@@ -1,6 +1,7 @@
 import { CrossIcon } from '@/public'
-import { Button, Modal } from '@/src/components'
+import { Button, Modal, useAppSelector } from '@/src/components'
 import { FC } from 'react'
+import CartItem from './cart-item/CartItem'
 import styles from './ModalCart.module.scss'
 
 interface ICartProps {
@@ -9,6 +10,7 @@ interface ICartProps {
 }
 
 const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
+	const { cartProducts } = useAppSelector(state => state.cart)
 	if (!isOpen) return null
 
 	return (
@@ -17,14 +19,23 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 				<Button appearance='svg'>
 					<CrossIcon onClick={handleClose} className='h-5 w-5' />
 				</Button>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Maiores perspiciatis labore tempore explicabo autem
-					reprehenderit libero voluptas rem? Voluptatibus incidunt
-					necessitatibus qui facere deleniti quam soluta corrupti
-					magni! Voluptates, modi.
-				</p>
+				<div className={styles.products}>
+					{cartProducts.map(cartProduct => (
+						<CartItem
+							key={cartProduct.id}
+							cartProduct={cartProduct}
+						/>
+					))}
+				</div>
+				<div className={styles.checkout}>
+					<p>
+						Cart Subtotal: $
+						{cartProducts.reduce((acc, cur) => acc + cur.price, 0)}
+					</p>
+				</div>
 			</div>
+
+			{/* Add: NoProducts */}
 		</Modal>
 	)
 }

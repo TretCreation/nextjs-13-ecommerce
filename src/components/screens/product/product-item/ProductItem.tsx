@@ -6,7 +6,8 @@ import {
 	useAppSelector
 } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { actions } from '@/src/store/wishlist/wishlist.slice'
+import { actions as cartActions } from '@/src/store/cart/cart.slice'
+import { actions as wishlistActions } from '@/src/store/wishlist/wishlist.slice'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -16,8 +17,10 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	const dispatch = useAppDispatch()
 
 	const { wishProducts } = useAppSelector(state => state.wishlist)
+	const { cartProducts } = useAppSelector(state => state.cart)
 
-	const isExist = wishProducts.some(p => p.id === product.id)
+	const isExistWishlist = wishProducts.some(p => p.id === product.id)
+	const isExistCart = cartProducts.some(p => p.id === product.id)
 
 	return (
 		<div className={styles.card}>
@@ -34,18 +37,28 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				<Link href={`products/${product.id}`}>
 					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
-				<Button appearance='svg' className={styles.svg}>
+				<Button appearance='svg' className={styles.wishlist}>
 					<WishlistIcon
-						className={isExist ? styles.exist : styles['not-exist']}
+						className={
+							isExistWishlist ? styles.exist : styles['not-exist']
+						}
 						onClick={() =>
-							dispatch(actions.toggleWishlist(product))
+							dispatch(wishlistActions.toggleWishlist(product))
 						}
 					/>
 				</Button>
 				<p>${product.price}</p>
 				<Rating rating={product.rating} />
-				<Button appearance='primary' className={styles.btn}>
-					Add to cart
+				<Button
+					appearance='primary'
+					className={
+						isExistCart
+							? styles['cart-exist']
+							: styles['cart-not-exist']
+					}
+					onClick={() => dispatch(cartActions.toggleCart(product))}
+				>
+					<p>{isExistCart ? 'Remove from cart' : 'Add to cart'}</p>
 				</Button>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ const HeaderPrimaryButtons: FC = () => {
 	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
 	const [isModalCartOpen, setIsModalCartOpen] = useState(false)
 	const { wishProducts } = useAppSelector(state => state.wishlist)
+	const { cartProducts } = useAppSelector(state => state.cart)
 
 	return (
 		<>
@@ -22,6 +23,7 @@ const HeaderPrimaryButtons: FC = () => {
 					onClick={() => setIsModalCartOpen(!isModalCartOpen)}
 				>
 					<CartIcon className={styles.icon} />
+					<span className={styles.span}>{cartProducts.length}</span>
 					<p className='text-l'>Cart</p>
 				</Button>
 				<Button
