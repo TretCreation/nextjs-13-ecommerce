@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.2",
-    "@prisma/client": "^4.9.0",
+    "@prisma/client": "^4.13.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
@@ -42,7 +42,7 @@
     "prettier": "^2.8.4",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-tailwindcss": "^0.2.5",
-    "prisma": "^4.9.0",
+    "prisma": "^4.13.0",
     "stylelint": "^15.3.0",
     "stylelint-config-standard-scss": "^7.0.1",
     "stylelint-prettier": "^3.0.0",

@@ -4,13 +4,11 @@ import { IProductHomeProps } from '../interfaces/product.interface'
 import { ProductService } from '../services/ProductService'
 
 const HomePage: NextPage<IProductHomeProps> = ({
-	products,
 	paginatedProducts,
 	countedProducts
 }) => {
 	return (
 		<Home
-			products={products}
 			paginatedProducts={paginatedProducts}
 			countedProducts={countedProducts}
 		/>
@@ -18,13 +16,11 @@ const HomePage: NextPage<IProductHomeProps> = ({
 }
 
 export const getStaticProps: GetStaticProps<IProductHomeProps> = async () => {
-	const allProducts = await ProductService.getAll()
 	const paginatedProducts = await ProductService.getPaginatedProducts(1)
 	const countedProducts = await ProductService.getCountedProducts()
 
 	return {
 		props: {
-			products: allProducts,
 			countedProducts: countedProducts,
 			paginatedProducts: paginatedProducts
 		},

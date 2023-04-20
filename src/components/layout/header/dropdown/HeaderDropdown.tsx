@@ -1,10 +1,11 @@
 import { MenuIcon } from '@/public'
 import { Button } from '@/src/components'
+import { NextPage } from 'next'
 import { useCallback, useState } from 'react'
 import DropdownList from './dropdown-list/DropdownList'
 import styles from './HeaderDropdown.module.scss'
 
-const HeaderDropdown = () => {
+const HeaderDropdown: NextPage = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	const handleClose = useCallback(() => {

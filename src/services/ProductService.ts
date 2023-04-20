@@ -42,5 +42,15 @@ export const ProductService = {
 			console.log(error)
 			throw error
 		}
+	},
+
+	async getSearchedProducts(q: string) {
+		try {
+			const res = await axios.get<IProduct[]>(`/products/search?q=` + q)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
 	}
 }

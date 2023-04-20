@@ -9,7 +9,6 @@ export interface IProduct {
 }
 
 export interface IProductHomeProps {
-	products: IProduct[]
 	paginatedProducts: IProduct[]
 	countedProducts: number
 }

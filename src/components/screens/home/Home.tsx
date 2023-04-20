@@ -5,17 +5,16 @@ import { FC, useEffect, useState } from 'react'
 import styles from './Home.module.scss'
 
 const Home: FC<IProductHomeProps> = ({
-	products,
 	paginatedProducts,
 	countedProducts
 }) => {
 	const [currentPage, setCurrentPage] = useState<number>(1)
-	const [clientPaginatedProducts, setClientPaginatedProducts] = useState<
+	const [clientPaginatedProducts, setPaginatedProducts] = useState<
 		IProduct[]
 	>([])
 
 	useEffect(() => {
-		setClientPaginatedProducts(paginatedProducts)
+		setPaginatedProducts(paginatedProducts)
 	}, [])
 
 	useEffect(() => {
@@ -23,11 +22,10 @@ const Home: FC<IProductHomeProps> = ({
 			const res = await ProductService.getPaginatedProducts(currentPage)
 			console.log('res: ', res)
 			console.log(currentPage)
-			setClientPaginatedProducts(res)
+			setPaginatedProducts(res)
 		}
 		fetchPaginatedProducts()
 	}, [currentPage])
-
 
 	return (
 		<div className={styles.wrapper}>
