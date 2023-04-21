@@ -16,8 +16,6 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 	// 	setIsShow(!isShow)
 	// }
 
-	if (!isOpen) return null
-
 	const ref = createRef<HTMLDivElement>()
 
 	//* Close modal on click outside
@@ -33,6 +31,7 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 		}
 	}, [handleClose])
 
+	if (!isOpen) return null
 	return (
 		<div className={styles.list} ref={ref}>
 			<DropdownItem

@@ -1,17 +1,16 @@
 import { Button, SearchBarList } from '@/src/components'
+import useDebounce from '@/src/components/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
-import { ChangeEvent, useCallback, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { SearchIcon } from '../../../../../public'
 import styles from './HeaderSearchBar.module.scss'
 
 const HeaderSearchBar = (): JSX.Element => {
-	// const debouncedValue = useDebounce<string>(value, 500)
+	const [isOpen, setIsOpen] = useState(false)
 	const [searchedProducts, setSearchedProducts] = useState<IProduct[]>([])
-
-	const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-		fetchData(e.target.value)
-	}
+	const [searchTerm, setSearchTerm] = useState<string>('')
+	const debouncedSearchTerm = useDebounce<string>(searchTerm, 500)
 
 	const fetchData = async (value: string) => {
 		const getSearchedProducts = await ProductService.getSearchedProducts(
@@ -19,8 +18,6 @@ const HeaderSearchBar = (): JSX.Element => {
 		)
 		return setSearchedProducts(getSearchedProducts)
 	}
-
-	const [isOpen, setIsOpen] = useState(false)
 
 	const handleClose = useCallback(() => {
 		setIsOpen(!isOpen)
@@ -30,6 +27,15 @@ const HeaderSearchBar = (): JSX.Element => {
 		e.preventDefault()
 	}
 
+	useEffect(() => {
+		if (debouncedSearchTerm) {
+			fetchData(debouncedSearchTerm)
+			setIsOpen(!isOpen)
+		}
+	}, [debouncedSearchTerm])
+
+	console.log('debouncedSearchTerm', debouncedSearchTerm)
+	console.log('isOpen: ', isOpen)
 	console.log('Searched Products: ', searchedProducts)
 
 	return (
@@ -42,17 +48,21 @@ const HeaderSearchBar = (): JSX.Element => {
 					type='search'
 					placeholder='Search'
 					className={styles.outline}
-					onChange={handleInput}
+					onChange={e => setSearchTerm(e.target.value)}
 				/>
 				<Button
 					appearance='primary'
 					className={styles.btn}
-					onClick={handleClose}
+					// onClick={handleClose}
 				>
 					Search
 				</Button>
 			</form>
-			<SearchBarList isOpen={isOpen} handleClose={handleClose} />
+			<SearchBarList
+				isOpen={isOpen}
+				handleClose={handleClose}
+				searchedProducts={searchedProducts}
+			/>
 		</>
 	)
 }
