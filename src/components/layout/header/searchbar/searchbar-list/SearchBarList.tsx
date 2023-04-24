@@ -15,12 +15,6 @@ const SearchBarList: FC<ISearchBarListProps> = ({
 	handleClose,
 	searchedProducts
 }) => {
-	// const [isSuccess, setIsSuccess] = useState<boolean>(false)
-
-	// if (searchedProducts.length != 0) {
-	// 	setIsSuccess(!isSuccess)
-	// }
-
 	const ref = createRef<HTMLDivElement>()
 
 	//* Close modal on click outside

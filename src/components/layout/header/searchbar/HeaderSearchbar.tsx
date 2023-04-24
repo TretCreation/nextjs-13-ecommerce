@@ -1,7 +1,7 @@
 import { Button, SearchBarList } from '@/src/components'
 import useDebounce from '@/src/components/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { ProductService } from '@/src/services/ProductService'
+import { SearchService } from '@/src/services/SearchService'
 import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { SearchIcon } from '../../../../../public'
 import styles from './HeaderSearchBar.module.scss'
@@ -10,14 +10,29 @@ const HeaderSearchBar = (): JSX.Element => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [searchedProducts, setSearchedProducts] = useState<IProduct[]>([])
 	const [searchTerm, setSearchTerm] = useState<string>('')
+
 	const debouncedSearchTerm = useDebounce<string>(searchTerm, 500)
 
 	const fetchData = async (value: string) => {
-		const getSearchedProducts = await ProductService.getSearchedProducts(
+		const getSearchedProducts = await SearchService.getSearchedProducts(
 			value
 		)
 		return setSearchedProducts(getSearchedProducts)
 	}
+
+	useEffect(() => {
+		if (debouncedSearchTerm) {
+			//?
+			fetchData(debouncedSearchTerm)
+		}
+	}, [debouncedSearchTerm])
+
+	//TODO Fix isOpen
+	useEffect(() => {
+		if (searchedProducts.length != 0) {
+			setIsOpen(isOpen => !isOpen)
+		}
+	}, [searchedProducts])
 
 	const handleClose = useCallback(() => {
 		setIsOpen(!isOpen)
@@ -27,16 +42,9 @@ const HeaderSearchBar = (): JSX.Element => {
 		e.preventDefault()
 	}
 
-	useEffect(() => {
-		if (debouncedSearchTerm) {
-			fetchData(debouncedSearchTerm)
-			setIsOpen(!isOpen)
-		}
-	}, [debouncedSearchTerm])
-
-	console.log('debouncedSearchTerm', debouncedSearchTerm)
-	console.log('isOpen: ', isOpen)
-	console.log('Searched Products: ', searchedProducts)
+	// console.log('debouncedSearchTerm', debouncedSearchTerm)
+	// console.log('isOpen: ', isOpen)
+	// console.log('Searched Products: ', searchedProducts)
 
 	return (
 		<>
