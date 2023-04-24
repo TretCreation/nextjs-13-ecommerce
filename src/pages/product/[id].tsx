@@ -13,6 +13,7 @@ const Product: NextPage<{ product: IProduct }> = ({ product }) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
+	//? getAll
 	const products = await ProductService.getAll()
 
 	return {

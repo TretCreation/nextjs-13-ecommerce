@@ -27,6 +27,8 @@ export { default as NoProducts } from './screens/product/product-empty/NoProduct
 export { default as ProductItem } from './screens/product/product-item/ProductItem'
 export { default as ProductList } from './screens/product/product-list/ProductList'
 export { default as ProductPage } from './screens/product/ProductPage'
+export { default as CategorySmartphones } from './screens/category/smartphones/CategorySmartphones'
+
 
 //* UI
 export { default as Button } from './ui/button/Button'

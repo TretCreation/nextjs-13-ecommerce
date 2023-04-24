@@ -1,0 +1,11 @@
+.category {
+	@apply container mx-auto my-0 mt-9 flex flex-row;
+
+	.filter {
+		@apply w-96 flex-initial border;
+	}
+
+	.products {
+		@apply grid grid-cols-4;
+	}
+}

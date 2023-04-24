@@ -6,8 +6,7 @@ import {
 	useAppSelector
 } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { actions as cartActions } from '@/src/store/cart/cart.slice'
-import { actions as wishlistActions } from '@/src/store/wishlist/wishlist.slice'
+import { cartActions, wishlistActions } from '@/src/store'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -34,7 +33,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				/>
 			</Link>
 			<div className={styles.info}>
-				<Link href={`products/${product.id}`}>
+				<Link href={`product/${product.id}`}>
 					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
 				<Button appearance='svg' className={styles.wishlist}>

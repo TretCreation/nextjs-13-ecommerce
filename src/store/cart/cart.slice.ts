@@ -25,6 +25,9 @@ export const cartSlice = createSlice({
 				}
 			} else state.cartProducts.push(product)
 		},
+		addProduct(state, { payload: product }: PayloadAction<IProduct>) {
+			state.cartProducts.push(product)
+		},
 		removeProductCart(
 			state,
 			{ payload: product }: PayloadAction<IProduct>

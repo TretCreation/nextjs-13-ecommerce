@@ -37,7 +37,7 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 			<DropdownItem
 				svg={<SmartphoneIcon className={styles.svg} />}
 				text='Smartphones'
-				href='#'
+				href='/category/smartphones'
 			/>
 			<DropdownItem
 				svg={<LaptopIcon className={styles.svg} />}

@@ -9,9 +9,7 @@ export default async function handler(
 		try {
 			const data = await prisma.product.findMany({
 				where: {
-					name: {
-						search: req.query.q as string
-					}
+					typeId: 1
 				}
 			})
 			return res.status(200).json(data)

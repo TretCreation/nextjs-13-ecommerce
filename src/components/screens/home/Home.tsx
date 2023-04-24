@@ -13,6 +13,7 @@ const Home: FC<IProductHomeProps> = ({
 		IProduct[]
 	>([])
 
+	//?
 	useEffect(() => {
 		setPaginatedProducts(paginatedProducts)
 	}, [])

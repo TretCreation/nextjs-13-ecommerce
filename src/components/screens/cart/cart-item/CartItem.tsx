@@ -1,7 +1,7 @@
 import { GarbageIcon } from '@/public'
 import { Button, useAppDispatch } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { actions as cartActions } from '@/src/store/cart/cart.slice'
+import { cartActions } from '@/src/store'
 
 import Image from 'next/image'
 import { FC } from 'react'
