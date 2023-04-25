@@ -4,9 +4,9 @@ import { IProduct } from '../interfaces/product.interface'
 axios.defaults.baseURL = process.env.API_URL
 
 export const CategoryService = {
-	async getCategoryProduct(category: string) {
+	async getCategoryProduct(q: number) {
 		try {
-			const res = await axios.get<IProduct[]>(`/category/`+ category)
+			const res = await axios.get<IProduct[]>(`/category?q=` + q)
 			return res.data
 		} catch (error) {
 			console.log(error)

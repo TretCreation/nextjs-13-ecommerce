@@ -1,4 +1,4 @@
-import { ProductItem } from '@/src/components'
+import { ProductItem, SortBy } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { FC } from 'react'
 import NoProducts from '../../product/product-empty/NoProducts'
@@ -14,14 +14,17 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({
 	return (
 		<div className={styles.category}>
 			<div className={styles.filter}>filter</div>
-			<div className={styles.products}>
-				{smartphones.length ? (
-					smartphones.map((product: IProduct) => (
-						<ProductItem key={product.id} product={product} />
-					))
-				) : (
-					<NoProducts />
-				)}
+			<div>
+				<SortBy />
+				<div className={styles.products}>
+					{smartphones.length ? (
+						smartphones.map((product: IProduct) => (
+							<ProductItem key={product.id} product={product} />
+						))
+					) : (
+						<NoProducts />
+					)}
+				</div>
 			</div>
 		</div>
 	)

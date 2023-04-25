@@ -16,13 +16,12 @@ const Home: FC<IProductHomeProps> = ({
 	//?
 	useEffect(() => {
 		setPaginatedProducts(paginatedProducts)
-	}, [])
+	}, [paginatedProducts])
 
 	useEffect(() => {
 		const fetchPaginatedProducts = async () => {
 			const res = await ProductService.getPaginatedProducts(currentPage)
-			console.log('res: ', res)
-			console.log(currentPage)
+			console.log('fetchPaginatedProducts: ', res)
 			setPaginatedProducts(res)
 		}
 		fetchPaginatedProducts()

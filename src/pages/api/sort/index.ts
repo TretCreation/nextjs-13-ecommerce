@@ -8,9 +8,11 @@ export default async function handler(
 	if (req.method === 'GET') {
 		try {
 			const data = await prisma.product.findMany({
-				where: {
-					typeId: 1
-				}
+				//?
+				orderBy: {
+					rating: req.query.r,
+					price: req.query.p
+				} as any
 			})
 			return res.status(200).json(data)
 		} catch (error) {

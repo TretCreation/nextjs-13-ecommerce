@@ -29,8 +29,8 @@ export { default as ProductList } from './screens/product/product-list/ProductLi
 export { default as ProductPage } from './screens/product/ProductPage'
 export { default as CategorySmartphones } from './screens/category/smartphones/CategorySmartphones'
 
-
 //* UI
 export { default as Button } from './ui/button/Button'
 export { default as Modal } from './ui/modal/Modal'
 export { default as Rating } from './ui/rating/Rating'
+export {default as SortBy} from './ui/sort-by/SortBy'

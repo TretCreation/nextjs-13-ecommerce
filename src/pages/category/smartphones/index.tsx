@@ -14,7 +14,7 @@ const CategorySmartphonesPage: NextPage<{ smartphones: IProduct[] }> = ({
 export const getStaticProps: GetStaticProps<{
 	smartphones: IProduct[]
 }> = async () => {
-	const smartphones = await CategoryService.getCategoryProduct('smartphones')
+	const smartphones = await CategoryService.getCategoryProduct(1)
 
 	return {
 		props: {
