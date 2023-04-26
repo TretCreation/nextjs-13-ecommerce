@@ -51,15 +51,14 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 			>
 				{isExistCart ? 'To Cart' : 'Add to cart'}
 			</Button>
-			<Button appearance='svg' className={styles.svg}>
-				<GarbageIcon
-					className='h-6 w-6'
-					onClick={() =>
-						dispatch(
-							wishlistActions.removeProductWishlist(wishProduct)
-						)
-					}
-				/>
+			<Button
+				appearance='svg'
+				className={styles.svg}
+				onClick={() =>
+					dispatch(wishlistActions.removeProductWishlist(wishProduct))
+				}
+			>
+				<GarbageIcon className='h-6 w-6' />
 			</Button>
 			<ModalCart
 				handleClose={() => setIsModalAuthOpen(!isModalAuthOpen)}

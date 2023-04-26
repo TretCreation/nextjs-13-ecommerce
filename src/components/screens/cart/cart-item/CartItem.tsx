@@ -25,13 +25,14 @@ const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
 			/>
 			<div className={styles.name}>{cartProduct.name}</div>
 			<div className={styles.price}>${cartProduct.price}</div>
-			<Button appearance='svg' className={styles.svg}>
-				<GarbageIcon
-					className='h-6 w-6'
-					onClick={() =>
-						dispatch(cartActions.removeProductCart(cartProduct))
-					}
-				/>
+			<Button
+				appearance='svg'
+				className={styles.svg}
+				onClick={() =>
+					dispatch(cartActions.removeProductCart(cartProduct))
+				}
+			>
+				<GarbageIcon className='h-6 w-6' />
 			</Button>
 		</div>
 	)

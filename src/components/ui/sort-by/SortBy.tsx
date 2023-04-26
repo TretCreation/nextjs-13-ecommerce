@@ -1,7 +1,7 @@
 import { sortKey, sortValue, typeId } from '@/src/interfaces/api.type'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SortByService } from '@/src/services/SortByService'
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC } from 'react'
 import styles from './SortBy.module.scss'
 
 interface ISortBy {
@@ -10,8 +10,6 @@ interface ISortBy {
 }
 
 const SortBy: FC<ISortBy> = ({ typeId, getProducts }) => {
-	const [clientSortProducts, setClientSortProducts] = useState<IProduct[]>([])
-
 	const fetchData = async (k: sortKey, v: sortValue) => {
 		const res = await SortByService.getSortedProducts(k, v, typeId)
 		getProducts(res)
