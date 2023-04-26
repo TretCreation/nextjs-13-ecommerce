@@ -1,6 +1,6 @@
 import { ProductItem, SortBy } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import NoProducts from '../../product/product-empty/NoProducts'
 import styles from './CategorySmartphones.module.scss'
 
@@ -11,14 +11,24 @@ interface ICategorySmartphonesProps {
 const CategorySmartphones: FC<ICategorySmartphonesProps> = ({
 	smartphones
 }) => {
+	const [products, setProducts] = useState<IProduct[]>([])
+
+	//?
+	useEffect(() => {
+		setProducts(smartphones)
+	}, [smartphones])
+
 	return (
 		<div className={styles.category}>
 			<div className={styles.filter}>filter</div>
 			<div>
-				<SortBy />
+				<SortBy
+					typeId={1}
+					getProducts={products => setProducts(products)}
+				/>
 				<div className={styles.products}>
-					{smartphones.length ? (
-						smartphones.map((product: IProduct) => (
+					{products.length ? (
+						products.map((product: IProduct) => (
 							<ProductItem key={product.id} product={product} />
 						))
 					) : (

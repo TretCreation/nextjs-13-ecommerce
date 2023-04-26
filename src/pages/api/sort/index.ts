@@ -9,6 +9,9 @@ export default async function handler(
 		try {
 			const data = await prisma.product.findMany({
 				//?
+				where: {
+					typeId: Number(req.query.q)
+				},
 				orderBy: {
 					rating: req.query.r,
 					price: req.query.p

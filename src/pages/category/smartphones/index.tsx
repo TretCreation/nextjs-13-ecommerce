@@ -1,9 +1,7 @@
 import { CategorySmartphones } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { CategoryService } from '@/src/services/CategoryService'
+import { SortByService } from '@/src/services/SortByService'
 import { GetStaticProps, NextPage } from 'next'
-
-// interface ICategorySmartphonesProps {}
 
 const CategorySmartphonesPage: NextPage<{ smartphones: IProduct[] }> = ({
 	smartphones
@@ -14,7 +12,7 @@ const CategorySmartphonesPage: NextPage<{ smartphones: IProduct[] }> = ({
 export const getStaticProps: GetStaticProps<{
 	smartphones: IProduct[]
 }> = async () => {
-	const smartphones = await CategoryService.getCategoryProduct(1)
+	const smartphones = await SortByService.getSortedProducts('r', 'desc', 1)
 
 	return {
 		props: {
