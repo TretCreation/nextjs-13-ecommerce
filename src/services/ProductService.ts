@@ -24,9 +24,11 @@ export const ProductService = {
 		}
 	},
 
-	async getPaginatedProducts(page: number) {
+	async getPaginatedProducts(limit: number, page: number) {
 		try {
-			const res = await axios.get<IProduct[]>(`/products/page/${page}`)
+			const res = await axios.get<IProduct[]>(
+				`/products/page?limit=${limit}&page=${page}`
+			)
 			return res.data
 		} catch (error) {
 			console.log(error)

@@ -18,12 +18,12 @@ const prisma = new PrismaClient()
 async function main() {
 	const product = await prisma.product.create({
 		data: {
-			name: 'MacBook Air M2 Starlight',
-			price: 1199,
-			img: '/assets/products/apple/laptops/Apple-MacBook-Air-M2-Starlight.png',
-			rating: 5,
-			brandId: Brands.Apple,
-			typeId: Types.Laptops
+			name: 'Samsung Galaxy S23 Pink',
+			price: 799,
+			img: '/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-pink',
+			rating: 3,
+			brandId: Brands.Samsung,
+			typeId: Types.Smartphones
 		}
 	})
 	console.log(product)

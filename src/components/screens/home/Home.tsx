@@ -17,7 +17,10 @@ const Home: FC<IProductHomeProps> = ({
 
 	useEffect(() => {
 		const fetchPaginatedProducts = async () => {
-			const res = await ProductService.getPaginatedProducts(currentPage)
+			const res = await ProductService.getPaginatedProducts(
+				10,
+				currentPage
+			)
 			console.log('fetchPaginatedProducts: ', res)
 			setPaginatedProducts(res)
 			setIsFirstRendering(false)

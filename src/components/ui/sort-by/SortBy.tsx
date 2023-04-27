@@ -5,13 +5,16 @@ import { ChangeEvent, FC } from 'react'
 import styles from './SortBy.module.scss'
 
 interface ISortBy {
-	typeId: typeId
+	limit: number
+	page: number
+	q: typeId
 	getProducts: (products: IProduct[]) => void
 }
 
-const SortBy: FC<ISortBy> = ({ typeId, getProducts }) => {
+const SortBy: FC<ISortBy> = ({ limit, page, q, getProducts }) => {
 	const fetchData = async (k: sortKey, v: sortValue) => {
-		const res = await SortByService.getSortedProducts(k, v, typeId)
+		const res = await SortByService.getSortedProducts(k, v, q, limit, page)
+		console.log('k, v, q, limit, page: ', [k, v, q, limit, page])
 		getProducts(res)
 	}
 
@@ -31,7 +34,6 @@ const SortBy: FC<ISortBy> = ({ typeId, getProducts }) => {
 	return (
 		<div className={styles.wrapper}>
 			<label htmlFor='sortBy'>Sort By:</label>
-
 			<select
 				className={styles.select}
 				onChange={handleChange}

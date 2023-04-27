@@ -18,7 +18,9 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({
 			<div className={styles.filter}>filter</div>
 			<div>
 				<SortBy
-					typeId={1}
+					limit={16}
+					page={1}
+					q={1}
 					getProducts={products => setProducts(products)}
 				/>
 				<div className={styles.products}>

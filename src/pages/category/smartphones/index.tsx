@@ -12,7 +12,13 @@ const CategorySmartphonesPage: NextPage<{ smartphones: IProduct[] }> = ({
 export const getStaticProps: GetStaticProps<{
 	smartphones: IProduct[]
 }> = async () => {
-	const smartphones = await SortByService.getSortedProducts('r', 'desc', 1)
+	const smartphones = await SortByService.getSortedProducts(
+		'r',
+		'desc',
+		1,
+		16,
+		1
+	)
 
 	return {
 		props: {
