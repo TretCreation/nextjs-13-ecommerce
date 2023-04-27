@@ -18,7 +18,6 @@ const HomePage: NextPage<IProductHomeProps> = ({
 export const getStaticProps: GetStaticProps<IProductHomeProps> = async () => {
 	const paginatedProducts = await ProductService.getPaginatedProducts(1)
 	const countedProducts = await ProductService.getCountedProducts()
-
 	return {
 		props: {
 			countedProducts: countedProducts,

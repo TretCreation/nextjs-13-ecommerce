@@ -32,12 +32,14 @@ const SortBy: FC<ISortBy> = ({ typeId, getProducts }) => {
 		<div className={styles.wrapper}>
 			<label htmlFor='sortBy'>Sort By:</label>
 
-			<select className={styles.select} onChange={handleChange}>
+			<select
+				className={styles.select}
+				onChange={handleChange}
+				defaultValue='rating'
+			>
 				<option value='low'>Price: Low to High</option>
 				<option value='high'>Price: High to Low</option>
-				<option value='rating' selected>
-					Rating
-				</option>
+				<option value='rating'>Rating</option>
 			</select>
 		</div>
 	)

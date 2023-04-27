@@ -5,8 +5,9 @@ import { FC, useState } from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons: FC = () => {
-	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
-	const [isModalCartOpen, setIsModalCartOpen] = useState(false)
+	const [isModalAuthOpen, setIsModalAuthOpen] = useState<boolean>(false)
+	const [isModalCartOpen, setIsModalCartOpen] = useState<boolean>(false)
+
 	const { wishProducts } = useAppSelector(state => state.wishlist)
 	const { cartProducts } = useAppSelector(state => state.cart)
 

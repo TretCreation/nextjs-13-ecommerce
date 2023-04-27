@@ -1,36 +1,54 @@
-import useOnClickOutside from '@/src/components/hooks/useOnClickOutside'
+import useEscape from '@/src/components/hooks/useEscape'
+import useOutside from '@/src/components/hooks/useOutside'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { createRef, FC, useEffect } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import SearchBarItem from '../searchbar-item/SearchBarItem'
 import styles from './SearchBarList.module.scss'
 
 interface ISearchBarListProps {
-	isOpen: boolean
-	handleClose: () => void
 	searchedProducts: IProduct[]
 }
 
-const SearchBarList: FC<ISearchBarListProps> = ({
-	isOpen,
-	handleClose,
-	searchedProducts
-}) => {
-	const ref = createRef<HTMLDivElement>()
+const SearchBarList: FC<ISearchBarListProps> = ({ searchedProducts }) => {
+	const [isOpen, setIsOpen] = useState<boolean>(false)
+
+	const ref = useRef<HTMLDivElement>(null)
+
+	//TODO Fix isOpen
+	// useEffect(() => {
+	// 	if (searchedProducts.length != 0) {
+	// 		setIsOpen(isOpen => !isOpen)
+	// 	}
+	// }, [searchedProducts])
+	useEffect(() => {
+		if (searchedProducts.length > 0) {
+			setIsOpen(true)
+		} else {
+			setIsOpen(false)
+		}
+	}, [searchedProducts])
+
+	const handleClose = () => {
+		setIsOpen(!isOpen)
+	}
 
 	//* Close modal on click outside
-	useOnClickOutside(ref, () => handleClose())
+	useOutside(
+		ref,
+		() => {
+			setIsOpen(false)
+		},
+		isOpen
+	)
 
 	//* Close modal on escape
-	useEffect(() => {
-		const closeOnEscapeKey = (e: KeyboardEvent) =>
-			e.key === 'Escape' ? handleClose() : null
-		document.body.addEventListener('keydown', closeOnEscapeKey)
-		return () => {
-			document.body.removeEventListener('keydown', closeOnEscapeKey)
-		}
-	}, [handleClose])
+	useEscape(handleClose, isOpen)
 
 	if (!isOpen) return null
+	// console.log
+	console.log('searchedProducts', searchedProducts)
+	console.log('isOpen: ', isOpen)
+
 	return (
 		<div className={styles.list} ref={ref}>
 			{searchedProducts.map(searchedProduct => (

@@ -1,6 +1,7 @@
 import { LaptopIcon, SmartphoneIcon } from '@/public'
-import useOnClickOutside from '@/src/components/hooks/useOnClickOutside'
-import { createRef, FC, useEffect } from 'react'
+import useEscape from '@/src/components/hooks/useEscape'
+import useOutside from '@/src/components/hooks/useOutside'
+import { FC, useRef } from 'react'
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'
 
@@ -10,26 +11,13 @@ interface IDropdownListProps {
 }
 
 const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
-	// const { ref, isShow, setIsShow } = useOutside(false)
-
-	// function handleIsShow() {
-	// 	setIsShow(!isShow)
-	// }
-
-	const ref = createRef<HTMLDivElement>()
+	const ref = useRef<HTMLDivElement>(null)
 
 	//* Close modal on click outside
-	useOnClickOutside(ref, () => handleClose())
+	useOutside(ref, () => handleClose(), isOpen)
 
 	//* Close modal on escape
-	useEffect(() => {
-		const closeOnEscapeKey = (e: KeyboardEvent) =>
-			e.key === 'Escape' ? handleClose() : null
-		document.body.addEventListener('keydown', closeOnEscapeKey)
-		return () => {
-			document.body.removeEventListener('keydown', closeOnEscapeKey)
-		}
-	}, [handleClose])
+	useEscape(handleClose, isOpen)
 
 	if (!isOpen) return null
 	return (

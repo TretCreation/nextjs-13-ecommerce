@@ -2,12 +2,11 @@ import { Button, SearchBarList } from '@/src/components'
 import useDebounce from '@/src/components/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SearchService } from '@/src/services/SearchService'
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { SearchIcon } from '../../../../../public'
 import styles from './HeaderSearchBar.module.scss'
 
 const HeaderSearchBar = (): JSX.Element => {
-	const [isOpen, setIsOpen] = useState(false)
 	const [searchedProducts, setSearchedProducts] = useState<IProduct[]>([])
 	const [searchTerm, setSearchTerm] = useState<string>('')
 
@@ -27,23 +26,11 @@ const HeaderSearchBar = (): JSX.Element => {
 		}
 	}, [debouncedSearchTerm])
 
-	//TODO Fix isOpen
-	useEffect(() => {
-		if (searchedProducts.length != 0) {
-			setIsOpen(isOpen => !isOpen)
-		}
-	}, [searchedProducts])
-
-	const handleClose = useCallback(() => {
-		setIsOpen(!isOpen)
-	}, [isOpen])
-
 	const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault()
 	}
 
 	// console.log('debouncedSearchTerm', debouncedSearchTerm)
-	// console.log('isOpen: ', isOpen)
 	// console.log('Searched Products: ', searchedProducts)
 
 	return (
@@ -66,11 +53,7 @@ const HeaderSearchBar = (): JSX.Element => {
 					Search
 				</Button>
 			</form>
-			<SearchBarList
-				isOpen={isOpen}
-				handleClose={handleClose}
-				searchedProducts={searchedProducts}
-			/>
+			<SearchBarList searchedProducts={searchedProducts} />
 		</>
 	)
 }

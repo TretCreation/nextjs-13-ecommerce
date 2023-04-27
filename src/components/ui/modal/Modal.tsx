@@ -1,8 +1,8 @@
-import React, { createRef, FC, useEffect } from 'react'
-import useOnClickOutside from '../../hooks/useOnClickOutside'
+import React, { FC, useEffect, useRef } from 'react'
 import useScrollBlock from '../../hooks/useScrollBlock'
 import styles from './Modal.module.scss'
 import ReactPortal from './ReactPortal'
+import useOnClickOutside from './useOnClickOutside'
 
 interface ModalProps {
 	children: React.ReactNode
@@ -11,7 +11,7 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ children, wrapperId, handleClose }) => {
-	const ref = createRef<HTMLDivElement>()
+	const ref = useRef<HTMLDivElement>(null)
 
 	//* Close modal on click outside
 	useOnClickOutside(ref, () => handleClose())
@@ -20,6 +20,7 @@ const Modal: FC<ModalProps> = ({ children, wrapperId, handleClose }) => {
 	useScrollBlock()
 
 	//* Close modal on escape
+	//?
 	useEffect(() => {
 		const closeOnEscapeKey = (e: KeyboardEvent) =>
 			e.key === 'Escape' ? handleClose() : null
