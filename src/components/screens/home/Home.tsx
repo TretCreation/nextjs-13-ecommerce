@@ -9,7 +9,6 @@ const Home: FC<IProductHomeProps> = ({
 	countedProducts
 }) => {
 	const [isFirstRendering, setIsFirstRendering] = useState<boolean>(true)
-
 	const [currentPage, setCurrentPage] = useState<number>(1)
 	const [clientPaginatedProducts, setPaginatedProducts] = useState<
 		IProduct[]

@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps<{
 		'r',
 		'desc',
 		1,
-		16,
+		4,
 		1
 	)
 
