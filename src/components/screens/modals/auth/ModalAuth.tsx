@@ -1,32 +1,37 @@
 import { CrossIcon } from '@/public'
-import { Button, Modal } from '@/src/components'
+import { Button, Login, Modal } from '@/src/components'
+import { session } from '@/src/interfaces/user.interface'
+import { signIn } from 'next-auth/react'
 import { FC } from 'react'
 import styles from './ModalAuth.module.scss'
 
 interface IModalAuthProps {
 	handleClose: () => void
 	isOpen: boolean
+	session: session
 }
 
-const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
+const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen, session }) => {
+	// const { data: session } = useSession()
+
 	if (!isOpen) return null
 
-	return (
-		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
-			<div className={styles.content}>
-				<Button appearance='svg'>
-					<CrossIcon onClick={handleClose} className='h-5 w-5' />
-				</Button>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Maiores perspiciatis labore tempore explicabo autem
-					reprehenderit libero voluptas rem? Voluptatibus incidunt
-					necessitatibus qui facere deleniti quam soluta corrupti
-					magni! Voluptates, modi.
-				</p>
-			</div>
-		</Modal>
-	)
+	if (session) {
+		return <Login session={session} />
+	} else {
+		return (
+			<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
+				<div className={styles.content}>
+					<Button appearance='svg'>
+						<CrossIcon onClick={handleClose} className='h-5 w-5' />
+					</Button>
+					<div className={styles.menu}>
+						<button onClick={() => signIn()}>signIn</button>
+					</div>
+				</div>
+			</Modal>
+		)
+	}
 }
 
 export default ModalAuth

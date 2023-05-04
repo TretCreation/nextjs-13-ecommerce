@@ -13,7 +13,7 @@ export default function App({
 	pageProps: { session, ...pageProps }
 }: AppProps<{ session: Session }>) {
 	return (
-		<SessionProvider session={session}>
+		<SessionProvider session={session} refetchInterval={5 * 60}>
 			<PersistGate loading={null} persistor={persistor}>
 				<Provider store={store}>
 					<Head>
