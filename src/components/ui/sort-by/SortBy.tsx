@@ -35,9 +35,7 @@ const SortBy: FC<ISortBy> = ({
 	// 	setCurrentPage(currentPage + 1)
 	// }
 
-	const handleChange = async (
-		selectEvent: ChangeEvent<HTMLSelectElement>
-	) => {
+	const handleChange = async (selectEvent: ChangeEvent<HTMLSelectElement>) => {
 		//?
 		const options: any = {
 			low: ['p', 'asc'],
@@ -49,13 +47,7 @@ const SortBy: FC<ISortBy> = ({
 	}
 
 	const filterProducts = async (key: sortKey, value: sortValue) => {
-		const res = await SortByService.getSortedProducts(
-			key,
-			value,
-			q,
-			limit,
-			1
-		)
+		const res = await SortByService.getSortedProducts(key, value, q, limit, 1)
 
 		setGetKey(key)
 		setGetValue(value)

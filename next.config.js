@@ -9,6 +9,10 @@ const nextConfig = {
 	env: {
 		API_URL: process.env.API_URL
 	},
+	images: {
+		domains: ['lh3.googleusercontent.com'],
+		formats: ['image/avif', 'image/webp']
+	},
 	webpack(config) {
 		config.module.rules.push({
 			test: /\.svg$/,

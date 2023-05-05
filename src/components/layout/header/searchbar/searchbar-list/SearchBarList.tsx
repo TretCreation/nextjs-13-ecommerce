@@ -1,5 +1,5 @@
-import useEscape from '@/src/components/hooks/useEscape'
-import useOutside from '@/src/components/hooks/useOutside'
+import { useEscape, useOutside } from '@/src/components'
+
 import { IProduct } from '@/src/interfaces/product.interface'
 import { FC, useEffect, useRef, useState } from 'react'
 import SearchBarItem from '../searchbar-item/SearchBarItem'
@@ -45,7 +45,6 @@ const SearchBarList: FC<ISearchBarListProps> = ({ searchedProducts }) => {
 	useEscape(handleClose, isOpen)
 
 	if (!isOpen) return null
-	// console.log
 	console.log('searchedProducts', searchedProducts)
 	console.log('isOpen: ', isOpen)
 

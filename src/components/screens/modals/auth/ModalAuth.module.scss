@@ -9,4 +9,12 @@
 }
 
 .menu {
+	/* @apply; */
+	.h1 {
+		@apply mb-6 flex flex-col border;
+	}
+
+	.input {
+		@apply flex flex-col;
+	}
 }

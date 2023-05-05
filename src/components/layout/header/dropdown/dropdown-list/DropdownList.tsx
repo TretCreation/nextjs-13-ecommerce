@@ -1,6 +1,5 @@
 import { LaptopIcon, SmartphoneIcon } from '@/public'
-import useEscape from '@/src/components/hooks/useEscape'
-import useOutside from '@/src/components/hooks/useOutside'
+import { useOutside, useEscape } from '@/src/components'
 import { FC, useRef } from 'react'
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'

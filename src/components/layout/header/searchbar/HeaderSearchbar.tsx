@@ -1,4 +1,4 @@
-import { Button, SearchBarList } from '@/src/components'
+import { Button, Input, SearchBarList } from '@/src/components'
 import useDebounce from '@/src/components/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SearchService } from '@/src/services/SearchService'
@@ -13,9 +13,7 @@ const HeaderSearchBar = (): JSX.Element => {
 	const debouncedSearchTerm = useDebounce<string>(searchTerm, 500)
 
 	const fetchData = async (value: string) => {
-		const getSearchedProducts = await SearchService.getSearchedProducts(
-			value
-		)
+		const getSearchedProducts = await SearchService.getSearchedProducts(value)
 		return setSearchedProducts(getSearchedProducts)
 	}
 
@@ -30,19 +28,16 @@ const HeaderSearchBar = (): JSX.Element => {
 		e.preventDefault()
 	}
 
-	// console.log('debouncedSearchTerm', debouncedSearchTerm)
-	// console.log('Searched Products: ', searchedProducts)
-
 	return (
 		<>
 			<form action='' className={styles.form} onSubmit={handleSubmit}>
 				<span className={styles.span}>
 					<SearchIcon className={styles.icon} />
 				</span>
-				<input
+				<Input
+					appearance='primary'
 					type='search'
 					placeholder='Search'
-					className={styles.outline}
 					onChange={e => setSearchTerm(e.target.value)}
 				/>
 				<Button

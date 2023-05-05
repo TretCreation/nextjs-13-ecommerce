@@ -9,10 +9,6 @@
 		}
 	}
 
-	.outline {
-		@apply relative h-12 w-full cursor-pointer rounded-md pl-2.5 outline-none focus:cursor-text;
-	}
-
 	.btn {
 		@apply w-full max-w-btn-search rounded-btn-search rounded-l-none;
 	}

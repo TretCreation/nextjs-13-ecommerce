@@ -8,5 +8,6 @@
     "useTabs": true,
 	"plugins": [
 		"prettier-plugin-organize-imports"
-	]
+	],
+	"printWidth": 90
 }

@@ -1,0 +1,35 @@
+.account {
+	@apply container mx-auto my-0 mt-9 flex flex-row;
+
+	.info {
+		@apply w-96 flex-initial border;
+
+		.card {
+			@apply mb-7 border;
+		}
+
+		.options {
+			@apply flex flex-col border;
+
+			.block {
+				@apply mb-4 flex flex-col border;
+
+				.btn {
+					@apply flex flex-row;
+
+					.icon {
+						@apply mr-1;
+					}
+				}
+
+				.text {
+					@apply text-black;
+				}
+			}
+		}
+	}
+
+	.main {
+		@apply w-full border;
+	}
+}

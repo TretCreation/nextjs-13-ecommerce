@@ -1,5 +1,7 @@
 import { AccountIcon, CartIcon, WishlistIcon } from '@/public'
-import { Button, ModalAuth, ModalCart, useAppSelector } from '@/src/components'
+import { Button, ModalCart, useAppSelector } from '@/src/components'
+import ModalAuthPage from '@/src/pages/auth'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
@@ -10,6 +12,8 @@ const HeaderPrimaryButtons: FC = () => {
 
 	const { wishProducts } = useAppSelector(state => state.wishlist)
 	const { cartProducts } = useAppSelector(state => state.cart)
+
+	const { data: session } = useSession()
 
 	return (
 		<>
@@ -27,15 +31,24 @@ const HeaderPrimaryButtons: FC = () => {
 					<span className={styles.span}>{cartProducts.length}</span>
 					<p className='text-l'>Cart</p>
 				</Button>
-				<Button
-					appearance='svg'
-					onClick={() => setIsModalAuthOpen(!isModalAuthOpen)}
-				>
-					<AccountIcon className={styles.icon} />
-					<p className='text-l'>Account</p>
-				</Button>
+				{session ? (
+					<Link href={'/auth/account'}>
+						<Button appearance='svg'>
+							<AccountIcon className={styles.icon} />
+							<p className='text-l'>Account</p>
+						</Button>
+					</Link>
+				) : (
+					<Button
+						appearance='svg'
+						onClick={() => setIsModalAuthOpen(!isModalAuthOpen)}
+					>
+						<AccountIcon className={styles.icon} />
+						<p className='text-l'>Account</p>
+					</Button>
+				)}
 			</div>
-			<ModalAuth
+			<ModalAuthPage
 				handleClose={() => setIsModalAuthOpen(!isModalAuthOpen)}
 				isOpen={isModalAuthOpen}
 			/>
