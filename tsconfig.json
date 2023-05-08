@@ -35,10 +35,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".test/page.tsx",
-    ".hide/prisma/products.ts",
-    ".hide/prisma/script.ts"
+    ".next/types/**/*.ts"
 , "src/services/ProductService copy.mts", "prisma/script.mts"  ],
   "exclude": [
     "node_modules"

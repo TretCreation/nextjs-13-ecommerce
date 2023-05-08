@@ -3,6 +3,6 @@ import { DetailedHTMLProps, InputHTMLAttributes } from 'react'
 export interface IInputProps
 	extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
 	appearance?: 'primary' | 'solid'
-	type: 'search' | 'checkbox'
+	type: 'search' | 'checkbox' | 'password'
 	placeholder?: string
 }

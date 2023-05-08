@@ -1,7 +1,7 @@
 import { AccountIcon, CartIcon, WishlistIcon } from '@/public'
 import { Button, ModalCart, useAppSelector } from '@/src/components'
 import ModalAuthPage from '@/src/pages/auth'
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
@@ -39,10 +39,15 @@ const HeaderPrimaryButtons: FC = () => {
 						</Button>
 					</Link>
 				) : (
-					<Button
-						appearance='svg'
-						onClick={() => setIsModalAuthOpen(!isModalAuthOpen)}
-					>
+					//?
+					// <Button
+					// 	appearance='svg'
+					// 	onClick={() => setIsModalAuthOpen(!isModalAuthOpen)}
+					// >
+					// 	<AccountIcon className={styles.icon} />
+					// 	<p className='text-l'>Account</p>
+					// </Button>
+					<Button appearance='svg' onClick={() => signIn()}>
 						<AccountIcon className={styles.icon} />
 						<p className='text-l'>Account</p>
 					</Button>

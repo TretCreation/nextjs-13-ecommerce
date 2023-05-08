@@ -21,7 +21,8 @@ export { default as RightArrowIcon } from './svg/pagination/right-arrow.svg'
 export { default as LaptopIcon } from './svg/products/laptop.svg'
 export { default as SmartphoneIcon } from './svg/products/smartphone.svg'
 
-// //* PNG
+// //* IMG
 export { default as logo } from './logo.png'
 export { default as NoCartProduct } from './assets/cart/NoCartProduct.png'
 export { default as TestProduct } from './test-product.png'
+export { default as DefaultAvatar } from './default-avatar.webp'

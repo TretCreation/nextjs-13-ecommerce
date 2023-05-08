@@ -11,11 +11,11 @@ interface IModalAuthProps {
 }
 
 const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
-	const { data: session } = useSession()
+	const { status } = useSession()
 
 	if (!isOpen) return null
 
-	if (session) {
+	if (status === 'authenticated') {
 		return <AccountPage />
 	} else {
 		return (
@@ -26,7 +26,7 @@ const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
 					</Button>
 					<div className={styles.menu}>
 						<div className={styles.h1}>
-							<h1> CREATE AN ACCOUNT</h1>
+							<h1>CREATE AN ACCOUNT</h1>
 							<p>Register for new costumer</p>
 						</div>
 						<div className={styles.input}>
@@ -40,22 +40,22 @@ const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
 							<p>Email address</p>
 							<Input
 								appearance='solid'
-								placeholder='Your name'
+								placeholder='yourmail@mail.com'
 								type='search'
 								className='mb-1'
 							/>
 							<p>Password</p>
 							<Input
 								appearance='solid'
-								placeholder='Your name'
-								type='search'
+								placeholder='********'
+								type='password'
 								className='mb-1'
 							/>
 							<p>Confirm Password</p>
 							<Input
 								appearance='solid'
-								placeholder='Your name'
-								type='search'
+								placeholder='********'
+								type='password'
 								className='mb-3'
 							/>
 							<div className='mb-1 flex flex-row'>
@@ -70,6 +70,7 @@ const ModalAuth: FC<IModalAuthProps> = ({ handleClose, isOpen }) => {
 								<Button
 									appearance='primary'
 									className='mr-2 mb-3 bg-blue-500'
+									onClick={() => signIn()}
 								>
 									FACEBOOK
 								</Button>

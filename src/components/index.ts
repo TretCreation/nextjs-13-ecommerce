@@ -35,8 +35,8 @@ export { default as ModalCart } from './screens/modals/cart/ModalCart'
 export { default as Wishlist } from './screens/wishlist/Wishlist'
 export { default as NoWishlistProducts } from './screens/wishlist/wishlist-empty/NoProducts'
 // Auth
-export { default as Account } from './screens/modals/auth/account/Account'
-export { default as ModalAuth } from './screens/modals/auth/ModalAuth'
+export { default as Account } from './screens/auth/account/Account'
+export { default as ModalAuth } from './screens/auth/ModalAuth'
 
 // //* UI
 export { default as Button } from './ui/button/Button'
