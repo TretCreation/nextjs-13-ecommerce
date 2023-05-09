@@ -9,19 +9,13 @@ import {
 import { Button } from '@/src/components'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import styles from './Account.module.scss'
 
 const Account = () => {
 	//?
 	// const { data: session, status } = useSession<Session>()
 	const { data: session, status } = useSession()
-	const { push } = useRouter()
 
-	const handleSignOut = async () => {
-		const data = await signOut({ redirect: false, callbackUrl: '/' })
-		push(data.url)
-	}
 	if (status === 'loading') return <div>Loading...</div>
 
 	if (session && session.user) {
@@ -81,7 +75,7 @@ const Account = () => {
 							<Button
 								appearance='solid'
 								className={styles.btn}
-								onClick={handleSignOut}
+								onClick={() => signOut({ callbackUrl: '/' })}
 							>
 								<LogoutIcon className={styles.icon} />
 								<p className={styles.text}>Logout</p>
@@ -95,7 +89,8 @@ const Account = () => {
 				</div>
 			</div>
 		)
-	} else return <div>Access Denied</div>
+	}
+	return <div>Access Denied</div>
 }
 
 export default Account

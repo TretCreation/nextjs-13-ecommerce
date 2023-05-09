@@ -29,14 +29,15 @@ export { default as ProductItem } from './screens/product/product-item/ProductIt
 export { default as ProductList } from './screens/product/product-list/ProductList'
 export { default as ProductPage } from './screens/product/ProductPage'
 // Cart
-export { default as NoCartProducts } from './screens/modals/cart/cart-empty/NoProducts'
-export { default as ModalCart } from './screens/modals/cart/ModalCart'
-//Wishlist
+export { default as NoCartProducts } from './screens/cart/cart-empty/NoProducts'
+export { default as ModalCart } from './screens/cart/ModalCart'
+// Wishlist
 export { default as Wishlist } from './screens/wishlist/Wishlist'
 export { default as NoWishlistProducts } from './screens/wishlist/wishlist-empty/NoProducts'
 // Auth
 export { default as Account } from './screens/auth/account/Account'
-export { default as ModalAuth } from './screens/auth/ModalAuth'
+export { default as SignIn } from './screens/auth/sign-in/SignIn'
+export { default as SignUp } from './screens/auth/sign-up/SignUp'
 
 // //* UI
 export { default as Button } from './ui/button/Button'

@@ -13,23 +13,15 @@ const {
 
 export const authOptions: NextAuthOptions = {
 	providers: [
-		GoogleProvider({
-			clientId: GOOGLE_CLIENT_ID,
-			clientSecret: GOOGLE_CLIENT_SECRET
-		}),
-		FacebookProvider({
-			clientId: FACEBOOK_CLIENT_ID,
-			clientSecret: FACEBOOK_CLIENT_SECRET
-		}),
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
 				email: {
-					label: 'email',
+					label: 'Email',
 					type: 'email',
-					placeholder: 'jsmith@example.com'
+					placeholder: 'yourmail@mail.com'
 				},
-				password: { label: 'Password', type: 'password' }
+				password: { label: 'Password', type: 'password', placeholder: '*******' }
 			},
 			async authorize(credentials, req) {
 				const res = await fetch('http://localhost:3000/api/auth/login', {
@@ -51,6 +43,14 @@ export const authOptions: NextAuthOptions = {
 					return null
 				}
 			}
+		}),
+		GoogleProvider({
+			clientId: GOOGLE_CLIENT_ID,
+			clientSecret: GOOGLE_CLIENT_SECRET
+		}),
+		FacebookProvider({
+			clientId: FACEBOOK_CLIENT_ID,
+			clientSecret: FACEBOOK_CLIENT_SECRET
 		})
 	],
 	secret: NEXTAUTH_SECRET

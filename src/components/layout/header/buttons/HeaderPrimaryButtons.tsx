@@ -1,13 +1,11 @@
-import { AccountIcon, CartIcon, WishlistIcon } from '@/public'
+import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
 import { Button, ModalCart, useAppSelector } from '@/src/components'
-import ModalAuthPage from '@/src/pages/auth'
-import { signIn, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons: FC = () => {
-	const [isModalAuthOpen, setIsModalAuthOpen] = useState<boolean>(false)
 	const [isModalCartOpen, setIsModalCartOpen] = useState<boolean>(false)
 
 	const { wishProducts } = useAppSelector(state => state.wishlist)
@@ -31,32 +29,22 @@ const HeaderPrimaryButtons: FC = () => {
 					<span className={styles.span}>{cartProducts.length}</span>
 					<p className='text-l'>Cart</p>
 				</Button>
-				{session ? (
-					<Link href={'/auth/account'}>
-						<Button appearance='svg'>
-							<AccountIcon className={styles.icon} />
-							<p className='text-l'>Account</p>
-						</Button>
-					</Link>
-				) : (
-					//?
-					// <Button
-					// 	appearance='svg'
-					// 	onClick={() => setIsModalAuthOpen(!isModalAuthOpen)}
-					// >
-					// 	<AccountIcon className={styles.icon} />
-					// 	<p className='text-l'>Account</p>
-					// </Button>
-					<Button appearance='svg' onClick={() => signIn()}>
-						<AccountIcon className={styles.icon} />
-						<p className='text-l'>Account</p>
+				<Link href={'/auth'}>
+					<Button appearance='svg'>
+						{session ? (
+							<>
+								<AccountIcon className={styles.icon} />
+								<p className='text-l'>Account</p>
+							</>
+						) : (
+							<>
+								<SignInIcon className={styles.icon} />
+								<p className='text-l'>Sign In</p>
+							</>
+						)}
 					</Button>
-				)}
+				</Link>
 			</div>
-			<ModalAuthPage
-				handleClose={() => setIsModalAuthOpen(!isModalAuthOpen)}
-				isOpen={isModalAuthOpen}
-			/>
 			<ModalCart
 				handleClose={() => setIsModalCartOpen(!isModalCartOpen)}
 				isOpen={isModalCartOpen}
