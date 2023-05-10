@@ -53,6 +53,10 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: FACEBOOK_CLIENT_SECRET
 		})
 	],
+	pages: {
+		signIn: '/auth/sign-in',
+		error: '/auth/error'
+	},
 	secret: NEXTAUTH_SECRET
 }
 export default NextAuth(authOptions)

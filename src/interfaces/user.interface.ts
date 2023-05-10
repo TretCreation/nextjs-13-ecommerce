@@ -1,4 +1,9 @@
 export interface IUser {
-	email: string
-	password: string
+	hasError: number
+	errorMessage?: string
+	body?: {
+		name: string
+		email: string
+		password: string
+	}
 }

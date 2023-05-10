@@ -38,6 +38,7 @@ export { default as NoWishlistProducts } from './screens/wishlist/wishlist-empty
 export { default as Account } from './screens/auth/account/Account'
 export { default as SignIn } from './screens/auth/sign-in/SignIn'
 export { default as SignUp } from './screens/auth/sign-up/SignUp'
+export { default as AuthError } from './screens/auth/error/AuthError'
 
 // //* UI
 export { default as Button } from './ui/button/Button'

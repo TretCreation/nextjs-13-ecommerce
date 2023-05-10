@@ -1,20 +1,21 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { IUser } from '../interfaces/user.interface'
 
 axios.defaults.baseURL = process.env.API_URL
 
-export const CategoryService = {
-	async authorize() {
+export const AuthService = {
+	async createUser(name: string, email: string, password: string) {
 		try {
-			const res = await axios.post<IUser>('/auth/login')
-			if (res) {
-				return res
-			} else {
-				return null
-			}
+			const res = await axios.post<IUser>('/auth/user', {
+				name,
+				email,
+				password
+			})
+			return res.data
 		} catch (error) {
-			console.log(error)
-			throw error
+			if (error instanceof AxiosError) {
+				return error.response?.data
+			}
 		}
 	}
 }

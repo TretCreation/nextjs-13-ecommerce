@@ -3,29 +3,23 @@ import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
+import AuthError from '../error/AuthError'
 import styles from './SignIn.module.scss'
-
-// interface ISignInProps {
-// 	any: any
-// }
 
 const SignIn: FC = () => {
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
-	//?
-	const [status, setStatus] = useState<number>()
+	const { error } = useRouter().query as { error: string }
 
 	const onSubmit = async () => {
-		const res = await signIn('credentials', {
+		signIn('credentials', {
 			email: email,
 			password: password,
-			redirect: false,
+			redirect: true,
 			callbackUrl: '/'
 		})
-		if (res?.status) {
-			setStatus(res?.status)
-		}
 	}
 
 	return (
@@ -35,13 +29,7 @@ const SignIn: FC = () => {
 				<p>Welcome back customer</p>
 			</div>
 			<div className={styles.input}>
-				{status === 401 ? (
-					<p className='text-primary-main'>
-						The email or password you’ve entered is incorrect
-					</p>
-				) : (
-					<></>
-				)}
+				<AuthError error={error} />
 				<p>Email address</p>
 				<Input
 					appearance='solid'
