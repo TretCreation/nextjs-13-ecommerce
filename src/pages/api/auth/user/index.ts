@@ -46,9 +46,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		} catch (error) {
 			if (error instanceof Prisma.PrismaClientKnownRequestError) {
 				if (error.code === 'P2002') {
-					errorHandle('The character already exists', res)
+					errorHandle('P2002', res)
 				}
 			}
+			errorHandle(error, res)
 		}
 	}
 }
