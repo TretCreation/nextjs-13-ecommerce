@@ -1,11 +1,14 @@
 import { Button } from '@/src/components'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import styles from './HeaderSecondaryButtons.module.scss'
 
 const HeaderSecondaryButtons = () => {
+	const { data: session } = useSession()
+	console.log('session: ', session)
 	return (
 		<div className={styles.btn}>
-			<Link href='#'>
+			{/* <Link href='#'>
 				<Button appearance='solid'>Home</Button>
 			</Link>
 			<Link href='#'>
@@ -16,7 +19,14 @@ const HeaderSecondaryButtons = () => {
 			</Link>
 			<Link href='#'>
 				<Button appearance='solid'>Contact Us</Button>
-			</Link>
+			</Link> */}
+			{session?.user ? (
+				<Link href={'/auth/account/admin'}>
+					<Button appearance='solid'>Admin</Button>
+				</Link>
+			) : (
+				<></>
+			)}
 		</div>
 	)
 }

@@ -12,13 +12,15 @@ datasource db {
 }
 
 model User {
-  id       Int        @id @default(autoincrement())
-  name     String?
-  email    String     @unique
-  password String
-  wishlist Wishlist[]
-  role     Role       @default(USER_ROLE)
-  orders   Order[]
+  id            Int        @id @default(autoincrement())
+  name          String?
+  email         String?    @unique
+  emailGoogle   String?    @unique
+  emailFacebook String?    @unique
+  password      String
+  wishlist      Wishlist[]
+  role          Role       @default(USER_ROLE)
+  orders        Order[]
 }
 
 model Wishlist {

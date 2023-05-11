@@ -1,9 +1,10 @@
-import { ShowPasswordIcon } from '@/public'
+import { FacebookIcon, GoogleIcon, ShowPasswordIcon } from '@/public'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
 import { AuthService } from '@/src/services/AuthService'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
+// import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import styles from './SignUp.module.scss'
 
@@ -16,22 +17,30 @@ const SignUp: FC = () => {
 	const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
 	const [error, setError] = useState<string>()
 
+	const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
+	console.log(error)
+
 	const onSubmit = async () => {
-		if (password === confirmPassword) {
-			const res = await AuthService.createUser(name, email, password)
-			if (res.errorMessage) {
-				setError(res.errorMessage)
+		if (regEx.test(email)) {
+			if (password === confirmPassword) {
+				const res = await AuthService.createUser(name, password, email)
+				//?
+				if (res.errorMessage) {
+					setError(res.errorMessage)
+				}
+				//?
+				res
+				signIn('credentials', {
+					email: email,
+					password: password,
+					redirect: res.hasError ? false : true,
+					callbackUrl: '/'
+				})
+			} else {
+				setError('passwords didn’t match')
 			}
-			//?
-			res
-			signIn('credentials', {
-				email: email,
-				password: password,
-				redirect: true,
-				callbackUrl: '/'
-			})
-		} else {
-			setError('passwords didn’t match')
+		} else if (!regEx.test(email) && email !== '') {
+			setError('email is not valid')
 		}
 	}
 
@@ -64,6 +73,8 @@ const SignUp: FC = () => {
 						<p className='text-primary-main'>Email required</p>
 					) : error === 'P2002' ? (
 						<p className='text-primary-main'>The character already exists</p>
+					) : error === 'email is not valid' ? (
+						<p className='text-primary-main'>Email is Not Valid</p>
 					) : (
 						<></>
 					)}
@@ -132,12 +143,17 @@ const SignUp: FC = () => {
 					<Button
 						appearance='primary'
 						className='mr-2 mb-3 bg-blue-500'
-						onClick={() => signIn()}
+						onClick={() => signIn('facebook', { callbackUrl: '/' })}
 					>
 						FACEBOOK
+						<FacebookIcon />
 					</Button>
-					<Button appearance='primary' onClick={() => signIn()}>
+					<Button
+						appearance='primary'
+						onClick={() => signIn('google', { callbackUrl: '/' })}
+					>
 						GOOGLE
+						<GoogleIcon />
 					</Button>
 				</div>
 				<div className='flex flex-row'>

@@ -1,3 +1,4 @@
+import { AuthService } from '@/src/services/AuthService'
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import FacebookProvider from 'next-auth/providers/facebook'
@@ -10,6 +11,12 @@ const {
 	FACEBOOK_CLIENT_ID = '',
 	FACEBOOK_CLIENT_SECRET = ''
 } = process.env
+
+// interface UserProps extends DefaultUser {
+// 	name: string
+// 	email: string
+// }
+// interface AccountProps extends Account {}
 
 export const authOptions: NextAuthOptions = {
 	providers: [
@@ -24,6 +31,7 @@ export const authOptions: NextAuthOptions = {
 				password: { label: 'Password', type: 'password', placeholder: '*******' }
 			},
 			async authorize(credentials, req) {
+				//?
 				const res = await fetch('http://localhost:3000/api/auth/login', {
 					method: 'POST',
 					headers: {
@@ -34,7 +42,6 @@ export const authOptions: NextAuthOptions = {
 						password: credentials?.password
 					})
 				})
-
 				const user = await res.json()
 
 				if (user) {
@@ -53,6 +60,62 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: FACEBOOK_CLIENT_SECRET
 		})
 	],
+	callbacks: {
+		//?
+		async signIn({
+			profile,
+			account
+		}: {
+			profile: { email: string; name: string }
+			account: { provider: string }
+		}) {
+			if (account?.provider === 'google') {
+				try {
+					const userEmailGoogle = await AuthService.findByEmail(
+						'google',
+						profile.email
+					)
+					if (!userEmailGoogle) {
+						const res = await AuthService.createUser(
+							profile.name,
+							'Signed using OAuth',
+							null,
+							profile.email,
+							null
+						)
+						res
+					}
+					return true
+				} catch (error) {
+					console.log(error)
+					throw error
+				}
+			}
+			if (account?.provider === 'facebook') {
+				try {
+					const userEmailFacebook = await AuthService.findByEmail(
+						'facebook',
+						profile.email
+					)
+					if (!userEmailFacebook) {
+						const res = await AuthService.createUser(
+							profile.name,
+							'Signed using OAuth',
+							null,
+							null,
+							profile.email
+						)
+						res
+					}
+					return true
+				} catch (error) {
+					console.log(error)
+					throw error
+				}
+			}
+			return true
+		}
+	},
 	pages: {
 		signIn: '/auth/sign-in',
 		error: '/auth/error'

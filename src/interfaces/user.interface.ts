@@ -3,7 +3,9 @@ export interface IUser {
 	errorMessage?: string
 	body?: {
 		name: string
-		email: string
+		email: string | null
+		google: string | null
+		facebook: string | null
 		password: string
 	}
 }

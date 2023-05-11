@@ -20,21 +20,30 @@ const responseHandler = (data: any, res: any, code = 200) => {
 //?
 const validateAllOne = (fields: any) => {
 	for (const key in fields) {
+		if (fields[key] === null || fields[key] === undefined) {
+			console.log('null error')
+			continue
+		}
 		if (fields[key].trim() === '') {
+			console.log('string error')
 			throw `${key} required`
 		}
 	}
+	return
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { name, email, password } = req.body
+		const { name, email, google, facebook, password } = req.body
 		try {
 			validateAllOne(req.body)
+
 			const data = await prisma.user.create({
 				data: {
 					name: name,
 					email: email,
+					emailGoogle: google,
+					emailFacebook: facebook,
 					password: await bcrypt.hash(password, 10)
 				}
 			})
@@ -50,6 +59,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				}
 			}
 			errorHandle(error, res)
+		}
+	}
+
+	if (req.method === 'GET') {
+		try {
+			const { email, google, facebook } = req.query
+
+			const data = await prisma.user.findUnique({
+				where: {
+					email: email as string,
+					emailGoogle: google as string,
+					emailFacebook: facebook as string
+				}
+			})
+			return res.status(200).json(data)
+		} catch (error) {
+			return res.status(500).json(error)
 		}
 	}
 }
