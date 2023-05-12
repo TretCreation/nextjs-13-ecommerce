@@ -4,7 +4,6 @@ import Input from '@/src/components/ui/input/Input'
 import { AuthService } from '@/src/services/AuthService'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-// import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import styles from './SignUp.module.scss'
 

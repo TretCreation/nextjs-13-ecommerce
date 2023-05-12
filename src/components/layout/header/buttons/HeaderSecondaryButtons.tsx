@@ -6,6 +6,7 @@ import styles from './HeaderSecondaryButtons.module.scss'
 const HeaderSecondaryButtons = () => {
 	const { data: session } = useSession()
 	console.log('session: ', session)
+
 	return (
 		<div className={styles.btn}>
 			{/* <Link href='#'>

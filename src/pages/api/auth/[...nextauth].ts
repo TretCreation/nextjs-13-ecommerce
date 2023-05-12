@@ -3,7 +3,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
-//?
+
 const {
 	GOOGLE_CLIENT_ID = '',
 	GOOGLE_CLIENT_SECRET = '',
@@ -11,12 +11,6 @@ const {
 	FACEBOOK_CLIENT_ID = '',
 	FACEBOOK_CLIENT_SECRET = ''
 } = process.env
-
-// interface UserProps extends DefaultUser {
-// 	name: string
-// 	email: string
-// }
-// interface AccountProps extends Account {}
 
 export const authOptions: NextAuthOptions = {
 	providers: [
@@ -28,10 +22,13 @@ export const authOptions: NextAuthOptions = {
 					type: 'email',
 					placeholder: 'yourmail@mail.com'
 				},
-				password: { label: 'Password', type: 'password', placeholder: '*******' }
+				password: {
+					label: 'Password',
+					type: 'password',
+					placeholder: '*******'
+				}
 			},
 			async authorize(credentials, req) {
-				//?
 				const res = await fetch('http://localhost:3000/api/auth/login', {
 					method: 'POST',
 					headers: {
@@ -61,26 +58,19 @@ export const authOptions: NextAuthOptions = {
 		})
 	],
 	callbacks: {
-		//?
-		async signIn({
-			profile,
-			account
-		}: {
-			profile: { email: string; name: string }
-			account: { provider: string }
-		}) {
+		async signIn({ profile, account }) {
 			if (account?.provider === 'google') {
 				try {
 					const userEmailGoogle = await AuthService.findByEmail(
 						'google',
-						profile.email
+						profile?.email ?? ''
 					)
 					if (!userEmailGoogle) {
 						const res = await AuthService.createUser(
-							profile.name,
+							profile?.name ?? '',
 							'Signed using OAuth',
 							null,
-							profile.email,
+							profile?.email ?? '',
 							null
 						)
 						res
@@ -95,15 +85,15 @@ export const authOptions: NextAuthOptions = {
 				try {
 					const userEmailFacebook = await AuthService.findByEmail(
 						'facebook',
-						profile.email
+						profile?.email ?? ''
 					)
 					if (!userEmailFacebook) {
 						const res = await AuthService.createUser(
-							profile.name,
+							profile?.name ?? '',
 							'Signed using OAuth',
 							null,
 							null,
-							profile.email
+							profile?.email ?? ''
 						)
 						res
 					}
@@ -122,4 +112,5 @@ export const authOptions: NextAuthOptions = {
 	},
 	secret: NEXTAUTH_SECRET
 }
+
 export default NextAuth(authOptions)
