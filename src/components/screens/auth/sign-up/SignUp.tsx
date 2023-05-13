@@ -54,6 +54,7 @@ const SignUp: FC = () => {
 					{error === 'name required' ? (
 						<p className='text-primary-main'>Name required</p>
 					) : (
+						//?
 						<></>
 					)}
 					<p>Full Name</p>
@@ -68,6 +69,7 @@ const SignUp: FC = () => {
 				</div>
 
 				<div className='email'>
+					//?
 					{error === 'email required' ? (
 						<p className='text-primary-main'>Email required</p>
 					) : error === 'P2002' ? (
@@ -89,6 +91,7 @@ const SignUp: FC = () => {
 				</div>
 
 				<div className='passwords'>
+					//?
 					{error === 'password required' ? (
 						<p className='text-primary-main'>Password required</p>
 					) : error === 'passwords didn’t match' ? (

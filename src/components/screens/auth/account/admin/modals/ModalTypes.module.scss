@@ -1,0 +1,15 @@
+.add {
+	@apply flex flex-col;
+}
+
+.remove {
+	@apply flex flex-col;
+}
+
+.error {
+	@apply text-primary-main;
+}
+
+.submit {
+	@apply text-emerald-400;
+}

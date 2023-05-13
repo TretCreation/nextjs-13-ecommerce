@@ -5,7 +5,7 @@ import styles from './HeaderSecondaryButtons.module.scss'
 
 const HeaderSecondaryButtons = () => {
 	const { data: session } = useSession()
-	console.log('session: ', session)
+	// console.log('session: ', session)
 
 	return (
 		<div className={styles.btn}>
@@ -21,12 +21,10 @@ const HeaderSecondaryButtons = () => {
 			<Link href='#'>
 				<Button appearance='solid'>Contact Us</Button>
 			</Link> */}
-			{session?.user ? (
+			{session?.user && (
 				<Link href={'/auth/account/admin'}>
 					<Button appearance='solid'>Admin</Button>
 				</Link>
-			) : (
-				<></>
 			)}
 		</div>
 	)

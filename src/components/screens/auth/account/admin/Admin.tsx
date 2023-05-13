@@ -7,8 +7,8 @@ import ModalTypes from './modals/ModalTypes'
 
 const Admin = () => {
 	const [isModalProductsOpen, setIsModalProductsOpen] = useState<boolean>(false)
-	const [isModalBrandsOpen, setIsModalBrandsOpen] = useState<boolean>(false)
 	const [isModalTypesOpen, setIsModalTypesOpen] = useState<boolean>(false)
+	const [isModalBrandsOpen, setIsModalBrandsOpen] = useState<boolean>(false)
 
 	return (
 		<>
@@ -18,21 +18,21 @@ const Admin = () => {
 					className={styles.btn}
 					onClick={() => setIsModalProductsOpen(!isModalProductsOpen)}
 				>
-					Add / Remove a product
-				</Button>
-				<Button
-					appearance='primary'
-					className={styles.btn}
-					onClick={() => setIsModalBrandsOpen(!isModalBrandsOpen)}
-				>
-					Add / Remove a brand
+					Add / Remove a Product
 				</Button>
 				<Button
 					appearance='primary'
 					className={styles.btn}
 					onClick={() => setIsModalTypesOpen(!isModalTypesOpen)}
 				>
-					Add / Remove a type
+					Add / Remove a Type
+				</Button>
+				<Button
+					appearance='primary'
+					className={styles.btn}
+					onClick={() => setIsModalBrandsOpen(!isModalBrandsOpen)}
+				>
+					Add / Remove a Brand
 				</Button>
 			</div>
 			<ModalProducts
@@ -40,12 +40,12 @@ const Admin = () => {
 				isOpen={isModalProductsOpen}
 			/>
 			<ModalTypes
-				handleClose={() => setIsModalBrandsOpen(!isModalBrandsOpen)}
-				isOpen={isModalBrandsOpen}
-			/>
-			<ModalBrands
 				handleClose={() => setIsModalTypesOpen(!isModalTypesOpen)}
 				isOpen={isModalTypesOpen}
+			/>
+			<ModalBrands
+				handleClose={() => setIsModalBrandsOpen(!isModalBrandsOpen)}
+				isOpen={isModalBrandsOpen}
 			/>
 		</>
 	)
