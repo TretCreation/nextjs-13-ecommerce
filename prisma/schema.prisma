@@ -7,8 +7,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
@@ -57,9 +58,9 @@ model Product {
   img           String
   rating        Int
   brandId       Int
-  brand         Brand           @relation(fields: [brandId], references: [id])
+  brand         Brand           @relation(fields: [brandId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   typeId        Int
-  type          Type            @relation(fields: [typeId], references: [id])
+  type          Type            @relation(fields: [typeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   product_info  Product_info[]
   order_product Order_product[]
   Wishlist      Wishlist[]
