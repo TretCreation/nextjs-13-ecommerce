@@ -1,0 +1,26 @@
+id,name,price,rating,brandId,typeId,img
+2,IPhone 14 Blue,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-blue.png
+3,IPhone 14 Midnight,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-midnight.png
+4,IPhone 14 Product Red,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-product-red.png
+5,IPhone 14 Purple,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-purple.png
+6,IPhone 14 Starlight,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-starlight.png
+7,IPhone 14 Yellow,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-yellow.png
+8,IPhone 14 Pro Deep Purple,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-deep-purple.png
+9,IPhone 14 Pro Gold,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-gold.png
+10,IPhone 14 Pro Silver,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-silver.png
+11,IPhone 14 Pro Space Black,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-space-black.png
+12,MacBook Air M2 Midnight,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-midnight.png
+13,MacBook Air M2 Silver,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-silver.png
+14,MacBook Air M2 Space Gray,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-space-gray.png
+15,MacBook Air M2 Starlight,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-starlight.png
+17,Samsung Galaxy S23 Ultra Beige,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-beige.png
+18,Samsung Galaxy S23 Ultra Green,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-green.png
+19,Samsung Galaxy S23 Ultra Pink,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-light-pink.png
+20,Samsung Galaxy S23 Ultra Phantom Black,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-phantom-black.png
+21,Samsung Galaxy S23+ Green,999,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-plus-green.png
+22,Samsung Galaxy S23+ Phantom Black,999,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-plus-phantom-black.png
+23,Samsung Galaxy S23+ Pink,999,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-plus-pink.png
+24,Samsung Galaxy S23 Beige,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-beige.png
+25,Samsung Galaxy S23 Green,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-green.png
+26,Samsung Galaxy S23 Phantom Black,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-phantom-black.png
+27,Samsung Galaxy S23 Pink,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-pink.png
