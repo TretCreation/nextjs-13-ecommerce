@@ -39,7 +39,7 @@ export { default as Account } from './screens/auth/account/Account'
 export { default as SignIn } from './screens/auth/sign-in/SignIn'
 export { default as SignUp } from './screens/auth/sign-up/SignUp'
 export { default as AuthError } from './screens/auth/error/AuthError'
-export { default as Admin } from './screens/auth/account/admin/Admin'
+export { default as Admin } from './screens/auth/admin/Admin'
 
 // //* UI
 export { default as Button } from './ui/button/Button'
