@@ -30,6 +30,9 @@ model Wishlist {
   product   Product @relation(fields: [productId], references: [id])
   userId    Int
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([productId])
 }
 
 model Order {
@@ -65,6 +68,8 @@ model Product {
   order_product Order_product[]
   Wishlist      Wishlist[]
 
+  @@index([typeId])
+  @@index([brandId])
   @@fulltext([name])
 }
 

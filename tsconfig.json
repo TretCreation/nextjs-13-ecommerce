@@ -29,14 +29,16 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "module": "esnext"
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/services/ProductService copy.mts", "prisma/script.mts"  ],
+    ".next/types/**/*.ts",
+    "prisma/script.mts"
+  ],
   "exclude": [
     "node_modules"
   ]

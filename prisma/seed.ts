@@ -6,32 +6,6 @@ const prisma = new PrismaClient()
 
 async function main() {
 	try {
-		//* Products
-		await prisma.product.deleteMany()
-		console.log('Deleted Products')
-
-		await prisma.$queryRaw`ALTER TABLE Product AUTO_INCREMENT = 1`
-		console.log('Reset Product auto increment to 1')
-
-		fs.createReadStream('prisma/seeds/products.csv')
-			.pipe(csv())
-			.on('data', async row => {
-				await prisma.product.create({
-					data: {
-						id: Number(row.id),
-						name: String(row.name),
-						price: Number(row.price),
-						rating: Number(row.rating),
-						brandId: Number(row.brandId),
-						typeId: Number(row.typeId),
-						img: String(row.img)
-					}
-				})
-			})
-			.on('end', () => {
-				console.log('CSV Product file successfully processed.')
-			})
-
 		//* Users
 		await prisma.user.deleteMany()
 		console.log('Deleted Users')
@@ -98,6 +72,31 @@ async function main() {
 			})
 			.on('end', () => {
 				console.log('CSV Type file successfully processed.')
+			})
+		//* Products
+		await prisma.product.deleteMany()
+		console.log('Deleted Products')
+
+		await prisma.$queryRaw`ALTER TABLE Product AUTO_INCREMENT = 1`
+		console.log('Reset Product auto increment to 1')
+
+		fs.createReadStream('prisma/seeds/products.csv')
+			.pipe(csv())
+			.on('data', async row => {
+				await prisma.product.create({
+					data: {
+						id: Number(row.id),
+						name: String(row.name),
+						price: Number(row.price),
+						rating: Number(row.rating),
+						brandId: Number(row.brandId),
+						typeId: Number(row.typeId),
+						img: String(row.img)
+					}
+				})
+			})
+			.on('end', () => {
+				console.log('CSV Product file successfully processed.')
 			})
 
 		console.log('Data seeding complete')

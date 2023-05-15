@@ -1,9 +1,9 @@
 import Button from '@/src/components/ui/button/Button'
 import { useState } from 'react'
 import styles from './Admin.module.scss'
-import ModalBrands from './modals/ModalBrands'
-import ModalProducts from './modals/ModalProducts'
-import ModalTypes from './modals/ModalTypes'
+import ModalBrands from './modals/brand/ModalBrands'
+import ModalProducts from './modals/product/ModalProducts'
+import ModalTypes from './modals/type/ModalTypes'
 
 const Admin = () => {
 	const [isModalProductsOpen, setIsModalProductsOpen] = useState<boolean>(false)
