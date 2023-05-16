@@ -17,9 +17,7 @@ export const cartSlice = createSlice({
 			const isExist = state.cartProducts.some(p => p.id === product.id)
 
 			if (isExist) {
-				const index = state.cartProducts.findIndex(
-					item => item.id === product.id
-				)
+				const index = state.cartProducts.findIndex(item => item.id === product.id)
 				if (index !== -1) {
 					state.cartProducts.splice(index, 1)
 				}
@@ -28,15 +26,10 @@ export const cartSlice = createSlice({
 		addProduct(state, { payload: product }: PayloadAction<IProduct>) {
 			state.cartProducts.push(product)
 		},
-		removeProductCart(
-			state,
-			{ payload: product }: PayloadAction<IProduct>
-		) {
+		removeProductCart(state, { payload: product }: PayloadAction<IProduct>) {
 			const isExist = state.cartProducts.some(p => p.id === product.id)
 			if (isExist) {
-				const index = state.cartProducts.findIndex(
-					item => item.id === product.id
-				)
+				const index = state.cartProducts.findIndex(item => item.id === product.id)
 				if (index !== -1) {
 					state.cartProducts.splice(index, 1)
 				}

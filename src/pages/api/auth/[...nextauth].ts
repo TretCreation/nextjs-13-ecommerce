@@ -12,6 +12,10 @@ const {
 	FACEBOOK_CLIENT_SECRET = ''
 } = process.env
 
+const hashPassword = async () => {
+	return Math.random().toString(36).slice(-8)
+}
+
 export const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
@@ -68,7 +72,8 @@ export const authOptions: NextAuthOptions = {
 					if (!userEmailGoogle) {
 						const res = await AuthService.createUser(
 							profile?.name ?? '',
-							'Signed using OAuth',
+							// 'Signed using OAuth',
+							await hashPassword(),
 							null,
 							profile?.email ?? '',
 							null
@@ -90,7 +95,8 @@ export const authOptions: NextAuthOptions = {
 					if (!userEmailFacebook) {
 						const res = await AuthService.createUser(
 							profile?.name ?? '',
-							'Signed using OAuth',
+							// 'Signed using OAuth',
+							await hashPassword(),
 							null,
 							null,
 							profile?.email ?? ''
@@ -104,7 +110,23 @@ export const authOptions: NextAuthOptions = {
 				}
 			}
 			return true
+		},
+		async jwt({ token, user }) {
+			return { ...token, ...user }
+		},
+		async session({ session, token, user }) {
+			session.user = token
+			return session
 		}
+
+		// session: ({ session, token }) => {
+		// 	console.log('Session Callback', { session, token })
+		// 	return session
+		// },
+		// jwt: ({ token, user }) => {
+		// 	console.log('JWT Callback', { token, user })
+		// 	return token
+		// }
 	},
 	pages: {
 		signIn: '/auth/sign-in',

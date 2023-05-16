@@ -46,6 +46,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 
 	const handleRemove = async (id: number) => {
 		await ProductService.removeProduct(id)
+		await fetchProducts(debouncedSearchProducts)
 	}
 
 	useEffect(() => {
@@ -161,7 +162,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 					onChange={e => setInput(e.target.value)}
 				/>
 				{products.map(product => (
-					//TODO: Add list (список HTML CSS) + close when handleRemove is success
+					//TODO: Add list (список HTML CSS)
 					<Button appearance='primary'>
 						<div
 							key={product.id}

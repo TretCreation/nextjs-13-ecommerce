@@ -1,17 +1,31 @@
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
-import { Button, ModalCart, useAppSelector } from '@/src/components'
+import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
+import { WishlistService } from '@/src/services/WishlistService'
+import { wishlistActions } from '@/src/store'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons: FC = () => {
+	const dispatch = useAppDispatch()
+
 	const [isModalCartOpen, setIsModalCartOpen] = useState<boolean>(false)
 
 	const { wishProducts } = useAppSelector(state => state.wishlist)
 	const { cartProducts } = useAppSelector(state => state.cart)
 
-	const { data: session } = useSession()
+	const { data: session, status } = useSession()
+
+	const fetchData = async () => {
+		const data = await WishlistService.getAll()
+		dispatch(wishlistActions.addProduct(data))
+	}
+
+	// if (status === 'authenticated') {
+	// 	fetchData()
+	// 	// setAuth(!auth)
+	// }
 
 	return (
 		<>
