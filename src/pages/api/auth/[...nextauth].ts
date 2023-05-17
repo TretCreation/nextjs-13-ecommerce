@@ -7,7 +7,6 @@ import GoogleProvider from 'next-auth/providers/google'
 const {
 	GOOGLE_CLIENT_ID = '',
 	GOOGLE_CLIENT_SECRET = '',
-	NEXTAUTH_SECRET = '',
 	FACEBOOK_CLIENT_ID = '',
 	FACEBOOK_CLIENT_SECRET = ''
 } = process.env
@@ -61,6 +60,16 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: FACEBOOK_CLIENT_SECRET
 		})
 	],
+	jwt: {
+		secret: process.env.NEXTAUTH_SECRET
+	},
+	session: {
+		maxAge: 8 * 60 * 60
+	},
+	pages: {
+		signIn: '/auth/sign-in',
+		error: '/auth/error'
+	},
 	callbacks: {
 		async signIn({ profile, account }) {
 			if (account?.provider === 'google') {
@@ -70,15 +79,13 @@ export const authOptions: NextAuthOptions = {
 						profile?.email ?? ''
 					)
 					if (!userEmailGoogle) {
-						const res = await AuthService.createUser(
+						await AuthService.createUser(
 							profile?.name ?? '',
-							// 'Signed using OAuth',
 							await hashPassword(),
 							null,
-							profile?.email ?? '',
+							profile?.email,
 							null
 						)
-						res
 					}
 					return true
 				} catch (error) {
@@ -95,7 +102,6 @@ export const authOptions: NextAuthOptions = {
 					if (!userEmailFacebook) {
 						const res = await AuthService.createUser(
 							profile?.name ?? '',
-							// 'Signed using OAuth',
 							await hashPassword(),
 							null,
 							null,
@@ -115,24 +121,15 @@ export const authOptions: NextAuthOptions = {
 			return { ...token, ...user }
 		},
 		async session({ session, token, user }) {
+			//?
 			session.user = token
+			const userId = await AuthService.findBy(token.email as string)
+			//* Update session token
+			token.id = userId.id
+
 			return session
 		}
-
-		// session: ({ session, token }) => {
-		// 	console.log('Session Callback', { session, token })
-		// 	return session
-		// },
-		// jwt: ({ token, user }) => {
-		// 	console.log('JWT Callback', { token, user })
-		// 	return token
-		// }
-	},
-	pages: {
-		signIn: '/auth/sign-in',
-		error: '/auth/error'
-	},
-	secret: NEXTAUTH_SECRET
+	}
 }
 
 export default NextAuth(authOptions)

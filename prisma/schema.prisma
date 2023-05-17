@@ -19,6 +19,7 @@ model User {
   emailGoogle   String?    @unique
   emailFacebook String?    @unique
   password      String
+  img           String     @default("/avatars/default-user-avatar.png")
   wishlist      Wishlist[]
   role          Role       @default(USER_ROLE)
   orders        Order[]

@@ -2,14 +2,17 @@ import prisma from '@/prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	if (req.method === 'POST') {
-		const { userId, productId } = req.body
-
+	if (req.method === 'GET') {
 		try {
-			const data = await prisma.wishlist.deleteMany({
+			const { email } = req.query
+
+			const data = await prisma.user.findFirstOrThrow({
 				where: {
-					userId,
-					productId
+					OR: [
+						{ email: email as string },
+						{ emailGoogle: email as string },
+						{ emailFacebook: email as string }
+					]
 				}
 			})
 			return res.status(200).json(data)

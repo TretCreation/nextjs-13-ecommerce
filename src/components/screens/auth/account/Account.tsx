@@ -1,7 +1,6 @@
 import {
 	AccountCardIcon,
 	ArchiveIcon,
-	DefaultAvatar,
 	LogoutIcon,
 	PaymentIcon,
 	WishlistIcon
@@ -12,19 +11,16 @@ import Image from 'next/image'
 import styles from './Account.module.scss'
 
 const Account = () => {
-	//?
-	// const { data: session, status } = useSession<Session>()
 	const { data: session, status } = useSession()
 
 	if (status === 'loading') return <div>Loading...</div>
-
 	if (session && session.user) {
 		return (
 			<div className={styles.account}>
 				<div className={styles.info}>
 					<div className={styles.card}>
 						<Image
-							src={session.user.image || DefaultAvatar.src}
+							src={session.user.img || session.user.image}
 							alt='user avatar'
 							width={96}
 							height={96}

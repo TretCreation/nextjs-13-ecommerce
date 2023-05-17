@@ -13,6 +13,17 @@ export const WishlistService = {
 			throw error
 		}
 	},
+	async getById(userId: number) {
+		try {
+			const res = await axios.post<IWishlist>(`/wishlist`, {
+				userId
+			})
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
 	async addProduct(productId: number, userId: number) {
 		try {
 			const res = await axios.post<IWishlist>(`/wishlist/add`, {

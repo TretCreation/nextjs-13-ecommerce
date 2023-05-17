@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { IUser } from '../interfaces/user.interface'
+import { IUser, IUserSession } from '../interfaces/user.interface'
 
 axios.defaults.baseURL = process.env.API_URL
 
@@ -8,16 +8,16 @@ export const AuthService = {
 		name: string,
 		password: string,
 		email?: string | null,
-		google?: string | null,
-		facebook?: string | null
+		emailGoogle?: string | null,
+		emailFacebook?: string | null
 	) {
 		try {
 			const res = await axios.post<IUser>('/auth/user', {
-				name: name,
-				email: email,
-				google: google,
-				facebook: facebook,
-				password: password
+				name,
+				email,
+				emailGoogle,
+				emailFacebook,
+				password
 			})
 			return res.data
 		} catch (error) {
@@ -27,9 +27,19 @@ export const AuthService = {
 		}
 	},
 
+	async findBy(email: string) {
+		try {
+			const res = await axios.get<IUserSession>(`/auth/user/find/?email=${email}`)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+
 	async findByEmail(type: string, email: string) {
 		try {
-			const res = await axios.get<string>(`/auth/user?${type}=${email}`)
+			const res = await axios.get<IUserSession>(`/auth/user?${type}=${email}`)
 			return res.data
 		} catch (error) {
 			console.log(error)

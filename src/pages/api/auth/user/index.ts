@@ -33,16 +33,16 @@ const validateAllOne = (fields: any) => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { name, email, google, facebook, password } = req.body
+		const { name, email, emailGoogle, emailFacebook, password } = req.body
 		try {
 			validateAllOne(req.body)
 
 			const data = await prisma.user.create({
 				data: {
-					name: name,
-					email: email,
-					emailGoogle: google,
-					emailFacebook: facebook,
+					name,
+					email,
+					emailGoogle,
+					emailFacebook,
 					password: await bcrypt.hash(password, 10)
 				}
 			})
@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		} catch (error) {
 			if (error instanceof Prisma.PrismaClientKnownRequestError) {
 				if (error.code === 'P2002') {
-					errorHandle('P2002', res)
+					errorHandle('Unique constraint failed on the {constraint}', res)
 				}
 			}
 			errorHandle(error, res)

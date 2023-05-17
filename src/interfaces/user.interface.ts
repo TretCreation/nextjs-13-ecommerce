@@ -9,3 +9,15 @@ export interface IUser {
 		password: string
 	}
 }
+
+export interface IUserSession {
+	id: number
+	name: string
+	email: string | null
+	emailGoogle: string | null
+	emailFacebook: string | null
+	img: string
+	image: string
+	role: string
+	// accessToken: string
+}

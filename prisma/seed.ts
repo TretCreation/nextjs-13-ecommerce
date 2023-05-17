@@ -24,7 +24,8 @@ async function main() {
 						role: row.role as any,
 						email: String(row.email),
 						emailFacebook: row.emailFacebook || null,
-						emailGoogle: row.emailGoogle || null
+						emailGoogle: row.emailGoogle || null,
+						img: row.img
 					}
 				})
 			})
@@ -97,6 +98,28 @@ async function main() {
 			})
 			.on('end', () => {
 				console.log('CSV Product file successfully processed.')
+			})
+
+		//* Wishlist
+		await prisma.wishlist.deleteMany()
+		console.log('Deleted Wishlist')
+
+		await prisma.$queryRaw`ALTER TABLE Wishlist AUTO_INCREMENT = 1`
+		console.log('Reset Wishlist auto increment to 1')
+
+		fs.createReadStream('prisma/seeds/wishlist.csv')
+			.pipe(csv())
+			.on('data', async row => {
+				await prisma.wishlist.create({
+					data: {
+						id: Number(row.id),
+						userId: Number(row.userId),
+						productId: Number(row.productId)
+					}
+				})
+			})
+			.on('end', () => {
+				console.log('CSV Wishlist file successfully processed.')
 			})
 
 		console.log('Data seeding complete')
