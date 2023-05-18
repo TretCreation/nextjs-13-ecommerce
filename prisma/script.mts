@@ -51,7 +51,7 @@ async function main() {
 // 	console.log(type)
 // }
 
-//? Main
+// //* Main
 main()
 	.catch(err => console.error(err.message))
 	.finally(async () => {
