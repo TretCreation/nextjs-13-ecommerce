@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { IProduct } from '../interfaces/product.interface'
 import { IWishlist } from '../interfaces/wishlist.interface'
 
 axios.defaults.baseURL = process.env.API_URL
@@ -15,7 +16,7 @@ export const WishlistService = {
 	},
 	async getById(userId: number) {
 		try {
-			const res = await axios.post<IWishlist>(`/wishlist`, {
+			const res = await axios.post<IProduct[]>(`/wishlist`, {
 				userId
 			})
 			return res.data
@@ -36,10 +37,12 @@ export const WishlistService = {
 			throw error
 		}
 	},
-	async removeProduct(productId: number) {
+	async removeProduct(productId: number, userId: number) {
 		try {
-			const res = await axios.post<IWishlist>(`/wishlist/remove`, {
-				productId
+			//?
+			const res = await axios.post<any>(`/wishlist/remove`, {
+				productId,
+				userId
 			})
 			return res.data
 		} catch (error) {

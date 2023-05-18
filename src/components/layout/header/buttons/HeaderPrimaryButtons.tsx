@@ -1,7 +1,6 @@
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
-import { WishlistService } from '@/src/services/WishlistService'
-import { wishlistActions } from '@/src/store'
+import { fetchProducts } from '@/src/store/wishlist/wishlist.slice'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
@@ -15,18 +14,11 @@ const HeaderPrimaryButtons: FC = () => {
 	const { wishProducts } = useAppSelector(state => state.wishlist)
 	const { cartProducts } = useAppSelector(state => state.cart)
 
-	const { data: session, status } = useSession()
+	const { data: session } = useSession()
 
 	useEffect(() => {
-		async function fetchProducts() {
-			if (session) {
-				const data = await WishlistService.getById(session.user.id)
-				console.log('data', data)
-				dispatch(wishlistActions.updateProducts(data))
-			}
-		}
-		fetchProducts()
-	}, [session])
+		if (session) dispatch(fetchProducts(session.user.id))
+	}, [dispatch, session])
 
 	return (
 		<>
@@ -36,10 +28,7 @@ const HeaderPrimaryButtons: FC = () => {
 					<span className={styles.span}>{wishProducts.length}</span>
 					<p className={styles.text}>Wishlist</p>
 				</Link>
-				<Button
-					appearance='svg'
-					onClick={() => setIsModalCartOpen(!isModalCartOpen)}
-				>
+				<Button appearance='svg' onClick={() => setIsModalCartOpen(!isModalCartOpen)}>
 					<CartIcon className={styles.icon} />
 					<span className={styles.span}>{cartProducts.length}</span>
 					<p className='text-l'>Cart</p>
