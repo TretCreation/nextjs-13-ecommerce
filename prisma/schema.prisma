@@ -23,9 +23,21 @@ model User {
   wishlist      Wishlist[]
   role          Role       @default(USER_ROLE)
   orders        Order[]
+  cart          Cart[]
 }
 
 model Wishlist {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([productId])
+}
+
+model Cart {
   id        Int     @id @default(autoincrement())
   productId Int
   product   Product @relation(fields: [productId], references: [id])
@@ -67,7 +79,8 @@ model Product {
   type          Type            @relation(fields: [typeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   product_info  Product_info[]
   order_product Order_product[]
-  Wishlist      Wishlist[]
+  wishlist      Wishlist[]
+  cart          Cart[]
 
   @@index([typeId])
   @@index([brandId])

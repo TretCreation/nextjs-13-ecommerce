@@ -2,6 +2,7 @@ import { GarbageIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
+import { addCartProducts } from '@/src/store/cart/cart.slice'
 import { removeWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
 import { useSession } from 'next-auth/react'
 
@@ -17,11 +18,12 @@ interface IWishlistItemProps {
 const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 	const dispatch = useAppDispatch()
 	const { cartProducts } = useAppSelector(state => state.cart)
+
 	const isExistCart = cartProducts.some(w => w.id === wishProduct.id)
 
 	const { data: session, status } = useSession()
 
-	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
+	const [isModalCart, setIsModalCart] = useState(false)
 
 	return (
 		<div className={styles.product}>
@@ -42,11 +44,20 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 				className={isExistCart ? styles['btn-disabled'] : styles.btn}
 				onClick={
 					isExistCart
-						? () => setIsModalAuthOpen(!isModalAuthOpen)
+						? () => setIsModalCart(!isModalCart)
+						: status === 'authenticated'
+						? () =>
+								dispatch(
+									addCartProducts({
+										product: wishProduct,
+										productId: wishProduct.id,
+										userId: session.user.id
+									})
+								)
 						: () => dispatch(cartActions.addProduct(wishProduct))
 				}
 			>
-				{isExistCart ? 'To Cart' : 'Add to cart'}
+				{isExistCart ? 'Move to Cart' : 'Add to cart'}
 			</Button>
 			<Button
 				appearance='svg'
@@ -61,15 +72,12 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 										userId: session.user.id
 									})
 								)
-						: () => dispatch(wishlistActions.removeProducts(wishProduct))
+						: () => dispatch(wishlistActions.removeProduct(wishProduct))
 				}
 			>
 				<GarbageIcon className='h-6 w-6' />
 			</Button>
-			<ModalCart
-				handleClose={() => setIsModalAuthOpen(!isModalAuthOpen)}
-				isOpen={isModalAuthOpen}
-			/>
+			<ModalCart handleClose={() => setIsModalCart(!isModalCart)} isOpen={isModalCart} />
 		</div>
 	)
 }

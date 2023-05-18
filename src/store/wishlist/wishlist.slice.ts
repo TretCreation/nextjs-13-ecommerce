@@ -68,7 +68,6 @@ export const removeWishlistProducts = createAsyncThunk(
 		{ rejectWithValue, dispatch, getState }
 	) {
 		const state = getState() as RootState
-
 		try {
 			const updatedProducts = state.wishlist.wishProducts.filter(p => p.id !== product.id)
 			await WishlistService.removeProduct(productId, userId)
@@ -104,7 +103,7 @@ export const wishlistSlice = createSlice({
 		addProduct(state, { payload: product }: PayloadAction<IProduct>) {
 			state.wishProducts.push(product)
 		},
-		removeProducts(state, { payload: product }: PayloadAction<IProduct>) {
+		removeProduct(state, { payload: product }: PayloadAction<IProduct>) {
 			const isExist = state.wishProducts.some(p => p.id === product.id)
 
 			if (isExist) {
@@ -134,4 +133,4 @@ export const wishlistSlice = createSlice({
 })
 
 export const { actions, reducer } = wishlistSlice
-export const { toggleWishlist, addProduct, updateProducts, removeProducts } = actions
+export const { toggleWishlist, addProduct, updateProducts, removeProduct } = actions

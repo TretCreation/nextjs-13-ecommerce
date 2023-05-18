@@ -1,4 +1,4 @@
-export interface IWishlist {
+export interface ICart {
 	productId: number
 	userId: number
 }

@@ -2,6 +2,7 @@ import { WishlistIcon } from '@/public'
 import { Button, Rating, useAppDispatch, useAppSelector } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
+import { toggleCartProducts } from '@/src/store/cart/cart.slice'
 import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -51,7 +52,18 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				<Button
 					appearance='primary'
 					className={isExistCart ? styles['cart-exist'] : styles['cart-not-exist']}
-					onClick={() => dispatch(cartActions.toggleCart(product))}
+					onClick={
+						status === 'authenticated'
+							? () =>
+									dispatch(
+										toggleCartProducts({
+											product: product,
+											productId: product.id,
+											userId: session.user.id
+										})
+									)
+							: () => dispatch(cartActions.toggleCart(product))
+					}
 				>
 					<p>{isExistCart ? 'Remove from cart' : 'Add to cart'}</p>
 				</Button>

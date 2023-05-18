@@ -122,6 +122,28 @@ async function main() {
 				console.log('CSV Wishlist file successfully processed.')
 			})
 
+		//* Cart
+		await prisma.cart.deleteMany()
+		console.log('Deleted Cart')
+
+		await prisma.$queryRaw`ALTER TABLE Cart AUTO_INCREMENT = 1`
+		console.log('Reset Cart auto increment to 1')
+
+		fs.createReadStream('prisma/seeds/cart.csv')
+			.pipe(csv())
+			.on('data', async row => {
+				await prisma.cart.create({
+					data: {
+						id: Number(row.id),
+						userId: Number(row.userId),
+						productId: Number(row.productId)
+					}
+				})
+			})
+			.on('end', () => {
+				console.log('CSV Cart file successfully processed.')
+			})
+
 		console.log('Data seeding complete')
 	} catch (error) {
 		console.log(error)

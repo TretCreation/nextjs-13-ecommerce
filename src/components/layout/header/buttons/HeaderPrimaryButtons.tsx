@@ -1,6 +1,7 @@
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
-import { fetchProducts } from '@/src/store/wishlist/wishlist.slice'
+import { fetchProducts as fetchCartProducts } from '@/src/store/cart/cart.slice'
+import { fetchProducts as fetchWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
@@ -17,7 +18,11 @@ const HeaderPrimaryButtons: FC = () => {
 	const { data: session } = useSession()
 
 	useEffect(() => {
-		if (session) dispatch(fetchProducts(session.user.id))
+		if (session) dispatch(fetchWishlistProducts(session.user.id))
+	}, [dispatch, session])
+
+	useEffect(() => {
+		if (session) dispatch(fetchCartProducts(session.user.id))
 	}, [dispatch, session])
 
 	return (
