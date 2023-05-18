@@ -10,8 +10,6 @@ const Wishlist = () => {
 		<div className={styles.wishlist}>
 			<div className={styles.info}>info</div>
 			<div className={styles.products}>
-				{/* {auth ? ():()} */}
-
 				{wishlist.wishProducts.length > 0 ? (
 					wishlist.wishProducts.map(wishProduct => (
 						<WishlistItem wishProduct={wishProduct} />

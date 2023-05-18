@@ -17,9 +17,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 			const data = await prisma.wishlist.findMany({
 				where: { userId },
-				select: { product: true }
+				select: {
+					product: true
+				}
 			})
-			return res.status(200).json(data)
+			//?
+			const filteredData = data.filter(item => item.product.id !== 'product')
+
+			const updatedData = filteredData.map(item => item.product)
+
+			return res.status(200).json(updatedData)
 		} catch (error) {
 			return res.status(500).json(error)
 		}

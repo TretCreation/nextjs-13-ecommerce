@@ -1,10 +1,5 @@
 import { GarbageIcon } from '@/public'
-import {
-	Button,
-	ModalCart,
-	useAppDispatch,
-	useAppSelector
-} from '@/src/components'
+import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
 
@@ -18,9 +13,8 @@ interface IWishlistItemProps {
 }
 
 const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
-	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
-
 	const dispatch = useAppDispatch()
+	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
 
 	const { cartProducts } = useAppSelector(state => state.cart)
 

@@ -26,6 +26,9 @@ export const wishlistSlice = createSlice({
 		addProduct(state, { payload: product }: PayloadAction<IProduct>) {
 			state.wishProducts.push(product)
 		},
+		updateProducts(state, action) {
+			state.wishProducts = action.payload
+		},
 		removeProductWishlist(state, { payload: product }: PayloadAction<IProduct>) {
 			const isExist = state.wishProducts.some(p => p.id === product.id)
 

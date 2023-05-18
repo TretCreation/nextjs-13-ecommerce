@@ -1,9 +1,10 @@
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { WishlistService } from '@/src/services/WishlistService'
+import { wishlistActions } from '@/src/store'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons: FC = () => {
@@ -16,20 +17,16 @@ const HeaderPrimaryButtons: FC = () => {
 
 	const { data: session, status } = useSession()
 
-	console.log(session)
-	console.log(session?.user)
-
-	// const fetchProducts = async () => {
-	// 	const data = await WishlistService.getById(session?.user.id)
-	// 	console.log('dataaa')
-	// 	console.log('data', data)
-	// 	dispatch(wishlistActions.addProduct(data))
-	// }
-	// //TODO findById user
-
-	// if (session?.user.email) {
-	// 	fetchProducts()
-	// }
+	useEffect(() => {
+		async function fetchProducts() {
+			if (session) {
+				const data = await WishlistService.getById(session.user.id)
+				console.log('data', data)
+				dispatch(wishlistActions.updateProducts(data))
+			}
+		}
+		fetchProducts()
+	}, [session])
 
 	return (
 		<>

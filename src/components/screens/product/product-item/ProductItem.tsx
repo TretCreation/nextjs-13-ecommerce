@@ -1,10 +1,5 @@
 import { WishlistIcon } from '@/public'
-import {
-	Button,
-	Rating,
-	useAppDispatch,
-	useAppSelector
-} from '@/src/components'
+import { Button, Rating, useAppDispatch, useAppSelector } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
 import Image from 'next/image'
@@ -20,6 +15,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 
 	const isExistWishlist = wishProducts.some(p => p.id === product.id)
 	const isExistCart = cartProducts.some(p => p.id === product.id)
+	console.log('wishProducts', wishProducts)
 
 	return (
 		<div className={styles.card}>
@@ -38,12 +34,8 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				</Link>
 				<Button appearance='svg' className={styles.wishlist}>
 					<WishlistIcon
-						className={
-							isExistWishlist ? styles.exist : styles['not-exist']
-						}
-						onClick={() =>
-							dispatch(wishlistActions.toggleWishlist(product))
-						}
+						className={isExistWishlist ? styles.exist : styles['not-exist']}
+						onClick={() => dispatch(wishlistActions.toggleWishlist(product))}
 					/>
 				</Button>
 				<p>${product.price}</p>
@@ -51,9 +43,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				<Button
 					appearance='primary'
 					className={
-						isExistCart
-							? styles['cart-exist']
-							: styles['cart-not-exist']
+						isExistCart ? styles['cart-exist'] : styles['cart-not-exist']
 					}
 					onClick={() => dispatch(cartActions.toggleCart(product))}
 				>
