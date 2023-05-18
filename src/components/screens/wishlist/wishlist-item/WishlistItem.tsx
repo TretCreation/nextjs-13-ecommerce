@@ -2,6 +2,8 @@ import { GarbageIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
+import { removeWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
+import { useSession } from 'next-auth/react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,11 +16,12 @@ interface IWishlistItemProps {
 
 const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 	const dispatch = useAppDispatch()
-	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
-
 	const { cartProducts } = useAppSelector(state => state.cart)
-
 	const isExistCart = cartProducts.some(w => w.id === wishProduct.id)
+
+	const { data: session, status } = useSession()
+
+	const [isModalAuthOpen, setIsModalAuthOpen] = useState(false)
 
 	return (
 		<div className={styles.product}>
@@ -48,8 +51,17 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 			<Button
 				appearance='svg'
 				className={styles.svg}
-				onClick={() =>
-					dispatch(wishlistActions.removeProductWishlist(wishProduct))
+				onClick={
+					status === 'authenticated'
+						? () =>
+								dispatch(
+									removeWishlistProducts({
+										product: wishProduct,
+										productId: wishProduct.id,
+										userId: session.user.id
+									})
+								)
+						: () => dispatch(wishlistActions.removeProducts(wishProduct))
 				}
 			>
 				<GarbageIcon className='h-6 w-6' />

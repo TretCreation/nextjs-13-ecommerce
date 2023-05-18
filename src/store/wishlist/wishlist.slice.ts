@@ -43,14 +43,36 @@ export const toggleWishlistProducts = createAsyncThunk(
 				// Remove the product from the wishlist
 				const updatedProducts = state.wishlist.wishProducts.filter(p => p.id !== product.id)
 				await WishlistService.removeProduct(productId, userId)
-
-				console.log(updatedProducts)
 				dispatch(wishlistSlice.actions.updateProducts(updatedProducts))
 			} else {
 				// Add the product to the wishlist
 				await WishlistService.addProduct(productId, userId)
 				dispatch(wishlistSlice.actions.addProduct(product))
 			}
+		} catch (error: unknown) {
+			if (error instanceof Error) {
+				console.error('An error occurred:', error)
+				return rejectWithValue(error.message)
+			} else {
+				console.error('An unexpected error occurred:', error)
+				return rejectWithValue('An unexpected error occurred.')
+			}
+		}
+	}
+)
+
+export const removeWishlistProducts = createAsyncThunk(
+	'wishlist/removeWishlistProducts',
+	async function (
+		{ product, productId, userId }: { product: IProduct; productId: number; userId: number },
+		{ rejectWithValue, dispatch, getState }
+	) {
+		const state = getState() as RootState
+
+		try {
+			const updatedProducts = state.wishlist.wishProducts.filter(p => p.id !== product.id)
+			await WishlistService.removeProduct(productId, userId)
+			dispatch(wishlistSlice.actions.updateProducts(updatedProducts))
 		} catch (error: unknown) {
 			if (error instanceof Error) {
 				console.error('An error occurred:', error)
@@ -82,7 +104,7 @@ export const wishlistSlice = createSlice({
 		addProduct(state, { payload: product }: PayloadAction<IProduct>) {
 			state.wishProducts.push(product)
 		},
-		removeProductWishlist(state, { payload: product }: PayloadAction<IProduct>) {
+		removeProducts(state, { payload: product }: PayloadAction<IProduct>) {
 			const isExist = state.wishProducts.some(p => p.id === product.id)
 
 			if (isExist) {
@@ -112,4 +134,4 @@ export const wishlistSlice = createSlice({
 })
 
 export const { actions, reducer } = wishlistSlice
-export const { toggleWishlist, addProduct, updateProducts, removeProductWishlist } = actions
+export const { toggleWishlist, addProduct, updateProducts, removeProducts } = actions

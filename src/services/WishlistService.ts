@@ -39,8 +39,7 @@ export const WishlistService = {
 	},
 	async removeProduct(productId: number, userId: number) {
 		try {
-			//?
-			const res = await axios.post<any>(`/wishlist/remove`, {
+			const res = await axios.post<IWishlist>(`/wishlist/remove`, {
 				productId,
 				userId
 			})

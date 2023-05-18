@@ -12,7 +12,7 @@ const Wishlist = () => {
 			<div className={styles.products}>
 				{wishlist.wishProducts.length > 0 ? (
 					wishlist.wishProducts.map(wishProduct => (
-						<WishlistItem wishProduct={wishProduct} />
+						<WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
 					))
 				) : (
 					<NoWishlistProducts />
