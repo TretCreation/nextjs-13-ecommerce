@@ -2,34 +2,46 @@
 	@apply container mx-auto my-0 mt-9 flex flex-row;
 
 	.info {
-		@apply w-96 flex-initial border;
+		@apply w-96 flex-initial;
+
+		.text-light {
+			@apply font-thin text-gray-dark;
+		}
+
+		.text-dark {
+			@apply text-black;
+		}
 
 		.card {
-			@apply mb-7 border;
+			@apply mb-7 flex h-24 items-center border shadow-md;
+
+			.img {
+				@apply ml-4 h-20 w-20 rounded-full border border-solid border-gray-light p-1;
+			}
+
+			.text {
+				@apply ml-4;
+			}
 		}
 
 		.options {
-			@apply flex flex-col border;
+			@apply flex flex-col border px-4 py-4 shadow-md;
 
 			.block {
-				@apply mb-4 flex flex-col border;
+				@apply mb-4 flex flex-col border-b-2 border-[#e5e7eb] pl-4;
 
 				.btn {
-					@apply flex flex-row;
+					@apply relative flex flex-row pt-0;
 
 					.icon {
-						@apply mr-1;
+						@apply absolute -left-2 top-0.5 mr-1;
 					}
-				}
-
-				.text {
-					@apply text-black;
 				}
 			}
 		}
 	}
 
 	.main {
-		@apply w-full border;
+		@apply ml-4 w-full border;
 	}
 }

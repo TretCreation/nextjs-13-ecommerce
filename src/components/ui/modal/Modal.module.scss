@@ -3,11 +3,9 @@
 }
 
 .content {
-	@apply relative z-20 m-auto box-border flex items-center justify-center rounded bg-white-main;
-
-	// fixed overflow-hidden
+	@apply fixed top-24 left-0 right-0 z-20 m-auto box-border h-4/6 max-h-full w-full max-w-5xl overflow-hidden rounded bg-white-main;
 }
 
-.deleted {
-	margin: -40% auto;
-}
+/* .content {
+	@apply fixed top-24 left-0 right-0 z-20 m-auto box-border h-4/6 max-h-full w-full max-w-5xl overflow-y-auto rounded bg-white-main p-6;
+} */

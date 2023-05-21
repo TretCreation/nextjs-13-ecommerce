@@ -12,7 +12,8 @@ module.exports = {
 				primary: { main: '#F53C57' },
 				white: { main: '#FFFFFF', dark: '#E4E6EB' },
 				blue: { dark: '#152335' },
-				yellow: { main: '#F8CB12' }
+				yellow: { main: '#F8CB12' },
+				gray: { light: '#CBCCD0', dark: '#929292' }
 			},
 			fontFamily: {
 				poppins: ['Poppins', 'sans-serif'],

@@ -6,6 +6,7 @@ import { removeCartProducts } from '@/src/store/cart/cart.slice'
 import { useSession } from 'next-auth/react'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
 import styles from './CartItem.module.scss'
 
@@ -19,15 +20,17 @@ const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
 	const { data: session, status } = useSession()
 	return (
 		<div className={styles.product}>
-			<Image
-				src={cartProduct.img}
-				alt={cartProduct.name}
-				width={85}
-				height={0}
-				priority
-				className={styles.img}
-			/>
-			<div className={styles.name}>{cartProduct.name}</div>
+			<Link href={`product/${cartProduct.id}`} className={styles.link}>
+				<Image
+					src={cartProduct.img}
+					alt={cartProduct.name}
+					width={60}
+					height={0}
+					priority
+					className={styles.img}
+				/>
+				<div className={styles.text}>{cartProduct.name}</div>
+			</Link>
 			<div className={styles.price}>${cartProduct.price}</div>
 			<Button
 				appearance='svg'

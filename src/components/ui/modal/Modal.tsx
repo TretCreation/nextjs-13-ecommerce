@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useRef } from 'react'
 import { useScrollBlock } from '@/src/components'
+import React, { FC, useEffect, useRef } from 'react'
 import styles from './Modal.module.scss'
 import ReactPortal from './ReactPortal'
 import useOnClickOutside from './useOnClickOutside'
@@ -32,8 +32,8 @@ const Modal: FC<ModalProps> = ({ children, wrapperId, handleClose }) => {
 	return (
 		<ReactPortal wrapperId={wrapperId}>
 			<div className={styles.modal}></div>
-			<div className={styles.deleted} ref={ref}>
-				<div className={styles.content}>{children}</div>
+			<div className={styles.content} ref={ref}>
+				{children}
 			</div>
 		</ReactPortal>
 	)

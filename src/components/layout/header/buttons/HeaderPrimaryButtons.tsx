@@ -27,19 +27,25 @@ const HeaderPrimaryButtons: FC = () => {
 
 	return (
 		<>
-			<div className={styles.btn}>
-				<Link href='/wishlist'>
-					<WishlistIcon className={styles.icon} />
-					<span className={styles.span}>{wishProducts.length}</span>
-					<p className={styles.text}>Wishlist</p>
-				</Link>
-				<Button appearance='svg' onClick={() => setIsModalCartOpen(!isModalCartOpen)}>
+			<div className={styles.buttons}>
+				<Button appearance='svg' className={styles.btn}>
+					<Link href='/wishlist'>
+						<WishlistIcon className={styles.icon} />
+						<span className={styles.span}>{wishProducts.length}</span>
+						<p className={styles.text}>Wishlist</p>
+					</Link>
+				</Button>
+				<Button
+					appearance='svg'
+					onClick={() => setIsModalCartOpen(!isModalCartOpen)}
+					className={styles.btn}
+				>
 					<CartIcon className={styles.icon} />
 					<span className={styles.span}>{cartProducts.length}</span>
 					<p className='text-l'>Cart</p>
 				</Button>
-				<Link href={'/auth'}>
-					<Button appearance='svg'>
+				<Button appearance='svg' className={styles.btn}>
+					<Link href={'/auth'}>
 						{session ? (
 							<>
 								<AccountIcon className={styles.icon} />
@@ -51,8 +57,8 @@ const HeaderPrimaryButtons: FC = () => {
 								<p className='text-l'>Sign In</p>
 							</>
 						)}
-					</Button>
-				</Link>
+					</Link>
+				</Button>
 			</div>
 			<ModalCart
 				handleClose={() => setIsModalCartOpen(!isModalCartOpen)}

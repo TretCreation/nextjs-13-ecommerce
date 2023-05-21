@@ -1,7 +1,11 @@
-.content {
-	@apply relative z-20 m-auto box-border flex h-80 w-80 items-center justify-center rounded bg-white-main;
+.header {
+	@apply flex items-center justify-between border-b-2 py-3 px-6;
+}
+
+.products {
+	@apply h-full overflow-y-auto px-8 pt-4 pb-40;
 }
 
 .checkout {
-	@apply uppercase;
+	@apply absolute bottom-0 flex h-16 w-full items-center border-t-2 bg-white-main py-3 px-6 uppercase;
 }

@@ -27,16 +27,16 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 
 	return (
 		<div className={styles.product}>
-			<Link href={`product/${wishProduct.id}`}>
+			<Link href={`product/${wishProduct.id}`} className={styles.link}>
 				<Image
 					src={wishProduct.img}
 					alt={wishProduct.name}
-					width={85}
+					width={60}
 					height={0}
 					priority
 					className={styles.img}
 				/>
-				<div className={styles.name}>{wishProduct.name}</div>
+				<div className={styles.text}>{wishProduct.name}</div>
 			</Link>
 			<div className={styles.price}>${wishProduct.price}</div>
 			<Button

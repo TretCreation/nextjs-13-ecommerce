@@ -1,15 +1,23 @@
 .product {
-	@apply flex flex-row border;
+	@apply mb-5 flex h-28 flex-row items-center justify-between rounded-md border px-4 py-4;
 
-	.name {
-		@apply mx-48 mt-7 mb-4 text-center text-xl uppercase text-blue-dark;
+	.link {
+		@apply flex basis-2/4 items-center;
+
+		.img {
+			@apply object-contain;
+		}
+	}
+
+	.text {
+		@apply ml-24 text-center text-xl uppercase text-blue-dark;
 	}
 
 	.price {
-		@apply mx-24 text-center text-lg text-primary-main;
+		@apply basis-1/5  text-center text-lg text-primary-main;
 	}
 
 	.btn {
-		@apply uppercase;
+		@apply w-36 basis-2/12 text-sm uppercase;
 	}
 }
