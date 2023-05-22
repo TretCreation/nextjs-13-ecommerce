@@ -1,2 +1,7 @@
 .wrapper {
+	@apply m-auto mt-28 h-auto w-[25rem];
+
+	.text {
+		@apply mt-12 text-center text-2xl;
+	}
 }

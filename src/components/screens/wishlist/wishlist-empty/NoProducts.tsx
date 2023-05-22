@@ -1,4 +1,4 @@
-import { NoCartProduct } from '@/public'
+import { NoWishlistProductsWebp } from '@/public'
 import { NextPage } from 'next'
 import Image from 'next/image'
 import styles from './NoProducts.module.scss'
@@ -7,12 +7,12 @@ const NoProducts: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Image
-				src={NoCartProduct.src}
+				src={NoWishlistProductsWebp.src}
 				alt={'Cart is empty'}
-				width={200}
-				height={100}
+				width={400}
+				height={200}
 			/>
-			Wishlist is empty
+			<p className={styles.text}>Wishlist is empty</p>
 		</div>
 	)
 }

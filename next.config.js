@@ -7,7 +7,8 @@ const nextConfig = {
 		baseUrl: 'src'
 	},
 	env: {
-		API_URL: process.env.API_URL
+		API_URL: process.env.API_URL,
+		PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID
 	},
 	images: {
 		domains: ['lh3.googleusercontent.com', 'scontent.fiev22-2.fna.fbcdn.net'],

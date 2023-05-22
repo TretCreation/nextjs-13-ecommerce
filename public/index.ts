@@ -29,6 +29,7 @@ export { default as SmartphoneIcon } from './svg/products/smartphone.svg'
 
 // //* IMG
 export { default as logo } from './logo.png'
-export { default as NoCartProduct } from './assets/cart/NoCartProduct.png'
+export { default as NoProductsPng } from './assets/NoProducts.png'
+export { default as NoWishlistProductsWebp } from './assets/NoWishlist.webp'
 export { default as TestProduct } from './test-product.png'
 export { default as DefaultAvatar } from './avatars/default-user-avatar.png'

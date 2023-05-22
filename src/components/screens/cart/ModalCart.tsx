@@ -3,6 +3,7 @@ import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
 import { FC } from 'react'
 import CartItem from './cart-item/CartItem'
 import styles from './ModalCart.module.scss'
+import PaypalCheckoutButton from './paypal-button/PaypalCheckoutButton'
 
 interface ICartProps {
 	handleClose: () => void
@@ -12,6 +13,8 @@ interface ICartProps {
 const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 	const { cartProducts } = useAppSelector(state => state.cart)
 	if (!isOpen) return null
+	//?
+	const subtotal = String(cartProducts.reduce((acc, cur) => acc + cur.price, 0))
 
 	return (
 		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
@@ -32,8 +35,8 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 			)}
 			{cartProducts.length !== 0 && (
 				<div className={styles.checkout}>
-					<p>Cart Subtotal: ${cartProducts.reduce((acc, cur) => acc + cur.price, 0)}</p>
-					{/* <PaypalCheckoutButton /> */}
+					<p>Cart Subtotal: ${subtotal}</p>
+					<PaypalCheckoutButton subtotal={subtotal} />
 				</div>
 			)}
 		</Modal>
