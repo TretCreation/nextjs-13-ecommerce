@@ -1,5 +1,5 @@
 .list {
-	@apply fixed z-10 flex flex-col bg-primary-main;
+	@apply absolute left-0 top-0 z-10 flex w-[150%] flex-col bg-primary-main p-4 pt-2;
 
 	.svg {
 		@apply h-5 w-5;

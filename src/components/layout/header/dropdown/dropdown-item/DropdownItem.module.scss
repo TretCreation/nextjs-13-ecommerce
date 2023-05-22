@@ -1,8 +1,8 @@
 .item {
-	@apply my-1 flex flex-row bg-blue-400 py-2;
+	@apply my-1 flex flex-row border-b-[1px] bg-primary-main p-4 py-2;
 
 	.svg {
-		@apply mr-1;
+		@apply mr-4;
 	}
 
 	.text {

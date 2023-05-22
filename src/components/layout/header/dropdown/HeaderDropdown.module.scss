@@ -1,5 +1,7 @@
-.dropdown {
-	.btn {
-		@apply flex flex-row;
+.btn {
+	@apply relative flex h-full flex-row items-center;
+
+	.svg {
+		@apply mr-1;
 	}
 }

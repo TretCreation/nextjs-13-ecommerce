@@ -15,7 +15,7 @@ const Header: NextPage = () => (
 			<HeaderSearchBar />
 			<HeaderPrimaryButtons />
 		</div>
-		<div className='bg-blue-dark py-3'>
+		<div className='bg-blue-dark'>
 			<div className={styles.secondary}>
 				<HeaderDropdown />
 				<HeaderSecondaryButtons />

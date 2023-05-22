@@ -1,12 +1,23 @@
 .item {
-	@apply text-white-main;
+	@apply flex h-20 flex-row items-center justify-between border-b-[1px] pl-4;
 
-	.img {
-	}
+	.link {
+		@apply flex w-full items-center;
 
-	.name {
-	}
+		.img {
+			@apply mr-5 object-contain;
+		}
 
-	.price {
+		.text {
+			@apply w-1/2 text-base uppercase text-blue-dark;
+		}
+
+		.price {
+			@apply basis-1/5 text-base text-blue-dark;
+		}
+
+		.svg {
+			@apply ml-auto h-7 w-7 fill-gray-dark;
+		}
 	}
 }

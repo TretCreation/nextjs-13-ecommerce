@@ -29,27 +29,25 @@ const HeaderSearchBar = (): JSX.Element => {
 	}
 
 	return (
-		<>
-			<form action='' className={styles.form} onSubmit={handleSubmit}>
-				<span className={styles.span}>
-					<SearchIcon className={styles.icon} />
-				</span>
-				<Input
-					appearance='primary'
-					type='search'
-					placeholder='Search'
-					onChange={e => setSearchTerm(e.target.value)}
-				/>
-				<Button
-					appearance='primary'
-					className={styles.btn}
-					// onClick={handleClose}
-				>
-					Search
-				</Button>
-			</form>
+		<form action='' className={styles.form} onSubmit={handleSubmit}>
+			<span className={styles.span}>
+				<SearchIcon className={styles.icon} />
+			</span>
+			<Input
+				appearance='primary'
+				type='search'
+				placeholder='Search'
+				onChange={e => setSearchTerm(e.target.value)}
+			/>
+			<Button
+				appearance='primary'
+				className={styles.btn}
+				// onClick={handleClose}
+			>
+				Search
+			</Button>
 			<SearchBarList searchedProducts={searchedProducts} />
-		</>
+		</form>
 	)
 }
 

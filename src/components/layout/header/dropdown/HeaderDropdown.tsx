@@ -8,20 +8,12 @@ import styles from './HeaderDropdown.module.scss'
 const HeaderDropdown: NextPage = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
-	const handleClose = () => {
-		setIsOpen(!isOpen)
-	}
-
 	return (
-		<div className={styles.dropdown}>
-			<Button appearance='primary' onClick={() => setIsOpen(true)}>
-				<div className={styles.btn}>
-					<MenuIcon />
-					All categories
-				</div>
-				<DropdownList isOpen={isOpen} handleClose={handleClose} />
-			</Button>
-		</div>
+		<Button appearance='primary' onClick={() => setIsOpen(!isOpen)} className={styles.btn}>
+			<MenuIcon className={styles.svg} />
+			<p>All categories</p>
+			<DropdownList isOpen={isOpen} handleClose={() => setIsOpen(!isOpen)} />
+		</Button>
 	)
 }
 

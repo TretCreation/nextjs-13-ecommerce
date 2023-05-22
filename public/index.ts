@@ -6,6 +6,7 @@ export { default as StarIcon } from './svg/star.svg'
 export { default as GoogleIcon } from './svg/google.svg'
 export { default as FacebookIcon } from './svg/facebook.svg'
 export { default as ShowPasswordIcon } from './svg/show-password.svg'
+export { default as DiagonalArrowLeftIcon } from './svg/diagonal-arrow-left.svg'
 
 // Account
 export { default as AccountCardIcon } from './svg/account/account-card.svg'

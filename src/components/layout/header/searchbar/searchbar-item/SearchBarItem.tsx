@@ -1,3 +1,4 @@
+import { DiagonalArrowLeftIcon } from '@/public'
 import { IProduct } from '@/src/interfaces/product.interface'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,17 +11,21 @@ interface ISearchBarItemProps {
 
 const SearchBarItem: FC<ISearchBarItemProps> = ({ searchedProduct }) => {
 	return (
-		<Link href={`product/${searchedProduct.id}`} className={styles.item}>
-			<Image
-				src={searchedProduct.img}
-				alt={searchedProduct.name}
-				width={50}
-				height={25}
-				priority
-			/>
-			<p className={styles.name}>{searchedProduct.name}</p>
-			<p className={styles.price}>{searchedProduct.price}</p>
-		</Link>
+		<div className={styles.item}>
+			<Link href={`product/${searchedProduct.id}`} className={styles.link}>
+				<Image
+					src={searchedProduct.img}
+					alt={searchedProduct.name}
+					width={50}
+					height={25}
+					priority
+					className={styles.img}
+				/>
+				<p className={styles.text}>{searchedProduct.name}</p>
+				<p className={styles.price}>${searchedProduct.price}</p>
+				<DiagonalArrowLeftIcon className={styles.svg} />
+			</Link>
+		</div>
 	)
 }
 
