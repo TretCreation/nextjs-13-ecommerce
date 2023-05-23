@@ -15,10 +15,18 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 	const { data: session } = useSession()
 
 	const { cartProducts } = useAppSelector(state => state.cart)
-	if (!isOpen) return null
-	//?
-	const subtotal = String(cartProducts.reduce((acc, cur) => acc + cur.price, 0))
 
+	const calculateSubtotal = (): number => {
+		let subtotal = 0
+
+		cartProducts.forEach(product => {
+			subtotal += product.price * product.count
+		})
+
+		return subtotal
+	}
+
+	if (!isOpen) return null
 	return (
 		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
 			<div className={styles.header}>
@@ -38,14 +46,15 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 			)}
 			{cartProducts.length !== 0 && (
 				<div className={styles.checkout}>
-					<p>Cart Subtotal: ${subtotal}</p>
+					<p>Cart Subtotal: ${calculateSubtotal()}</p>
 					<PaypalCheckoutButton
-						subtotal={subtotal}
+						subtotal={calculateSubtotal()}
 						userId={session?.user.id}
 						cartProducts={cartProducts.map(cartProduct => ({
 							id: cartProduct.id,
 							name: cartProduct.name,
-							price: cartProduct.price
+							price: cartProduct.price,
+							count: cartProduct.count
 						}))}
 					/>
 				</div>

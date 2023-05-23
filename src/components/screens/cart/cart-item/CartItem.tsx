@@ -1,8 +1,14 @@
 import { GarbageIcon } from '@/public'
 import { Button, useAppDispatch } from '@/src/components'
-import { IProduct } from '@/src/interfaces/product.interface'
-import { cartActions } from '@/src/store'
-import { removeCartProducts } from '@/src/store/cart/cart.slice'
+import { ICartItemProps } from '@/src/interfaces/cart.interface'
+import {
+	decrementCount,
+	decrementCountProducts,
+	incrementCount,
+	incrementCountProducts,
+	removeCartProducts,
+	removeProduct
+} from '@/src/store/cart/cart.slice'
 import { useSession } from 'next-auth/react'
 
 import Image from 'next/image'
@@ -10,14 +16,11 @@ import Link from 'next/link'
 import { FC } from 'react'
 import styles from './CartItem.module.scss'
 
-interface ICartItemProps {
-	cartProduct: IProduct
-}
-
 const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
 	const dispatch = useAppDispatch()
 
 	const { data: session, status } = useSession()
+
 	return (
 		<div className={styles.product}>
 			<Link href={`product/${cartProduct.id}`} className={styles.link}>
@@ -31,6 +34,41 @@ const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
 				/>
 				<div className={styles.text}>{cartProduct.name}</div>
 			</Link>
+			<div className='change:count'>
+				<Button
+					appearance='solid'
+					onClick={
+						status === 'authenticated'
+							? () =>
+									dispatch(
+										decrementCountProducts({
+											productId: cartProduct.id,
+											userId: session.user.id
+										})
+									)
+							: () => dispatch(decrementCount(cartProduct.id))
+					}
+				>
+					<p>-</p>
+				</Button>
+				{cartProduct.count}
+				<Button
+					appearance='solid'
+					onClick={
+						status === 'authenticated'
+							? () =>
+									dispatch(
+										incrementCountProducts({
+											productId: cartProduct.id,
+											userId: session.user.id
+										})
+									)
+							: () => dispatch(incrementCount(cartProduct.id))
+					}
+				>
+					<p>+</p>
+				</Button>
+			</div>
 			<div className={styles.price}>${cartProduct.price}</div>
 			<Button
 				appearance='svg'
@@ -45,7 +83,7 @@ const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
 										userId: session.user.id
 									})
 								)
-						: () => dispatch(cartActions.removeProduct(cartProduct))
+						: () => dispatch(removeProduct(cartProduct))
 				}
 			>
 				<GarbageIcon className='h-6 w-6' />

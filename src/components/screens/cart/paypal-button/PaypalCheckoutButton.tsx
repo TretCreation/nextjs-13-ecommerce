@@ -4,12 +4,13 @@ import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { FC, useState } from 'react'
 
 interface IPaypalCheckoutButtonProps {
-	subtotal: string
+	subtotal: number
 	userId?: number
 	cartProducts: {
 		id: number
 		name: string
 		price: number
+		count: number
 	}[]
 }
 
@@ -44,7 +45,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 							{
 								amount: {
 									currency_code: 'USD',
-									value: subtotal
+									value: String(subtotal)
 								},
 								//TODO Item
 								// items: ,
@@ -70,7 +71,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 							user.body.id,
 							order?.status as string,
 							order?.id as string,
-							Number(subtotal),
+							subtotal,
 							order?.create_time as string,
 							order?.update_time as string
 						)
@@ -81,7 +82,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 							userId,
 							order?.status as string,
 							order?.id as string,
-							Number(subtotal),
+							subtotal,
 							order?.create_time as string,
 							order?.update_time as string
 						)

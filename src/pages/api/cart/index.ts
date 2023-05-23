@@ -2,7 +2,6 @@ import prisma from '@/prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	//?
 	if (req.method === 'GET') {
 		try {
 			const data = await prisma.cart.findMany()
@@ -21,12 +20,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					product: true
 				}
 			})
-			//?
-			const filteredData = data.filter(item => item.product.id !== 'product')
 
-			const updatedData = filteredData.map(item => item.product)
+			const productsWithCount = await Promise.all(
+				data.map(async item => {
+					const count = await prisma.cart.findMany({
+						where: {
+							userId,
+							productId: item.product.id
+						},
+						select: {
+							count: true
+						}
+					})
+					return {
+						...item.product,
+						count: count[0].count
+					}
+				})
+			)
 
-			return res.status(200).json(updatedData)
+			return res.status(200).json(productsWithCount)
 		} catch (error) {
 			return res.status(500).json(error)
 		}

@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { ICart } from '../interfaces/cart.interface'
-import { IProduct } from '../interfaces/product.interface'
+import { ICart, ICartStateProps } from '../interfaces/cart.interface'
 
 axios.defaults.baseURL = process.env.API_URL
 
@@ -16,7 +15,7 @@ export const CartService = {
 	},
 	async getById(userId: number) {
 		try {
-			const res = await axios.post<IProduct[]>(`/cart`, {
+			const res = await axios.post<ICartStateProps[]>(`/cart`, {
 				userId
 			})
 			return res.data
@@ -42,6 +41,19 @@ export const CartService = {
 			const res = await axios.post<ICart>(`/cart/remove`, {
 				productId,
 				userId
+			})
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async updateProductCount(productId: number, userId: number, count: number) {
+		try {
+			const res = await axios.post<ICart>(`/cart/update/count`, {
+				productId,
+				userId,
+				count
 			})
 			return res.data
 		} catch (error) {
