@@ -50,21 +50,28 @@ model Cart {
 
 model Order {
   id             Int             @id @default(autoincrement())
-  userId         Int             @unique
+  userId         Int
   user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   status         String
   transactionId  String
   paymentAmount  Int
+  createdAt      DateTime
+  updatedAt      DateTime
   order_products Order_product[]
+
+  @@index([userId])
 }
 
 model Order_product {
   id            Int     @id @default(autoincrement())
-  orderId       Int     @unique
+  orderId       Int     
   order_product Order   @relation(fields: [orderId], references: [id])
-  productId     Int     @unique
+  productId     Int     
   product       Product @relation(fields: [productId], references: [id])
   count         Int
+
+  @@index([orderId])
+  @@index([productId])
 }
 
 model Product {
@@ -89,10 +96,12 @@ model Product {
 
 model Product_info {
   id          Int     @id @default(autoincrement())
-  productId   Int     @unique
+  productId   Int     
   product     Product @relation(fields: [productId], references: [id])
   title       String
   description String
+
+  @@index([productId])
 }
 
 model Brand {

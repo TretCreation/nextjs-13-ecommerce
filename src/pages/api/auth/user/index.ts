@@ -20,11 +20,9 @@ const responseHandler = (data: any, res: any, code = 200) => {
 const validateAllOne = (fields: any) => {
 	for (const key in fields) {
 		if (fields[key] === null || fields[key] === undefined) {
-			console.log('null error')
 			continue
 		}
 		if (fields[key].trim() === '') {
-			console.log('string error')
 			throw `${key} required`
 		}
 	}

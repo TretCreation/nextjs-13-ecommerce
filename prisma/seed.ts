@@ -100,6 +100,13 @@ async function main() {
 				console.log('CSV Product file successfully processed.')
 			})
 
+		//* Order
+		await prisma.order.deleteMany()
+		console.log('Deleted Order')
+
+		// await prisma.$queryRaw`ALTER TABLE Order AUTO_INCREMENT = 1`
+		// console.log('Reset Order auto increment to 1')
+
 		//* Wishlist
 		await prisma.wishlist.deleteMany()
 		console.log('Deleted Wishlist')
