@@ -3,20 +3,15 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { userId, status, transactionId, paymentAmount, createdAt, updatedAt } = req.body
+		const { userId } = req.body
 
 		try {
-			const data = await prisma.order.create({
-				data: {
-					userId,
-					status,
-					transactionId,
-					paymentAmount: paymentAmount,
-					createdAt,
-					updatedAt
+			const data = await prisma.cart.deleteMany({
+				where: {
+					userId
 				}
 			})
-			return res.status(200).json(data.id)
+			return res.status(200).json(data)
 		} catch (error) {
 			return res.status(500).json(error)
 		}

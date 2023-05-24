@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { IPayment } from '../interfaces/payment.interface'
 
 axios.defaults.baseURL = process.env.API_URL
 
@@ -13,13 +12,26 @@ export const PaymentService = {
 		updatedAt: string
 	) {
 		try {
-			const res = await axios.post<IPayment>(`/payment/approve`, {
+			const res = await axios.post(`/payment/approve`, {
 				userId,
 				status,
 				transactionId,
 				paymentAmount,
 				createdAt,
 				updatedAt
+			})
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async addOrderProduct(orderId: number, productId: number, count: number) {
+		try {
+			const res = await axios.post(`/payment/add/order`, {
+				orderId,
+				productId,
+				count
 			})
 			return res.data
 		} catch (error) {

@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect, useState } from 'react'
+import React, { FC, useEffect, useLayoutEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 interface IReactPortalProps {
@@ -14,11 +14,11 @@ const createWrapperAndAppendToBody = (wrapperId: string) => {
 }
 
 const ReactPortal: FC<IReactPortalProps> = ({ children, wrapperId }) => {
-	React.useLayoutEffect = React.useEffect
+	// React.useLayoutEffect = React.useEffect
 
 	const [wrapperElement, setWrapperElement] = useState<HTMLElement>()
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		let element = document.getElementById(wrapperId)
 		let systemCreated = false
 		if (!element) {

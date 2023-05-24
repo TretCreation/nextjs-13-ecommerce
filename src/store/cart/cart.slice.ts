@@ -182,6 +182,24 @@ export const decrementCountProducts = createAsyncThunk(
 	}
 )
 
+export const clearCartProducts = createAsyncThunk(
+	'cart/clearCartProducts',
+	async function (userId: number, { rejectWithValue, dispatch }) {
+		try {
+			await CartService.clearCart(userId)
+			dispatch(clearCart())
+		} catch (error: unknown) {
+			if (error instanceof Error) {
+				console.error('An error occurred:', error)
+				return rejectWithValue(error.message)
+			} else {
+				console.error('An unexpected error occurred:', error)
+				return rejectWithValue('An unexpected error occurred.')
+			}
+		}
+	}
+)
+
 export const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
@@ -195,12 +213,12 @@ export const cartSlice = createSlice({
 					state.cartProducts.splice(index, 1)
 				}
 			} else {
-				const productWithCount = { ...product }
+				const productWithCount = { ...product, count: 1 }
 				state.cartProducts.push(productWithCount)
 			}
 		},
 		addProduct(state, { payload: product }: PayloadAction<ICartStateProps>) {
-			const productWithCount = { ...product }
+			const productWithCount = { ...product, count: 1 }
 			state.cartProducts.push(productWithCount)
 		},
 		removeProduct(state, { payload: product }: PayloadAction<ICartStateProps>) {
@@ -227,6 +245,9 @@ export const cartSlice = createSlice({
 			if (product) {
 				product.count += 1
 			}
+		},
+		clearCart(state) {
+			state.cartProducts = []
 		}
 	}
 })
@@ -238,5 +259,6 @@ export const {
 	updateProducts,
 	removeProduct,
 	decrementCount,
-	incrementCount
+	incrementCount,
+	clearCart
 } = actions

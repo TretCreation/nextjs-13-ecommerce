@@ -18,7 +18,6 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 
 	const calculateSubtotal = (): number => {
 		let subtotal = 0
-
 		cartProducts.forEach(product => {
 			subtotal += product.price * product.count
 		})

@@ -60,5 +60,16 @@ export const CartService = {
 			console.log(error)
 			throw error
 		}
+	},
+	async clearCart(userId: number) {
+		try {
+			const res = await axios.post<ICart>(`/cart/clear`, {
+				userId
+			})
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
 	}
 }
