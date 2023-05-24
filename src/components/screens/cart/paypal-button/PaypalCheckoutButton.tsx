@@ -89,10 +89,22 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 							{
 								amount: {
 									currency_code: 'USD',
-									value: String(subtotal)
+									value: String(subtotal),
+									breakdown: {
+										item_total: {
+											currency_code: 'USD',
+											value: String(subtotal)
+										}
+									}
 								},
-								//TODO Item
-								// items: ,
+								items: cartProducts.map(product => ({
+									name: product.name,
+									unit_amount: {
+										currency_code: 'USD',
+										value: String(product.price)
+									},
+									quantity: String(product.count)
+								})),
 								description: 'TretStore Order'
 							}
 						]
