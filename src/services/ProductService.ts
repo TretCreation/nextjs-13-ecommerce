@@ -26,9 +26,7 @@ export const ProductService = {
 
 	async getPaginatedProducts(limit: number, page: number) {
 		try {
-			const res = await axios.get<IProduct[]>(
-				`/products/page?limit=${limit}&page=${page}`
-			)
+			const res = await axios.get<IProduct[]>(`/products/page?limit=${limit}&page=${page}`)
 			return res.data
 		} catch (error) {
 			console.log(error)
@@ -45,7 +43,7 @@ export const ProductService = {
 			throw error
 		}
 	},
-
+	//?
 	async createProduct(formData: FormData) {
 		try {
 			// const data = Object.fromEntries(formData)
@@ -68,7 +66,7 @@ export const ProductService = {
 			throw error
 		}
 	},
-
+	//?
 	async uploadImage(formData: FormData) {
 		try {
 			// const data = Object.fromEntries(formData)
@@ -94,5 +92,26 @@ export const ProductService = {
 			console.log(error)
 			throw error
 		}
+	},
+
+	async addProductInfo(productId: number, description: string, title: string) {
+		try {
+			const res = await axios.post(`/product/info/add`, { productId, description, title })
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+
+	async removeProductInfo(productId: number) {
+		try {
+			const res = await axios.post<IProduct>(`/product/info/remove`, { productId })
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
 	}
+	//TODO async editProductInfo()
 }

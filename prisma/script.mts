@@ -2,12 +2,16 @@ import { PrismaClient } from '@prisma/client'
 
 enum Brands {
 	Apple = 1,
-	Samsung = 2
+	Samsung = 2,
+	Lenovo = 3,
+	Asus = 4
 }
 
 enum Types {
 	Smartphones = 1,
-	Laptops = 2
+	Laptops = 2,
+	Watches = 3,
+	Headphones = 4
 }
 
 const prisma = new PrismaClient()
@@ -18,12 +22,12 @@ const prisma = new PrismaClient()
 async function main() {
 	const product = await prisma.product.create({
 		data: {
-			name: 'Samsung Galaxy S23 Pink',
+			name: 'Watch Ultra Yellow',
 			price: 799,
-			img: '/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-pink',
-			rating: 3,
-			brandId: Brands.Samsung,
-			typeId: Types.Smartphones
+			img: '/assets/products/apple/headphones/apple-watch-ultra/apple-watch-ultra-yellow.png',
+			rating: 4,
+			brandId: Brands.Apple,
+			typeId: Types.Watches
 		}
 	})
 	console.log(product)

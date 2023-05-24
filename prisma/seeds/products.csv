@@ -24,3 +24,16 @@ id,name,price,rating,brandId,typeId,img
 23,Samsung Galaxy S23 Green,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-green.png
 24,Samsung Galaxy S23 Phantom Black,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-phantom-black.png
 25,Samsung Galaxy S23 Pink,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-pink.png
+26,AirPods Max Green,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-green.png
+27,AirPods Max Pink,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-pink.png
+28,AirPods Max Silver,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-silver.png
+29,AirPods Max Sky Blue,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-sky-blue.png
+30,AirPods Max Space Gray,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-space-gray.png
+31,AirPods Pro 2,249,5,1,4,/assets/products/apple/headphones/apple-airpods-pro-2/apple-airpods-pro-2.png
+32,Watch Series 8 Midnight,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-midnight.png
+33,Watch Series 8 Product Red,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-product-red.png
+34,Watch Series 8 Silver,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-silver.png
+35,Watch Series 8 Starlight,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-starlight.png
+36,Watch Ultra Midnight,799,4,1,3,/assets/products/apple/watches/apple-watch-ultra/apple-watch-ultra-midnight.png
+37,Watch Ultra White,799,4,1,3,/assets/products/apple/watches/apple-watch-ultra/apple-watch-ultra-white.png
+38,Watch Ultra Yellow,799,4,1,3,/assets/products/apple/watches/apple-watch-ultra/apple-watch-ultra-yellow.png

@@ -33,6 +33,29 @@ async function main() {
 				console.log('CSV User file successfully processed.')
 			})
 
+		//* Product_info
+		await prisma.product_info.deleteMany()
+		console.log('Deleted Product_info')
+
+		await prisma.$queryRaw`ALTER TABLE Product_info AUTO_INCREMENT = 1`
+		console.log('Reset Product_info auto increment to 1')
+
+		fs.createReadStream('prisma/seeds/product_info.csv')
+			.pipe(csv())
+			.on('data', async row => {
+				await prisma.product_info.create({
+					data: {
+						id: Number(row.id),
+						productId: Number(row.productId),
+						title: String(row.title),
+						description: String(row.description)
+					}
+				})
+			})
+			.on('end', () => {
+				console.log('CSV Product_info file successfully processed.')
+			})
+
 		//* Brand
 		await prisma.brand.deleteMany()
 		console.log('Deleted Brands')
@@ -74,6 +97,7 @@ async function main() {
 			.on('end', () => {
 				console.log('CSV Type file successfully processed.')
 			})
+
 		//* Products
 		await prisma.product.deleteMany()
 		console.log('Deleted Products')
@@ -99,13 +123,6 @@ async function main() {
 			.on('end', () => {
 				console.log('CSV Product file successfully processed.')
 			})
-
-		//* Order
-		await prisma.order.deleteMany()
-		console.log('Deleted Order')
-
-		// await prisma.$queryRaw`ALTER TABLE Order AUTO_INCREMENT = 1`
-		// console.log('Reset Order auto increment to 1')
 
 		//* Wishlist
 		await prisma.wishlist.deleteMany()
@@ -151,6 +168,29 @@ async function main() {
 				console.log('CSV Cart file successfully processed.')
 			})
 
+		//* Order_Product
+		await prisma.order_product.deleteMany()
+		console.log('Deleted Order_Product')
+
+		await prisma.$queryRaw`ALTER TABLE Order_product AUTO_INCREMENT = 1`
+		console.log('Reset Order_Product auto increment to 1')
+
+		fs.createReadStream('prisma/seeds/order_product.csv')
+			.pipe(csv())
+			.on('data', async row => {
+				await prisma.order_product.create({
+					data: {
+						id: Number(row.id),
+						orderId: Number(row.orderId),
+						productId: Number(row.productId),
+						count: Number(row.count)
+					}
+				})
+			})
+			.on('end', () => {
+				console.log('CSV Order_Product file successfully processed.')
+			})
+
 		//* Orders
 		await prisma.order.deleteMany()
 		console.log('Deleted Orders')
@@ -174,30 +214,7 @@ async function main() {
 				})
 			})
 			.on('end', () => {
-				console.log('CSV Product file successfully processed.')
-			})
-
-		//* Order_Product
-		await prisma.order_product.deleteMany()
-		console.log('Deleted Order_Product')
-
-		await prisma.$queryRaw`ALTER TABLE Order_product AUTO_INCREMENT = 1`
-		console.log('Reset Order_Product auto increment to 1')
-
-		fs.createReadStream('prisma/seeds/order_product.csv')
-			.pipe(csv())
-			.on('data', async row => {
-				await prisma.order_product.create({
-					data: {
-						id: Number(row.id),
-						orderId: Number(row.orderId),
-						productId: Number(row.productId),
-						count: Number(row.count)
-					}
-				})
-			})
-			.on('end', () => {
-				console.log('CSV Product file successfully processed.')
+				console.log('CSV Orders file successfully processed.')
 			})
 
 		console.log('Data seeding complete')
