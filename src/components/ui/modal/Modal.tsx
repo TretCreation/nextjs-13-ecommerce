@@ -20,7 +20,6 @@ const Modal: FC<ModalProps> = ({ children, wrapperId, handleClose }) => {
 	useScrollBlock()
 
 	//* Close modal on escape
-	//?
 	useEffect(() => {
 		const closeOnEscapeKey = (e: KeyboardEvent) => (e.key === 'Escape' ? handleClose() : null)
 		document.body.addEventListener('keydown', closeOnEscapeKey)

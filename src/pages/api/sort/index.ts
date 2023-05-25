@@ -1,28 +1,27 @@
 import prisma from '@/prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'GET') {
+		const { limit, q, r, p } = req.query
+
+		const ITEMS_PER_PAGE = Number(limit)
+		const page = Number(req.query.page)
+		const skip = (page - 1) * ITEMS_PER_PAGE
+
 		try {
-			const PER_PAGE = Number(req.query.limit)
-			const currentPage = Number(req.query.page)
 			const data = await prisma.product.findMany({
 				where: {
-					typeId: Number(req.query.q)
+					typeId: Number(q)
 				},
-				//?
 				orderBy: {
-					rating: req.query.r,
-					price: req.query.p
+					rating: r,
+					price: p
 				} as any,
-				skip: (currentPage - 1) * PER_PAGE,
-				take: PER_PAGE
+				skip: skip,
+				take: ITEMS_PER_PAGE
 			})
-			console.log('per_page', PER_PAGE)
-			console.log('currentPage', currentPage)
+
 			return res.status(200).json(data)
 		} catch (error) {
 			return res.status(500).json(error)

@@ -23,11 +23,11 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<div className={styles.card}>
-			<Link href={`product/${product.id}`} className={styles.img}>
+			<Link href={`/product/${product.id}`} className={styles.img}>
 				<Image src={product.img} alt={product.name} width={400} height={0} priority />
 			</Link>
 			<div className={styles.info}>
-				<Link href={`product/${product.id}`}>
+				<Link href={`/product/${product.id}`}>
 					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
 				<Button appearance='svg' className={styles.wishlist}>

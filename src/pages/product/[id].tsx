@@ -13,7 +13,6 @@ const Product: NextPage<{ product: IProduct }> = ({ product }) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-	//? getAll
 	const products = await ProductService.getAll()
 
 	return {
@@ -26,9 +25,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 	}
 }
 
-export const getStaticProps: GetStaticProps<{ product: IProduct }> = async ({
-	params
-}) => {
+export const getStaticProps: GetStaticProps<{ product: IProduct }> = async ({ params }) => {
 	const product = await ProductService.getById(String(params?.id))
 
 	return {

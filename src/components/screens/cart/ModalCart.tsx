@@ -35,7 +35,7 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 				</Button>
 			</div>
 			{cartProducts.length > 0 ? (
-				<div className={styles.products}>
+				<div className={styles.products} onClick={handleClose}>
 					{cartProducts.map(cartProduct => (
 						<CartItem key={cartProduct.id} cartProduct={cartProduct} />
 					))}

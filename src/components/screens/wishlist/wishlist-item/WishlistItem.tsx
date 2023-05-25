@@ -27,7 +27,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 
 	return (
 		<div className={styles.product}>
-			<Link href={`product/${wishProduct.id}`} className={styles.link}>
+			<Link href={`/product/${wishProduct.id}`} className={styles.link}>
 				<Image
 					src={wishProduct.img}
 					alt={wishProduct.name}
@@ -49,6 +49,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 						? () =>
 								dispatch(
 									addCartProducts({
+										//?
 										product: wishProduct,
 										productId: wishProduct.id,
 										userId: session.user.id

@@ -21,8 +21,12 @@ export { default as SearchBarList } from './layout/header/searchbar/searchbar-li
 
 // //* Screens
 export { default as Pagination } from './screens/pagination/Pagination'
-export { default as CategorySmartphones } from './screens/category/smartphones/CategorySmartphones'
 export { default as Home } from './screens/home/Home'
+// Category
+export { default as CategorySmartphones } from './screens/category/smartphones/CategorySmartphones'
+export { default as CategoryLaptops } from './screens/category/laptops/CategoryLaptops'
+export { default as CategoryWatches } from './screens/category/watches/CategoryWatches'
+export { default as CategoryHeadphones } from './screens/category/headphones/CategoryHeadphones'
 // Products
 export { default as NoProducts } from './screens/product/product-empty/NoProducts'
 export { default as ProductItem } from './screens/product/product-item/ProductItem'

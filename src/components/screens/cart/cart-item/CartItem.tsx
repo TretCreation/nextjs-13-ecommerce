@@ -23,7 +23,7 @@ const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
 
 	return (
 		<div className={styles.product}>
-			<Link href={`product/${cartProduct.id}`} className={styles.link}>
+			<Link href={`/product/${cartProduct.id}`} className={styles.link}>
 				<Image
 					src={cartProduct.img}
 					alt={cartProduct.name}

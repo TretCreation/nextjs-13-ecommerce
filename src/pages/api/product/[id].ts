@@ -1,10 +1,7 @@
 import prisma from '@/prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const query = Number(req.query.id)
 
 	if (req.method === 'GET') {
@@ -15,7 +12,8 @@ export default async function handler(
 				},
 				include: {
 					brand: true,
-					type: true
+					type: true,
+					product_info: true
 				}
 			})
 			return res.status(200).json(data)

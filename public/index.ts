@@ -26,6 +26,8 @@ export { default as RightArrowIcon } from './svg/pagination/right-arrow.svg'
 // Products
 export { default as LaptopIcon } from './svg/products/laptop.svg'
 export { default as SmartphoneIcon } from './svg/products/smartphone.svg'
+export { default as WatchIcon } from './svg/products/watch.svg'
+export { default as HeadphonesIcon } from './svg/products/headphones.svg'
 
 // //* IMG
 export { default as logo } from './logo.png'

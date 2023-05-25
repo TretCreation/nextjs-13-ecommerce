@@ -1,5 +1,5 @@
-import { LaptopIcon, SmartphoneIcon } from '@/public'
-import { useOutside, useEscape } from '@/src/components'
+import { HeadphonesIcon, LaptopIcon, SmartphoneIcon, WatchIcon } from '@/public'
+import { useEscape, useOutside } from '@/src/components'
 import { FC, useRef } from 'react'
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'
@@ -29,9 +29,18 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 			<DropdownItem
 				svg={<LaptopIcon className={styles.svg} />}
 				text='Laptops'
-				href='#'
+				href='/category/laptops'
 			/>
-			<DropdownItem text='text #3' href='#' />
+			<DropdownItem
+				svg={<WatchIcon className={styles.svg} />}
+				text='Watches'
+				href='/category/watches'
+			/>
+			<DropdownItem
+				svg={<HeadphonesIcon className={styles.svg} />}
+				text='Headphones'
+				href='/category/headphones'
+			/>
 		</div>
 	)
 }

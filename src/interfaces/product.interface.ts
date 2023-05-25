@@ -16,4 +16,10 @@ export interface IProductHomeProps {
 export interface IProductPage extends IProduct {
 	brand?: { id: number; name: string }
 	type?: { id: number; name: string }
+	product_info?: {
+		id: number
+		productId: number
+		title: string
+		description: string
+	}[]
 }

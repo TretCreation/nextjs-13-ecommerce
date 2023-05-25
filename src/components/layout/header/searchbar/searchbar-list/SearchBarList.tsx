@@ -49,12 +49,9 @@ const SearchBarList: FC<ISearchBarListProps> = ({ searchedProducts }) => {
 	console.log('isOpen: ', isOpen)
 
 	return (
-		<div className={styles.list} ref={ref}>
+		<div className={styles.list} ref={ref} onClick={handleClose}>
 			{searchedProducts.map(searchedProduct => (
-				<SearchBarItem
-					key={searchedProduct.id}
-					searchedProduct={searchedProduct}
-				/>
+				<SearchBarItem key={searchedProduct.id} searchedProduct={searchedProduct} />
 			))}
 		</div>
 	)
