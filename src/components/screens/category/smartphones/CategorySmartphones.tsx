@@ -23,13 +23,18 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({ smartphones }) => 
 		fetchData()
 	}, [])
 
+	useEffect(() => {
+		console.log('brandId', brandId)
+		setCurrentPage(1)
+	}, [brandId])
+
 	return (
 		<div className={styles.category}>
 			<div className={styles.filter}>
 				<div className='flex flex-col'>
 					<p>Brands:</p>
 					{brands.map(brand => (
-						<div className='flex flex-row'>
+						<div key={brand.id} className='flex flex-row'>
 							<Input type='checkbox' />
 							<Button appearance='solid' onClick={() => setBrandId(brand.id)}>
 								<p className='text-black'>{brand.name}</p>
@@ -40,8 +45,9 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({ smartphones }) => 
 			</div>
 			<div>
 				<SortBy
-					limit={16}
+					limit={4}
 					q={1}
+					brandId={brandId}
 					currentPage={currentPage}
 					setCurrentPage={currentPage => setCurrentPage(currentPage)}
 					getProducts={products => setProducts(products)}

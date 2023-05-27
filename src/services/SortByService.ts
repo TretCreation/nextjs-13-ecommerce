@@ -5,9 +5,24 @@ import { IProduct } from '../interfaces/product.interface'
 axios.defaults.baseURL = process.env.API_URL
 
 export const SortByService = {
-	async getSortedProducts(k: sortKey, v: sortValue, q: typeId, limit: number, page: number) {
+	async getSortedProducts(
+		k: sortKey,
+		v: sortValue,
+		q: typeId,
+		limit: number,
+		page: number,
+		brandId: number | undefined
+	) {
 		try {
-			const res = await axios.get<IProduct[]>(`/sort?q=${q}&${k}=${v}&limit=${limit}&page=${page}`)
+			if (brandId !== undefined) {
+				const res = await axios.get<IProduct[]>(
+					`/sort?q=${q}&${k}=${v}&limit=${limit}&page=${page}&brandId=${brandId}`
+				)
+				return res.data
+			}
+			const res = await axios.get<IProduct[]>(
+				`/sort?q=${q}&${k}=${v}&limit=${limit}&page=${page}`
+			)
 			return res.data
 		} catch (error) {
 			console.log(error)

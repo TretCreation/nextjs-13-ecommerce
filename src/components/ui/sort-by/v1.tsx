@@ -43,25 +43,42 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
 	useEffect(() => {
 		const handleInput = async () => {
 			setIsLoading(true)
-			setSortedProducts([])
-			const res = await SortByService.getSortedProducts(
-				getKey,
-				getValue,
-				q,
-				limit,
-				currentPage,
-				brandId
-			)
-			const updatedProducts = [...sortedProducts, ...res]
 
-			console.log('res', res)
-			console.log('sortedProducts', sortedProducts)
-			console.log('updatedProducts', updatedProducts)
+			if (brandId) {
+				setIsLoading(true)
+				const res = await SortByService.getSortedProducts(
+					getKey,
+					getValue,
+					q,
+					limit,
+					currentPage,
+					brandId
+				)
+				setIsLoading(false)
+				setSortedProducts(res)
+				getProducts(res)
+			} else {
+				setSortedProducts([])
+				const res = await SortByService.getSortedProducts(
+					getKey,
+					getValue,
+					q,
+					limit,
+					currentPage,
+					brandId
+				)
+				const updatedProducts = brandId ? res : [...sortedProducts, ...res]
 
-			setSortedProducts(updatedProducts)
-			getProducts(updatedProducts)
+				// const updatedProducts = [...sortedProducts, ...res]
 
-			setIsLoading(false)
+				console.log('res', res)
+				console.log('sortedProducts', sortedProducts)
+				console.log('updatedProducts', updatedProducts)
+
+				setIsLoading(false)
+				setSortedProducts(updatedProducts) // Add new response to the current state
+				getProducts(updatedProducts)
+			}
 		}
 
 		handleInput()
