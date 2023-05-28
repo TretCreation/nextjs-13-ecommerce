@@ -31,15 +31,15 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({ smartphones }) => 
 	return (
 		<div className={styles.category}>
 			<div className={styles.filter}>
+				<p className={styles.text}>Brands:</p>
 				<div className='flex flex-col'>
-					<p>Brands:</p>
 					{brands.map(brand => (
-						<div key={brand.id} className='flex flex-row'>
-							<Input type='checkbox' />
-							<Button appearance='solid' onClick={() => setBrandId(brand.id)}>
+						<Button appearance='solid' onClick={() => setBrandId(brand.id)}>
+							<label key={brand.id} className='flex-row'>
+								<Input type='checkbox' />
 								<p className='text-black'>{brand.name}</p>
-							</Button>
-						</div>
+							</label>
+						</Button>
 					))}
 				</div>
 			</div>

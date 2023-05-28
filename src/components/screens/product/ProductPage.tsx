@@ -1,16 +1,32 @@
 import { IProductPage } from '@/src/interfaces/product.interface'
+import { ProductService } from '@/src/services/ProductService'
 import Head from 'next/head'
 import Image from 'next/image'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Rating from '../../ui/rating/Rating'
 import styles from './ProductPage.module.scss'
+import RecommendProduct from './recommend-product/RecommendProduct'
 
 export interface IProductPageProps {
 	product: IProductPage
 }
 
 const ProductPage: FC<IProductPageProps> = ({ product }) => {
+	const [recommendProduct, setRecommendsProduct] = useState()
 	console.log(product)
+
+	useEffect(() => {
+		async function fetchData() {
+			const res = await ProductService.getRecommendation(product.id)
+			//?
+			if (!res) return
+			setRecommendsProduct(res)
+		}
+		fetchData()
+	}, [product.id])
+
+	console.log('recommendProduct', recommendProduct)
+
 	return (
 		<div className={styles.main}>
 			<Head>
@@ -44,11 +60,21 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
 				<div>
 					{product.product_info &&
 						product.product_info.map(info => (
-							<div className='flex flex-row'>
+							<div className='flex flex-row' key={info.id}>
 								<p>{info.description}:</p>
 								<p>{info.title}</p>
 							</div>
 						))}
+				</div>
+				<div className={styles.recommendations}>
+					{recommendProduct ? (
+						<>
+							<p className='border-t-3 border'>What buys with:</p>
+							<RecommendProduct recommendProduct={recommendProduct} />
+						</>
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</div>

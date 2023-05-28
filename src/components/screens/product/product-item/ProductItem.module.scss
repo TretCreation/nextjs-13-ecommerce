@@ -1,24 +1,25 @@
 .card {
-	@apply mb-6 w-52 rounded-lg border-2 border-gray-300 shadow-sm; // block
+	@apply relative mb-6 h-[29rem] w-[17rem] rounded-lg border-[1px] border-[#F6F6F6] shadow-sm;
 
-	.img {
-		@apply h-full w-full;
+	.link {
+		@apply flex h-64 w-full items-center justify-center bg-gradient-to-r from-[#E7E7E7] to-[#F6F6F6];
+
+		.img {
+			@apply block;
+		}
 	}
 
 	.info {
-		@apply mt-3 flex flex-col items-center justify-center;
+		@apply mt-7 flex flex-col items-center justify-center;
 
 		.title {
-			@apply text-lg text-blue-dark;
+			@apply h-[3.5rem] overflow-hidden text-center text-lg text-blue-dark;
 		}
 
 		.btn {
 			@apply w-full bg-primary-main;
-
-			// from-primary-main to-purple-500
 		}
 
-		// Wishlist
 		.wishlist {
 			.exist {
 				@apply fill-blue-500;
@@ -29,13 +30,20 @@
 			}
 		}
 
-		// Cart
+		.price {
+			@apply mt-2;
+		}
+
+		.rating {
+			@apply mt-2;
+		}
+
 		.cart-exist {
-			@apply w-full bg-blue-500;
+			@apply absolute bottom-0 w-full bg-blue-500;
 		}
 
 		.cart-not-exist {
-			@apply w-full bg-primary-main;
+			@apply absolute bottom-0 w-full bg-primary-main;
 		}
 	}
 }

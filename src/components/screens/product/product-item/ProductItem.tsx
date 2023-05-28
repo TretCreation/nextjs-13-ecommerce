@@ -23,8 +23,15 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<div className={styles.card}>
-			<Link href={`/product/${product.id}`} className={styles.img}>
-				<Image src={product.img} alt={product.name} width={400} height={0} priority />
+			<Link href={`/product/${product.id}`} className={styles.link}>
+				<Image
+					src={product.img}
+					alt={product.name}
+					width={160}
+					height={0}
+					priority
+					className={styles.img}
+				/>
 			</Link>
 			<div className={styles.info}>
 				<Link href={`/product/${product.id}`}>
@@ -47,8 +54,8 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 						}
 					/>
 				</Button>
-				<p>${product.price}</p>
-				<Rating rating={product.rating} />
+				<p className={styles.price}>${product.price}</p>
+				<Rating rating={product.rating} className={styles.rating} />
 				<Button
 					appearance='primary'
 					className={isExistCart ? styles['cart-exist'] : styles['cart-not-exist']}

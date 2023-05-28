@@ -1,13 +1,11 @@
 import { StarIcon } from '@/public'
 import cn from 'classnames'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Rating.module.scss'
 import { RatingProps } from './Rating.props'
 
 const Rating = ({ rating, setRating, ...props }: RatingProps): JSX.Element => {
-	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
-		new Array(5).fill(<></>)
-	)
+	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
 
 	useEffect(() => {
 		constructRating(rating)
@@ -27,7 +25,7 @@ const Rating = ({ rating, setRating, ...props }: RatingProps): JSX.Element => {
 	}
 
 	return (
-		<div {...props} className='flex flex-row'>
+		<div {...props} className='mt-2 flex flex-rows'>
 			{ratingArray.map((r, i) => (
 				<span key={i}>{r}</span>
 			))}

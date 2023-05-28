@@ -32,6 +32,7 @@ export { default as NoProducts } from './screens/product/product-empty/NoProduct
 export { default as ProductItem } from './screens/product/product-item/ProductItem'
 export { default as ProductList } from './screens/product/product-list/ProductList'
 export { default as ProductPage } from './screens/product/ProductPage'
+export { default as RecommendProduct } from './screens/product/recommend-product/RecommendProduct'
 // Cart
 export { default as NoCartProducts } from './screens/cart/cart-empty/NoProducts'
 export { default as ModalCart } from './screens/cart/ModalCart'

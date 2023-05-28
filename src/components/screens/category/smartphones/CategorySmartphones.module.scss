@@ -2,10 +2,14 @@
 	@apply container mx-auto my-0 mt-9 flex flex-row;
 
 	.filter {
-		@apply w-96 flex-initial border;
+		@apply mr-8 w-[17rem] flex-initial border p-8 shadow-md;
+
+		.text {
+			@apply text-lg;
+		}
 	}
 
 	.products {
-		@apply grid grid-cols-4;
+		@apply grid grid-cols-4 gap-x-8;
 	}
 }

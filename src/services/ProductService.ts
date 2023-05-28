@@ -112,6 +112,16 @@ export const ProductService = {
 			console.log(error)
 			throw error
 		}
+	},
+	//TODO: async editProductInfo()
+	async getRecommendation(productId: number) {
+		try {
+			const res = await axios.get<IProduct>(`/recommendations?productId=${productId}`)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			//?
+			// throw error
+		}
 	}
-	//TODO async editProductInfo()
 }
