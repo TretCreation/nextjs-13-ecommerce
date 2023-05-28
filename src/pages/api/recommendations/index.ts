@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					COUNT(op.id) DESC
 				LIMIT 3;`
 
-			if (result.length === 0) return res.status(500).json('Error')
+			if (result.length === 0) return res.status(200).json('empty recommendations')
 
 			const formattedResult: FormattedResult[] = result.map(item => ({
 				count: Number(item.count),
@@ -43,10 +43,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 			}))
 
 			const recommendedProductIds = formattedResult.map(item => item.productId)
+			console.log(recommendedProductIds)
 
-			const data = await prisma.product.findUnique({
+			const data = await prisma.product.findMany({
 				where: {
-					id: recommendedProductIds[0]
+					id: { in: recommendedProductIds }
 				}
 			})
 

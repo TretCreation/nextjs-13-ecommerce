@@ -12,70 +12,73 @@ export interface IProductPageProps {
 }
 
 const ProductPage: FC<IProductPageProps> = ({ product }) => {
-	const [recommendProduct, setRecommendsProduct] = useState()
-	console.log(product)
+	const [recommendProducts, setRecommendsProducts] = useState()
 
 	useEffect(() => {
 		async function fetchData() {
 			const res = await ProductService.getRecommendation(product.id)
 			//?
 			if (!res) return
-			setRecommendsProduct(res)
+			//?
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			setRecommendsProducts(res)
 		}
 		fetchData()
 	}, [product.id])
-
-	console.log('recommendProduct', recommendProduct)
 
 	return (
 		<div className={styles.main}>
 			<Head>
 				<title>{product.name}</title>
 			</Head>
-			<div>
+			<div className={styles['img-block']}>
 				<Image
 					src={product.img}
 					alt={product.name}
-					width={400}
+					width={350}
 					height={0}
 					className={styles.img}
 				/>
 			</div>
 			<div className={styles.description}>
 				<div>
-					<h1 className='text-2xl'>{product.name}</h1>
-					<Rating rating={product.rating} />
-					<p>
-						<a className={styles.a}>Availability:</a>
-					</p>
-					<p>
-						<a className={styles.a}>Brand:</a>
+					<h1 className={styles.product}>{product.name}</h1>
+					<div className={styles.rating}>
+						<Rating rating={product.rating} />
+					</div>
+					<p className='mb-1'>
+						<a className={styles.text}>
+							<b>Brand</b>:&nbsp;&nbsp;
+						</a>
 						{product.brand?.name}
 					</p>
-					<p>
-						<a className={styles.a}>Category:</a>
+					<p className='mb-3'>
+						<a className={styles.text}>
+							<b>Category</b>:&nbsp;&nbsp;
+						</a>
 						{product.type?.name}
 					</p>
 				</div>
 				<div>
+					<p>Descriptions: </p>
 					{product.product_info &&
 						product.product_info.map(info => (
 							<div className='flex flex-row' key={info.id}>
-								<p>{info.description}:</p>
+								<p>
+									<b>{info.description}</b>:&nbsp;&nbsp;
+								</p>
 								<p>{info.title}</p>
 							</div>
 						))}
 				</div>
-				<div className={styles.recommendations}>
-					{recommendProduct ? (
-						<>
-							<p className='border-t-3 border'>What buys with:</p>
-							<RecommendProduct recommendProduct={recommendProduct} />
-						</>
-					) : (
-						<></>
-					)}
-				</div>
+				{recommendProducts ? (
+					<div className={styles.recommendations}>
+						<RecommendProduct recommendProducts={recommendProducts} />
+					</div>
+				) : (
+					<></>
+				)}
 			</div>
 		</div>
 	)

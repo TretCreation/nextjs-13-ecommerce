@@ -1,14 +1,26 @@
 .main {
-	@apply flex justify-center;
+	@apply container relative mx-auto my-0 mt-7 flex justify-start;
 
-	.img {
-		@apply h-full w-full;
+	.img-block {
+		@apply flex h-[40rem] w-full max-w-[40rem] items-center justify-center bg-gradient-to-r from-[#E7E7E7] to-[#F6F6F6] text-red-50;
+
+		.img {
+			@apply block;
+		}
 	}
 
 	.description {
-		@apply flex-col;
+		@apply ml-12 flex-col;
 
-		.a {
+		.product {
+			@apply mb-3 text-2xl uppercase;
+		}
+
+		.rating {
+			@apply mb-5;
+		}
+
+		.text {
 			@apply font-semibold;
 		}
 	}

@@ -120,8 +120,6 @@ export const ProductService = {
 			return res.data
 		} catch (error) {
 			console.log(error)
-			//?
-			// throw error
 		}
 	}
 }

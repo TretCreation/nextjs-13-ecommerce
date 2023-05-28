@@ -1,0 +1,27 @@
+.title {
+	@apply mb-[0.4rem] mt-2 bg-[#F6F6F6] p-[0.4rem];
+}
+
+.product {
+	@apply mb-5 flex h-28 flex-row items-center justify-between rounded-md border px-4 py-4;
+
+	.link {
+		@apply flex basis-2/4 items-center;
+
+		.img {
+			@apply object-contain;
+		}
+	}
+
+	.text {
+		@apply ml-24 text-center uppercase text-blue-dark;
+	}
+
+	.price {
+		@apply basis-1/5  text-center  text-primary-main;
+	}
+
+	.btn {
+		@apply w-36 basis-2/12 text-sm uppercase;
+	}
+}

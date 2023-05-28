@@ -49,7 +49,6 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 						? () =>
 								dispatch(
 									addCartProducts({
-										//?
 										product: wishProduct,
 										productId: wishProduct.id,
 										userId: session.user.id
