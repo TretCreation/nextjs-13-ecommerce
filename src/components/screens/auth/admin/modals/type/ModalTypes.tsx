@@ -44,6 +44,7 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
 	return (
 		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
 			<CrossIcon onClick={handleClose} className='h-5 w-5' />
+			<p>New type</p>
 			<div className={styles.add}>
 				<Input
 					type='text'
@@ -57,7 +58,7 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
 				)}
 				{error === 'success added' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' onClick={onAddSubmit}>
-					Add a Type
+					Save
 				</Button>
 			</div>
 			<div>vertical line</div>
@@ -74,7 +75,7 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
 				)}
 				{error === 'success removed' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' onClick={onRemoveSubmit}>
-					Remove a Type
+					Save
 				</Button>
 			</div>
 		</Modal>

@@ -5,12 +5,37 @@
 }
 
 .menu {
-	/* @apply; */
+	@apply container m-auto mt-12 mb-16 max-w-lg border p-8 shadow-md;
+
+	.title {
+		@apply text-2xl;
+	}
+
 	.h1 {
-		@apply mb-6 flex flex-col border;
+		@apply mb-6 flex flex-col;
 	}
 
 	.input {
 		@apply flex flex-col;
+	}
+
+	.titlecheck {
+		@apply mt-4 flex;
+	}
+
+	.titlecheck > p {
+		@apply ml-2;
+	}
+
+	.btnlog {
+		@apply mb-4 mt-4;
+	}
+
+	.btnfacebook {
+		@apply mr-4 mb-4 flex h-12 w-40 items-center justify-center;
+	}
+
+	.btngoogle {
+		@apply mr-4 mb-4 flex h-12 w-40 items-center justify-center;
 	}
 }

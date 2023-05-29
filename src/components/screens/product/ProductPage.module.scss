@@ -23,5 +23,19 @@
 		.text {
 			@apply font-semibold;
 		}
+
+		.cart {
+			@apply mb-4 mt-4 mr-6;
+		}
+
+		.wishlist {
+			.exist {
+				@apply fill-blue-500;
+			}
+
+			.not-exist {
+				@apply fill-primary-main;
+			}
+		}
 	}
 }

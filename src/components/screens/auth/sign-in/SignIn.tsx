@@ -25,7 +25,9 @@ const SignIn: FC = () => {
 	return (
 		<div className={styles.menu}>
 			<div className={styles.h1}>
-				<h1>LOGIN</h1>
+				<h1 className={styles.title}>
+					<b>LOGIN</b>
+				</h1>
 				<p>Welcome back customer</p>
 			</div>
 			<div className={styles.input}>
@@ -48,19 +50,19 @@ const SignIn: FC = () => {
 					className='mb-1'
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<div className='flex flex-row'>
+				<div className={styles.titlecheck}>
 					<Input type='checkbox' />
 					<p>Remember me</p>
 					<p className='mr-10 text-primary-main'>Forgot password</p>
 				</div>
-				<Button appearance='primary' className='mb-4' onClick={onSubmit}>
+				<Button appearance='primary' className={styles.btnlog} onClick={onSubmit}>
 					LOGIN
 				</Button>
 				<p className='mb-2'>OR LOGIN WITH</p>
 				<div className='flex flex-row'>
 					<Button
 						appearance='primary'
-						className='mr-2 mb-3 flex flex-row bg-blue-500'
+						className={styles.btnfacebook}
 						onClick={() => signIn('facebook', { callbackUrl: '/' })}
 					>
 						<p>FACEBOOK</p>
@@ -69,7 +71,7 @@ const SignIn: FC = () => {
 					<Button
 						appearance='primary'
 						onClick={() => signIn('google', { callbackUrl: '/' })}
-						className='flex flex-row'
+						className={styles.btngoogle}
 					>
 						<p>GOOGLE</p>
 						<GoogleIcon />

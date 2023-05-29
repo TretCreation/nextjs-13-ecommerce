@@ -35,9 +35,9 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({ smartphones }) => 
 				<div className='flex flex-col'>
 					{brands.map(brand => (
 						<Button appearance='solid' onClick={() => setBrandId(brand.id)}>
-							<label key={brand.id} className='flex-row'>
+							<label key={brand.id} className={styles.label}>
 								<Input type='checkbox' />
-								<p className='text-black'>{brand.name}</p>
+								<p className={styles.brand}>{brand.name}</p>
 							</label>
 						</Button>
 					))}

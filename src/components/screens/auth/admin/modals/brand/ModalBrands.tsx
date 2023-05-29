@@ -44,6 +44,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
 	return (
 		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
 			<CrossIcon onClick={handleClose} className='h-5 w-5' />
+			<p>New brand</p>
 			<div className={styles.add}>
 				<Input
 					type='text'
@@ -57,7 +58,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
 				)}
 				{error === 'success added' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' onClick={onAddSubmit}>
-					Add a brand
+					Save
 				</Button>
 			</div>
 			<div>vertical line</div>
@@ -75,7 +76,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
 				{error === 'success removed' && <p className={styles.submit}>Success!</p>}
 
 				<Button appearance='primary' onClick={onRemoveSubmit}>
-					Remove a brand
+					Save
 				</Button>
 			</div>
 		</Modal>

@@ -7,5 +7,5 @@
 }
 
 .checkout {
-	@apply absolute bottom-0 flex h-16 w-full items-center border-t-2 bg-white-main py-3 px-6 uppercase;
+	@apply absolute bottom-0 flex h-16 w-full items-center justify-between border-t-2 bg-white-main py-3 px-6 uppercase;
 }

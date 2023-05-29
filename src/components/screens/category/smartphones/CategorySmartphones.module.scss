@@ -5,7 +5,15 @@
 		@apply mr-8 w-[17rem] flex-initial border p-8 shadow-md;
 
 		.text {
-			@apply text-lg;
+			@apply mb-2 text-lg;
+		}
+
+		.brand {
+			@apply pl-4 text-black;
+		}
+
+		.label {
+			@apply ml-[-1rem] flex;
 		}
 	}
 

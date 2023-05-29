@@ -152,7 +152,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 					</select>
 				</div>
 				<Button appearance='primary' onClick={addProduct}>
-					Add a product
+					Save
 				</Button>
 			</div>
 			<div className={styles.remove}>
