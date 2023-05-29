@@ -1,5 +1,5 @@
 import { WishlistIcon } from '@/public'
-import { IProductPage } from '@/src/interfaces/product.interface'
+import { IProduct, IProductPage } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
 import { addCartProducts, addProduct } from '@/src/store/cart/cart.slice'
 import { toggleWishlist, toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
@@ -20,7 +20,7 @@ export interface IProductPageProps {
 }
 
 const ProductPage: FC<IProductPageProps> = ({ product }) => {
-	const [recommendProducts, setRecommendsProducts] = useState()
+	const [recommendProducts, setRecommendsProducts] = useState<IProductPage[]>()
 	const [isModalCart, setIsModalCart] = useState(false)
 
 	const dispatch = useAppDispatch()
@@ -36,16 +36,14 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
 	useEffect(() => {
 		async function fetchData() {
 			const res = await ProductService.getRecommendation(product.id)
-			//?
 			if (!res) return
-			//?
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
+
 			setRecommendsProducts(res)
 		}
 		fetchData()
 	}, [product.id])
 
+	console.log('product', product)
 	return (
 		<>
 			<div className={styles.main}>
@@ -102,18 +100,12 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
 								? () =>
 										dispatch(
 											addCartProducts({
-												//?
-												// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-												// @ts-ignore
 												product: product,
 												productId: product.id,
 												userId: session.user.id
 											})
 										)
-								: //?
-								  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								  // @ts-ignore
-								  () => dispatch(addProduct(product))
+								: () => dispatch(addProduct(product))
 						}
 					>
 						{isExistCart ? 'Move to Cart' : 'Add to cart'}

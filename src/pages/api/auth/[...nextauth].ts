@@ -121,7 +121,6 @@ export const authOptions: NextAuthOptions = {
 			return { ...token, ...user }
 		},
 		async session({ session, token, user }) {
-			//?
 			session.user = token
 			const userId = await AuthService.findBy(token.email as string)
 			//* Update session token

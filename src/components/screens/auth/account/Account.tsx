@@ -1,12 +1,15 @@
 import { AccountCardIcon, ArchiveIcon, LogoutIcon, PaymentIcon, WishlistIcon } from '@/public'
-import { Button } from '@/src/components'
+import { Button, Wishlist } from '@/src/components'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 import styles from './Account.module.scss'
 
 const Account = () => {
 	const { data: session, status } = useSession()
+
+	const [component, setComponent] = useState<string>()
 
 	if (status === 'loading') return <div>Loading...</div>
 
@@ -80,8 +83,11 @@ const Account = () => {
 					</div>
 				</div>
 				<div className={styles.main}>
-					<h2>Last purchases:</h2>
-					<p>main</p>
+					{component === 'wishlist' ? (
+						<Wishlist />
+					) : component === 'order history' ? (
+						<p>Order History</p>
+					) : null}
 				</div>
 			</div>
 		)

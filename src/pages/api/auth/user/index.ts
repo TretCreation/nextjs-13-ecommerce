@@ -2,21 +2,21 @@ import prisma from '@/prisma/client'
 import { Prisma } from '@prisma/client'
 import * as bcrypt from 'bcrypt'
 import type { NextApiRequest, NextApiResponse } from 'next'
-//?
+
 const errorHandle = (data: any, res: any, code = 400) => {
 	res.status(code).json({
 		hasError: true,
 		errorMessage: data
 	})
 }
-//?
+
 const responseHandler = (data: any, res: any, code = 200) => {
 	res.status(code).json({
 		hasError: false,
 		body: data
 	})
 }
-//?
+
 const validateAllOne = (fields: any) => {
 	for (const key in fields) {
 		if (fields[key] === null || fields[key] === undefined) {

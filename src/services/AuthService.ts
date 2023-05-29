@@ -26,7 +26,6 @@ export const AuthService = {
 			}
 		}
 	},
-
 	async findBy(email: string) {
 		try {
 			const res = await axios.get<IUserSession>(`/auth/user/find/?email=${email}`)
@@ -36,7 +35,6 @@ export const AuthService = {
 			throw error
 		}
 	},
-
 	async findByEmail(type: string, email: string) {
 		try {
 			const res = await axios.get<IUserSession>(`/auth/user?${type}=${email}`)

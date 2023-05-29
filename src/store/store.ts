@@ -14,23 +14,19 @@ import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 const createNoopStorage = () => {
 	return {
-		//?
-		getItem(_key: any) {
+		getItem(_key: string) {
 			return Promise.resolve(null)
 		},
-		setItem(_key: any, value: any) {
+		setItem(_key: string, value: string) {
 			return Promise.resolve(value)
 		},
-		removeItem(_key: any) {
+		removeItem(_key: string) {
 			return Promise.resolve()
 		}
 	}
 }
 
-const storage =
-	typeof window !== 'undefined'
-		? createWebStorage('local')
-		: createNoopStorage()
+const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage()
 
 const reducers = combineReducers({
 	wishlist: wishlistReducer,
@@ -50,20 +46,12 @@ export const store = configureStore({
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			serializableCheck: {
-				ignoredActions: [
-					FLUSH,
-					REHYDRATE,
-					PAUSE,
-					PERSIST,
-					PURGE,
-					REGISTER
-				]
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
 			}
 		})
 })
 
 export const persistor = persistStore(store)
-// Infer the `RootState` and `AppDispatch` types from the store itself
+
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch

@@ -5,7 +5,6 @@ import { IType } from '../interfaces/type.interface'
 axios.defaults.baseURL = process.env.API_URL
 
 export const AdminService = {
-	//* Brand
 	async checkBrand(brand: string) {
 		try {
 			const res = await axios.get<IBrand[]>(`/admin/brand/check?brand=` + brand)
@@ -15,7 +14,6 @@ export const AdminService = {
 			throw error
 		}
 	},
-
 	async addBrand(brand: string) {
 		try {
 			const res = await axios.post<IBrand[]>(`/admin/brand/add`, {
@@ -27,7 +25,6 @@ export const AdminService = {
 			throw error
 		}
 	},
-
 	async removeBrand(brand: string) {
 		try {
 			const res = await axios.post<IBrand[]>(`/admin/brand/remove`, {
@@ -39,8 +36,6 @@ export const AdminService = {
 			throw error
 		}
 	},
-
-	//* Type
 	async checkType(type: string) {
 		try {
 			const res = await axios.get<IType[]>(`/admin/type/check?type=` + type)
@@ -50,7 +45,6 @@ export const AdminService = {
 			throw error
 		}
 	},
-
 	async addType(type: string) {
 		try {
 			const res = await axios.post<IType[]>(`/admin/type/add`, {
@@ -62,7 +56,6 @@ export const AdminService = {
 			throw error
 		}
 	},
-
 	async removeType(type: string) {
 		try {
 			const res = await axios.post<IType[]>(`/admin/type/remove`, {

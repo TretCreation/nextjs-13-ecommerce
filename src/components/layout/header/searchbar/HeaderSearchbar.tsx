@@ -17,7 +17,6 @@ const HeaderSearchBar = (): JSX.Element => {
 		return setSearchedProducts(getSearchedProducts)
 	}
 
-	//? if
 	useEffect(() => {
 		if (debouncedSearchTerm) {
 			fetchData(debouncedSearchTerm)

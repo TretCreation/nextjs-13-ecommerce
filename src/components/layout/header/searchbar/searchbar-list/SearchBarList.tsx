@@ -14,12 +14,6 @@ const SearchBarList: FC<ISearchBarListProps> = ({ searchedProducts }) => {
 
 	const ref = useRef<HTMLDivElement>(null)
 
-	//TODO Fix isOpen
-	// useEffect(() => {
-	// 	if (searchedProducts.length != 0) {
-	// 		setIsOpen(isOpen => !isOpen)
-	// 	}
-	// }, [searchedProducts])
 	useEffect(() => {
 		if (searchedProducts.length > 0) {
 			setIsOpen(true)

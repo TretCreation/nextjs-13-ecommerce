@@ -16,21 +16,10 @@ const Home: FC<IProductHomeProps> = ({ paginatedProducts, countedProducts }) => 
 			setPaginatedProducts(res)
 			setIsFirstRendering(false)
 		}
-		//?
 		if (!isFirstRendering || currentPage !== 1) {
 			fetchPaginatedProducts()
 		}
-		// if (!isFirstRendering && (currentPage !== 1 || isFirstRendering)) {
-		// 	fetchPaginatedProducts()
-		// }
 	}, [currentPage, isFirstRendering])
-
-	console.log('##########################')
-	console.log('currentPage', currentPage)
-	console.log('isFirstRendering', isFirstRendering)
-	console.log('paginatedProducts', paginatedProducts)
-	console.log('clientPaginatedProducts', clientPaginatedProducts)
-	console.log('##########################')
 
 	return (
 		<div className={styles.wrapper}>

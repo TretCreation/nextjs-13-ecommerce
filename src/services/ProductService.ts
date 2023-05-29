@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IProduct } from '../interfaces/product.interface'
+import { IProduct, IProductPage } from '../interfaces/product.interface'
 
 axios.defaults.baseURL = process.env.API_URL
 
@@ -13,7 +13,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-
 	async getById(id?: string) {
 		try {
 			const res = await axios.get<IProduct>(`/product/${id}`)
@@ -23,7 +22,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-
 	async getPaginatedProducts(limit: number, page: number) {
 		try {
 			const res = await axios.get<IProduct[]>(`/products/page?limit=${limit}&page=${page}`)
@@ -33,7 +31,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-
 	async getCountedProducts() {
 		try {
 			const res = await axios.get<IProduct>(`/products/count`)
@@ -43,19 +40,8 @@ export const ProductService = {
 			throw error
 		}
 	},
-	//?
 	async createProduct(formData: FormData) {
 		try {
-			// const data = Object.fromEntries(formData)
-			// console.log(data)
-
-			// name: data.name,
-			// 		price: data.price,
-			// 		img: data.img,
-			// 		brandId: data.brandId,
-			// 		typeId: data.typeId
-
-			console.log('1')
 			const res = await axios.post<IProduct>(`/admin/product/create`, {
 				formData
 			})
@@ -66,13 +52,8 @@ export const ProductService = {
 			throw error
 		}
 	},
-	//?
 	async uploadImage(formData: FormData) {
 		try {
-			// const data = Object.fromEntries(formData)
-			// console.log(data)
-
-			console.log('1')
 			const res = await axios.post<IProduct>(`/admin/product/upload`, {
 				formData
 			})
@@ -83,7 +64,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-
 	async removeProduct(id: number) {
 		try {
 			const res = await axios.post<IProduct>(`/admin/product/remove`, { id })
@@ -93,7 +73,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-
 	async addProductInfo(productId: number, description: string, title: string) {
 		try {
 			const res = await axios.post(`/product/info/add`, { productId, description, title })
@@ -103,7 +82,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-
 	async removeProductInfo(productId: number) {
 		try {
 			const res = await axios.post<IProduct>(`/product/info/remove`, { productId })
@@ -113,10 +91,11 @@ export const ProductService = {
 			throw error
 		}
 	},
-	//TODO: async editProductInfo()
 	async getRecommendation(productId: number) {
 		try {
-			const res = await axios.get<IProduct>(`/recommendations?productId=${productId}`)
+			const res = await axios.get<IProductPage[] | undefined>(
+				`/recommendations?productId=${productId}`
+			)
 			return res.data
 		} catch (error) {
 			console.log(error)

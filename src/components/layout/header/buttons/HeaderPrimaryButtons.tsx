@@ -45,7 +45,7 @@ const HeaderPrimaryButtons: FC = () => {
 					<p className='text-l'>Cart</p>
 				</Button>
 				<Button appearance='svg' className={styles.btn}>
-					<Link href={'/auth'}>
+					<Link href='/auth'>
 						{session ? (
 							<>
 								<AccountIcon className={styles.icon} />

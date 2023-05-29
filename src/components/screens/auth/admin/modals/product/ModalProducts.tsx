@@ -98,7 +98,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
 			<CrossIcon />
 			<div className={styles.add}>
-				{/* Name input field */}
 				<div>
 					<p>Enter the name of the product</p>
 					<Input
@@ -107,7 +106,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setName(e.target.value)}
 					/>
 				</div>
-				{/* Price input field */}
 				<div>
 					<p>Enter the price of the product</p>
 					<Input
@@ -119,7 +117,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setPrice(Number(e.target.value))}
 					/>
 				</div>
-				{/* Picture input field */}
 				<div>
 					<p>Add image</p>
 					<Input
@@ -129,7 +126,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={handleUploadImage}
 					/>
 				</div>
-				{/* Type input field */}
 				<div>
 					<label htmlFor='type'>Type</label>
 					<select name='type' value={typeId} onChange={handleChangeType}>
@@ -140,7 +136,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
-				{/* Brand input field */}
 				<div>
 					<label htmlFor='brand'>Brand</label>
 					<select name='brand' value={brandId} onChange={handleChangeBrand}>
@@ -162,7 +157,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 					onChange={e => setInput(e.target.value)}
 				/>
 				{products.map(product => (
-					//TODO: Add list (список HTML CSS)
 					<Button appearance='primary'>
 						<div
 							key={product.id}

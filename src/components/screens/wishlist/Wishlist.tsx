@@ -92,6 +92,17 @@ const Wishlist = () => {
 			</div>
 		)
 	}
+	return (
+		<div className={styles.products}>
+			{wishlist.wishProducts.length > 0 ? (
+				wishlist.wishProducts.map(wishProduct => (
+					<WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
+				))
+			) : (
+				<NoWishlistProducts />
+			)}
+		</div>
+	)
 }
 
 export default Wishlist

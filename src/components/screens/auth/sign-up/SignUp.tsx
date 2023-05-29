@@ -17,17 +17,14 @@ const SignUp: FC = () => {
 	const [error, setError] = useState<string>()
 
 	const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
-	console.log(error)
 
 	const onSubmit = async () => {
 		if (regEx.test(email)) {
 			if (password === confirmPassword) {
 				const res = await AuthService.createUser(name, password, email)
-				//?
 				if (res.errorMessage) {
 					setError(res.errorMessage)
 				}
-				//?
 				res
 				signIn('credentials', {
 					email: email,
@@ -51,11 +48,8 @@ const SignUp: FC = () => {
 			</div>
 			<div className={styles.input}>
 				<div className='full-name'>
-					{error === 'name required' ? (
+					{error === 'name required' && (
 						<p className='text-primary-main'>Name required</p>
-					) : (
-						//?
-						<></>
 					)}
 					<p>Full Name</p>
 					<Input
@@ -69,15 +63,14 @@ const SignUp: FC = () => {
 				</div>
 
 				<div className='email'>
-					//?
-					{error === 'email required' ? (
+					{error === 'email required' && (
 						<p className='text-primary-main'>Email required</p>
-					) : error === 'P2002' ? (
+					)}
+					{error === 'P2002' && (
 						<p className='text-primary-main'>The character already exists</p>
-					) : error === 'email is not valid' ? (
+					)}
+					{error === 'email is not valid' && (
 						<p className='text-primary-main'>Email is Not Valid</p>
-					) : (
-						<></>
 					)}
 					<p>Email address</p>
 					<Input
@@ -89,32 +82,25 @@ const SignUp: FC = () => {
 						value={email}
 					/>
 				</div>
-
 				<div className='passwords'>
-					//?
-					{error === 'password required' ? (
+					{error === 'password required' && (
 						<p className='text-primary-main'>Password required</p>
-					) : error === 'passwords didn’t match' ? (
+					)}
+					{error === 'passwords didn’t match' && (
 						<p className='text-primary-main'>
 							Those passwords didn’t match. Try again.
 						</p>
-					) : (
-						<></>
 					)}
 					<p>Password</p>
 					<Input
 						appearance='solid'
 						placeholder='*******'
-						// type='password'
 						type={showPassword ? 'text' : 'password'}
 						className='mb-1'
 						onChange={e => setPassword(e.target.value)}
 						value={password}
 					/>
-					<Button
-						appearance='svg'
-						onClick={() => setShowPassword(!showPassword)}
-					>
+					<Button appearance='svg' onClick={() => setShowPassword(!showPassword)}>
 						<ShowPasswordIcon className='h-9 w-9' />
 					</Button>
 					<p>Confirm Password</p>
