@@ -79,7 +79,7 @@ const SignIn: FC = () => {
 				</div>
 				<div className='flex flex-row'>
 					<p>Don't have account?</p>
-					<Link href='/auth/sign-up'>
+					<Link href='/auth/sign-up' className={styles.link}>
 						<Button
 							appearance='svg'
 							className='text-primary-main'

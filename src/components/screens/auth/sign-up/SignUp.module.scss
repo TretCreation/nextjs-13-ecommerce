@@ -1,0 +1,51 @@
+.menu {
+	@apply container m-auto mt-12 mb-16 max-w-lg border p-8 shadow-md;
+
+	.title {
+		@apply text-2xl;
+	}
+
+	.h1 {
+		@apply mb-6 flex flex-col;
+	}
+
+	.input {
+		@apply flex flex-col;
+	}
+
+	.titlecheck {
+		@apply flex;
+	}
+
+	.titlecheck > p {
+		@apply ml-2;
+	}
+
+	.btncreate {
+		@apply mb-4 mt-4;
+	}
+
+	.btnfacebook {
+		@apply mr-4 mb-4 flex h-12 w-40 items-center justify-center;
+	}
+
+	.btnfacebook > svg {
+		@apply ml-4;
+	}
+
+	.btngoogle {
+		@apply mr-4 mb-4 flex h-12 w-40 items-center justify-center;
+	}
+
+	.btngoogle > svg {
+		@apply ml-4;
+	}
+
+	.link {
+		@apply ml-4;
+	}
+
+	.link > button {
+		@apply text-primary-main;
+	}
+}

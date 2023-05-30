@@ -35,7 +35,23 @@
 		@apply mr-4 mb-4 flex h-12 w-40 items-center justify-center;
 	}
 
+	.btnfacebook > p {
+		@apply mr-4;
+	}
+
 	.btngoogle {
 		@apply mr-4 mb-4 flex h-12 w-40 items-center justify-center;
+	}
+
+	.btngoogle > p {
+		@apply mr-4;
+	}
+
+	.link {
+		@apply ml-4;
+	}
+
+	.link > button {
+		@apply text-primary-main;
 	}
 }

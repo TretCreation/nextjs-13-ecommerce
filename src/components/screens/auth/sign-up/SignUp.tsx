@@ -43,7 +43,9 @@ const SignUp: FC = () => {
 	return (
 		<div className={styles.menu}>
 			<div className={styles.h1}>
-				<h1>CREATE AN ACCOUNT</h1>
+				<h1 className={styles.title}>
+					<b>CREATE AN ACCOUNT</b>
+				</h1>
 				<p>Register for new costumer</p>
 			</div>
 			<div className={styles.input}>
@@ -96,7 +98,7 @@ const SignUp: FC = () => {
 						appearance='solid'
 						placeholder='*******'
 						type={showPassword ? 'text' : 'password'}
-						className='mb-1'
+						className='mb-0'
 						onChange={e => setPassword(e.target.value)}
 						value={password}
 					/>
@@ -108,7 +110,7 @@ const SignUp: FC = () => {
 						appearance='solid'
 						placeholder='*******'
 						type={showConfirmPassword ? 'text' : 'password'}
-						className='mb-3'
+						className='mb-0'
 						onChange={e => setConfirmPassword(e.target.value)}
 						value={confirmPassword}
 					/>
@@ -119,18 +121,18 @@ const SignUp: FC = () => {
 						<ShowPasswordIcon className='h-9 w-9' />
 					</Button>
 				</div>
-				<div className='mb-1 flex flex-row'>
+				<div className={styles.titlecheck}>
 					<Input type='checkbox' className='mr-1' />
 					<p>I have read and agree to the terms & conditions</p>
 				</div>
-				<Button appearance='primary' className='mb-4' onClick={onSubmit}>
+				<Button appearance='primary' className={styles.btncreate} onClick={onSubmit}>
 					CREATE ACCOUNT
 				</Button>
 				<p className='mb-2'>OR SIGN UP WITH</p>
 				<div className='flex flex-row'>
 					<Button
 						appearance='primary'
-						className='mr-2 mb-3 bg-blue-500'
+						className={styles.btnfacebook}
 						onClick={() => signIn('facebook', { callbackUrl: '/' })}
 					>
 						FACEBOOK
@@ -139,6 +141,7 @@ const SignUp: FC = () => {
 					<Button
 						appearance='primary'
 						onClick={() => signIn('google', { callbackUrl: '/' })}
+						className={styles.btngoogle}
 					>
 						GOOGLE
 						<GoogleIcon />
@@ -146,7 +149,7 @@ const SignUp: FC = () => {
 				</div>
 				<div className='flex flex-row'>
 					<p>Already have account?</p>
-					<Link href='/auth/sign-in'>
+					<Link href='/auth/sign-in' className={styles.link}>
 						<Button appearance='svg' className='text-primary-main'>
 							Login now
 						</Button>
