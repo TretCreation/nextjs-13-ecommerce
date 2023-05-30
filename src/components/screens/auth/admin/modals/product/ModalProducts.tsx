@@ -96,13 +96,14 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 
 	return (
 		<Modal wrapperId='react-portal-modal' handleClose={handleClose}>
-			<CrossIcon />
+			<CrossIcon className={styles.svg} />
 			<div className={styles.add}>
 				<div>
 					<p>Enter the name of the product</p>
 					<Input
 						type='text'
 						placeholder='Add name'
+						appearance='solid'
 						onChange={e => setName(e.target.value)}
 					/>
 				</div>
@@ -113,6 +114,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						min='1'
 						step='any'
 						placeholder='Add price'
+						appearance='solid'
 						accept='image/*,.png,.jpg'
 						onChange={e => setPrice(Number(e.target.value))}
 					/>
@@ -151,9 +153,11 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 				</Button>
 			</div>
 			<div className={styles.remove}>
+				<>REMOVE BLOCK</>
 				<Input
 					type='text'
 					placeholder='Enter a product'
+					appearance='solid'
 					onChange={e => setInput(e.target.value)}
 				/>
 				{products.map(product => (
@@ -168,7 +172,9 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 					</Button>
 				))}
 			</div>
-			<div className={styles.edit}></div>
+			<div className={styles.edit}>
+				<>Edit BLOCK</>
+			</div>
 		</Modal>
 	)
 }

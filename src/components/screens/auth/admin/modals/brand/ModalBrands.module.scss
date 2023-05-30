@@ -1,9 +1,13 @@
+.svg {
+	@apply absolute top-3 right-3;
+}
+
 .add {
-	@apply flex flex-col;
+	@apply float-left ml-10 mt-8 flex h-[88%] w-[45%] flex-col border-r-2 border-[#e5e7eb] p-4;
 }
 
 .remove {
-	@apply flex flex-col;
+	@apply float-left ml-2 mt-8 flex h-[88%] w-[45%] flex-col  p-4;
 }
 
 .error {

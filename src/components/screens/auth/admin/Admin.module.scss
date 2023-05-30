@@ -1,5 +1,5 @@
 .wrapper {
-	@apply flex flex-col;
+	@apply container ml-16 mt-8 flex w-80 flex-col;
 
 	.btn {
 		@apply mb-3;

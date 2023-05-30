@@ -1,9 +1,29 @@
+.svg {
+	@apply absolute top-3 right-3;
+}
+
 .add {
-	@apply flex flex-col;
+	@apply float-left ml-10 mt-8 flex h-[88%] w-[31%] flex-col border-r-2 border-[#e5e7eb] p-4;
+}
+
+.add > div {
+	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
 }
 
 .remove {
-	@apply flex flex-col;
+	@apply float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col border-r-2 border-[#e5e7eb] p-4;
+}
+
+.remove > div {
+	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
+}
+
+.edit {
+	@apply float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col  p-4;
+}
+
+.edit > div {
+	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
 }
 
 .error {
