@@ -8,7 +8,7 @@ interface ISortBy {
 	limit: number
 	q: typeId
 	currentPage: number
-	brandId: number | undefined
+	brandId: number | number[] | undefined
 	getProducts: (products: IProduct[]) => void
 	setCurrentPage: (currentPage: number) => void
 }
@@ -37,13 +37,27 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
 	}
 
 	useEffect(() => {
-		console.log('sortedProducts: useEffect', sortedProducts)
+		console.log('sortedProducts: sortedProducts', sortedProducts)
 	}, [brandId, sortedProducts])
+
+	useEffect(() => {
+		console.log('sortedProducts: brandId', sortedProducts)
+	}, [brandId])
+	// }, [brandId, sortedProducts])
 
 	useEffect(() => {
 		const handleInput = async () => {
 			setIsLoading(true)
+
+			console.log('brandId: useEffect: ', brandId)
+			console.log('sortedProducts:before', sortedProducts)
+			//?
 			setSortedProducts([])
+			// SortBy.setState({ sortedProducts: [] }, async () => {
+
+			// setState({ sortedProducts: [] }, async () => {
+
+			console.log('sortedProducts:clear', sortedProducts)
 			const res = await SortByService.getSortedProducts(
 				getKey,
 				getValue,
@@ -54,8 +68,8 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
 			)
 			const updatedProducts = [...sortedProducts, ...res]
 
+			console.log('sortedProducts:after', sortedProducts)
 			console.log('res', res)
-			console.log('sortedProducts', sortedProducts)
 			console.log('updatedProducts', updatedProducts)
 
 			setSortedProducts(updatedProducts)
@@ -63,7 +77,7 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
 
 			setIsLoading(false)
 		}
-
+		// )}
 		handleInput()
 	}, [getKey, getValue, q, brandId, limit, currentPage])
 

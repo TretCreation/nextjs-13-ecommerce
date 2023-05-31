@@ -19,11 +19,13 @@ interface IModalProductsProps {
 const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	const [name, setName] = useState<string>('')
 	const [price, setPrice] = useState<number>(0)
-	const [img, setImg] = useState<File>()
+	const [img, setImg] = useState<File>(null)
 	const [typeId, setTypeId] = useState<number>(1)
 	const [brandId, setBrandId] = useState<number>(1)
 	const [dataType, setDataType] = useState<IType[]>([])
 	const [dataBrand, setDataBrand] = useState<IBrand[]>([])
+
+	const [createObjectURL, setCreateObjectURL] = useState(null)
 
 	const [input, setInput] = useState<string>('')
 	const [products, setProducts] = useState<IProduct[]>([])
@@ -35,6 +37,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 			const img = e.target.files[0]
 
 			setImg(img)
+			setCreateObjectURL(URL.createObjectURL(img))
 		}
 	}
 
@@ -80,14 +83,14 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 
 	const addProduct = async (event: any) => {
 		// await ProductService.createProduct(name, price, img, brandId, typeId)
-		if (!img) return
+		// if (!img) return
 
 		const body = new FormData()
-		body.append('name', name)
-		body.append('price', `${price}`)
+		// formData.append('name', name)
+		// formData.append('price', `${price}`)
 		body.append('file', img)
-		body.append('brandId', `${brandId}`)
-		body.append('typeId', `${typeId}`)
+		// formData.append('brandId', `${brandId}`)
+		// formData.append('typeId', `${typeId}`)
 
 		const response = await fetch('/api/admin/product/create', {
 			method: 'POST',
@@ -182,6 +185,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 			</div>
 			<div className={styles.edit}>
 				<>Edit BLOCK</>
+				<img src={createObjectURL} />
 			</div>
 		</Modal>
 	)

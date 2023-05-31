@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Product` MODIFY `rating` INTEGER NOT NULL DEFAULT 0;

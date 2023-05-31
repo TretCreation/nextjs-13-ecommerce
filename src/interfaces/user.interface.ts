@@ -19,5 +19,4 @@ export interface IUserSession {
 	img: string
 	image: string
 	role: string
-	// accessToken: string
 }

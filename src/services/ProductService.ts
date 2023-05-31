@@ -52,18 +52,6 @@ export const ProductService = {
 			throw error
 		}
 	},
-	async uploadImage(formData: FormData) {
-		try {
-			const res = await axios.post<IProduct>(`/admin/product/upload`, {
-				formData
-			})
-			console.log(res.data)
-			return res.data
-		} catch (error) {
-			console.log(error)
-			throw error
-		}
-	},
 	async removeProduct(id: number) {
 		try {
 			const res = await axios.post<IProduct>(`/admin/product/remove`, { id })

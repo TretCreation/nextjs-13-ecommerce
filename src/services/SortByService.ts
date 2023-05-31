@@ -11,7 +11,7 @@ export const SortByService = {
 		q: typeId,
 		limit: number,
 		page: number,
-		brandId: number | undefined
+		brandId: number | number[] | undefined
 	) {
 		try {
 			if (brandId !== undefined) {

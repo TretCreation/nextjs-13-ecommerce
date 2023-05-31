@@ -80,7 +80,7 @@ model Product {
   name          String          @db.Text
   price         Int
   img           String
-  rating        Int
+  rating        Int             @default(0)
   brandId       Int
   brand         Brand           @relation(fields: [brandId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   typeId        Int
