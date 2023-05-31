@@ -17,18 +17,23 @@ interface IModalProductsProps {
 }
 
 const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
+	//* fetch
+	const [dataType, setDataType] = useState<IType[]>([])
+	const [dataBrand, setDataBrand] = useState<IBrand[]>([])
+
+	//* add form
 	const [name, setName] = useState<string>('')
 	const [price, setPrice] = useState<number>(0)
 	const [img, setImg] = useState<File>()
 	const [typeId, setTypeId] = useState<number>(1)
 	const [brandId, setBrandId] = useState<number>(1)
-	const [dataType, setDataType] = useState<IType[]>([])
-	const [dataBrand, setDataBrand] = useState<IBrand[]>([])
 
+	//* remove form
 	const [input, setInput] = useState<string>('')
 	const [products, setProducts] = useState<IProduct[]>([])
-
 	const debouncedSearchProducts = useDebounce<string>(input, 500)
+
+	//* update form
 
 	const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files && e.target.files[0]) {
@@ -79,7 +84,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	}
 
 	const addProduct = async (event: any) => {
-		// await ProductService.createProduct(name, price, img, brandId, typeId)
 		if (!img) return
 
 		const body = new FormData()
@@ -89,14 +93,10 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 		body.append('brandId', `${brandId}`)
 		body.append('typeId', `${typeId}`)
 
-		const response = await fetch('/api/admin/product/create', {
+		await fetch('/api/admin/product/create', {
 			method: 'POST',
 			body
 		})
-
-		// await ProductService.createProduct(formData)
-		// const test = { name, price, img, brandId, typeId }
-		// console.log(test)
 	}
 
 	if (!isOpen) return null
