@@ -10,20 +10,48 @@
 	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
 }
 
+.add h1 {
+	@apply mb-2 bg-[#f67285] text-center text-lg uppercase;
+}
+
 .remove {
-	@apply float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col border-r-2 border-[#e5e7eb] p-4;
+	@apply relative float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col border-r-2 border-[#e5e7eb] p-4;
+
+	.button {
+		@apply w-full border-b bg-[#ffffff] py-2 px-4 text-left font-light text-black;
+	}
+
+	.modallist {
+		@apply absolute top-[7rem] z-10 h-1/2 w-[89.2%] overflow-y-scroll border-[1px] border-black bg-white-main;
+	}
 }
 
 .remove > div {
 	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
 }
 
+.remove h1 {
+	@apply mb-2 bg-[#f67285] text-center text-lg uppercase;
+}
+
 .edit {
-	@apply float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col  p-4;
+	@apply relative float-left ml-2 mt-8 flex h-[88%] w-[30%]  flex-col p-4;
+
+	.button {
+		@apply w-full border-b bg-[#ffffff] py-2 px-4 text-left font-light text-black;
+	}
+
+	.modallist {
+		@apply absolute top-[7rem] z-10 h-1/2 w-[89.2%] overflow-y-scroll border-[1px] border-black bg-white-main;
+	}
 }
 
 .edit > div {
 	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
+}
+
+.edit h1 {
+	@apply mb-2 bg-[#f67285] text-center text-lg uppercase;
 }
 
 .error {

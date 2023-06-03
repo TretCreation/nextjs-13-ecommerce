@@ -14,7 +14,6 @@ const createWrapperAndAppendToBody = (wrapperId: string) => {
 }
 
 const ReactPortal: FC<IReactPortalProps> = ({ children, wrapperId }) => {
-	// React.useLayoutEffect = React.useEffect
 
 	const [wrapperElement, setWrapperElement] = useState<HTMLElement>()
 

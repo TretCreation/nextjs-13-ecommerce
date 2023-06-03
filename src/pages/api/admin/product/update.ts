@@ -17,7 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		await fs.unlinkSync(file.path)
 
 		//* Fields
-		await prisma.product.create({
+		await prisma.product.update({
+			where: { id: Number(fields.id) },
 			data: {
 				name: fields.name,
 				price: Number(fields.price),
