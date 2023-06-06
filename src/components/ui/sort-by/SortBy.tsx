@@ -37,48 +37,22 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
 	}
 
 	useEffect(() => {
-		console.log('sortedProducts: sortedProducts', sortedProducts)
-	}, [brandId, sortedProducts])
+		setIsLoading(true)
 
-	useEffect(() => {
-		console.log('sortedProducts: brandId', sortedProducts)
-	}, [brandId])
-	// }, [brandId, sortedProducts])
+		console.log('SortBy useEffect brandId: ', brandId)
+		// console.log('handleInput sortedProducts before', sortedProducts)
+		// console.log('handleInput currentPage', currentPage)
 
-	useEffect(() => {
-		const handleInput = async () => {
-			setIsLoading(true)
+		SortByService.getSortedProducts(getKey, getValue, q, limit, currentPage, brandId).then(
+			res => {
+				// console.log('res', res)
 
-			console.log('brandId: useEffect: ', brandId)
-			console.log('sortedProducts:before', sortedProducts)
-			//?
-			setSortedProducts([])
-			// SortBy.setState({ sortedProducts: [] }, async () => {
+				setSortedProducts(currentPage === 1 ? res : [...sortedProducts, ...res])
+				getProducts(currentPage === 1 ? res : [...sortedProducts, ...res])
 
-			// setState({ sortedProducts: [] }, async () => {
-
-			console.log('sortedProducts:clear', sortedProducts)
-			const res = await SortByService.getSortedProducts(
-				getKey,
-				getValue,
-				q,
-				limit,
-				currentPage,
-				brandId
-			)
-			const updatedProducts = [...sortedProducts, ...res]
-
-			console.log('sortedProducts:after', sortedProducts)
-			console.log('res', res)
-			console.log('updatedProducts', updatedProducts)
-
-			setSortedProducts(updatedProducts)
-			getProducts(updatedProducts)
-
-			setIsLoading(false)
-		}
-		// )}
-		handleInput()
+				setIsLoading(false)
+			}
+		)
 	}, [getKey, getValue, q, brandId, limit, currentPage])
 
 	return (

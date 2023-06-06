@@ -1,0 +1,25 @@
+.item {
+	p {
+		@apply mt-2 pb-1;
+	}
+
+	.products {
+		@apply mt-2 pb-1;
+	}
+
+	.products > div {
+		@apply mt-4 flex;
+
+		.img {
+			@apply mr-8 flex h-[7rem] w-[7rem] items-center justify-center border-0 bg-gradient-to-r from-[#E7E7E7] to-[#F6F6F6] p-4;
+
+			img {
+				@apply ml-0 h-auto w-full max-w-[4rem] border-0 p-0;
+			}
+		}
+
+		p {
+			@apply mt-0 pb-1;
+		}
+	}
+}

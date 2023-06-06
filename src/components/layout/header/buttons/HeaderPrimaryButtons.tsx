@@ -30,6 +30,7 @@ const HeaderPrimaryButtons: FC = () => {
 			<div className={styles.buttons}>
 				<Button appearance='svg' className={styles.btn}>
 					<Link href='/wishlist'>
+					{/* <Link href='/auth'> */}
 						<WishlistIcon className={styles.icon} />
 						<span className={styles.span}>{wishProducts.length}</span>
 						<p className={styles.text}>Wishlist</p>

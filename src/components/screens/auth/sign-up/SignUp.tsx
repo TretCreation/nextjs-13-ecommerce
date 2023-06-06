@@ -84,7 +84,7 @@ const SignUp: FC = () => {
 						value={email}
 					/>
 				</div>
-				<div className='passwords'>
+				<div className={styles.password}>
 					{error === 'password required' && (
 						<p className='text-primary-main'>Password required</p>
 					)}
@@ -102,7 +102,11 @@ const SignUp: FC = () => {
 						onChange={e => setPassword(e.target.value)}
 						value={password}
 					/>
-					<Button appearance='svg' onClick={() => setShowPassword(!showPassword)}>
+					<Button
+						appearance='svg'
+						onClick={() => setShowPassword(!showPassword)}
+						className={styles.buttonpass}
+					>
 						<ShowPasswordIcon className='h-9 w-9' />
 					</Button>
 					<p>Confirm Password</p>
@@ -117,13 +121,10 @@ const SignUp: FC = () => {
 					<Button
 						appearance='svg'
 						onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+						className={styles.buttonpasscon}
 					>
 						<ShowPasswordIcon className='h-9 w-9' />
 					</Button>
-				</div>
-				<div className={styles.titlecheck}>
-					<Input type='checkbox' className='mr-1' />
-					<p>I have read and agree to the terms & conditions</p>
 				</div>
 				<Button appearance='primary' className={styles.btncreate} onClick={onSubmit}>
 					CREATE ACCOUNT

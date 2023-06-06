@@ -19,7 +19,8 @@ const OrderHistory = () => {
 	}, [session?.user])
 
 	return (
-		<div className={styles.EDIT}>
+		<div className={styles.orders}>
+			<h1>Order history</h1>
 			{orders.length !== 0 ? (
 				orders.map(order => <OrderHistoryItem key={order.id} order={order} />)
 			) : (

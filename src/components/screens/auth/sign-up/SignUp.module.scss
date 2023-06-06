@@ -48,4 +48,16 @@
 	.link > button {
 		@apply text-primary-main;
 	}
+
+	.password {
+		@apply relative;
+
+		.buttonpass {
+			@apply absolute right-2 top-[30px];
+		}
+
+		.buttonpasscon {
+			@apply absolute right-2 top-[100px];
+		}
+	}
 }

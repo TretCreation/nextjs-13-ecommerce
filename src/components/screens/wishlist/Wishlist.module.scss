@@ -42,6 +42,10 @@
 	}
 
 	.products {
-		@apply ml-4 w-full;
+		@apply container m-auto w-[60rem];
+
+		h1 {
+			@apply pb-6 text-center text-2xl uppercase;
+		}
 	}
 }

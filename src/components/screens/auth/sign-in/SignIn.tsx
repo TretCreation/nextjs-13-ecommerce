@@ -50,11 +50,7 @@ const SignIn: FC = () => {
 					className='mb-1'
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<div className={styles.titlecheck}>
-					<Input type='checkbox' />
-					<p>Remember me</p>
-					<p className='mr-10 text-primary-main'>Forgot password</p>
-				</div>
+
 				<Button appearance='primary' className={styles.btnlog} onClick={onSubmit}>
 					LOGIN
 				</Button>

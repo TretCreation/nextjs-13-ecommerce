@@ -2,7 +2,7 @@ import { Button, Input, ProductItem, SortBy } from '@/src/components'
 import { IBrand } from '@/src/interfaces/brand.interface'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { BrandService } from '@/src/services/BrandService'
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import NoProducts from '../../product/product-empty/NoProducts'
 import styles from './CategorySmartphones.module.scss'
 interface ICategorySmartphonesProps {
@@ -15,31 +15,23 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({ smartphones }) => 
 	const [brands, setBrands] = useState<IBrand[]>([])
 	const [brandId, setBrandId] = useState<number[]>([])
 
-	useEffect(() => {
-		async function fetchData() {
-			const res = await BrandService.getAllBrands()
-			setBrands(res)
+	BrandService.getAllBrands().then(brands => setBrands(brands))
+
+	const handleSubmitBrandId = (brand: any) => {
+		// console.log('handleSubmitBrandId brandId before', brandId)
+		// console.log('handleSubmitBrandId brand', brand)
+		// console.log('handleSubmitBrandId brand ID is already in the brandId array', brandId.includes(brand.id))
+		if (brandId.includes(brand.id)) {
+			// If the brand ID is already in the brandId array, remove it
+			// console.log('handleSubmitBrandId', brandId.filter((id: any) => id !== brand.id))
+			setBrandId(brandId.filter((id: any) => id !== brand.id))
+		} else {
+			// If the brand ID is not in the brandId array, add it
+			// console.log('handleSubmitBrandId', [...brandId, brand.id])
+			setBrandId([...brandId, brand.id])
 		}
-		fetchData()
-	}, [])
-
-	// useEffect(() => {
-	// 	console.log('brandId: useEffect', brandId)
-	// 	setCurrentPage(1)
-	// }, [brandId])
-
-	const handleSubmitBrandId = useCallback(
-		(brand: any) => {
-			if (brandId.includes(brand.id)) {
-				// If the brand ID is already in the brandId array, remove it
-				setBrandId(brandId.filter((id: any) => id !== brand.id))
-			} else {
-				// If the brand ID is not in the brandId array, add it
-				setBrandId([...brandId, brand.id])
-			}
-		},
-		[brandId]
-	)
+		setCurrentPage(1)
+	}
 
 	return (
 		<div className={styles.category}>
@@ -50,13 +42,14 @@ const CategorySmartphones: FC<ICategorySmartphonesProps> = ({ smartphones }) => 
 						<Button
 							appearance='solid'
 							onClick={e => {
-								// e.stopPropagation()
-								handleSubmitBrandId(brand)
+								if (e.detail === 1) {
+									handleSubmitBrandId(brand)
+								}
 							}}
 							key={brand.id}
 						>
 							<label className={styles.label}>
-								<Input type='checkbox' />
+								{/* <Input type='checkbox' /> */}
 								<p className={styles.brand}>{brand.name}</p>
 							</label>
 						</Button>
