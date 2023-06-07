@@ -13,6 +13,7 @@ export { default as HeaderPrimaryButtons } from './layout/header/buttons/HeaderP
 export { default as HeaderSecondaryButtons } from './layout/header/buttons/HeaderSecondaryButtons'
 export { default as HeaderDropdown } from './layout/header/dropdown/HeaderDropdown'
 export { default as Header } from './layout/header/Header'
+export { default as HeaderAppProps } from './layout/header/HeaderAppProps'
 export { default as HeaderLogo } from './layout/header/logo/HeaderLogo'
 // Searchbar
 export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSearchBar'
@@ -36,6 +37,7 @@ export { default as RecommendProduct } from './screens/product/recommend-product
 // Cart
 export { default as NoCartProducts } from './screens/cart/cart-empty/NoProducts'
 export { default as ModalCart } from './screens/cart/ModalCart'
+export { default as Checkout } from './screens/cart/checkout/Checkout'
 // Wishlist
 export { default as Wishlist } from './screens/wishlist/Wishlist'
 export { default as NoWishlistProducts } from './screens/wishlist/wishlist-empty/NoProducts'

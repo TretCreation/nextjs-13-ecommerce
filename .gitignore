@@ -39,10 +39,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#prisma
+# prisma
 /prisma/script.ts
 /prisma/seeds/users.csv
 
-#
-.test
-.hide
+# package-lock
+package-lock.json

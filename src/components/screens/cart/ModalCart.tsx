@@ -1,6 +1,7 @@
 import { CrossIcon } from '@/public'
 import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
 import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 import { FC } from 'react'
 import CartItem from './cart-item/CartItem'
 import styles from './ModalCart.module.scss'
@@ -46,6 +47,9 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 			{cartProducts.length !== 0 && (
 				<div className={styles.checkout}>
 					<p>Cart Subtotal: ${calculateSubtotal()}</p>
+					<Link href={'/checkout'}>
+						<Button appearance='primary'>Checkout</Button>
+					</Link>
 					<PaypalCheckoutButton
 						subtotal={calculateSubtotal()}
 						userId={session?.user.id}

@@ -27,6 +27,7 @@
             {
               "allowSingleExtends": true
             }
-          ]     
+        ],
+        "@typescript-eslint/no-require-imports": "error"
     }
 }
