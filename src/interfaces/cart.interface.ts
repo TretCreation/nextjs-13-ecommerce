@@ -7,7 +7,7 @@ export interface ICart {
 }
 
 export interface ICartStateProps extends IProduct {
-	count: number;
+	count: number
 }
 
 export interface ICartStatePropsExist extends IProduct {
@@ -19,4 +19,11 @@ export interface ICartItemProps {
 }
 export interface ICartState {
 	cartProducts: ICartStateProps[]
+}
+
+export interface ICartPayment {
+	id: number
+	name: string
+	price: number
+	count: number
 }

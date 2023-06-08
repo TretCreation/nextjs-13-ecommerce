@@ -1,4 +1,5 @@
 import { useAppDispatch } from '@/src/components'
+import { ICartPayment } from '@/src/interfaces/cart.interface'
 import { AuthService } from '@/src/services/AuthService'
 import { PaymentService } from '@/src/services/PaymentService'
 import { clearCart, clearCartProducts } from '@/src/store/cart/cart.slice'
@@ -11,12 +12,7 @@ interface IPaypalCheckoutButtonProps {
 	userId?: number
 	email: string
 	phone: number
-	cartProducts: {
-		id: number
-		name: string
-		price: number
-		count: number
-	}[]
+	cartProducts: ICartPayment[]
 }
 
 const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
@@ -55,7 +51,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 				await PaymentService.addOrderProduct(paymentData, product.id, product.count)
 			})
 
-			await PaymentService.sendEmail(email, '+1111', order?.status, subtotal)
+			await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
 			const resViber = await PaymentService.sendViber(phone, order?.id)
 			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 
@@ -73,7 +69,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 				await PaymentService.addOrderProduct(paymentData, product.id, product.count)
 			})
 
-			await PaymentService.sendEmail(email, '+1111', order?.status, subtotal)
+			await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
 			const resViber = await PaymentService.sendViber(phone, order?.id)
 			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ICartPayment } from '../interfaces/cart.interface'
 
 axios.defaults.baseURL = process.env.API_URL
 
@@ -39,13 +40,25 @@ export const PaymentService = {
 			throw error
 		}
 	},
-	async sendEmail(email: string, phone: string, status: string, subtotal: number) {
+	async sendEmail(email: string, status: string, subtotal: number, cartProducts: ICartPayment[]) {
 		try {
 			const res = await axios.post(`/payment/send/email`, {
 				email,
-				phone,
 				status,
-				subtotal
+				subtotal,
+				cartProducts
+			})
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async sendEmailTtn(email: string, ttn: string) {
+		try {
+			const res = await axios.post(`/payment/send/email/ttn`, {
+				email,
+				ttn
 			})
 			return res.data
 		} catch (error) {
@@ -116,7 +129,66 @@ export const PaymentService = {
 				}
 			]
 		}
+		try {
+			const res = await axios.post(
+				'https://k3g66n.api.infobip.com/sms/2/text/advanced',
+				data,
+				{ headers }
+			)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async sendViberTtn(phone: number, ttn: string) {
+		const headers = {
+			Authorization: process.env.AUTHORIZATION_VIBER,
+			'Content-Type': 'application/json'
+		}
+		const data = {
+			messages: [
+				{
+					from: 'DemoCompany',
+					to: `${phone}`,
+					content: {
+						text: `Your TTN: ${ttn}.`
+					}
+				}
+			]
+		}
 
+		try {
+			const res = await axios.post(
+				'https://k3g66n.api.infobip.com/viber/1/message/text',
+				data,
+				{ headers }
+			)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async sendSMSTtn(phone: number, ttn: string) {
+		const headers = {
+			Authorization: process.env.AUTHORIZATION_SMS,
+			'Content-Type': 'application/json'
+		}
+
+		const data = {
+			messages: [
+				{
+					destinations: [
+						{
+							to: `${phone}`
+						}
+					],
+					from: 'InfoSMS',
+					text: `Your TTN: ${ttn}.`
+				}
+			]
+		}
 		try {
 			const res = await axios.post(
 				'https://k3g66n.api.infobip.com/sms/2/text/advanced',

@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import * as nodemailer from 'nodemailer'
-import { ICartPayment } from './../../../../../interfaces/cart.interface'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { email, status, subtotal, cartProducts } = req.body
+		const { email, ttn } = req.body
 
 		try {
 			const transporter = nodemailer.createTransport({
@@ -26,20 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				from: 'Tret Store <tret.store@gmail.com>',
 				to: email,
 				subject: 'Your order',
-				html: `
-					<h1>Your order</h1>
-					<p>Status: ${status}</p>
-					<p>Amount of orders: ${subtotal}</p>
-					${cartProducts.map(
-						(product: ICartPayment) => `
-						<div>
-							<div>${product.name}</div>
-							<div>Count: ${product.count}</div>
-							<div>Price: ${product.price}</div>
-						</div>
-					`
-					)}
-				`
+				html: `<h1>Your ttn: ${ttn}</h1>`
 			})
 
 			return res.status(200).json('email sent')
