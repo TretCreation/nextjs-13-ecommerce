@@ -38,5 +38,95 @@ export const PaymentService = {
 			console.log(error)
 			throw error
 		}
+	},
+	async sendEmail(email: string, phone: string, status: string, subtotal: number) {
+		try {
+			const res = await axios.post(`/payment/send/email`, {
+				email,
+				phone,
+				status,
+				subtotal
+			})
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async sendViber(phone: number, transactionId: string) {
+		const date = new Date()
+		const formattedDate = date.toLocaleDateString('fr-CH', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		})
+
+		const headers = {
+			Authorization: process.env.AUTHORIZATION_VIBER,
+			'Content-Type': 'application/json'
+		}
+
+		const data = {
+			messages: [
+				{
+					from: 'DemoCompany',
+					to: `${phone}`,
+					content: {
+						text: `Thank you for your purchase. Your Order №${transactionId}. Date of the order ${formattedDate}.`
+					}
+				}
+			]
+		}
+
+		try {
+			const res = await axios.post(
+				'https://k3g66n.api.infobip.com/viber/1/message/text',
+				data,
+				{ headers }
+			)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async sendSMS(phone: number, transactionId: string) {
+		const date = new Date()
+		const formattedDate = date.toLocaleDateString('fr-CH', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		})
+
+		const headers = {
+			Authorization: process.env.AUTHORIZATION_SMS,
+			'Content-Type': 'application/json'
+		}
+
+		const data = {
+			messages: [
+				{
+					destinations: [
+						{
+							to: `${phone}`
+						}
+					],
+					from: 'InfoSMS',
+					text: `Thank you for your purchase. Your Order №${transactionId}. Date of the order ${formattedDate}.`
+				}
+			]
+		}
+
+		try {
+			const res = await axios.post(
+				'https://k3g66n.api.infobip.com/sms/2/text/advanced',
+				data,
+				{ headers }
+			)
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
 	}
 }

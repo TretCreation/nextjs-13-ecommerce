@@ -5,12 +5,12 @@ import { clearCart, clearCartProducts } from '@/src/store/cart/cart.slice'
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
-// import { sendEmail } from '../checkout/sendEmail'
 
 interface IPaypalCheckoutButtonProps {
 	subtotal: number
 	userId?: number
 	email: string
+	phone: number
 	cartProducts: {
 		id: number
 		name: string
@@ -23,7 +23,8 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 	subtotal,
 	userId,
 	cartProducts,
-	email
+	email,
+	phone
 }) => {
 	const [paidFor, setPaidFor] = useState<boolean>(false)
 	const [error, setError] = useState<string | null>(null)
@@ -53,7 +54,11 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 			cartProducts.map(async product => {
 				await PaymentService.addOrderProduct(paymentData, product.id, product.count)
 			})
-			// sendEmail(email, order?.status, subtotal)
+
+			await PaymentService.sendEmail(email, '+1111', order?.status, subtotal)
+			const resViber = await PaymentService.sendViber(phone, order?.id)
+			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
+
 			dispatch(clearCart())
 		} else {
 			const paymentData = await PaymentService.approvePayment(
@@ -67,6 +72,11 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 			cartProducts.map(async product => {
 				await PaymentService.addOrderProduct(paymentData, product.id, product.count)
 			})
+
+			await PaymentService.sendEmail(email, '+1111', order?.status, subtotal)
+			const resViber = await PaymentService.sendViber(phone, order?.id)
+			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
+
 			if (status === 'authenticated') {
 				dispatch(clearCartProducts(userId))
 			}

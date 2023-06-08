@@ -1,18 +1,18 @@
-import { Button, Input } from '@/src/components'
+import { Input } from '@/src/components'
 import { useAppSelector } from '@/src/components/hooks/useAppSelector'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import PaypalCheckoutButton from '../paypal-button/PaypalCheckoutButton'
 import styles from './Checkout.module.scss'
-// import { sendEmail } from './sendEmail'
-import * as nodemailer from 'nodemailer'
-import 'setimmediate'
 
 const Checkout = () => {
 	const { cartProducts } = useAppSelector(state => state.cart)
 	const { data: session } = useSession()
 
+	const [fistName, setFirstName] = useState<string>('')
+	const [secondName, setSecondName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
+	const [phone, setPhone] = useState<string>('+380958646633')
 
 	const calculateSubtotal = (): number => {
 		let subtotal = 0
@@ -23,39 +23,30 @@ const Checkout = () => {
 		return subtotal
 	}
 
-	async function sendEmail(userEmail: string, status: string, subtotal: number) {
-		const transporter = nodemailer.createTransport({
-			service: 'gmail',
-			port: 465,
-			secure: true,
-			logger: true,
-			debug: true,
-			auth: {
-				user: '',
-				pass: ''
-			},
-			tls: {
-				rejectUnauthorized: true
-			}
-		}) as nodemailer.Transporter
-
-		const info = await transporter.sendMail({
-			from: 'Tret Store <tret.store@gmail.com>',
-			to: userEmail,
-			subject: 'Your order',
-			html: `
-			<h1>Hello World</h1>
-			<p>Status: ${status}</p>
-			<p>Amount of orders: ${subtotal}</p>
-		`
-		})
-
-		console.log('Message sent: ', info.messageId)
-	}
-	sendEmail('tret.creation@gmail.com', 'STATUS', 123)
-
 	return (
 		<div className={styles.EDIT}>
+			<div>
+				<p>First name</p>
+				<Input
+					appearance='solid'
+					placeholder='first name'
+					type='text'
+					value={fistName}
+					className='mb-4'
+					onChange={e => setFirstName(e.target.value)}
+				/>
+			</div>
+			<div>
+				<p>Second name</p>
+				<Input
+					appearance='solid'
+					placeholder='second name'
+					type='text'
+					value={secondName}
+					className='mb-5'
+					onChange={e => setSecondName(e.target.value)}
+				/>
+			</div>
 			<div>
 				<p>Email address</p>
 				<Input
@@ -63,20 +54,26 @@ const Checkout = () => {
 					placeholder='yourmail@mail.com'
 					type='text'
 					value={email}
-					className='mb-1'
+					className='mb-4'
 					onChange={e => setEmail(e.target.value)}
 				/>
 			</div>
-			<Button
-				appearance='primary'
-				// onClick={() => sendEmail('tret.creation@gmail.com', 'Test', 123)}
-			>
-				Click
-			</Button>
+			<div>
+				<p>Phone number</p>
+				<Input
+					appearance='solid'
+					placeholder='+380'
+					type='text'
+					value={phone}
+					className='mb-5'
+					onChange={e => setPhone(e.target.value)}
+				/>
+			</div>
 			<PaypalCheckoutButton
 				subtotal={calculateSubtotal()}
 				userId={session?.user.id}
 				email={email}
+				phone={Number(phone.replace('+', ''))}
 				cartProducts={cartProducts.map(cartProduct => ({
 					id: cartProduct.id,
 					name: cartProduct.name,
