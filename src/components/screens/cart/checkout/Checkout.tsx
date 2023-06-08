@@ -11,8 +11,8 @@ const Checkout = () => {
 
 	const [fistName, setFirstName] = useState<string>('')
 	const [secondName, setSecondName] = useState<string>('')
-	const [email, setEmail] = useState<string>('')
-	const [phone, setPhone] = useState<string>('+380958646633')
+	const [email, setEmail] = useState<string>('tret.creation@gmail.com')
+	const [phone, setPhone] = useState<string>('+380')
 
 	const calculateSubtotal = (): number => {
 		let subtotal = 0
