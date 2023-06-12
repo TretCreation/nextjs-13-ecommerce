@@ -73,12 +73,10 @@ export const PaymentService = {
 			month: '2-digit',
 			year: 'numeric'
 		})
-
 		const headers = {
 			Authorization: process.env.AUTHORIZATION_VIBER,
 			'Content-Type': 'application/json'
 		}
-
 		const data = {
 			messages: [
 				{
@@ -90,7 +88,6 @@ export const PaymentService = {
 				}
 			]
 		}
-
 		try {
 			const res = await axios.post(
 				'https://k3g66n.api.infobip.com/viber/1/message/text',
@@ -110,12 +107,10 @@ export const PaymentService = {
 			month: '2-digit',
 			year: 'numeric'
 		})
-
 		const headers = {
 			Authorization: process.env.AUTHORIZATION_SMS,
 			'Content-Type': 'application/json'
 		}
-
 		const data = {
 			messages: [
 				{
@@ -157,7 +152,6 @@ export const PaymentService = {
 				}
 			]
 		}
-
 		try {
 			const res = await axios.post(
 				'https://k3g66n.api.infobip.com/viber/1/message/text',
@@ -175,7 +169,6 @@ export const PaymentService = {
 			Authorization: process.env.AUTHORIZATION_SMS,
 			'Content-Type': 'application/json'
 		}
-
 		const data = {
 			messages: [
 				{

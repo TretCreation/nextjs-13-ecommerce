@@ -1,39 +1,39 @@
 id,name,price,rating,brandId,typeId,img
-1,IPhone 14 Blue,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-blue.png
-2,IPhone 14 Midnight,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-midnight.png
-3,IPhone 14 Product Red,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-product-red.png
-4,IPhone 14 Purple,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-purple.png
-5,IPhone 14 Starlight,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-starlight.png
-6,IPhone 14 Yellow,799,4,1,1,/assets/products/apple/smartphones/iphone-14/apple-iphone-14-yellow.png
-7,IPhone 14 Pro Deep Purple,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-deep-purple.png
-8,IPhone 14 Pro Gold,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-gold.png
-9,IPhone 14 Pro Silver,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-silver.png
-10,IPhone 14 Pro Space Black,999,4,1,1,/assets/products/apple/smartphones/iphone-14-pro/apple-iphone-14-pro-space-black.png
-11,MacBook Air M2 Midnight,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-midnight.png
-12,MacBook Air M2 Silver,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-silver.png
-13,MacBook Air M2 Space Gray,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-space-gray.png
-14,MacBook Air M2 Starlight,1199,5,1,2,/assets/products/apple/laptops/macbook-m2/apple-macbook-air-m2-starlight.png
-15,Samsung Galaxy S23 Ultra Beige,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-beige.png
-16,Samsung Galaxy S23 Ultra Green,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-green.png
-17,Samsung Galaxy S23 Ultra Pink,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-light-pink.png
-18,Samsung Galaxy S23 Ultra Phantom Black,1199,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-ultra/samsung-galaxy-s23-ultra-phantom-black.png
-19,Samsung Galaxy S23+ Green,999,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-plus-green.png
-20,Samsung Galaxy S23+ Phantom Black,999,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-plus-phantom-black.png
-21,Samsung Galaxy S23+ Pink,999,4,2,1,/assets/products/samsung/smartphones/galaxy-s23-plus/samsung-galaxy-s23-plus-pink.png
-22,Samsung Galaxy S23 Beige,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-beige.png
-23,Samsung Galaxy S23 Green,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-green.png
-24,Samsung Galaxy S23 Phantom Black,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-phantom-black.png
-25,Samsung Galaxy S23 Pink,799,3,2,1,/assets/products/samsung/smartphones/galaxy-s23/samsung-galaxy-s23-pink.png
-26,AirPods Max Green,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-green.png
-27,AirPods Max Pink,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-pink.png
-28,AirPods Max Silver,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-silver.png
-29,AirPods Max Sky Blue,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-sky-blue.png
-30,AirPods Max Space Gray,549,4,1,4,/assets/products/apple/headphones/apple-airpods-max/apple-airpods-max-space-gray.png
-31,AirPods Pro 2,249,5,1,4,/assets/products/apple/headphones/apple-airpods-pro-2/apple-airpods-pro-2.png
-32,Watch Series 8 Midnight,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-midnight.png
-33,Watch Series 8 Product Red,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-product-red.png
-34,Watch Series 8 Silver,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-silver.png
-35,Watch Series 8 Starlight,399,3,1,3,/assets/products/apple/watches/apple-watch-series-8/apple-watch-series-8-starlight.png
-36,Watch Ultra Midnight,799,4,1,3,/assets/products/apple/watches/apple-watch-ultra/apple-watch-ultra-midnight.png
-37,Watch Ultra White,799,4,1,3,/assets/products/apple/watches/apple-watch-ultra/apple-watch-ultra-white.png
-38,Watch Ultra Yellow,799,4,1,3,/assets/products/apple/watches/apple-watch-ultra/apple-watch-ultra-yellow.png
+1,IPhone 14 Blue,799,4,1,1,/assets/products/apple-iphone-14-blue.png
+2,IPhone 14 Midnight,799,4,1,1,/assets/products/apple-iphone-14-midnight.png
+3,IPhone 14 Product Red,799,4,1,1,/assets/products/apple-iphone-14-product-red.png
+4,IPhone 14 Purple,799,4,1,1,/assets/products/apple-iphone-14-purple.png
+5,IPhone 14 Starlight,799,4,1,1,/assets/products/apple-iphone-14-starlight.png
+6,IPhone 14 Yellow,799,4,1,1,/assets/products/apple-iphone-14-yellow.png
+7,IPhone 14 Pro Deep Purple,999,4,1,1,/assets/products/apple-iphone-14-pro-deep-purple.png
+8,IPhone 14 Pro Gold,999,4,1,1,/assets/products/apple-iphone-14-pro-gold.png
+9,IPhone 14 Pro Silver,999,4,1,1,/assets/products/apple-iphone-14-pro-silver.png
+10,IPhone 14 Pro Space Black,999,4,1,1,/assets/products/apple-iphone-14-pro-space-black.png
+11,MacBook Air M2 Midnight,1199,5,1,2,/assets/products/apple-macbook-air-m2-midnight.png
+12,MacBook Air M2 Silver,1199,5,1,2,/assets/products/apple-macbook-air-m2-silver.png
+13,MacBook Air M2 Space Gray,1199,5,1,2,/assets/products/apple-macbook-air-m2-space-gray.png
+14,MacBook Air M2 Starlight,1199,5,1,2,/assets/products/apple-macbook-air-m2-starlight.png
+15,Samsung Galaxy S23 Ultra Beige,1199,4,2,1,/assets/products/samsung-galaxy-s23-ultra-beige.png
+16,Samsung Galaxy S23 Ultra Green,1199,4,2,1,/assets/products/samsung-galaxy-s23-ultra-green.png
+17,Samsung Galaxy S23 Ultra Pink,1199,4,2,1,/assets/products/samsung-galaxy-s23-ultra-light-pink.png
+18,Samsung Galaxy S23 Ultra Phantom Black,1199,4,2,1,/assets/products/samsung-galaxy-s23-ultra-phantom-black.png
+19,Samsung Galaxy S23+ Green,999,4,2,1,/assets/products/samsung-galaxy-s23-plus-green.png
+20,Samsung Galaxy S23+ Phantom Black,999,4,2,1,/assets/products/samsung-galaxy-s23-plus-phantom-black.png
+21,Samsung Galaxy S23+ Pink,999,4,2,1,/assets/products/samsung-galaxy-s23-plus-pink.png
+22,Samsung Galaxy S23 Beige,799,3,2,1,/assets/products/samsung-galaxy-s23-beige.png
+23,Samsung Galaxy S23 Green,799,3,2,1,/assets/products/samsung-galaxy-s23-green.png
+24,Samsung Galaxy S23 Phantom Black,799,3,2,1,/assets/products/samsung-galaxy-s23-phantom-black.png
+25,Samsung Galaxy S23 Pink,799,3,2,1,/assets/products/samsung-galaxy-s23-pink.png
+26,AirPods Max Green,549,4,1,4,/assets/products/apple-airpods-max-green.png
+27,AirPods Max Pink,549,4,1,4,/assets/products/apple-airpods-max-pink.png
+28,AirPods Max Silver,549,4,1,4,/assets/products/apple-airpods-max-silver.png
+29,AirPods Max Sky Blue,549,4,1,4,/assets/products/apple-airpods-max-sky-blue.png
+30,AirPods Max Space Gray,549,4,1,4,/assets/products/apple-airpods-max-space-gray.png
+31,AirPods Pro 2,249,5,1,4,/assets/products/apple-airpods-pro-2.png
+32,Watch Series 8 Midnight,399,3,1,3,/assets/products/apple-watch-series-8-midnight.png
+33,Watch Series 8 Product Red,399,3,1,3,/assets/products/apple-watch-series-8-product-red.png
+34,Watch Series 8 Silver,399,3,1,3,/assets/products/apple-watch-series-8-silver.png
+35,Watch Series 8 Starlight,399,3,1,3,/assets/products/apple-watch-series-8-starlight.png
+36,Watch Ultra Midnight,799,4,1,3,/assets/products/apple-watch-ultra-midnight.png
+37,Watch Ultra White,799,4,1,3,/assets/products/apple-watch-ultra-white.png
+38,Watch Ultra Yellow,799,4,1,3,/assets/products/apple-watch-ultra-yellow.png

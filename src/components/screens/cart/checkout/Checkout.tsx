@@ -29,7 +29,7 @@ const Checkout = () => {
 				<p>First name</p>
 				<Input
 					appearance='solid'
-					placeholder='first name'
+					placeholder='James'
 					type='text'
 					value={fistName}
 					className='mb-4'
@@ -37,10 +37,10 @@ const Checkout = () => {
 				/>
 			</div>
 			<div>
-				<p>Second name</p>
+				<p>Last name</p>
 				<Input
 					appearance='solid'
-					placeholder='second name'
+					placeholder='Smith'
 					type='text'
 					value={secondName}
 					className='mb-5'

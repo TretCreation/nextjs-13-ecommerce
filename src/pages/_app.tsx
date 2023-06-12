@@ -22,7 +22,7 @@ export default function App({
 						<title>TretStore</title>
 						<link rel='icon' href='/favicon.ico' />
 					</Head>
-					{[`/checkout`, '/auth/sign-in', '/auth/sign-up'].includes(
+					{[`/checkout`, `/checkout/success`, '/auth/sign-in', '/auth/sign-up'].includes(
 						appProps.router.pathname
 					) ? (
 						<LayoutAppProps>

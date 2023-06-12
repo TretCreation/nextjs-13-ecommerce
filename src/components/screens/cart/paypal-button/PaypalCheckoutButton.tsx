@@ -5,6 +5,7 @@ import { PaymentService } from '@/src/services/PaymentService'
 import { clearCart, clearCartProducts } from '@/src/store/cart/cart.slice'
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 
 interface IPaypalCheckoutButtonProps {
@@ -22,14 +23,21 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 	email,
 	phone
 }) => {
+	const router = useRouter()
+
 	const [paidFor, setPaidFor] = useState<boolean>(false)
 	const [error, setError] = useState<string | null>(null)
+
+	function successPage(orderId: string) {
+		// <Link href={{ pathname: '/checkout/success', query: orderId }} >
+		// </Link>
+		router.push({ pathname: '/checkout/success', query: { orderId: orderId } })
+	}
 
 	const dispatch = useAppDispatch()
 	const { status } = useSession()
 
 	const handleApprove = async (order: any) => {
-		setPaidFor(true)
 		if (!userId) {
 			const password = Math.random().toString(36).slice(-8)
 			const user = await AuthService.createUser(
@@ -52,8 +60,8 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 			})
 
 			await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
-			const resViber = await PaymentService.sendViber(phone, order?.id)
-			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
+			// const resViber = await PaymentService.sendViber(phone, order?.id)
+			// if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 
 			dispatch(clearCart())
 		} else {
@@ -70,15 +78,19 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 			})
 
 			await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
-			const resViber = await PaymentService.sendViber(phone, order?.id)
-			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
+			// const resViber = await PaymentService.sendViber(phone, order?.id)
+			// if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 
 			if (status === 'authenticated') {
 				dispatch(clearCartProducts(userId))
 			}
 		}
+		// setPaidFor(true)
+		successPage(order?.id)
 	}
-	if (paidFor) alert('Thank you for you purchase')
+	// if (paidFor) {
+	// 	;<Link href={{ pathname: '/checkout/success', query: order }} />
+	// }
 
 	if (error) alert(error)
 

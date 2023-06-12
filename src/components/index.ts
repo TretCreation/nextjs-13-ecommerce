@@ -38,6 +38,7 @@ export { default as RecommendProduct } from './screens/product/recommend-product
 export { default as NoCartProducts } from './screens/cart/cart-empty/NoProducts'
 export { default as ModalCart } from './screens/cart/ModalCart'
 export { default as Checkout } from './screens/cart/checkout/Checkout'
+export { default as Thanks } from './screens/cart/thanks-page/Thanks'
 // Wishlist
 export { default as Wishlist } from './screens/wishlist/Wishlist'
 export { default as NoWishlistProducts } from './screens/wishlist/wishlist-empty/NoProducts'
