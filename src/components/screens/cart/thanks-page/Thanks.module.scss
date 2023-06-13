@@ -1,0 +1,19 @@
+.thanks {
+	@apply container m-auto mt-12 w-[38rem] border border-solid border-gray-light p-9 text-center;
+
+	img {
+		@apply inline-block;
+	}
+
+	button {
+		@apply mt-4 inline-flex w-[10rem] justify-center;
+
+		a {
+			@apply flex  items-center justify-center;
+
+			p {
+				@apply ml-2;
+			}
+		}
+	}
+}

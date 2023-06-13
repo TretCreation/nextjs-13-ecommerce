@@ -1,11 +1,11 @@
 import { HeaderLogo } from '@/src/components'
 import { NextPage } from 'next'
-import styles from './Header.module.scss'
+import styles from './HeaderAppProps.module.scss'
 
-const Header: NextPage = () => (
+const HeaderAppProps: NextPage = () => (
 	<nav className={styles.nav}>
 		<HeaderLogo />
 	</nav>
 )
 
-export default Header
+export default HeaderAppProps

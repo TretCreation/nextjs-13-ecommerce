@@ -21,7 +21,8 @@
     "lint:stylelint": "stylelint \"**/*.scss\" --fix",
     "prisma:run:script": "ts-node --esm ./prisma/script.mts",
     "prisma:seed": "prisma db seed",
-    "prisma:migrate": "prisma migrate dev --name init"
+    "prisma:migrate": "prisma migrate dev --name init",
+    "test": "node ./bot/index.mjs"
   },
   "dependencies": {
     "@next/font": "13.1.2",

@@ -1,3 +1,4 @@
+import { TelegramIcon } from '@/public'
 import Button from '@/src/components/ui/button/Button'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,7 +11,7 @@ const Thanks: FC = () => {
 
 	if (orderId)
 		return (
-			<div className={styles.EDIT}>
+			<div className={styles.thanks}>
 				<p>
 					Thanks for your order! We’re working hard to get it shipped to you. We hope to
 					see you again in the future.
@@ -18,13 +19,18 @@ const Thanks: FC = () => {
 				<Image
 					src={'/assets/success-order.png'}
 					alt='thanks'
-					width={200}
+					width={325}
 					height={0}
 					priority
 				/>
-				<p>Your Order: №{orderId}</p>
-				<Button appearance='primary'>Telegram</Button>
-				<Link href={{ pathname: '/checkout/success', query: orderId }}></Link>
+				<p>Your Order №: {orderId}</p>
+				<Button appearance='primary'>
+					<Link href='https://t.me/TretStore_bot'>
+						<TelegramIcon />
+						<p>Telegram</p>
+					</Link>
+				</Button>
+				{/* <Link href={{ pathname: '/checkout/success', query: orderId }}></Link> */}
 			</div>
 		)
 	return <div>Something goes wrong...</div>

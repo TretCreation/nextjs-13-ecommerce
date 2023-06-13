@@ -54,7 +54,7 @@ model Order {
   userId         Int
   user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   status         String
-  transactionId  String
+  transactionId  String          @unique
   paymentAmount  Int
   createdAt      DateTime
   updatedAt      DateTime

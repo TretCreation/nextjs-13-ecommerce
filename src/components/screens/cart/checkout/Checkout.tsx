@@ -24,7 +24,7 @@ const Checkout = () => {
 	}
 
 	return (
-		<div className={styles.EDIT}>
+		<div className={styles.checkout}>
 			<div>
 				<p>First name</p>
 				<Input
