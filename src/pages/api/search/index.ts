@@ -6,9 +6,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		try {
 			const data = await prisma.product.findMany({
 				where: {
-					name: {
-						contains: req.query.q as string
-					}
+					OR: [
+						{
+							name: {
+								contains: req.query.q as string
+							}
+						},
+						{
+							brand: {
+								name: {
+									contains: req.query.q as string
+								}
+							}
+						},
+						{
+							type: {
+								name: {
+									contains: req.query.q as string
+								}
+							}
+						}
+					]
 				}
 			})
 			return res.status(200).json(data)

@@ -18,6 +18,13 @@ interface IModalProductsProps {
 }
 
 const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
+	const ref = useRef<HTMLDivElement>(null)
+
+	useOnClickOutside(ref, () => handleProductsClose())
+
+	const [isDivVisible, setDivVisible] = useState(true)
+	const [status, setStatus] = useState<string>('')
+
 	//* fetch
 	const [dataType, setDataType] = useState<IType[]>([])
 	const [dataBrand, setDataBrand] = useState<IBrand[]>([])
@@ -80,6 +87,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	const handleRemove = async (id: number) => {
 		await ProductService.removeProduct(id)
 		await fetchProducts(debouncedSearchProducts)
+		setStatus('success removed')
 	}
 
 	const handleUpdate = async (id: string) => {
@@ -145,6 +153,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 			method: 'POST',
 			body
 		})
+		setStatus('success added')
 	}
 
 	const updateProduct = async (event: any) => {
@@ -162,12 +171,8 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 			method: 'POST',
 			body
 		})
+		setStatus('success updated')
 	}
-	const ref = useRef<HTMLDivElement>(null)
-
-	useOnClickOutside(ref, () => handleProductsClose())
-
-	const [isDivVisible, setDivVisible] = useState(true)
 
 	const handleProductsClose = () => {
 		setDivVisible(false)
@@ -180,6 +185,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 			<CrossIcon className={styles.svg} onClick={handleClose} />
 			<div className={styles.add}>
 				<h1>Add Product</h1>
+				{/* Name of the product */}
 				<div>
 					<p>Enter the name of the product</p>
 					<Input
@@ -189,6 +195,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setName(e.target.value)}
 					/>
 				</div>
+				{/* Price of the product */}
 				<div>
 					<p>Enter the price of the product</p>
 					<Input
@@ -200,6 +207,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setPrice(Number(e.target.value))}
 					/>
 				</div>
+				{/* Image */}
 				<div>
 					<p>Add image</p>
 					<Input
@@ -211,6 +219,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={handleUploadImage}
 					/>
 				</div>
+				{/* Type */}
 				<div>
 					<label htmlFor='type'>Type</label>
 					<select name='type' value={typeId} onChange={handleChangeType}>
@@ -221,6 +230,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
+				{/* Brand */}
 				<div>
 					<label htmlFor='brand'>Brand</label>
 					<select name='brand' value={brandId} onChange={handleChangeBrand}>
@@ -231,19 +241,23 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
+				{status === 'success added' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' type='submit' onClick={addProduct}>
 					Save
 				</Button>
 			</div>
 			<div className={styles.remove}>
 				<h1>Remove Product</h1>
-				<Input
-					type='text'
-					placeholder='Enter a product'
-					appearance='solid'
-					onChange={e => setInput(e.target.value)}
-				/>
-
+				{/* Name of the product */}
+				<div>
+					<p>Enter the name of the product</p>
+					<Input
+						type='text'
+						placeholder='Enter a product'
+						appearance='solid'
+						onChange={e => setInput(e.target.value)}
+					/>
+				</div>
 				{isDivVisible && products.length !== 0 ? (
 					<div className={styles.modallist} ref={ref}>
 						{products.map(product => (
@@ -261,6 +275,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 				) : (
 					<></>
 				)}
+				{status === 'success removed' && <p className={styles.submit}>Success!</p>}
 			</div>
 			<div className={styles.edit}>
 				<h1>Edit Product</h1>
@@ -289,6 +304,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 				) : (
 					<></>
 				)}
+				{/* Name of the product */}
 				<div>
 					<p>Enter the name of the product</p>
 					<Input
@@ -299,6 +315,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setNameUpdated(e.target.value)}
 					/>
 				</div>
+				{/* Price of the product */}
 				<div>
 					<p>Enter the price of the product</p>
 					<Input
@@ -311,6 +328,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setPriceUpdated(Number(e.target.value))}
 					/>
 				</div>
+				{/* Image */}
 				<div>
 					<p>Add image</p>
 					<Input
@@ -322,6 +340,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={handleUploadImageUpdated}
 					/>
 				</div>
+				{/* Type */}
 				<div>
 					<label htmlFor='type'>Type</label>
 					<select name='type' value={typeIdUpdated} onChange={handleChangeTypeUpdated}>
@@ -332,6 +351,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
+				{/* Brand */}
 				<div>
 					<label htmlFor='brand'>Brand</label>
 					<select name='brand' value={brandIdUpdated} onChange={handleChangeBrandUpdated}>
@@ -342,6 +362,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
+				{status === 'success updated' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' type='submit' onClick={updateProduct}>
 					Save
 				</Button>

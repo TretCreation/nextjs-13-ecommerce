@@ -109,12 +109,16 @@ model Brand {
   id       Int       @id @default(autoincrement())
   name     String    @unique
   products Product[]
+
+  @@fulltext([name])
 }
 
 model Type {
   id       Int       @id @default(autoincrement())
   name     String    @unique
   products Product[]
+
+  @@fulltext([name])
 }
 
 enum Role {

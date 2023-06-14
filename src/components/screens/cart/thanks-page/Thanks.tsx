@@ -30,7 +30,6 @@ const Thanks: FC = () => {
 						<p>Telegram</p>
 					</Link>
 				</Button>
-				{/* <Link href={{ pathname: '/checkout/success', query: orderId }}></Link> */}
 			</div>
 		)
 	return <div>Something goes wrong...</div>

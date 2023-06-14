@@ -1,5 +1,5 @@
 import { WishlistIcon } from '@/public'
-import { IProduct, IProductPage } from '@/src/interfaces/product.interface'
+import { IProductPage } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
 import { addCartProducts, addProduct } from '@/src/store/cart/cart.slice'
 import { toggleWishlist, toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
@@ -43,7 +43,6 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
 		fetchData()
 	}, [product.id])
 
-	console.log('product', product)
 	return (
 		<>
 			<div className={styles.main}>
@@ -71,11 +70,17 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
 							</a>
 							{product.brand?.name}
 						</p>
-						<p className='mb-3'>
+						<p className='mb-1'>
 							<a className={styles.text}>
 								<b>Category</b>:&nbsp;&nbsp;
 							</a>
 							{product.type?.name}
+						</p>
+						<p className='mb-3'>
+							<a className={styles.text}>
+								<b>Price</b>:&nbsp;&nbsp;
+							</a>
+							${product.price}
 						</p>
 					</div>
 					<div>
