@@ -6,7 +6,7 @@ import styles from './SortBy.module.scss'
 
 interface ISortBy {
 	limit: number
-	q: typeId
+	q: typeId | any
 	currentPage: number
 	brandId: number | number[] | undefined
 	getProducts: (products: IProduct[]) => void

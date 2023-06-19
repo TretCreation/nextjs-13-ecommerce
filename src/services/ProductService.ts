@@ -1,7 +1,11 @@
 import axios from 'axios'
-import { IProduct, IProductPage } from '../interfaces/product.interface'
+import { IProduct, IProductInfo, IProductPage } from '../interfaces/product.interface'
 
 axios.defaults.baseURL = process.env.API_URL
+
+interface IProductService extends IProduct {
+	product_info: IProductInfo
+}
 
 export const ProductService = {
 	async getAll() {
@@ -15,7 +19,8 @@ export const ProductService = {
 	},
 	async getById(id?: string) {
 		try {
-			const res = await axios.get<IProduct>(`/product/${id}`)
+			const res = await axios.get<IProductService>(`/product/${id}`)
+			console.log(res.data)
 			return res.data
 		} catch (error) {
 			console.log(error)
@@ -45,7 +50,6 @@ export const ProductService = {
 			const res = await axios.post<IProduct>(`/admin/product/create`, {
 				formData
 			})
-			console.log(res.data)
 			return res.data
 		} catch (error) {
 			console.log(error)
@@ -73,6 +77,15 @@ export const ProductService = {
 	async removeProductInfo(productId: number) {
 		try {
 			const res = await axios.post<IProduct>(`/product/info/remove`, { productId })
+			return res.data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
+	},
+	async checkProductInfo(productId: number) {
+		try {
+			const res = await axios.get<any>(`/product/info/check?productId=${productId}`)
 			return res.data
 		} catch (error) {
 			console.log(error)

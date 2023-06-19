@@ -1,3 +1,7 @@
 .list {
-	@apply absolute top-[3.063em] z-10 flex w-full max-w-xl flex-col rounded-btn-search border border-solid border-gray-light bg-white-main p-2 pr-4;
+	@apply absolute top-[3.063em] z-10 flex h-[60vh] w-full max-w-xl flex-col overflow-y-scroll rounded-btn-search border border-b-[10px] border-solid border-gray-light border-[#f9fafa] bg-white-main p-2 pr-4 shadow-md;
+}
+
+.list > div {
+	@apply p-4;
 }

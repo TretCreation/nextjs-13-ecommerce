@@ -13,11 +13,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const saveFile = async (file: any, fields: any) => {
 		//* Image
 		const data = fs.readFileSync(file.path)
+		const productInfoArray = JSON.parse(fields.info)
+		console.log('productInfoArray', productInfoArray)
+
 		fs.writeFileSync(`./public/assets/products/${file.name}`, data)
 		await fs.unlinkSync(file.path)
 
 		//* Fields
-		await prisma.product.update({
+		const product = await prisma.product.update({
 			where: { id: Number(fields.id) },
 			data: {
 				name: fields.name,
@@ -27,6 +30,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				img: `/assets/products/${file.name}`,
 				rating: 0
 			}
+		})
+
+		const productInfoData = productInfoArray.map((info: any) => ({
+			productId: product.id,
+			title: info.title,
+			description: info.description
+		}))
+
+		await prisma.product_info.deleteMany({
+			where: {
+				productId: product.id
+			}
+		})
+
+		await prisma.product_info.createMany({
+			data: productInfoData
 		})
 	}
 

@@ -3,11 +3,15 @@
 }
 
 .add {
-	@apply float-left ml-10 mt-8 flex h-[88%] w-[31%] flex-col border-r-2 border-[#e5e7eb] p-4;
+	@apply float-left ml-10 mt-8 flex h-[88%] w-[31%] flex-col overflow-x-hidden overflow-y-scroll border-r-2 border-[#e5e7eb] p-4;
 }
 
 .add > div {
-	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
+	@apply mb-2 border-b-[1px] border-[#040404] pb-4 pt-2;
+
+	p {
+		@apply mb-1;
+	}
 }
 
 .add h1 {
@@ -15,7 +19,7 @@
 }
 
 .remove {
-	@apply relative float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col border-r-2 border-[#e5e7eb] p-4;
+	@apply relative float-left ml-2 mt-8 flex h-[88%] w-[30%] flex-col overflow-x-hidden border-r-2 border-[#e5e7eb] p-4;
 
 	.button {
 		@apply w-full border-b bg-[#ffffff] py-2 px-4 text-left font-light text-black;
@@ -27,7 +31,11 @@
 }
 
 .remove > div {
-	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
+	@apply mb-2 border-b-[1px] border-[#040404] pb-4 pt-2;
+
+	p {
+		@apply mb-1;
+	}
 }
 
 .remove h1 {
@@ -35,7 +43,7 @@
 }
 
 .edit {
-	@apply relative float-left ml-2 mt-8 flex h-[88%] w-[30%]  flex-col p-4;
+	@apply relative float-left ml-2 mt-8 flex h-[88%] w-[30%]  flex-col overflow-x-hidden  overflow-y-scroll p-4;
 
 	.button {
 		@apply w-full border-b bg-[#ffffff] py-2 px-4 text-left font-light text-black;
@@ -47,7 +55,11 @@
 }
 
 .edit > div {
-	@apply mb-2 border-b-[1px] border-[#040404] p-4 pt-2;
+	@apply mb-2 border-b-[1px] border-[#040404] pb-4 pt-2;
+
+	p {
+		@apply mb-1;
+	}
 }
 
 .edit h1 {
@@ -60,4 +72,8 @@
 
 .submit {
 	@apply text-emerald-400;
+}
+
+.deletebtn {
+	@apply mt-4;
 }

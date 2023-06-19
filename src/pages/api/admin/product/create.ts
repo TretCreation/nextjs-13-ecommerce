@@ -13,11 +13,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const saveFile = async (file: any, fields: any) => {
 		//* Image
 		const data = fs.readFileSync(file.path)
+		const productInfoArray = JSON.parse(fields.info)
+
 		fs.writeFileSync(`./public/assets/products/${file.name}`, data)
 		await fs.unlinkSync(file.path)
 
 		//* Fields
-		await prisma.product.create({
+		const product = await prisma.product.create({
 			data: {
 				name: fields.name,
 				price: Number(fields.price),
@@ -26,6 +28,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				img: `/assets/products/${file.name}`,
 				rating: 0
 			}
+		})
+
+		const productInfoData = productInfoArray.map((info: any) => ({
+			productId: product.id,
+			title: info.title,
+			description: info.description
+		}))
+
+		await prisma.product_info.createMany({
+			data: productInfoData
 		})
 	}
 

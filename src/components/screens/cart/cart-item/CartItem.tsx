@@ -16,14 +16,18 @@ import Link from 'next/link'
 import { FC } from 'react'
 import styles from './CartItem.module.scss'
 
-const CartItem: FC<ICartItemProps> = ({ cartProduct }) => {
+interface ICart extends ICartItemProps {
+	handleClose: () => void
+}
+
+const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
 	const dispatch = useAppDispatch()
 
 	const { data: session, status } = useSession()
 
 	return (
 		<div className={styles.product}>
-			<Link href={`/product/${cartProduct.id}`} className={styles.link}>
+			<Link href={`/product/${cartProduct.id}`} className={styles.link} onClick={handleClose}>
 				<Image
 					src={cartProduct.img}
 					alt={cartProduct.name}

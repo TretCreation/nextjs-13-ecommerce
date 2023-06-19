@@ -3,3 +3,7 @@
 		@apply pb-6 text-center text-2xl uppercase;
 	}
 }
+
+.orders > div {
+	@apply border-b-2 border-[#e5e7eb] pb-4;
+}

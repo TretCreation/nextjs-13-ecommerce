@@ -5,11 +5,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	if (req.method === 'POST') {
 		try {
 			const { id } = req.body
-			const data = await prisma.product.deleteMany({
+
+			await prisma.wishlist.deleteMany({
 				where: {
-					id
+					productId: id
 				}
 			})
+
+			await prisma.cart.deleteMany({
+				where: {
+					productId: id
+				}
+			})
+
+			await prisma.order_product.deleteMany({
+				where: {
+					productId: id
+				}
+			})
+
+			const data = await prisma.product.delete({
+				where: {
+					id: id
+				}
+			})
+
 			return res.status(200).json(data)
 		} catch (error) {
 			return res.status(500).json(error)

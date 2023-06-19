@@ -29,7 +29,7 @@ model User {
 model Wishlist {
   id        Int     @id @default(autoincrement())
   productId Int
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    Int
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -38,12 +38,12 @@ model Wishlist {
 }
 
 model Cart {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   productId Int
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product? @relation(fields: [productId], references: [id], onDelete: NoAction)
   userId    Int
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  count     Int     @default(1)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  count     Int      @default(1)
 
   @@index([userId])
   @@index([productId])
@@ -96,9 +96,9 @@ model Product {
 }
 
 model Product_info {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   productId   Int
-  product     Product @relation(fields: [productId], references: [id])
+  product     Product? @relation(fields: [productId], references: [id], onDelete: NoAction)
   title       String
   description String
 

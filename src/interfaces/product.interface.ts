@@ -24,3 +24,11 @@ export interface IProductPage extends IProduct {
 	}[]
 	count: number
 }
+
+export interface IProductInfo {
+	id: number
+	productId: number
+	title: string
+	description: string
+	number?: number
+}

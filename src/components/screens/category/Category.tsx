@@ -1,23 +1,25 @@
-import { Button, Input, ProductItem, SortBy } from '@/src/components'
+import { Button, ProductItem, SortBy } from '@/src/components'
 import { IBrand } from '@/src/interfaces/brand.interface'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { BrandService } from '@/src/services/BrandService'
-import { FC, useState } from 'react'
+import { TypeService } from '@/src/services/TypeService'
+import { FC, useEffect, useState } from 'react'
 import NoProducts from '../product/product-empty/NoProducts'
-import styles from './CategoryLaptops.module.scss'
+import styles from './Category.module.scss'
 
-interface ICategoryLaptopsProps {
-	laptops: IProduct[]
-}
-
-const CategoryLaptops: FC<ICategoryLaptopsProps> = ({ laptops }) => {
-	const [products, setProducts] = useState<IProduct[]>(laptops)
+const Category: FC<{ category: string }> = ({ category }) => {
+	console.log('category', category)
+	const [products, setProducts] = useState<IProduct[]>([])
 	const [currentPage, setCurrentPage] = useState<number>(1)
 
 	const [brands, setBrands] = useState<IBrand[]>([])
+	const [types, setTypes] = useState<IBrand[]>([])
 	const [brandId, setBrandId] = useState<number[]>([])
 
-	BrandService.getAllBrands().then(brands => setBrands(brands))
+	useEffect(() => {
+		BrandService.getAllBrands().then(brands => setBrands(brands))
+		TypeService.getAllTypes().then(types => setTypes(types))
+	}, [])
 
 	const handleSubmitBrandId = (brand: any) => {
 		if (brandId.includes(brand.id)) {
@@ -30,52 +32,64 @@ const CategoryLaptops: FC<ICategoryLaptopsProps> = ({ laptops }) => {
 
 	return (
 		<div className={styles.category}>
-			<div className={styles.filter}>
-				<p className={styles.text}>Brands:</p>
-				<div className='flex flex-col'>
-					{brands.map(brand => (
-						<Button
-							appearance='solid'
-							onClick={e => {
-								if (e.detail === 1) {
-									handleSubmitBrandId(brand)
-								}
-								handleSubmitBrandId(brand)
-							}}
-							key={brand.id}
-						>
-							<label className={styles.label}>
-								{/* <Input type='checkbox' /> */}
-								<p className={styles.brand}>{brand.name}</p>
-							</label>
-						</Button>
-					))}
-				</div>
-			</div>
-			<div>
-				<SortBy
-					limit={16}
-					q={2}
-					brandId={brandId}
-					currentPage={currentPage}
-					setCurrentPage={currentPage => setCurrentPage(currentPage)}
-					getProducts={products => setProducts(products)}
-				/>
-				<div className={styles.products}>
-					{products.length ? (
-						products.map((product: IProduct) => (
-							<ProductItem key={product.id} product={product} />
-						))
-					) : (
-						<NoProducts />
-					)}
-				</div>
-				<Button appearance='primary' onClick={() => setCurrentPage(currentPage + 1)}>
-					<p>Load more </p>
-				</Button>
-			</div>
+			{types.map(type => {
+				if (type.name === category) {
+					return (
+						<div className={styles.category} key={type.name}>
+							<div className={styles.filter}>
+								<p className={styles.text}>Brands:</p>
+								<div className='flex flex-col'>
+									{brands.map(brand => (
+										<Button
+											appearance='solid'
+											onClick={e => {
+												if (e.detail === 1) {
+													handleSubmitBrandId(brand)
+												}
+												handleSubmitBrandId(brand)
+											}}
+											key={brand.id}
+										>
+											<label className={styles.label}>
+												{/* <Input type='checkbox' /> */}
+												<p className={styles.brand}>{brand.name}</p>
+											</label>
+										</Button>
+									))}
+								</div>
+							</div>
+							<div>
+								<SortBy
+									limit={16}
+									q={type.id}
+									brandId={brandId}
+									currentPage={currentPage}
+									setCurrentPage={setCurrentPage}
+									getProducts={products => setProducts(products)}
+								/>
+								<div className={styles.products}>
+									{products.length ? (
+										products.map((product: IProduct) => (
+											<ProductItem key={product.id} product={product} />
+										))
+									) : (
+										<NoProducts />
+									)}
+								</div>
+								<Button
+									appearance='primary'
+									onClick={() => setCurrentPage(currentPage + 1)}
+								>
+									<p>Load more</p>
+								</Button>
+							</div>
+						</div>
+					)
+				}
+				return null
+			})}
 		</div>
 	)
 }
 
-export default CategoryLaptops
+export default Category

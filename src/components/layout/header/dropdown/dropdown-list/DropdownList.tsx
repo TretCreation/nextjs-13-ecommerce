@@ -1,6 +1,7 @@
-import { HeadphonesIcon, LaptopIcon, SmartphoneIcon, WatchIcon } from '@/public'
 import { useEscape, useOutside } from '@/src/components'
-import { FC, useRef } from 'react'
+import { IType } from '@/src/interfaces/type.interface'
+import { TypeService } from '@/src/services/TypeService'
+import { FC, useRef, useState } from 'react'
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'
 
@@ -11,6 +12,9 @@ interface IDropdownListProps {
 
 const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 	const ref = useRef<HTMLDivElement>(null)
+	const [types, setTypes] = useState<IType[]>([])
+
+	TypeService.getAllTypes().then(types => setTypes(types))
 
 	//* Close modal on click outside
 	useOutside(ref, () => handleClose(), isOpen)
@@ -21,7 +25,7 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 	if (!isOpen) return null
 	return (
 		<div className={styles.list} ref={ref}>
-			<DropdownItem
+			{/* <DropdownItem
 				svg={<SmartphoneIcon className={styles.svg} />}
 				text='Smartphones'
 				href='/category/smartphones'
@@ -40,7 +44,15 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 				svg={<HeadphonesIcon className={styles.svg} />}
 				text='Headphones'
 				href='/category/headphones'
-			/>
+			/> */}
+			{types.map(type => (
+				<DropdownItem
+					key={type.id}
+					svg={''}
+					text={type.name}
+					href={`/category/${type.name.toLowerCase()}`}
+				/>
+			))}
 		</div>
 	)
 }

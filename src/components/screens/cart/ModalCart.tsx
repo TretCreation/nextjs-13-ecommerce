@@ -1,11 +1,9 @@
 import { CrossIcon } from '@/public'
 import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FC } from 'react'
 import CartItem from './cart-item/CartItem'
 import styles from './ModalCart.module.scss'
-import PaypalCheckoutButton from './paypal-button/PaypalCheckoutButton'
 
 interface ICartProps {
 	handleClose: () => void
@@ -13,8 +11,6 @@ interface ICartProps {
 }
 
 const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
-	const { data: session } = useSession()
-
 	const { cartProducts } = useAppSelector(state => state.cart)
 
 	const calculateSubtotal = (): number => {
@@ -38,7 +34,7 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 			{cartProducts.length > 0 ? (
 				<div className={styles.products}>
 					{cartProducts.map(cartProduct => (
-						<CartItem key={cartProduct.id} cartProduct={cartProduct} />
+						<CartItem key={cartProduct.id} cartProduct={cartProduct} handleClose={handleClose}/>
 					))}
 				</div>
 			) : (
@@ -50,16 +46,6 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 					<Link href={'/checkout'}>
 						<Button appearance='primary'>Checkout</Button>
 					</Link>
-					<PaypalCheckoutButton
-						subtotal={calculateSubtotal()}
-						userId={session?.user.id}
-						cartProducts={cartProducts.map(cartProduct => ({
-							id: cartProduct.id,
-							name: cartProduct.name,
-							price: cartProduct.price,
-							count: cartProduct.count
-						}))}
-					/>
 				</div>
 			)}
 		</Modal>

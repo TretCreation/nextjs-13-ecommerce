@@ -35,6 +35,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	const [img, setImg] = useState<File>()
 	const [typeId, setTypeId] = useState<number>(1)
 	const [brandId, setBrandId] = useState<number>(1)
+	const [info, setInfo] = useState<any[]>([])
 
 	//* remove form
 	const [input, setInput] = useState<string>('')
@@ -46,10 +47,11 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	const [productsUpdated, setProductsUpdated] = useState<IProduct[]>([])
 	const [idUpdated, setIdUpdated] = useState<number>()
 	const [nameUpdated, setNameUpdated] = useState<string>('')
-	const [priceUpdated, setPriceUpdated] = useState<number>(0)
+	const [priceUpdated, setPriceUpdated] = useState<number>()
 	const [imgUpdated, setImgUpdated] = useState<File>()
 	const [typeIdUpdated, setTypeIdUpdated] = useState<number>(1)
 	const [brandIdUpdated, setBrandIdUpdated] = useState<number>(1)
+	const [infoUpdated, setInfoUpdated] = useState<any[]>([])
 	const debouncedSearchProductsUpdated = useDebounce<string>(inputUpdated, 500)
 
 	const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +87,13 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	}, [])
 
 	const handleRemove = async (id: number) => {
+		// const productInfo = await ProductService.checkProductInfo(id)
+		// console.log('productInfo', productInfo)
+
+		await ProductService.removeProductInfo(id)
 		await ProductService.removeProduct(id)
+		// if (productInfo.length !== 0) {
+		// }
 		await fetchProducts(debouncedSearchProducts)
 		setStatus('success removed')
 	}
@@ -99,7 +107,12 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 		setPriceUpdated(res.price)
 		setTypeIdUpdated(res.typeId)
 		setBrandIdUpdated(res.brandId)
+		// setInfoUpdated([res.product_info])
 	}
+
+	useEffect(() => {
+		console.log('infoUpdated:', infoUpdated)
+	}, [infoUpdated])
 
 	useEffect(() => {
 		async function fetchTypes() {
@@ -148,6 +161,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 		body.append('file', img)
 		body.append('brandId', `${brandId}`)
 		body.append('typeId', `${typeId}`)
+		body.append('info', JSON.stringify(info))
 
 		await fetch('/api/admin/product/create', {
 			method: 'POST',
@@ -166,6 +180,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 		body.append('file', imgUpdated)
 		body.append('brandId', `${brandIdUpdated}`)
 		body.append('typeId', `${typeIdUpdated}`)
+		body.append('info', JSON.stringify(infoUpdated))
 
 		await fetch('/api/admin/product/update', {
 			method: 'POST',
@@ -177,6 +192,30 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	const handleProductsClose = () => {
 		setDivVisible(false)
 	}
+
+	const addInfo = () => {
+		setInfo([...info, { title: '', description: '', number: Date.now() }])
+	}
+	const removeInfo = (number: number) => {
+		setInfo(info.filter(i => i.number !== number))
+	}
+	const changeInfo = (key: any, value: any, number: number) => {
+		setInfo(info.map(i => (i.number === number ? { ...i, [key]: value } : i)))
+	}
+
+	const addInfoUpdated = () => {
+		setInfoUpdated([...infoUpdated, { title: '', description: '', number: Date.now() }])
+	}
+	const removeInfoUpdated = (number: number) => {
+		setInfoUpdated(infoUpdated.filter(i => i.number !== number))
+	}
+	const changeInfoUpdated = (key: any, value: any, number: number) => {
+		setInfoUpdated(infoUpdated.map(i => (i.number === number ? { ...i, [key]: value } : i)))
+	}
+
+	useEffect(() => {
+		console.log('infoUpdated:', infoUpdated)
+	}, [infoUpdated])
 
 	if (!isOpen) return null
 
@@ -241,6 +280,37 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
+				{/* Info */}
+				<p>Enter the info of the product</p>
+				{info.map(i => (
+					<div>
+						<p>Title</p>
+						<Input
+							type='text'
+							placeholder='Add title'
+							appearance='solid'
+							onChange={e => changeInfo('title', e.target.value, i.number)}
+						/>
+						<p className='mt-1'>Description</p>
+						<Input
+							type='text'
+							placeholder='Add description'
+							appearance='solid'
+							onChange={e => changeInfo('description', e.target.value, i.number)}
+						/>
+						<Button
+							appearance='primary'
+							className={styles.deletebtn}
+							onClick={() => removeInfo(i.number)}
+						>
+							Delete
+						</Button>
+					</div>
+				))}
+				<Button appearance='primary' onClick={addInfo}>
+					Add a new property
+				</Button>
+				<br />
 				{status === 'success added' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' type='submit' onClick={addProduct}>
 					Save
@@ -280,6 +350,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 			<div className={styles.edit}>
 				<h1>Edit Product</h1>
 				<div>
+					<p>Enter the name of the product</p>
 					<Input
 						type='text'
 						placeholder='Enter a product'
@@ -362,6 +433,41 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						))}
 					</select>
 				</div>
+				{/* Info */}
+				<p>Enter the info of the product</p>
+				{infoUpdated.map(i => (
+					<div key={i.id}>
+						<p>Title</p>
+						<Input
+							type='text'
+							placeholder='Add title'
+							appearance='solid'
+							value={i.title}
+							onChange={e => changeInfoUpdated('title', e.target.value, i.number)}
+						/>
+						<p className='mt-1'>Description</p>
+						<Input
+							type='text'
+							placeholder='Add description'
+							appearance='solid'
+							value={i.description}
+							onChange={e =>
+								changeInfoUpdated('description', e.target.value, i.number)
+							}
+						/>
+						<Button
+							appearance='primary'
+							className={styles.deletebtn}
+							onClick={() => removeInfoUpdated(i.number)}
+						>
+							Delete
+						</Button>
+					</div>
+				))}
+				<Button appearance='primary' onClick={addInfoUpdated}>
+					Add a new property
+				</Button>
+				<br />
 				{status === 'success updated' && <p className={styles.submit}>Success!</p>}
 				<Button appearance='primary' type='submit' onClick={updateProduct}>
 					Save

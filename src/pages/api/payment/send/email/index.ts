@@ -28,17 +28,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				subject: 'Your order',
 				html: `
 					<h1>Your order</h1>
-					<p>Status: ${status}</p>
-					<p>Amount of orders: ${subtotal}</p>
-					${cartProducts.map(
-						(product: ICartPayment) => `
-						<div>
-							<div>${product.name}</div>
-							<div>Count: ${product.count}</div>
-							<div>Price: ${product.price}</div>
-						</div>
-					`
-					)}
+					<h2>Status: ${status}</h2>
+					<table style="width:75%; border:1px solid black;">
+						<tr style="border:1px solid black;">
+							<th style="border:1px solid black;">Name</th>
+							<th style="border:1px solid black;">Count</th>
+							<th style="border:1px solid black;">Price</th>
+						</tr>
+						${
+							cartProducts && cartProducts.length > 0
+								? cartProducts
+										.map(
+											(product: ICartPayment) =>
+												`<tr style="border:1px solid black;">
+									<td style="border:1px solid black;">${product.name}</td>
+									<td style="text-align:center;border:1px solid black;">${product.count}</td>
+									<td style="text-align:center;border:1px solid black;">${product.price}</td>
+								</tr>`
+										)
+										.join('')
+								: '<tr><td colspan="3">No products in the cart</td></tr>'
+						}
+						</table>
+						<h2>Amount of orders: $${subtotal}</h2>
 				`
 			})
 
