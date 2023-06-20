@@ -1,7 +1,7 @@
 import { useEscape, useOutside } from '@/src/components'
 import { IType } from '@/src/interfaces/type.interface'
 import { TypeService } from '@/src/services/TypeService'
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'
 
@@ -14,7 +14,9 @@ const DropdownList: FC<IDropdownListProps> = ({ isOpen, handleClose }) => {
 	const ref = useRef<HTMLDivElement>(null)
 	const [types, setTypes] = useState<IType[]>([])
 
-	TypeService.getAllTypes().then(types => setTypes(types))
+	useEffect(() => {
+		TypeService.getAllTypes().then(types => setTypes(types))
+	}, [])
 
 	//* Close modal on click outside
 	useOutside(ref, () => handleClose(), isOpen)

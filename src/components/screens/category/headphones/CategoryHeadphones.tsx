@@ -1,8 +1,8 @@
-import { Button, Input, ProductItem, SortBy } from '@/src/components'
+import { Button, ProductItem, SortBy } from '@/src/components'
 import { IBrand } from '@/src/interfaces/brand.interface'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { BrandService } from '@/src/services/BrandService'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import NoProducts from '../../product/product-empty/NoProducts'
 import styles from './CategoryHeadphones.module.scss'
 
@@ -16,7 +16,13 @@ const CategoryHeadphones: FC<ICategoryHeadphonesProps> = ({ headphones }) => {
 	const [brands, setBrands] = useState<IBrand[]>([])
 	const [brandId, setBrandId] = useState<number[]>([])
 
-	BrandService.getAllBrands().then(brands => setBrands(brands))
+	useEffect(() => {
+		BrandService.getAllBrands().then(brands => setBrands(brands))
+	}, [])
+
+	const handleClick = (e: any) => {
+		e.currentTarget.classList.toggle(styles.btncategorycolor)
+	}
 
 	const handleSubmitBrandId = (brand: any) => {
 		if (brandId.includes(brand.id)) {
@@ -34,19 +40,17 @@ const CategoryHeadphones: FC<ICategoryHeadphonesProps> = ({ headphones }) => {
 				<div className='flex flex-col'>
 					{brands.map(brand => (
 						<Button
+							className={styles.btncategory}
 							appearance='solid'
 							onClick={e => {
 								if (e.detail === 1) {
 									handleSubmitBrandId(brand)
 								}
-								handleSubmitBrandId(brand)
+								handleClick(e)
 							}}
 							key={brand.id}
 						>
-							<label className={styles.label}>
-								{/* <Input type='checkbox' /> */}
-								<p className={styles.brand}>{brand.name}</p>
-							</label>
+							{brand.name}
 						</Button>
 					))}
 				</div>

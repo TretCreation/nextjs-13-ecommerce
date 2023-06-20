@@ -24,12 +24,12 @@ const Thanks: FC = () => {
 					priority
 				/>
 				<p>Your Order №: {orderId}</p>
-				<Button appearance='primary'>
-					<Link href='https://t.me/TretStore_bot'>
+				<Link href='https://t.me/TretStore_bot'>
+					<Button appearance='primary'>
 						<TelegramIcon />
 						<p>Telegram</p>
-					</Link>
-				</Button>
+					</Button>
+				</Link>
 			</div>
 		)
 	return <div>Something goes wrong...</div>

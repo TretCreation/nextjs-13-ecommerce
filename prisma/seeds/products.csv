@@ -37,3 +37,30 @@ id,name,price,rating,brandId,typeId,img
 36,Watch Ultra Midnight,799,4,1,3,/assets/products/apple-watch-ultra-midnight.png
 37,Watch Ultra White,799,4,1,3,/assets/products/apple-watch-ultra-white.png
 38,Watch Ultra Yellow,799,4,1,3,/assets/products/apple-watch-ultra-yellow.png
+39,Samsung Galaxy Book Pro,1270,3,2,2,/assets/products/samsung-galaxy-book-pro.png
+40,Samsung Galaxy Book3 Ultra,2399,5,2,2,/assets/products/samsung-galaxy-book3-ultra.png
+41,Samsung Galaxy Buds2 Pro Gray,135,3,2,4,/assets/products/samsung-galaxy-buds2-pro-gray.png
+42,Samsung Galaxy Buds2 Pro Light Violet,135,3,2,4,/assets/products/samsung-galaxy-buds2-pro-light-violet.png
+43,Samsung Galaxy Buds2 Pro White,135,3,2,4,/assets/products/samsung-galaxy-buds2-pro-white.png
+44,Samsung Galaxy Buds Live Black,100,3,2,4,/assets/products/samsung-galaxy-buds-live-black.png
+45,Samsung Galaxy Buds Live Bronze,100,3,2,4,/assets/products/samsung-galaxy-buds-live-bronze.png
+46,Samsung Galaxy Buds Live White,100,3,2,4,/assets/products/samsung-galaxy-buds-live-white.png
+47,Samsung Galaxy Watch5 Graphite,159,5,2,3,/assets/products/samsung-galaxy-watch5-graphite.png
+48,Samsung Galaxy Watch5 Sapphire,159,5,2,3,/assets/products/samsung-galaxy-watch5-sapphire.png
+49,Samsung Galaxy Watch5 Silver,159,5,2,3,/assets/products/samsung-galaxy-watch5-silver.png
+50,Samsung Galaxy Watch4 Aluminium Black,299,4,2,3,/assets/products/samsung-galaxy-watch4-aluminium-black.png
+51,Samsung Galaxy Watch4 Aluminium Gold,299,4,2,3,/assets/products/samsung-galaxy-watch4-aluminium-gold.png
+52,Asus ZenFone 8 Obsidian Black,419,3,4,1,/assets/products/asus-zenfone-8-obsidian-black.png
+53,ASUS ROG Delta S USB Type-C,259,3,4,4,/assets/products/asus-rog-delta-s-usb-type-c.png
+54,ASUS ROG Delta S Animate,229,5,4,4,/assets/products/asus-rog-delta-s-animate.png
+55,Asus ROG Strix G15,2999,4,4,2,/assets/products/asus-rog-strix-g15.png
+56,Asus Vivobook Pro 15,919,3,4,2,/assets/products/asus-vivobook-pro-15.png
+57,Asus TUF Gaming F15,850,4,4,2,/assets/products/asus-tuf-gaming-f15.png
+58,Lenovo IdeaPad Gaming,639,3,3,2,/assets/products/lenovo-ideapad-gaming-3.png
+59,Lenovo Legion 5 15ACH6 Phantom Blue,1149,4,3,2,/assets/products/lenovo-legion-5-15ach6-phantom-blue.png
+60,Lenovo Legion 5i 15IMH6 Phantom Black,1029,3,3,2,/assets/products/lenovo-legion-5i-15imh6-phantom-black.png
+61,Lenovo IdeaPad 1 15IJL7 Cloud Grey,349,2,3,2,/assets/products/lenovo-ideapad-1-15ijl7-cloud-grey.png
+62,Lenovo Pro Stereo Wired VOIP Black,79,3,3,4,/assets/products/lenovo-pro-stereo-wired-voip-black.png
+63,Lenovo K12,215,3,3,1,/assets/products/lenovo-k12.png
+64,Lenovo HW10H Blaze Black,69,3,3,3,/assets/products/lenovo-hw10h-blaze-black.png
+65,Lenovo S2 Black,34,1,3,3,/assets/products/lenovo-s2-black.png

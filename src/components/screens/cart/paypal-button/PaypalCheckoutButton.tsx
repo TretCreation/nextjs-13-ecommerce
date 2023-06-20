@@ -60,8 +60,8 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 			})
 
 			await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
-			// const resViber = await PaymentService.sendViber(phone, order?.id)
-			// if (!resViber) await PaymentService.sendSMS(phone, order?.id)
+			const resViber = await PaymentService.sendViber(phone, order?.id)
+			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 
 			dispatch(clearCart())
 		} else {
@@ -78,8 +78,8 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 			})
 
 			await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
-			// const resViber = await PaymentService.sendViber(phone, order?.id)
-			// if (!resViber) await PaymentService.sendSMS(phone, order?.id)
+			const resViber = await PaymentService.sendViber(phone, order?.id)
+			if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 
 			if (status === 'authenticated') {
 				dispatch(clearCartProducts(userId))

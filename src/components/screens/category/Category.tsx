@@ -21,6 +21,10 @@ const Category: FC<{ category: string }> = ({ category }) => {
 		TypeService.getAllTypes().then(types => setTypes(types))
 	}, [])
 
+	const handleClick = (e: any) => {
+		e.currentTarget.classList.toggle(styles.btncategorycolor)
+	}
+
 	const handleSubmitBrandId = (brand: any) => {
 		if (brandId.includes(brand.id)) {
 			setBrandId(brandId.filter((id: any) => id !== brand.id))
@@ -33,7 +37,7 @@ const Category: FC<{ category: string }> = ({ category }) => {
 	return (
 		<div className={styles.category}>
 			{types.map(type => {
-				if (type.name === category) {
+				if (type.name.toLowerCase() === category) {
 					return (
 						<div className={styles.category} key={type.name}>
 							<div className={styles.filter}>
@@ -41,19 +45,17 @@ const Category: FC<{ category: string }> = ({ category }) => {
 								<div className='flex flex-col'>
 									{brands.map(brand => (
 										<Button
+											className={styles.btncategory}
 											appearance='solid'
 											onClick={e => {
 												if (e.detail === 1) {
 													handleSubmitBrandId(brand)
 												}
-												handleSubmitBrandId(brand)
+												handleClick(e)
 											}}
 											key={brand.id}
 										>
-											<label className={styles.label}>
-												{/* <Input type='checkbox' /> */}
-												<p className={styles.brand}>{brand.name}</p>
-											</label>
+											{brand.name}
 										</Button>
 									))}
 								</div>

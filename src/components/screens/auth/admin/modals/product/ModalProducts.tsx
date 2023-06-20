@@ -23,6 +23,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	useOnClickOutside(ref, () => handleProductsClose())
 
 	const [isDivVisible, setDivVisible] = useState(true)
+	const [isDivVisibleUpdated, setDivVisibleUpdated] = useState(true)
 	const [status, setStatus] = useState<string>('')
 
 	//* fetch
@@ -87,15 +88,11 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	}, [])
 
 	const handleRemove = async (id: number) => {
-		// const productInfo = await ProductService.checkProductInfo(id)
-		// console.log('productInfo', productInfo)
-
 		await ProductService.removeProductInfo(id)
 		await ProductService.removeProduct(id)
-		// if (productInfo.length !== 0) {
-		// }
 		await fetchProducts(debouncedSearchProducts)
 		setStatus('success removed')
+		setInput('')
 	}
 
 	const handleUpdate = async (id: string) => {
@@ -107,7 +104,6 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 		setPriceUpdated(res.price)
 		setTypeIdUpdated(res.typeId)
 		setBrandIdUpdated(res.brandId)
-		// setInfoUpdated([res.product_info])
 	}
 
 	useEffect(() => {
@@ -214,8 +210,8 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 	}
 
 	useEffect(() => {
-		console.log('infoUpdated:', infoUpdated)
-	}, [infoUpdated])
+		console.log('isDivVisible:', isDivVisible)
+	}, [isDivVisible])
 
 	if (!isOpen) return null
 
@@ -359,7 +355,7 @@ const ModalProducts: FC<IModalProductsProps> = ({ handleClose, isOpen }) => {
 						onChange={e => setInputUpdated(e.target.value)}
 					/>
 				</div>
-				{isDivVisible && productsUpdated.length !== 0 ? (
+				{isDivVisibleUpdated && productsUpdated.length !== 0 ? (
 					<div className={styles.modallist} ref={ref}>
 						{productsUpdated.map(product => (
 							<Button appearance='primary' className={styles.button} key={product.id}>

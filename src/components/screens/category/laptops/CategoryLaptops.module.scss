@@ -8,12 +8,16 @@
 			@apply mb-2 text-lg;
 		}
 
-		.brand {
-			@apply pl-4 text-black;
+		.btncategory {
+			@apply pl-4 text-start text-black;
 		}
 
-		.label {
-			@apply ml-[-1rem] flex;
+		.btncategorycolor {
+			@apply text-[#f53b57];
+		}
+
+		.btncategory:hover {
+			@apply cursor-pointer text-[#f53b57];
 		}
 	}
 
