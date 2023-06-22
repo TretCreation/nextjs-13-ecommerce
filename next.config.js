@@ -15,7 +15,11 @@ const nextConfig = {
 		AUTHORIZATION_SMS: process.env.AUTHORIZATION_SMS
 	},
 	images: {
-		domains: ['lh3.googleusercontent.com', 'scontent.fiev22-2.fna.fbcdn.net'],
+		domains: [
+			'lh3.googleusercontent.com',
+			'scontent.fiev22-2.fna.fbcdn.net',
+			'z-p3-scontent.flwo7-2.fna.fbcdn.net'
+		],
 		formats: ['image/avif', 'image/webp']
 	},
 	webpack(config) {

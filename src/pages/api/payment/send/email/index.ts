@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 												`<tr style="border:1px solid black;">
 									<td style="border:1px solid black;">${product.name}</td>
 									<td style="text-align:center;border:1px solid black;">${product.count}</td>
-									<td style="text-align:center;border:1px solid black;">${product.price}</td>
+									<td style="text-align:center;border:1px solid black;">$${product.price}</td>
 								</tr>`
 										)
 										.join('')
