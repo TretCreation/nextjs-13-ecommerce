@@ -1,7 +1,9 @@
-import { Input } from '@/src/components'
-import { useAppSelector } from '@/src/components/hooks/useAppSelector'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
+
+import { Input } from '@/src/components'
+import { useAppSelector } from '@/src/components/hooks/useAppSelector'
+
 import PaypalCheckoutButton from '../paypal-button/PaypalCheckoutButton'
 import styles from './Checkout.module.scss'
 

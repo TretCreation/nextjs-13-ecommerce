@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IBrand } from '../interfaces/brand.interface'
 
 axios.defaults.baseURL = process.env.API_URL

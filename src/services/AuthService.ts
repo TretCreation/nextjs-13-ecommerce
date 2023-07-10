@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios'
+
 import { IUser, IUserSession } from '../interfaces/user.interface'
 
 axios.defaults.baseURL = process.env.API_URL

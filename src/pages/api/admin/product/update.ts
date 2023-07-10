@@ -1,7 +1,8 @@
-import prisma from '@/prisma/client'
 import formidable from 'formidable'
 import fs from 'fs'
 import { NextApiRequest, NextApiResponse } from 'next/types'
+
+import prisma from '@/prisma/client'
 
 export const config = {
 	api: {

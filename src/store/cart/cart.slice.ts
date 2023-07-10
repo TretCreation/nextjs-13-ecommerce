@@ -1,6 +1,8 @@
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { ICartState, ICartStateProps } from '@/src/interfaces/cart.interface'
 import { CartService } from '@/src/services/CartService'
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { RootState } from '../store'
 
 const initialState: ICartState = {

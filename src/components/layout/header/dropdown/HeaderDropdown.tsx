@@ -1,7 +1,9 @@
-import { MenuIcon } from '@/public'
-import { Button } from '@/src/components'
 import { NextPage } from 'next'
 import { useState } from 'react'
+
+import { MenuIcon } from '@/public'
+import { Button } from '@/src/components'
+
 import DropdownList from './dropdown-list/DropdownList'
 import styles from './HeaderDropdown.module.scss'
 

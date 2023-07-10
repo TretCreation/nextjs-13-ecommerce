@@ -1,6 +1,8 @@
-import { StarIcon } from '@/public'
 import cn from 'classnames'
 import { useEffect, useState } from 'react'
+
+import { StarIcon } from '@/public'
+
 import styles from './Rating.module.scss'
 import { RatingProps } from './Rating.props'
 

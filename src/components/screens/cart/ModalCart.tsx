@@ -1,7 +1,10 @@
-import { CrossIcon } from '@/public'
-import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
 import Link from 'next/link'
 import { FC } from 'react'
+
+import { CrossIcon } from '@/public'
+import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
+import { getCheckoutHomeUrl } from '@/src/configs/url.config'
+
 import CartItem from './cart-item/CartItem'
 import styles from './ModalCart.module.scss'
 
@@ -34,7 +37,11 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 			{cartProducts.length > 0 ? (
 				<div className={styles.products}>
 					{cartProducts.map(cartProduct => (
-						<CartItem key={cartProduct.id} cartProduct={cartProduct} handleClose={handleClose}/>
+						<CartItem
+							key={cartProduct.id}
+							cartProduct={cartProduct}
+							handleClose={handleClose}
+						/>
 					))}
 				</div>
 			) : (
@@ -43,7 +50,7 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
 			{cartProducts.length !== 0 && (
 				<div className={styles.checkout}>
 					<p>Cart Subtotal: ${calculateSubtotal()}</p>
-					<Link href={'/checkout'}>
+					<Link href={getCheckoutHomeUrl}>
 						<Button appearance='primary'>Checkout</Button>
 					</Link>
 				</div>

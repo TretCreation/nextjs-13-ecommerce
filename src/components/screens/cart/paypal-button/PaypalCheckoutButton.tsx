@@ -1,12 +1,14 @@
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
+import { FC, useState } from 'react'
+
 import { useAppDispatch } from '@/src/components'
+import { getCheckoutUrl } from '@/src/configs/url.config'
 import { ICartPayment } from '@/src/interfaces/cart.interface'
 import { AuthService } from '@/src/services/AuthService'
 import { PaymentService } from '@/src/services/PaymentService'
 import { clearCart, clearCartProducts } from '@/src/store/cart/cart.slice'
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import { FC, useState } from 'react'
 
 interface IPaypalCheckoutButtonProps {
 	subtotal: number
@@ -25,13 +27,10 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 }) => {
 	const router = useRouter()
 
-	const [paidFor, setPaidFor] = useState<boolean>(false)
 	const [error, setError] = useState<string | null>(null)
 
 	function successPage(orderId: string) {
-		// <Link href={{ pathname: '/checkout/success', query: orderId }} >
-		// </Link>
-		router.push({ pathname: '/checkout/success', query: { orderId: orderId } })
+		router.push({ pathname: getCheckoutUrl('/success'), query: { orderId: orderId } })
 	}
 
 	const dispatch = useAppDispatch()
@@ -85,12 +84,8 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 				dispatch(clearCartProducts(userId))
 			}
 		}
-		// setPaidFor(true)
 		successPage(order?.id)
 	}
-	// if (paidFor) {
-	// 	;<Link href={{ pathname: '/checkout/success', query: order }} />
-	// }
 
 	if (error) alert(error)
 

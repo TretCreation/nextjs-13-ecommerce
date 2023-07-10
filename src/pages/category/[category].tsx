@@ -1,6 +1,7 @@
-import Category from '@/src/components/screens/category/Category'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
+
+import Category from '@/src/components/screens/category/Category'
 
 const CategoryWatchesPage: NextPage = () => {
 	const router = useRouter()

@@ -1,8 +1,10 @@
+import Image from 'next/image'
+import { signOut, useSession } from 'next-auth/react'
+import { useState } from 'react'
+
 import { AccountCardIcon, ArchiveIcon, LogoutIcon } from '@/public'
 import { Button, ManageAccount, OrderHistory, ProfileInfo } from '@/src/components'
-import { signOut, useSession } from 'next-auth/react'
-import Image from 'next/image'
-import { useState } from 'react'
+
 import styles from './Account.module.scss'
 
 const Account = () => {

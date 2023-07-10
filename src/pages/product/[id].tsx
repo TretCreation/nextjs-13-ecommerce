@@ -1,8 +1,9 @@
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { ParsedUrlQuery } from 'querystring'
+
 import { ProductPage } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { ParsedUrlQuery } from 'querystring'
 
 interface Params extends ParsedUrlQuery {
 	id: string

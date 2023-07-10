@@ -1,4 +1,5 @@
 import cn from 'classnames'
+
 import styles from './Input.module.scss'
 import { IInputProps } from './Input.props'
 

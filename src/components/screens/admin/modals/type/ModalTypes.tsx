@@ -1,7 +1,9 @@
+import { FC, useEffect, useState } from 'react'
+
 import { CrossIcon } from '@/public'
 import { Button, Input, Modal } from '@/src/components'
 import { AdminService } from '@/src/services/AdminService'
-import { FC, useEffect, useState } from 'react'
+
 import styles from './ModalTypes.module.scss'
 
 interface IModalTypesProps {

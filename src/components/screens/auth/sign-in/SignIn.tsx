@@ -1,10 +1,13 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
+import { FC, useState } from 'react'
+
 import { FacebookIcon, GoogleIcon } from '@/public'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
-import { signIn } from 'next-auth/react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { FC, useState } from 'react'
+import { getAuthUrl } from '@/src/configs/url.config'
+
 import AuthError from '../error/AuthError'
 import styles from './SignIn.module.scss'
 
@@ -75,7 +78,7 @@ const SignIn: FC = () => {
 				</div>
 				<div className='flex flex-row'>
 					<p>Don't have account?</p>
-					<Link href='/auth/sign-up' className={styles.link}>
+					<Link href={getAuthUrl('sign-up')} className={styles.link}>
 						<Button
 							appearance='svg'
 							className='text-primary-main'

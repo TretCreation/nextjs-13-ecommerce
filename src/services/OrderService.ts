@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IOrderHistory } from '../interfaces/order.interface'
 
 axios.defaults.baseURL = process.env.API_URL

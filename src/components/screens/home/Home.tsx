@@ -1,7 +1,9 @@
+import { FC, useEffect, useState } from 'react'
+
 import { Pagination, ProductList } from '@/src/components'
 import { IProduct, IProductHomeProps } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
-import { FC, useEffect, useState } from 'react'
+
 import styles from './Home.module.scss'
 
 const Home: FC<IProductHomeProps> = ({ paginatedProducts, countedProducts }) => {

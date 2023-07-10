@@ -1,8 +1,10 @@
+import Image from 'next/image'
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+
 import { IUserSession } from '@/src/interfaces/user.interface'
 import { AccountService } from '@/src/services/AccountService'
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+
 import styles from './ProfileInfo.module.scss'
 
 const ProfileInfo = () => {

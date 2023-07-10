@@ -1,8 +1,10 @@
-import { TelegramIcon } from '@/public'
-import Button from '@/src/components/ui/button/Button'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
+
+import { TelegramIcon } from '@/public'
+import Button from '@/src/components/ui/button/Button'
+
 import styles from './Thanks.module.scss'
 
 const Thanks: FC = () => {

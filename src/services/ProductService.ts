@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IProduct, IProductInfo, IProductPage } from '../interfaces/product.interface'
 
 axios.defaults.baseURL = process.env.API_URL

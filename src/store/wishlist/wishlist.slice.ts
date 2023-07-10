@@ -1,6 +1,8 @@
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { IProduct } from '@/src/interfaces/product.interface'
 import { WishlistService } from '@/src/services/WishlistService'
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { RootState } from '../store'
 
 interface IWishlistState {

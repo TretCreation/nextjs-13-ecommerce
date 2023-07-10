@@ -1,5 +1,6 @@
-import { SignIn } from '@/src/components'
 import { NextPage } from 'next'
+
+import { SignIn } from '@/src/components'
 
 const SignInPage: NextPage = () => {
 	return <SignIn />

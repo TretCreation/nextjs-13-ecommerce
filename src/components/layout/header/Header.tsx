@@ -1,3 +1,5 @@
+import { NextPage } from 'next'
+
 import {
 	HeaderDropdown,
 	HeaderLogo,
@@ -5,7 +7,7 @@ import {
 	HeaderSearchBar,
 	HeaderSecondaryButtons
 } from '@/src/components'
-import { NextPage } from 'next'
+
 import styles from './Header.module.scss'
 
 const Header: NextPage = () => (

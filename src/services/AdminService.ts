@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IBrand } from '../interfaces/brand.interface'
 import { IType } from '../interfaces/type.interface'
 

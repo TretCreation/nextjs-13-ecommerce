@@ -1,4 +1,3 @@
-import { cartReducer, wishlistReducer } from '@/src/store'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import {
 	FLUSH,
@@ -11,6 +10,8 @@ import {
 	REHYDRATE
 } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
+
+import { cartReducer, wishlistReducer } from '@/src/store'
 
 const createNoopStorage = () => {
 	return {

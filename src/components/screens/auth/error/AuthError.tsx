@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import styles from './AuthError.module.scss'
 
 interface ErrorMessages {

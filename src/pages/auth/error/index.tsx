@@ -1,5 +1,6 @@
-import { AuthError } from '@/src/components'
 import { FC } from 'react'
+
+import { AuthError } from '@/src/components'
 
 const ErrorPage: FC<{ error: string }> = ({ error }) => {
 	return <AuthError error={error} />

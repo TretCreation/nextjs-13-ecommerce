@@ -1,9 +1,11 @@
+import { FC, useEffect, useState } from 'react'
+
 import { Button, ProductItem, SortBy } from '@/src/components'
 import { IBrand } from '@/src/interfaces/brand.interface'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { BrandService } from '@/src/services/BrandService'
 import { TypeService } from '@/src/services/TypeService'
-import { FC, useEffect, useState } from 'react'
+
 import NoProducts from '../product/product-empty/NoProducts'
 import styles from './Category.module.scss'
 

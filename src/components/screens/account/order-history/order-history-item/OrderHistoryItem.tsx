@@ -1,6 +1,8 @@
-import { IOrderHistory } from '@/src/interfaces/order.interface'
 import Image from 'next/image'
 import { FC } from 'react'
+
+import { IOrderHistory } from '@/src/interfaces/order.interface'
+
 import styles from './OrderHistoryItem.module.scss'
 
 const OrderHistoryItem: FC<{ order: IOrderHistory }> = ({ order }) => {

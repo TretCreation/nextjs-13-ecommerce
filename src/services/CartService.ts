@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { ICart, ICartStateProps } from '../interfaces/cart.interface'
 
 axios.defaults.baseURL = process.env.API_URL

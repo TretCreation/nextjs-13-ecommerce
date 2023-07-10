@@ -1,5 +1,6 @@
-import { Thanks } from '@/src/components'
 import { NextPage } from 'next'
+
+import { Thanks } from '@/src/components'
 
 const SuccessPage: NextPage = () => {
 	return <Thanks />

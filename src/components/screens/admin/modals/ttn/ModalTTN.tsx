@@ -1,7 +1,9 @@
+import { FC, useState } from 'react'
+
 import { CrossIcon } from '@/public'
 import { Button, Input, Modal } from '@/src/components'
 import { PaymentService } from '@/src/services/PaymentService'
-import { FC, useState } from 'react'
+
 import styles from './ModalTTN.module.scss'
 
 interface IModalTTNProps {

@@ -1,5 +1,6 @@
-import prisma from '@/prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+import prisma from '@/prisma/client'
 
 interface FormattedResult {
 	count: number

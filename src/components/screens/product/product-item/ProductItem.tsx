@@ -1,13 +1,16 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { FC } from 'react'
+
 import { WishlistIcon } from '@/public'
 import { Button, Rating, useAppDispatch, useAppSelector } from '@/src/components'
+import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
 import { toggleCartProducts } from '@/src/store/cart/cart.slice'
 import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { FC } from 'react'
+
 import styles from './ProductItem.module.scss'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
@@ -23,7 +26,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<div className={styles.card}>
-			<Link href={`/product/${product.id}`} className={styles.link}>
+			<Link href={getProductUrl(`/${product.id}`)} className={styles.link}>
 				<Image
 					src={product.img}
 					alt={product.name}
@@ -34,7 +37,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				/>
 			</Link>
 			<div className={styles.info}>
-				<Link href={`/product/${product.id}`}>
+				<Link href={getProductUrl(`/${product.id}`)}>
 					<h2 className={styles.title}>{product.name}</h2>
 				</Link>
 				<Button appearance='svg' className={styles.wishlist}>

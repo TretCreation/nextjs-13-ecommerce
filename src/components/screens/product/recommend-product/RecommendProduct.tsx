@@ -1,11 +1,13 @@
-import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
-import { IProductPage } from '@/src/interfaces/product.interface'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
 
+import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
+import { getProductUrl } from '@/src/configs/url.config'
+import { IProductPage } from '@/src/interfaces/product.interface'
 import { addCartProducts, addProduct } from '@/src/store/cart/cart.slice'
-import Image from 'next/image'
-import Link from 'next/link'
+
 import styles from './RecommendProduct.module.scss'
 
 const RecommendProduct: FC<{ recommendProducts: IProductPage[] }> = ({ recommendProducts }) => {
@@ -28,7 +30,7 @@ const RecommendProduct: FC<{ recommendProducts: IProductPage[] }> = ({ recommend
 
 				return (
 					<div className={styles.product} key={product.id}>
-						<Link href={`/product/${product.id}`} className={styles.link}>
+						<Link href={getProductUrl(`/${product.id}`)} className={styles.link}>
 							<Image
 								src={product.img}
 								alt={product.name}

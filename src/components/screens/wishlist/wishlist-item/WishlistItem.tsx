@@ -1,14 +1,16 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { FC, useState } from 'react'
+
 import { GarbageIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
+import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { cartActions, wishlistActions } from '@/src/store'
 import { addCartProducts } from '@/src/store/cart/cart.slice'
 import { removeWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
-import { useSession } from 'next-auth/react'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { FC, useState } from 'react'
 import styles from './WishlistItem.module.scss'
 
 interface IWishlistItemProps {
@@ -27,7 +29,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 
 	return (
 		<div className={styles.product}>
-			<Link href={`/product/${wishProduct.id}`} className={styles.link}>
+			<Link href={getProductUrl(`/${wishProduct.id}`)} className={styles.link}>
 				<Image
 					src={wishProduct.img}
 					alt={wishProduct.name}
@@ -49,6 +51,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 						? () =>
 								dispatch(
 									addCartProducts({
+										//?
 										product: wishProduct,
 										productId: wishProduct.id,
 										userId: session.user.id

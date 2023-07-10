@@ -1,5 +1,7 @@
-import { useScrollBlock } from '@/src/components'
 import React, { FC, useEffect, useRef } from 'react'
+
+import { useScrollBlock } from '@/src/components'
+
 import styles from './Modal.module.scss'
 import ReactPortal from './ReactPortal'
 import useOnClickOutside from './useOnClickOutside'

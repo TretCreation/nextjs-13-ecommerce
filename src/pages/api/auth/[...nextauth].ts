@@ -1,8 +1,10 @@
-import { AuthService } from '@/src/services/AuthService'
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
+
+import { getAuthUrl } from '@/src/configs/url.config'
+import { AuthService } from '@/src/services/AuthService'
 
 const {
 	GOOGLE_CLIENT_ID = '',
@@ -67,7 +69,7 @@ export const authOptions: NextAuthOptions = {
 		maxAge: 8 * 60 * 60
 	},
 	pages: {
-		signIn: '/auth/sign-in',
+		signIn: getAuthUrl('sign-in'),
 		error: '/auth/error'
 	},
 	callbacks: {

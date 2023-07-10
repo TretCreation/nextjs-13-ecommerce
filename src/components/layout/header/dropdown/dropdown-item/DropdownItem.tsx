@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FC } from 'react'
+
 import styles from './DropdownItem.module.scss'
 
 interface IDropdownItemProps {

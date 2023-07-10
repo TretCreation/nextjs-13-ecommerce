@@ -1,7 +1,8 @@
-import { useEscape, useOutside } from '@/src/components'
-
-import { IProduct } from '@/src/interfaces/product.interface'
 import { FC, useEffect, useRef, useState } from 'react'
+
+import { useEscape, useOutside } from '@/src/components'
+import { IProduct } from '@/src/interfaces/product.interface'
+
 import SearchBarItem from '../searchbar-item/SearchBarItem'
 import styles from './SearchBarList.module.scss'
 

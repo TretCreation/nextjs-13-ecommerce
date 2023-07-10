@@ -1,10 +1,13 @@
+import Link from 'next/link'
+import { signIn } from 'next-auth/react'
+import { FC, useState } from 'react'
+
 import { FacebookIcon, GoogleIcon, ShowPasswordIcon } from '@/public'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
+import { getAuthUrl } from '@/src/configs/url.config'
 import { AuthService } from '@/src/services/AuthService'
-import { signIn } from 'next-auth/react'
-import Link from 'next/link'
-import { FC, useState } from 'react'
+
 import styles from './SignUp.module.scss'
 
 const SignUp: FC = () => {
@@ -150,7 +153,7 @@ const SignUp: FC = () => {
 				</div>
 				<div className='flex flex-row'>
 					<p>Already have account?</p>
-					<Link href='/auth/sign-in' className={styles.link}>
+					<Link href={getAuthUrl('sign-in')} className={styles.link}>
 						<Button appearance='svg' className='text-primary-main'>
 							Login now
 						</Button>

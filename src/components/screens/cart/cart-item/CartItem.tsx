@@ -1,5 +1,11 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { FC } from 'react'
+
 import { GarbageIcon } from '@/public'
 import { Button, useAppDispatch } from '@/src/components'
+import { getProductUrl } from '@/src/configs/url.config'
 import { ICartItemProps } from '@/src/interfaces/cart.interface'
 import {
 	decrementCount,
@@ -9,11 +15,7 @@ import {
 	removeCartProducts,
 	removeProduct
 } from '@/src/store/cart/cart.slice'
-import { useSession } from 'next-auth/react'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { FC } from 'react'
 import styles from './CartItem.module.scss'
 
 interface ICart extends ICartItemProps {
@@ -27,7 +29,11 @@ const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
 
 	return (
 		<div className={styles.product}>
-			<Link href={`/product/${cartProduct.id}`} className={styles.link} onClick={handleClose}>
+			<Link
+				href={getProductUrl(`/${cartProduct.id}`)}
+				className={styles.link}
+				onClick={handleClose}
+			>
 				<Image
 					src={cartProduct.img}
 					alt={cartProduct.name}

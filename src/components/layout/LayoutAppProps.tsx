@@ -1,5 +1,6 @@
-import { HeaderAppProps } from '@/src/components'
 import { FC, PropsWithChildren } from 'react'
+
+import { HeaderAppProps } from '@/src/components'
 
 export const LayoutAppProps: FC<PropsWithChildren> = ({ children }) => {
 	return (

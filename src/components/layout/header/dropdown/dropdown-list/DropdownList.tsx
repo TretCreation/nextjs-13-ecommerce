@@ -1,7 +1,9 @@
+import { FC, useEffect, useRef, useState } from 'react'
+
 import { useEscape, useOutside } from '@/src/components'
 import { IType } from '@/src/interfaces/type.interface'
 import { TypeService } from '@/src/services/TypeService'
-import { FC, useEffect, useRef, useState } from 'react'
+
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'
 

@@ -1,12 +1,14 @@
+import Head from 'next/head'
+import Image from 'next/image'
+import { useSession } from 'next-auth/react'
+import { FC, useEffect, useState } from 'react'
+
 import { WishlistIcon } from '@/public'
 import { IProductPage } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
 import { addCartProducts, addProduct } from '@/src/store/cart/cart.slice'
 import { toggleWishlist, toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
-import { useSession } from 'next-auth/react'
-import Head from 'next/head'
-import Image from 'next/image'
-import { FC, useEffect, useState } from 'react'
+
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import Button from '../../ui/button/Button'

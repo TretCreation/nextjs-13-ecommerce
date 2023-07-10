@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IUserSession } from '../interfaces/user.interface'
 
 axios.defaults.baseURL = process.env.API_URL

@@ -1,7 +1,8 @@
-import prisma from '@/prisma/client'
 import { Prisma } from '@prisma/client'
 import * as bcrypt from 'bcrypt'
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+import prisma from '@/prisma/client'
 
 const errorHandle = (data: any, res: any, code = 400) => {
 	res.status(code).json({

@@ -1,5 +1,7 @@
-import { Home } from '@/src/components'
 import { GetStaticProps, NextPage } from 'next'
+
+import { Home } from '@/src/components'
+
 import { IProductHomeProps } from '../interfaces/product.interface'
 import { ProductService } from '../services/ProductService'
 

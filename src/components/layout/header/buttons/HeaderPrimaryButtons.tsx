@@ -1,10 +1,13 @@
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { FC, useEffect, useState } from 'react'
+
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
+import { getAccountUrl, getWishlistUrl } from '@/src/configs/url.config'
 import { fetchProducts as fetchCartProducts } from '@/src/store/cart/cart.slice'
 import { fetchProducts as fetchWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
-import { useSession } from 'next-auth/react'
-import Link from 'next/link'
-import { FC, useEffect, useState } from 'react'
+
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons: FC = () => {
@@ -29,8 +32,7 @@ const HeaderPrimaryButtons: FC = () => {
 		<>
 			<div className={styles.buttons}>
 				<Button appearance='svg' className={styles.btn}>
-					<Link href='/wishlist'>
-						{/* <Link href='/auth'> */}
+					<Link href={getWishlistUrl}>
 						<WishlistIcon className={styles.icon} />
 						<span className={styles.span}>{wishProducts.length}</span>
 						<p className={styles.text}>Wishlist</p>
@@ -46,7 +48,7 @@ const HeaderPrimaryButtons: FC = () => {
 					<p className='text-l'>Cart</p>
 				</Button>
 				<Button appearance='svg' className={styles.btn}>
-					<Link href='/account'>
+					<Link href={getAccountUrl}>
 						{session ? (
 							<>
 								<AccountIcon className={styles.icon} />

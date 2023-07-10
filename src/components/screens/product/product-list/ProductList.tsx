@@ -1,5 +1,7 @@
-import { NoProducts, ProductItem } from '@/src/components'
 import { FC } from 'react'
+
+import { NoProducts, ProductItem } from '@/src/components'
+
 import { IProduct } from '../../../../interfaces/product.interface'
 import styles from './ProductList.module.scss'
 

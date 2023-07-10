@@ -1,6 +1,8 @@
-import { NoProductsPng } from '@/public'
 import { NextPage } from 'next'
 import Image from 'next/image'
+
+import { NoProductsPng } from '@/public'
+
 import styles from './NoProducts.module.scss'
 
 const NoProducts: NextPage = () => {

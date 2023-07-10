@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IProduct } from '../interfaces/product.interface'
 import { IWishlist } from '../interfaces/wishlist.interface'
 

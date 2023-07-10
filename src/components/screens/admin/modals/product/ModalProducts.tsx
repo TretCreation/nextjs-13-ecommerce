@@ -1,3 +1,5 @@
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
+
 import { CrossIcon } from '@/public'
 import { Button, Input, Modal } from '@/src/components'
 import useDebounce from '@/src/components/hooks/useDebounce'
@@ -9,7 +11,7 @@ import { BrandService } from '@/src/services/BrandService'
 import { ProductService } from '@/src/services/ProductService'
 import { SearchService } from '@/src/services/SearchService'
 import { TypeService } from '@/src/services/TypeService'
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
+
 import styles from './ModalProducts.module.scss'
 
 interface IModalProductsProps {

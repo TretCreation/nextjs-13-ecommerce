@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { sortKey, sortValue, typeId } from '../interfaces/api.type'
 import { IProduct } from '../interfaces/product.interface'
 

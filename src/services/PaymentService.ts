@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { ICartPayment } from '../interfaces/cart.interface'
 
 axios.defaults.baseURL = process.env.API_URL

@@ -1,8 +1,10 @@
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+
 import { OrderHistoryItem } from '@/src/components'
 import { IOrderHistory } from '@/src/interfaces/order.interface'
 import { OrderService } from '@/src/services/OrderService'
-import { useSession } from 'next-auth/react'
-import { useEffect, useState } from 'react'
+
 import styles from './OrderHistory.module.scss'
 
 const OrderHistory = () => {

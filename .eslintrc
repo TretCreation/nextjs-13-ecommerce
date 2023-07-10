@@ -18,7 +18,7 @@
     "overrides": [
     ],
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint", "simple-import-sort"
     ],
     "rules":{
         "semi":"off",
@@ -28,6 +28,8 @@
               "allowSingleExtends": true
             }
         ],
-        "@typescript-eslint/no-require-imports": "error"
+        "@typescript-eslint/no-require-imports": "error",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
     }
 }

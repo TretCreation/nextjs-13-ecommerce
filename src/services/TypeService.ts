@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IType } from '../interfaces/type.interface'
 
 axios.defaults.baseURL = process.env.API_URL
