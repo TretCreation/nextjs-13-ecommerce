@@ -9,7 +9,7 @@ const HeaderSecondaryButtons = () => {
 	return (
 		<>
 			{session?.user.role === 'ADMIN_ROLE' && (
-				<Link href={'/auth/account/admin'} className={styles.btn}>
+				<Link href={'/admin'} className={styles.btn}>
 					<Button appearance='solid'>Admin</Button>
 				</Link>
 			)}

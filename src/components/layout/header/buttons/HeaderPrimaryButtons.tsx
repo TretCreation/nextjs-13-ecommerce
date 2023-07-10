@@ -30,7 +30,7 @@ const HeaderPrimaryButtons: FC = () => {
 			<div className={styles.buttons}>
 				<Button appearance='svg' className={styles.btn}>
 					<Link href='/wishlist'>
-					{/* <Link href='/auth'> */}
+						{/* <Link href='/auth'> */}
 						<WishlistIcon className={styles.icon} />
 						<span className={styles.span}>{wishProducts.length}</span>
 						<p className={styles.text}>Wishlist</p>
@@ -46,7 +46,7 @@ const HeaderPrimaryButtons: FC = () => {
 					<p className='text-l'>Cart</p>
 				</Button>
 				<Button appearance='svg' className={styles.btn}>
-					<Link href='/auth'>
+					<Link href='/account'>
 						{session ? (
 							<>
 								<AccountIcon className={styles.icon} />

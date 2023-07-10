@@ -47,13 +47,13 @@ export { default as SignIn } from './screens/auth/sign-in/SignIn'
 export { default as SignUp } from './screens/auth/sign-up/SignUp'
 export { default as AuthError } from './screens/auth/error/AuthError'
 // Admin
-export { default as Admin } from './screens/auth/admin/Admin'
+export { default as Admin } from './screens/admin/Admin'
 // Account
-export { default as OrderHistory } from './screens/auth/account/order-history/OrderHistory'
-export { default as OrderHistoryItem } from './screens/auth/account/order-history/order-history-item/OrderHistoryItem'
-export { default as Account } from './screens/auth/account/Account'
-export { default as ProfileInfo } from './screens/auth/account/profile-info/ProfileInfo'
-export { default as ManageAccount } from './screens/auth/account/manage-account/ManageAccount'
+export { default as OrderHistory } from './screens/account/order-history/OrderHistory'
+export { default as OrderHistoryItem } from './screens/account/order-history/order-history-item/OrderHistoryItem'
+export { default as Account } from './screens/account/Account'
+export { default as ProfileInfo } from './screens/account/profile-info/ProfileInfo'
+export { default as ManageAccount } from './screens/account/manage-account/ManageAccount'
 
 // //* UI
 export { default as Button } from './ui/button/Button'
