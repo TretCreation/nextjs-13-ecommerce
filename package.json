@@ -21,8 +21,9 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write **/*.{ts,tsx}",
-    "lint:eslint": "eslint . --ext .ts,.tsx",
-    "lint:stylelint": "stylelint \"**/*.scss\" \"**/*.css\" --fix",
+    "eslint": "eslint . --ext .ts,.tsx",
+    "stylelint": "stylelint \"**/*.scss\" \"**/*.css\" --fix",
+    dasdas
     "prisma:run:script": "ts-node --esm ./prisma/script.mts",
     "prisma:seed": "prisma db seed",
     "prisma:migrate": "prisma migrate dev --name init",
