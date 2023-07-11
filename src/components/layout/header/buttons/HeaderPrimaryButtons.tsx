@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
 
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
@@ -11,64 +11,64 @@ import { fetchProducts as fetchWishlistProducts } from '@/src/store/wishlist/wis
 import styles from './HeaderPrimaryButtons.module.scss'
 
 const HeaderPrimaryButtons: FC = () => {
-	const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
-	const [isModalCartOpen, setIsModalCartOpen] = useState<boolean>(false)
+  const [isModalCartOpen, setIsModalCartOpen] = useState<boolean>(false)
 
-	const { wishProducts } = useAppSelector(state => state.wishlist)
-	const { cartProducts } = useAppSelector(state => state.cart)
+  const { wishProducts } = useAppSelector(state => state.wishlist)
+  const { cartProducts } = useAppSelector(state => state.cart)
 
-	const { data: session } = useSession()
+  const { data: session } = useSession()
 
-	useEffect(() => {
-		if (session) dispatch(fetchWishlistProducts(session.user.id))
-	}, [dispatch, session])
+  useEffect(() => {
+    if (session) dispatch(fetchWishlistProducts(session.user.id))
+  }, [dispatch, session])
 
-	useEffect(() => {
-		if (session) dispatch(fetchCartProducts(session.user.id))
-	}, [dispatch, session])
+  useEffect(() => {
+    if (session) dispatch(fetchCartProducts(session.user.id))
+  }, [dispatch, session])
 
-	return (
-		<>
-			<div className={styles.buttons}>
-				<Button appearance='svg' className={styles.btn}>
-					<Link href={getWishlistUrl}>
-						<WishlistIcon className={styles.icon} />
-						<span className={styles.span}>{wishProducts.length}</span>
-						<p className={styles.text}>Wishlist</p>
-					</Link>
-				</Button>
-				<Button
-					appearance='svg'
-					onClick={() => setIsModalCartOpen(!isModalCartOpen)}
-					className={styles.btn}
-				>
-					<CartIcon className={styles.icon} />
-					<span className={styles.span}>{cartProducts.length}</span>
-					<p className='text-l'>Cart</p>
-				</Button>
-				<Button appearance='svg' className={styles.btn}>
-					<Link href={getAccountUrl}>
-						{session ? (
-							<>
-								<AccountIcon className={styles.icon} />
-								<p className='text-l'>Account</p>
-							</>
-						) : (
-							<>
-								<SignInIcon className={styles.icon} />
-								<p className='text-l'>Sign In</p>
-							</>
-						)}
-					</Link>
-				</Button>
-			</div>
-			<ModalCart
-				handleClose={() => setIsModalCartOpen(!isModalCartOpen)}
-				isOpen={isModalCartOpen}
-			/>
-		</>
-	)
+  return (
+    <>
+      <div className={styles.buttons}>
+        <Button appearance='svg' className={styles.btn}>
+          <Link href={getWishlistUrl}>
+            <WishlistIcon className={styles.icon} />
+            <span className={styles.span}>{wishProducts.length}</span>
+            <p className={styles.text}>Wishlist</p>
+          </Link>
+        </Button>
+        <Button
+          appearance='svg'
+          onClick={() => setIsModalCartOpen(!isModalCartOpen)}
+          className={styles.btn}
+        >
+          <CartIcon className={styles.icon} />
+          <span className={styles.span}>{cartProducts.length}</span>
+          <p className='text-l'>Cart</p>
+        </Button>
+        <Button appearance='svg' className={styles.btn}>
+          <Link href={getAccountUrl}>
+            {session ? (
+              <>
+                <AccountIcon className={styles.icon} />
+                <p className='text-l'>Account</p>
+              </>
+            ) : (
+              <>
+                <SignInIcon className={styles.icon} />
+                <p className='text-l'>Sign In</p>
+              </>
+            )}
+          </Link>
+        </Button>
+      </div>
+      <ModalCart
+        handleClose={() => setIsModalCartOpen(!isModalCartOpen)}
+        isOpen={isModalCartOpen}
+      />
+    </>
+  )
 }
 
 export default HeaderPrimaryButtons

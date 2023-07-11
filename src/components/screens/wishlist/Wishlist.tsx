@@ -2,20 +2,20 @@ import { useSession } from 'next-auth/react'
 
 import { NoWishlistProducts } from '../..'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import styles from './Wishlist.module.scss'
 import WishlistItem from './wishlist-item/WishlistItem'
+import styles from './Wishlist.module.scss'
 
 const Wishlist = () => {
-	const { wishlist } = useAppSelector(state => state)
+  const { wishlist } = useAppSelector(state => state)
 
-	const { data: session, status } = useSession()
+  const { data: session, status } = useSession()
 
-	if (status === 'loading') return <div>Loading...</div>
+  if (status === 'loading') return <div>Loading...</div>
 
-	if (session && session.user) {
-		return (
-			<div className={styles.wishlist}>
-				{/* <div className={styles.info}>
+  if (session && session.user) {
+    return (
+      <div className={styles.wishlist}>
+        {/* <div className={styles.info}>
 					<div className={styles.card}>
 						<Image
 							src={session.user.img || session.user.image}
@@ -80,32 +80,32 @@ const Wishlist = () => {
 						</div>
 					</div>
 				</div> */}
-				<div className={styles.products}>
-					<h1>Your Wishlist</h1>
-					{wishlist.wishProducts.length > 0 ? (
-						wishlist.wishProducts.map(wishProduct => (
-							<WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
-						))
-					) : (
-						<NoWishlistProducts />
-					)}
-				</div>
-			</div>
-		)
-	}
-	return (
-		<div className={styles.wishlist}>
-			<div className={styles.products}>
-				{wishlist.wishProducts.length > 0 ? (
-					wishlist.wishProducts.map(wishProduct => (
-						<WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
-					))
-				) : (
-					<NoWishlistProducts />
-				)}
-			</div>
-		</div>
-	)
+        <div className={styles.products}>
+          <h1>Your Wishlist</h1>
+          {wishlist.wishProducts.length > 0 ? (
+            wishlist.wishProducts.map(wishProduct => (
+              <WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
+            ))
+          ) : (
+            <NoWishlistProducts />
+          )}
+        </div>
+      </div>
+    )
+  }
+  return (
+    <div className={styles.wishlist}>
+      <div className={styles.products}>
+        {wishlist.wishProducts.length > 0 ? (
+          wishlist.wishProducts.map(wishProduct => (
+            <WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
+          ))
+        ) : (
+          <NoWishlistProducts />
+        )}
+      </div>
+    </div>
+  )
 }
 
 export default Wishlist
