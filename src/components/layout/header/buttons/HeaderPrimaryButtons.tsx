@@ -1,5 +1,5 @@
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 import { FC, useEffect, useState } from 'react'
 
 import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'

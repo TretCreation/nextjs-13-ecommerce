@@ -1,6 +1,6 @@
-import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 import { FC, useEffect, useState } from 'react'
 
 import { WishlistIcon } from '@/public'
