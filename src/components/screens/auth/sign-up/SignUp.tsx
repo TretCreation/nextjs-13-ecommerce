@@ -1,5 +1,5 @@
-import { signIn } from 'next-auth/react'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
 import { FC, useState } from 'react'
 
 import { FacebookIcon, GoogleIcon, ShowPasswordIcon } from '@/public'
@@ -24,11 +24,10 @@ const SignUp: FC = () => {
   const onSubmit = async () => {
     if (regEx.test(email)) {
       if (password === confirmPassword) {
-        const res = await AuthService.createUser(name, password, email)
+        await AuthService.createUser(name, password, email)
         if (res.errorMessage) {
           setError(res.errorMessage)
         }
-        res
         signIn('credentials', {
           email: email,
           password: password,

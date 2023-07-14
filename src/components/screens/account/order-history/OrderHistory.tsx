@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { OrderHistoryItem } from '@/src/components'
 import { IOrderHistory } from '@/src/interfaces/order.interface'
 import { OrderService } from '@/src/services/OrderService'
+import { toastError } from '@/src/utils/api/handleToastError'
 
 import styles from './OrderHistory.module.scss'
 
@@ -17,7 +18,11 @@ const OrderHistory = () => {
       const res = await OrderService.getSearchedProducts(session?.user.id)
       setOrders(res)
     }
-    if (session?.user) fetchOrderHistory()
+    if (session?.user) {
+      fetchOrderHistory().catch(error => {
+        toastError(error, 'Failed to fetch order history')
+      })
+    }
   }, [session?.user])
 
   return (
@@ -26,7 +31,7 @@ const OrderHistory = () => {
       {orders.length !== 0 ? (
         orders.map(order => <OrderHistoryItem key={order.id} order={order} />)
       ) : (
-        <div>You didn't purchase any product :(</div>
+        <div>You didn&apos;t purchase any product :(</div>
       )}
     </div>
   )

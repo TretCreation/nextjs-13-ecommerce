@@ -18,7 +18,8 @@ const nextConfig = {
     domains: [
       'lh3.googleusercontent.com',
       'scontent.fiev22-2.fna.fbcdn.net',
-      'z-p3-scontent.flwo7-2.fna.fbcdn.net'
+      'z-p3-scontent.flwo7-2.fna.fbcdn.net',
+      'scontent-iev1-1.xx.fbcdn.net'
     ],
     formats: ['image/avif', 'image/webp']
   },

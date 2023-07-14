@@ -1,11 +1,13 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
+import { FC, useState } from 'react'
+
 import { FacebookIcon, GoogleIcon } from '@/public'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
 import { getAuthUrl } from '@/src/configs/url.config'
-import { signIn } from 'next-auth/react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { FC, useState } from 'react'
+
 import AuthError from '../error/AuthError'
 import styles from './SignIn.module.scss'
 
@@ -16,8 +18,8 @@ const SignIn: FC = () => {
 
   const onSubmit = async () => {
     signIn('credentials', {
-      email: email,
-      password: password,
+      email,
+      password,
       redirect: true,
       callbackUrl: '/'
     })

@@ -46,7 +46,6 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
   return (
     <Modal wrapperId='react-portal-modal' handleClose={handleClose}>
       <CrossIcon onClick={handleClose} className={styles.svg} />
-
       <div className={styles.add}>
         <p>New type</p>
         <Input
@@ -62,7 +61,6 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
           Save
         </Button>
       </div>
-
       <div className={styles.remove}>
         <p>Remove type</p>
         <Input

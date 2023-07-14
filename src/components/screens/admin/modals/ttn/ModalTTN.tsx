@@ -18,6 +18,7 @@ const ModalTTN: FC<IModalTTNProps> = ({ handleClose, isOpen }) => {
   const [email, setEmail] = useState<string>('')
 
   const onSubmitViberSMS = async () => {
+    // ?
     const resViber = await PaymentService.sendViberTtn(Number(phone.replace('+', '')), ttn)
     if (!resViber) await PaymentService.sendSMSTtn(Number(phone.replace('+', '')), ttn)
 

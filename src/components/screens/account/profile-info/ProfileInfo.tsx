@@ -1,9 +1,10 @@
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
 import { IUserSession } from '@/src/interfaces/user.interface'
 import { AccountService } from '@/src/services/AccountService'
+import { toastError } from '@/src/utils/api/handleToastError'
 
 import styles from './ProfileInfo.module.scss'
 
@@ -17,7 +18,11 @@ const ProfileInfo = () => {
       const res = await AccountService.getInfo(session?.user.id)
       setInfo(res)
     }
-    if (session?.user) fetchProfileInfo()
+    if (session?.user) {
+      fetchProfileInfo().catch(error => {
+        toastError(error, 'Failed to fetch order history')
+      })
+    }
   }, [session?.user])
 
   if (info)

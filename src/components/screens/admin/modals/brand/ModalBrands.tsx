@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { CrossIcon } from '@/public'
 import { Button, Input, Modal } from '@/src/components'
 import { AdminService } from '@/src/services/AdminService'
+import { toastError } from '@/src/utils/api/handleToastError'
 
 import styles from './ModalBrands.module.scss'
 
@@ -17,24 +18,31 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
   const [error, setError] = useState<string>('')
 
   const onAddSubmit = async () => {
-    const checkBrand = await AdminService.checkBrand(addBrand)
+    try {
+      const checkBrand = await AdminService.checkBrand(addBrand)
 
-    if (checkBrand.length === 0) {
-      await AdminService.addBrand(addBrand)
-      setError('success added')
-      return
+      if (checkBrand.length === 0) {
+        setError('success added')
+        await AdminService.addBrand(addBrand)
+      }
+      setError('brand exists')
+    } catch (err) {
+      toastError(err)
     }
-    setError('brand exists')
   }
-  const onRemoveSubmit = async () => {
-    const checkBrand = await AdminService.checkBrand(removeBrand)
 
-    if (checkBrand.length !== 0) {
-      await AdminService.removeBrand(removeBrand)
-      setError('success removed')
-      return
+  const onRemoveSubmit = async () => {
+    try {
+      const checkBrand = await AdminService.checkBrand(removeBrand)
+
+      if (checkBrand.length !== 0) {
+        setError('success removed')
+        await AdminService.removeBrand(removeBrand)
+      }
+      setError('brand does not exist')
+    } catch (err) {
+      toastError(err)
     }
-    setError('brand does not exist')
   }
 
   useEffect(() => {
@@ -76,7 +84,6 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
           <p className={styles.error}>This brand does not exist</p>
         )}
         {error === 'success removed' && <p className={styles.submit}>Success!</p>}
-
         <Button appearance='primary' onClick={onRemoveSubmit}>
           Save
         </Button>

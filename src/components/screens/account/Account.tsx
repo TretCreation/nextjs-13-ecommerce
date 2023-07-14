@@ -1,9 +1,12 @@
 import Image from 'next/image'
-import { AccountCardIcon, ArchiveIcon, LogoutIcon } from '@/public'
-import styles from './Account.module.scss'
+import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import { useState } from 'react'
+
+import { AccountCardIcon, ArchiveIcon, LogoutIcon, PaymentIcon, WishlistIcon } from '@/public'
 import { Button, ManageAccount, OrderHistory, ProfileInfo } from '@/src/components'
+
+import styles from './Account.module.scss'
 
 const Account = () => {
   const { data: session, status } = useSession()
@@ -32,25 +35,24 @@ const Account = () => {
           </div>
           <div className={styles.options}>
             <div className={styles.block}>
-              {/* <Button
-								appearance='solid'
-								className={styles.btn}
-								onClick={() => setComponent('manage')}
-							>
-								<AccountCardIcon className={styles.icon} />
-								<p className={styles['text-dark']}>Manage Account</p>
-							</Button> */}
+              <Button
+                appearance='solid'
+                className={styles.btn}
+                onClick={() => setComponent('manage')}
+              >
+                <AccountCardIcon className={styles.icon} />
+                <p className={styles['text-dark']}>Manage Account</p>
+              </Button>
               <Button
                 appearance='solid'
                 className={styles.btn}
                 onClick={() => setComponent('info')}
               >
-                <AccountCardIcon className={styles.icon} />
-                <p className={styles['text-dark']}>Profile Information</p>
+                <p className={styles['text-light']}>Profile Information</p>
               </Button>
-              {/* <Button appearance='solid' className={styles.btn}>
-								<p className={styles['text-light']}>Change Password</p>
-							</Button> */}
+              <Button appearance='solid' className={styles.btn}>
+                <p className={styles['text-light']}>Change Password</p>
+              </Button>
             </div>
             <div className={styles.block}>
               <Button
@@ -61,35 +63,36 @@ const Account = () => {
                 <ArchiveIcon className={styles.icon} />
                 <p className={styles['text-dark']}>My Order History</p>
               </Button>
-              {/* <Button appearance='solid' className={styles.btn}>
-								<p className={styles['text-light']}>My Returns?</p>
-							</Button>
-							<Button appearance='solid' className={styles.btn}>
-								<p className={styles['text-light']}>My Reviews?</p>
-							</Button> */}
+              <Button appearance='solid' className={styles.btn}>
+                <p className={styles['text-light']}>My Returns?</p>
+              </Button>
+              <Button appearance='solid' className={styles.btn}>
+                <p className={styles['text-light']}>My Reviews?</p>
+              </Button>
             </div>
-            {/* <div className={styles.block}>
-							<Button appearance='solid' className={styles.btn}>
-								<PaymentIcon className={styles.icon} />
-								<p className={styles['text-dark']}>Payment Methods</p>
-							</Button>
-						</div> */}
-            {/* <div className={styles.block}>
-							<Button
-								appearance='solid'
-								className={styles.btn}
-								onClick={() => setComponent('wishlist')}
-							>
-								<Link href={'/wishlist'}>
-								<WishlistIcon className={styles.icon} />
-								<p className={styles['text-dark']}>My Wishlist</p>
-								</Link>
-							</Button>
-						</div> */}
+            <div className={styles.block}>
+              <Button appearance='solid' className={styles.btn}>
+                <PaymentIcon className={styles.icon} />
+                <p className={styles['text-dark']}>Payment Methods</p>
+              </Button>
+            </div>
             <div className={styles.block}>
               <Button
                 appearance='solid'
                 className={styles.btn}
+                onClick={() => setComponent('wishlist')}
+              >
+                <Link href='/wishlist'>
+                  <WishlistIcon className={styles.icon} />
+                  <p className={styles['text-dark']}>My Wishlist</p>
+                </Link>
+              </Button>
+            </div>
+            <div className={styles.block}>
+              <Button
+                appearance='solid'
+                className={styles.btn}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
                 onClick={() => signOut({ callbackUrl: '/' })}
               >
                 <LogoutIcon className={styles.icon} />
