@@ -8,13 +8,11 @@ import { Button, useAppDispatch } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
 import { ICartItemProps } from '@/src/interfaces/cart.interface'
 import {
-  decrementCount,
   decrementCountProducts,
-  incrementCount,
   incrementCountProducts,
-  removeCartProducts,
-  removeProduct
-} from '@/src/store/cart/cart.slice'
+  removeCartProducts
+} from '@/src/store/cart/cart.api'
+import { actions } from '@/src/store/rootActions'
 
 import styles from './CartItem.module.scss'
 
@@ -29,11 +27,7 @@ const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
 
   return (
     <div className={styles.product}>
-      <Link
-        href={getProductUrl(`/${cartProduct.id}`)}
-        className={styles.link}
-        onClick={handleClose}
-      >
+      <Link href={getProductUrl(`${cartProduct.id}`)} className={styles.link} onClick={handleClose}>
         <Image
           src={cartProduct.img}
           alt={cartProduct.name}
@@ -56,7 +50,7 @@ const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
                       userId: session.user.id
                     })
                   )
-              : () => dispatch(decrementCount(cartProduct.id))
+              : () => dispatch(actions.cart.decrementCount(cartProduct.id))
           }
         >
           <p>-</p>
@@ -73,7 +67,7 @@ const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
                       userId: session.user.id
                     })
                   )
-              : () => dispatch(incrementCount(cartProduct.id))
+              : () => dispatch(actions.cart.incrementCount(cartProduct.id))
           }
         >
           <p>+</p>
@@ -93,7 +87,7 @@ const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
                     userId: session.user.id
                   })
                 )
-            : () => dispatch(removeProduct(cartProduct))
+            : () => dispatch(actions.cart.removeProduct(cartProduct))
         }
       >
         <GarbageIcon className='h-6 w-6' />

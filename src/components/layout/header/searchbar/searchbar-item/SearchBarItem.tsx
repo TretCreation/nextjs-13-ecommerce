@@ -15,7 +15,7 @@ interface ISearchBarItemProps {
 const SearchBarItem: FC<ISearchBarItemProps> = ({ searchedProduct }) => {
   return (
     <div className={styles.item}>
-      <Link href={getProductUrl(`/${searchedProduct.id}`)} className={styles.link}>
+      <Link href={getProductUrl(`${searchedProduct.id}`)} className={styles.link}>
         <Image
           src={searchedProduct.img}
           alt={searchedProduct.name}

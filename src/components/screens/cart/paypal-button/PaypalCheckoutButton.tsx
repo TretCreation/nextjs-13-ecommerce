@@ -1,6 +1,6 @@
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
-import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 
 import { useAppDispatch } from '@/src/components'

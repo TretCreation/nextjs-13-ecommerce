@@ -7,9 +7,9 @@ import { WishlistIcon } from '@/public'
 import { Button, Rating, useAppDispatch, useAppSelector } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { cartActions, wishlistActions } from '@/src/store'
-import { toggleCartProducts } from '@/src/store/cart/cart.slice'
-import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
+import { toggleCartProducts } from '@/src/store/cart/cart.api'
+import { actions } from '@/src/store/rootActions'
+import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.api'
 
 import styles from './ProductItem.module.scss'
 
@@ -26,7 +26,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 
   return (
     <div className={styles.card}>
-      <Link href={getProductUrl(`/${product.id}`)} className={styles.link}>
+      <Link href={getProductUrl(`${product.id}`)} className={styles.link}>
         <Image
           src={product.img}
           alt={product.name}
@@ -37,7 +37,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
         />
       </Link>
       <div className={styles.info}>
-        <Link href={getProductUrl(`/${product.id}`)}>
+        <Link href={getProductUrl(`${product.id}`)}>
           <h2 className={styles.title}>{product.name}</h2>
         </Link>
         <Button appearance='svg' className={styles.wishlist}>
@@ -53,7 +53,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
                         userId: session.user.id
                       })
                     )
-                : () => dispatch(wishlistActions.toggleWishlist(product))
+                : () => dispatch(actions.wishlist.toggleWishlist(product))
             }
           />
         </Button>
@@ -73,7 +73,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
                       userId: session.user.id
                     })
                   )
-              : () => dispatch(cartActions.toggleCart(product))
+              : () => dispatch(actions.wishlist.toggleCart(product))
           }
         >
           <p>{isExistCart ? 'Remove from cart' : 'Add to cart'}</p>

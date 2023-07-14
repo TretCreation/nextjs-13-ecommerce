@@ -1,6 +1,6 @@
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
 
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
@@ -30,7 +30,7 @@ const RecommendProduct: FC<{ recommendProducts: IProductPage[] }> = ({ recommend
 
         return (
           <div className={styles.product} key={product.id}>
-            <Link href={getProductUrl(`/${product.id}`)} className={styles.link}>
+            <Link href={getProductUrl(`${product.id}`)} className={styles.link}>
               <Image
                 src={product.img}
                 alt={product.name}

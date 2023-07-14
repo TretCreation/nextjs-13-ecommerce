@@ -1,20 +1,14 @@
 import Image from 'next/image'
+import { AccountCardIcon, ArchiveIcon, LogoutIcon } from '@/public'
+import styles from './Account.module.scss'
 import { signOut, useSession } from 'next-auth/react'
 import { useState } from 'react'
-
-import { AccountCardIcon, ArchiveIcon, LogoutIcon } from '@/public'
 import { Button, ManageAccount, OrderHistory, ProfileInfo } from '@/src/components'
-
-import styles from './Account.module.scss'
 
 const Account = () => {
   const { data: session, status } = useSession()
 
   const [component, setComponent] = useState<string>('info')
-
-  // useEffect(() => {
-  // 	console.log('component', component)
-  // }, [component])
 
   if (status === 'loading') return <div>Loading...</div>
 

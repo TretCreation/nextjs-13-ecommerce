@@ -1,9 +1,9 @@
-import '@/styles/globals.scss'
+import '@/src/assets/styles/globals.scss'
 
-import { AppProps } from 'next/app'
-import Head from 'next/head'
 import type { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 

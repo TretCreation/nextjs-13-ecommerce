@@ -6,7 +6,10 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "lint-staged": {
-    "*.{ts,tsx}": ["npm format", "npm lint:eslint --fix"]
+    "*.{ts,tsx}": [
+      "yarn format",
+      "yarn eslint --fix"
+    ]
   },
   "browser": {
     "fs": false,
@@ -21,7 +24,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write **/*.{ts,tsx}",
-    "eslint": "eslint . --ext .ts,.tsx",
+    "eslint": "eslint . --ext ts --ext tsx",
+    "eslint:fix": "eslint . --fix --ext .ts,.tsx",
     "stylelint": "stylelint \"**/*.scss\" \"**/*.css\" --fix",
     "prisma:run:script": "ts-node --esm ./prisma/script.mts",
     "prisma:seed": "prisma db seed",
@@ -45,12 +49,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-toastify": "^9.1.3",
     "redux-persist": "^6.0.0",
     "sass": "^1.63.6",
     "ts-node": "^10.9.1",
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.9",
     "@svgr/webpack": "^6.5.1",
     "@types/bcrypt": "^5.0.0",
     "@types/formidable": "^2.0.6",
@@ -62,17 +68,20 @@
     "@typescript-eslint/parser": "^5.55.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.36.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-next": "^13.4.9",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "postcss": "^8.4.21",
-    "prettier": "^2.8.4",
+    "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.2.8",
     "prisma": "^4.13.0",
     "stylelint": "^15.3.0",

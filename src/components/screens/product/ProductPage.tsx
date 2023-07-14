@@ -6,8 +6,9 @@ import { FC, useEffect, useState } from 'react'
 import { WishlistIcon } from '@/public'
 import { IProductPage } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
-import { addCartProducts, addProduct } from '@/src/store/cart/cart.slice'
-import { toggleWishlist, toggleWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
+import { addCartProducts } from '@/src/store/cart/cart.api'
+import { actions } from '@/src/store/rootActions'
+import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.api'
 
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -112,7 +113,7 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
                         userId: session.user.id
                       })
                     )
-                : () => dispatch(addProduct(product))
+                : () => dispatch(actions.cart.addProduct(product))
             }
           >
             {isExistCart ? 'Move to Cart' : 'Add to cart'}
@@ -130,7 +131,7 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
                           userId: session.user.id
                         })
                       )
-                  : () => dispatch(toggleWishlist(product))
+                  : () => dispatch(actions.wishlist.toggleWishlist(product))
               }
             />
           </Button>

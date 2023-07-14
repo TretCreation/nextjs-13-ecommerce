@@ -2,8 +2,8 @@ import { useSession } from 'next-auth/react'
 
 import { NoWishlistProducts } from '../..'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import styles from './Wishlist.module.scss'
 import WishlistItem from './wishlist-item/WishlistItem'
+import styles from './Wishlist.module.scss'
 
 const Wishlist = () => {
   const { wishlist } = useAppSelector(state => state)

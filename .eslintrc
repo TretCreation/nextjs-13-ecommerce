@@ -1,35 +1,46 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier",
-        "plugin:react-hooks/recommended"
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:@next/next/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "overrides": [],
+  "plugins": ["@next/eslint-plugin-next", "simple-import-sort"],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
     ],
-    "parserOptions": {
-        "project": "./tsconfig.json"
-    },
-    "overrides": [
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ],
-    "plugins": [
-        "@typescript-eslint", "simple-import-sort"
-    ],
-    "rules":{
-        "semi":"off",
-        "@typescript-eslint/no-empty-interface": [
-            "error",
-            {
-              "allowSingleExtends": true
-            }
-        ],
-        "@typescript-eslint/no-require-imports": "error",
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error"
-    }
+    "semi": "off",
+    "@typescript-eslint/no-require-imports": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/prefer-default-export": 0,
+    "react/react-in-jsx-scope": 0,
+    "no-nested-ternary": 0,
+    "import/extensions": 0,
+    "no-param-reassign": 0
+  }
 }

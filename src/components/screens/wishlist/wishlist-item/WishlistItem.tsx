@@ -7,9 +7,9 @@ import { GarbageIcon } from '@/public'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { cartActions, wishlistActions } from '@/src/store'
-import { addCartProducts } from '@/src/store/cart/cart.slice'
-import { removeWishlistProducts } from '@/src/store/wishlist/wishlist.slice'
+import { addCartProducts } from '@/src/store/cart/cart.api'
+import { actions } from '@/src/store/rootActions'
+import { removeWishlistProducts } from '@/src/store/wishlist/wishlist.api'
 
 import styles from './WishlistItem.module.scss'
 
@@ -29,7 +29,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
 
   return (
     <div className={styles.product}>
-      <Link href={getProductUrl(`/${wishProduct.id}`)} className={styles.link}>
+      <Link href={getProductUrl(`${wishProduct.id}`)} className={styles.link}>
         <Image
           src={wishProduct.img}
           alt={wishProduct.name}
@@ -57,7 +57,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
                     userId: session.user.id
                   })
                 )
-            : () => dispatch(cartActions.addProduct(wishProduct))
+            : () => dispatch(actions.cart.addProduct(wishProduct))
         }
       >
         {isExistCart ? 'Move to Cart' : 'Add to cart'}
@@ -75,7 +75,7 @@ const WishlistItem: FC<IWishlistItemProps> = ({ wishProduct }) => {
                     userId: session.user.id
                   })
                 )
-            : () => dispatch(wishlistActions.removeProduct(wishProduct))
+            : () => dispatch(actions.wishlist.removeProduct(wishProduct))
         }
       >
         <GarbageIcon className='h-6 w-6' />
