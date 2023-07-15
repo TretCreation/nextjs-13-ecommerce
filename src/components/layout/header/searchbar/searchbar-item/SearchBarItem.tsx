@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { DiagonalArrowLeftIcon } from '@/public'
+import { DiagonalArrowLeftIcon } from '@/src/assets'
 import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'
 

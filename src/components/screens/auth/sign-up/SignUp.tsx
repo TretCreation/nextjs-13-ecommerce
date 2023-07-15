@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import { FC, useState } from 'react'
 
-import { FacebookIcon, GoogleIcon, ShowPasswordIcon } from '@/public'
+import { FacebookIcon, GoogleIcon, ShowPasswordIcon } from '@/src/assets'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
 import { getAuthUrl } from '@/src/configs/url.config'

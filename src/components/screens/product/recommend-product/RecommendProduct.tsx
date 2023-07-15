@@ -1,12 +1,13 @@
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
 
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
 import { IProductPage } from '@/src/interfaces/product.interface'
-import { addCartProducts, addProduct } from '@/src/store/cart/cart.slice'
+import { addCartProducts } from '@/src/store/cart/cart.api'
+import { actions } from '@/src/store/rootActions'
 
 import styles from './RecommendProduct.module.scss'
 
@@ -52,12 +53,12 @@ const RecommendProduct: FC<{ recommendProducts: IProductPage[] }> = ({ recommend
                   ? () =>
                       dispatch(
                         addCartProducts({
-                          product: product,
+                          product,
                           productId: product.id,
                           userId: session.user.id
                         })
                       )
-                  : () => dispatch(addProduct(product))
+                  : () => dispatch(actions.cart.addProduct(product))
               }
             >
               {isExistCart ? 'Move to Cart' : 'Add to cart'}

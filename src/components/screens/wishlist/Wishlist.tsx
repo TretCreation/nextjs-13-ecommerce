@@ -1,9 +1,9 @@
 import { useSession } from 'next-auth/react'
 
-import { NoWishlistProducts } from '../..'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import WishlistItem from './wishlist-item/WishlistItem'
 import styles from './Wishlist.module.scss'
+import NoProducts from './wishlist-empty/NoProducts'
+import WishlistItem from './wishlist-item/WishlistItem'
 
 const Wishlist = () => {
   const { wishlist } = useAppSelector(state => state)
@@ -87,7 +87,7 @@ const Wishlist = () => {
               <WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
             ))
           ) : (
-            <NoWishlistProducts />
+            <NoProducts />
           )}
         </div>
       </div>
@@ -101,7 +101,7 @@ const Wishlist = () => {
             <WishlistItem key={wishProduct.id} wishProduct={wishProduct} />
           ))
         ) : (
-          <NoWishlistProducts />
+          <NoProducts />
         )}
       </div>
     </div>

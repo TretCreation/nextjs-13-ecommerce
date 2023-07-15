@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
 
-import { CrossIcon } from '@/public'
+import { CrossIcon } from '@/src/assets'
 import { Button, Input, Modal } from '@/src/components'
 import useDebounce from '@/src/components/hooks/useDebounce'
 import useOnClickOutside from '@/src/components/ui/modal/useOnClickOutside'

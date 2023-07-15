@@ -3,12 +3,13 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { FC, useEffect, useState } from 'react'
 
-import { WishlistIcon } from '@/public'
+import { WishlistIcon } from '@/src/assets'
 import { IProductPage } from '@/src/interfaces/product.interface'
 import { ProductService } from '@/src/services/ProductService'
 import { addCartProducts } from '@/src/store/cart/cart.api'
 import { actions } from '@/src/store/rootActions'
 import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.api'
+import { toastError } from '@/src/utils/api/handleToastError'
 
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -38,12 +39,17 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await ProductService.getRecommendation(product.id)
-      if (!res) return
+      try {
+        const res = await ProductService.getRecommendation(product.id)
+        if (!res) return
 
-      setRecommendsProducts(res)
+        setRecommendsProducts(res)
+      } catch (err) {
+        toastError(err)
+      }
     }
-    fetchData()
+    // ?
+    fetchData().catch(() => {})
   }, [product.id])
 
   return (
@@ -68,21 +74,21 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
               <Rating rating={product.rating} />
             </div>
             <p className='mb-1'>
-              <a className={styles.text}>
+              <span className={styles.text}>
                 <b>Brand</b>:&nbsp;&nbsp;
-              </a>
+              </span>
               {product.brand?.name}
             </p>
             <p className='mb-1'>
-              <a className={styles.text}>
+              <span className={styles.text}>
                 <b>Category</b>:&nbsp;&nbsp;
-              </a>
+              </span>
               {product.type?.name}
             </p>
             <p className='mb-3'>
-              <a className={styles.text}>
+              <span className={styles.text}>
                 <b>Price</b>:&nbsp;&nbsp;
-              </a>
+              </span>
               ${product.price}
             </p>
           </div>
@@ -108,7 +114,7 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
                 ? () =>
                     dispatch(
                       addCartProducts({
-                        product: product,
+                        product,
                         productId: product.id,
                         userId: session.user.id
                       })
@@ -126,7 +132,7 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
                   ? () =>
                       dispatch(
                         toggleWishlistProducts({
-                          product: product,
+                          product,
                           productId: product.id,
                           userId: session.user.id
                         })
@@ -135,12 +141,10 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
               }
             />
           </Button>
-          {recommendProducts ? (
+          {recommendProducts && (
             <div className={styles.recommendations}>
               <RecommendProduct recommendProducts={recommendProducts} />
             </div>
-          ) : (
-            <></>
           )}
         </div>
       </div>

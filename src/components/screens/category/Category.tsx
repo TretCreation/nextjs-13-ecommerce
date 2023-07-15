@@ -27,11 +27,11 @@ const Category: FC<{ category: string }> = ({ category }) => {
     e.currentTarget.classList.toggle(styles.btncategorycolor)
   }
 
-  const handleSubmitBrandId = (brand: any) => {
-    if (brandId.includes(brand.id)) {
-      setBrandId(brandId.filter((id: any) => id !== brand.id))
+  const handleSubmitBrandId = (bId: number) => {
+    if (brandId.includes(bId)) {
+      setBrandId(brandId.filter((id: number) => id !== bId))
     } else {
-      setBrandId([...brandId, brand.id])
+      setBrandId([...brandId, bId])
     }
     setCurrentPage(1)
   }
@@ -51,7 +51,7 @@ const Category: FC<{ category: string }> = ({ category }) => {
                       appearance='solid'
                       onClick={e => {
                         if (e.detail === 1) {
-                          handleSubmitBrandId(brand)
+                          handleSubmitBrandId(brand.id)
                         }
                         handleClick(e)
                       }}

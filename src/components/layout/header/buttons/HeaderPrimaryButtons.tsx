@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { FC, useEffect, useState } from 'react'
 
-import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/public'
+import { AccountIcon, CartIcon, SignInIcon, WishlistIcon } from '@/src/assets'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { getAccountUrl, getWishlistUrl } from '@/src/configs/url.config'
 import { fetchProducts as fetchCartProducts } from '@/src/store/cart/cart.api'

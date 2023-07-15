@@ -2,8 +2,6 @@ import { NextPage } from 'next'
 
 import { Admin } from '@/src/components'
 
-const AdminPage: NextPage = () => {
-  return <Admin />
-}
+const AdminPage: NextPage = () => <Admin />
 
 export default AdminPage

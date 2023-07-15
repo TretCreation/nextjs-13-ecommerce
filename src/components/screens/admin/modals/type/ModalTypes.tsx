@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { CrossIcon } from '@/public'
+import { CrossIcon } from '@/src/assets'
 import { Button, Input, Modal } from '@/src/components'
 import { AdminService } from '@/src/services/AdminService'
 

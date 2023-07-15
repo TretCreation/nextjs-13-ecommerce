@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { useState } from 'react'
 
-import { MenuIcon } from '@/public'
+import { MenuIcon } from '@/src/assets'
 import { Button } from '@/src/components'
 
 import DropdownList from './dropdown-list/DropdownList'

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { FC } from 'react'
 
-import { WishlistIcon } from '@/public'
+import { WishlistIcon } from '@/src/assets'
 import { Button, Rating, useAppDispatch, useAppSelector } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'

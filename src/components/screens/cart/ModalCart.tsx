@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { CrossIcon } from '@/public'
+import { CrossIcon } from '@/src/assets'
 import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
 import { getCheckoutHomeUrl } from '@/src/configs/url.config'
 

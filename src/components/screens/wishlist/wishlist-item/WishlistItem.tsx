@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
 
-import { GarbageIcon } from '@/public'
+import { GarbageIcon } from '@/src/assets'
 import { Button, ModalCart, useAppDispatch, useAppSelector } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
 import { IProduct } from '@/src/interfaces/product.interface'

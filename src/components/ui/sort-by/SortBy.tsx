@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 
-import { sortKey, sortValue, typeId } from '@/src/interfaces/api.type'
+import { SortKey, SortValue, TypeId } from '@/src/interfaces/api.type'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SortByService } from '@/src/services/SortByService'
 
@@ -8,7 +8,7 @@ import styles from './SortBy.module.scss'
 
 interface ISortBy {
   limit: number
-  q: typeId | any
+  q: TypeId | any
   currentPage: number
   brandId: number | number[] | undefined
   getProducts: (products: IProduct[]) => void
@@ -17,12 +17,12 @@ interface ISortBy {
 
 const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPage, brandId }) => {
   const [sortedProducts, setSortedProducts] = useState<IProduct[]>([])
-  const [getKey, setGetKey] = useState<sortKey>('r')
-  const [getValue, setGetValue] = useState<sortValue>('desc')
+  const [getKey, setGetKey] = useState<SortKey>('r')
+  const [getValue, setGetValue] = useState<SortValue>('desc')
   const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = async (selectEvent: ChangeEvent<HTMLSelectElement>) => {
-    const options: { [key: string]: [sortKey, sortValue] } = {
+    const options: { [key: string]: [SortKey, SortValue] } = {
       low: ['p', 'asc'],
       high: ['p', 'desc'],
       rating: ['r', 'desc']
@@ -31,7 +31,7 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
     filterProducts(k, v)
   }
 
-  const filterProducts = async (key: sortKey, value: sortValue) => {
+  const filterProducts = async (key: SortKey, value: SortValue) => {
     setSortedProducts([])
     setGetKey(key)
     setGetValue(value)
@@ -41,13 +41,7 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
   useEffect(() => {
     setIsLoading(true)
 
-    console.log('SortBy useEffect brandId: ', brandId)
-    // console.log('handleInput sortedProducts before', sortedProducts)
-    // console.log('handleInput currentPage', currentPage)
-
     SortByService.getSortedProducts(getKey, getValue, q, limit, currentPage, brandId).then(res => {
-      // console.log('res', res)
-
       setSortedProducts(currentPage === 1 ? res : [...sortedProducts, ...res])
       getProducts(currentPage === 1 ? res : [...sortedProducts, ...res])
 
@@ -57,7 +51,10 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
 
   return (
     <div className={styles.wrapper}>
-      <label htmlFor='sortBy'>Sort By:</label>
+      <label htmlFor='sortBy'>
+        <input type='text' />
+        Sort By:
+      </label>
       <select className={styles.select} onChange={handleChange} defaultValue='rating'>
         <option value='low'>Price: Low to High</option>
         <option value='high'>Price: High to Low</option>

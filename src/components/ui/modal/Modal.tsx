@@ -32,7 +32,7 @@ const Modal: FC<ModalProps> = ({ children, wrapperId, handleClose }) => {
 
   return (
     <ReactPortal wrapperId={wrapperId}>
-      <div className={styles.modal}></div>
+      <div className={styles.modal} />
       <div className={styles.content} ref={ref}>
         {children}
       </div>

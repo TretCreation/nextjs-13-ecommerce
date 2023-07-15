@@ -6,9 +6,7 @@ import { getAuthUrl } from '@/src/configs/url.config'
 
 import { authOptions } from '../api/auth/[...nextauth]'
 
-const AuthPage: NextPage = () => {
-  return <Account />
-}
+const AuthPage: NextPage = () => <Account />
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const session = await getServerSession(context.req, context.res, authOptions)

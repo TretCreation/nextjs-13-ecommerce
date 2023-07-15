@@ -3,8 +3,7 @@ import cn from 'classnames'
 import styles from './Button.module.scss'
 import { IButtonProps } from './Button.props'
 
-const Button = ({ appearance, children, className, ...props }: IButtonProps): JSX.Element => {
-  return (
+const Button = ({ appearance, children, className, ...props }: IButtonProps): JSX.Element => (
     <button
       className={cn(className, {
         [styles.primary]: appearance === 'primary',
@@ -16,5 +15,4 @@ const Button = ({ appearance, children, className, ...props }: IButtonProps): JS
       {children}
     </button>
   )
-}
 export default Button

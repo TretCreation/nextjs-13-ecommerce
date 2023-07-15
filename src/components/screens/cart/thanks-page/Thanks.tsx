@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { TelegramIcon } from '@/public'
+import { TelegramIcon } from '@/src/assets'
+import { SuccessOrder } from '@/src/assets/index'
 import Button from '@/src/components/ui/button/Button'
 
 import styles from './Thanks.module.scss'
@@ -18,7 +19,7 @@ const Thanks: FC = () => {
           Thanks for your order! We’re working hard to get it shipped to you. We hope to see you
           again in the future.
         </p>
-        <Image src={'/assets/success-order.png'} alt='thanks' width={325} height={0} priority />
+        <Image src={SuccessOrder} alt='thanks' priority />
         <p>Your Order №: {orderId}</p>
         <Link href='https://t.me/TretStore_bot'>
           <Button appearance='primary'>

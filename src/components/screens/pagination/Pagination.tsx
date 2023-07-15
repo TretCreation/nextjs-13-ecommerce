@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import Button from '../../ui/button/Button'
 import styles from './Pagination.module.scss'
+
 interface IPaginationProps {
   items: number
   pageSize: number

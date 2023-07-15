@@ -3,8 +3,7 @@ import cn from 'classnames'
 import styles from './Input.module.scss'
 import { IInputProps } from './Input.props'
 
-const Input = ({ appearance, className, ...props }: IInputProps): JSX.Element => {
-  return (
+const Input = ({ appearance, className, ...props }: IInputProps): JSX.Element => (
     <input
       className={cn(className, {
         [styles.primary]: appearance === 'primary',
@@ -13,5 +12,4 @@ const Input = ({ appearance, className, ...props }: IInputProps): JSX.Element =>
       {...props}
     />
   )
-}
 export default Input

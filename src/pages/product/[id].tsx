@@ -9,9 +9,7 @@ interface Params extends ParsedUrlQuery {
   id: string
 }
 
-const Product: NextPage<{ product: IProduct }> = ({ product }) => {
-  return <ProductPage product={product} />
-}
+const Product: NextPage<{ product: IProduct }> = ({ product }) => <ProductPage product={product} />
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const products = await ProductService.getAll()

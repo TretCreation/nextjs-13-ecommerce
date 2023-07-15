@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import { useState } from 'react'
 
-import { AccountCardIcon, ArchiveIcon, LogoutIcon, PaymentIcon, WishlistIcon } from '@/public'
+import { AccountCardIcon, ArchiveIcon, LogoutIcon, PaymentIcon, WishlistIcon } from '@/src/assets'
 import { Button, ManageAccount, OrderHistory, ProfileInfo } from '@/src/components'
 
 import styles from './Account.module.scss'

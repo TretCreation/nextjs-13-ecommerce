@@ -5,7 +5,7 @@ import useDebounce from '@/src/components/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SearchService } from '@/src/services/SearchService'
 
-import { SearchIcon } from '../../../../../public'
+import { SearchIcon } from '../../../../assets'
 import styles from './HeaderSearchBar.module.scss'
 
 const HeaderSearchBar = (): JSX.Element => {

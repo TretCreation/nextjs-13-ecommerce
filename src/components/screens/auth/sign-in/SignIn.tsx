@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
 import { FC, useState } from 'react'
 
-import { FacebookIcon, GoogleIcon } from '@/public'
+import { FacebookIcon, GoogleIcon } from '@/src/assets'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
 import { getAuthUrl } from '@/src/configs/url.config'
