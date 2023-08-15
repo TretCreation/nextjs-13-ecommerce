@@ -19,7 +19,7 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
   const onAddSubmit = async () => {
     const checkType = await AdminService.checkType(addType)
 
-    if (checkType.length === 0) {
+    if (!checkType.length) {
       await AdminService.addType(addType)
       setError('success added')
       return

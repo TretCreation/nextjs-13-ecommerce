@@ -48,7 +48,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
                 ? () =>
                     dispatch(
                       toggleWishlistProducts({
-                        product: product,
+                        product,
                         productId: product.id,
                         userId: session.user.id
                       })
@@ -73,7 +73,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
                       userId: session.user.id
                     })
                   )
-              : () => dispatch(actions.wishlist.toggleCart(product))
+              : () => dispatch(actions.cart.toggleCart(product))
           }
         >
           <p>{isExistCart ? 'Remove from cart' : 'Add to cart'}</p>

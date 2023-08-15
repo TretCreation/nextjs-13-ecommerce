@@ -60,7 +60,7 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
         <option value='high'>Price: High to Low</option>
         <option value='rating'>Rating</option>
       </select>
-      {isLoading && sortedProducts.length === 0 && <p>Loading...</p>}
+      {isLoading && !sortedProducts.length && <p>Loading...</p>}
     </div>
   )
 }

@@ -1,24 +1,24 @@
 // //* Hooks
-export { useAppDispatch } from './hooks/useAppDispatch'
-export { useAppSelector } from './hooks/useAppSelector'
-export { default as useEscape } from './hooks/useEscape'
-export { default as useOutside } from './hooks/useOutside'
-export { default as useScrollBlock } from './hooks/useScrollBlock'
+export { useAppDispatch } from '../hooks/useAppDispatch'
+export { useAppSelector } from '../hooks/useAppSelector'
+export { default as useEscape } from '../hooks/useEscape'
+export { default as useOutside } from '../hooks/useOutside'
+export { default as useScrollBlock } from '../hooks/useScrollBlock'
 
 // //* Layout
 // Footer
-export { default as Footer } from './layout/footer/Footer'
+export { default as Footer } from './layouts/footer/Footer'
 // Header
-export { default as HeaderPrimaryButtons } from './layout/header/buttons/HeaderPrimaryButtons'
-export { default as HeaderSecondaryButtons } from './layout/header/buttons/HeaderSecondaryButtons'
-export { default as HeaderDropdown } from './layout/header/dropdown/HeaderDropdown'
-export { default as Header } from './layout/header/Header'
-export { default as HeaderLogo } from './layout/header/logo/HeaderLogo'
-export { default as PublicHeader } from './layout/header/PublicHeader'
+export { default as HeaderPrimaryButtons } from './layouts/header/buttons/HeaderPrimaryButtons'
+export { default as HeaderSecondaryButtons } from './layouts/header/buttons/HeaderSecondaryButtons'
+export { default as HeaderDropdown } from './layouts/header/dropdown/HeaderDropdown'
+export { default as Header } from './layouts/header/Header'
+export { default as HeaderLogo } from './layouts/header/logo/HeaderLogo'
+export { default as PublicHeader } from './layouts/header/PublicHeader'
 // Searchbar
-export { default as HeaderSearchBar } from './layout/header/searchbar/HeaderSearchBar'
-export { default as SearchBarItem } from './layout/header/searchbar/searchbar-item/SearchBarItem'
-export { default as SearchBarList } from './layout/header/searchbar/searchbar-list/SearchBarList'
+export { default as HeaderSearchBar } from './layouts/header/searchbar/HeaderSearchBar'
+export { default as SearchBarItem } from './layouts/header/searchbar/searchbar-item/SearchBarItem'
+export { default as SearchBarList } from './layouts/header/searchbar/searchbar-list/SearchBarList'
 
 // //* Screens
 export { default as Home } from './screens/home/Home'

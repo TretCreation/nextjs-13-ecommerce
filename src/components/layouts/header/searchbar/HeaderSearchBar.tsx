@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
 import { Button, Input, SearchBarList } from '@/src/components'
-import useDebounce from '@/src/components/hooks/useDebounce'
+import useDebounce from '@/src/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SearchService } from '@/src/services/SearchService'
 

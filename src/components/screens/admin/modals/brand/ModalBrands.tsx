@@ -21,7 +21,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
     try {
       const checkBrand = await AdminService.checkBrand(addBrand)
 
-      if (checkBrand.length === 0) {
+      if (!checkBrand.length) {
         setError('success added')
         await AdminService.addBrand(addBrand)
       }

@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react'
 
 import { CrossIcon } from '@/src/assets'
 import { Button, Input, Modal } from '@/src/components'
-import useDebounce from '@/src/components/hooks/useDebounce'
+import useDebounce from '@/src/hooks/useDebounce'
 import useOnClickOutside from '@/src/components/ui/modal/useOnClickOutside'
 import { IBrand } from '@/src/interfaces/brand.interface'
 import { IProduct } from '@/src/interfaces/product.interface'

@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react'
 
-import { useAppSelector } from '../../hooks/useAppSelector'
+import { useAppSelector } from '../../../hooks/useAppSelector'
 import styles from './Wishlist.module.scss'
 import NoProducts from './wishlist-empty/NoProducts'
 import WishlistItem from './wishlist-item/WishlistItem'
