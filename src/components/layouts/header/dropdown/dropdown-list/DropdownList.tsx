@@ -3,7 +3,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { HeadphonesIcon, LaptopIcon, SmartphoneIcon, WatchIcon } from '@/src/assets'
 import { useEscape, useOutside } from '@/src/components'
 import { IType } from '@/src/interfaces/type.interface'
-import { TypeService } from '@/src/services/TypeService'
+import { TypeService } from '@/src/services/type.service'
 
 import DropdownItem from '../dropdown-item/DropdownItem'
 import styles from './DropdownList.module.scss'

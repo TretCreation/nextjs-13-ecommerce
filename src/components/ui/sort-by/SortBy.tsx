@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useEffect, useState } from 'react'
 
 import { SortKey, SortValue, TypeId } from '@/src/interfaces/api.type'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { SortByService } from '@/src/services/SortByService'
+import { SortByService } from '@/src/services/sortby.service'
 
 import styles from './SortBy.module.scss'
 

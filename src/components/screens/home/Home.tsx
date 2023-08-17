@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { Pagination, ProductList } from '@/src/components'
 import { IProduct, IProductHomeProps } from '@/src/interfaces/product.interface'
-import { ProductService } from '@/src/services/ProductService'
+import { ProductService } from '@/src/services/product.service'
 
 import styles from './Home.module.scss'
 

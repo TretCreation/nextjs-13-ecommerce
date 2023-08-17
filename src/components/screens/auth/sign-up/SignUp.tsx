@@ -6,7 +6,7 @@ import { FacebookIcon, GoogleIcon, ShowPasswordIcon } from '@/src/assets'
 import Button from '@/src/components/ui/button/Button'
 import Input from '@/src/components/ui/input/Input'
 import { getAuthUrl } from '@/src/configs/url.config'
-import { AuthService } from '@/src/services/AuthService'
+import { AuthService } from '@/src/services/auth.service'
 
 import styles from './SignUp.module.scss'
 
@@ -24,16 +24,21 @@ const SignUp: FC = () => {
   const onSubmit = async () => {
     if (regEx.test(email)) {
       if (password === confirmPassword) {
-        await AuthService.createUser(name, password, email)
+        const res = await AuthService.createUser(name, password, email)
+        // ?
         if (res.errorMessage) {
           setError(res.errorMessage)
         }
-        signIn('credentials', {
-          email: email,
-          password: password,
-          redirect: res.hasError ? false : true,
-          callbackUrl: '/'
-        })
+        try {
+          await signIn('credentials', {
+            email,
+            password,
+            redirect: !res.hasError,
+            callbackUrl: '/'
+          })
+        } catch (error) {
+          console.error('Error signing in:', error)
+        }
       } else {
         setError('passwords didn’t match')
       }

@@ -5,14 +5,12 @@ import Button from '@/src/components/ui/button/Button'
 import styles from './Admin.module.scss'
 import ModalBrands from './modals/brand/ModalBrands'
 import ModalProducts from './modals/product/ModalProducts'
-import ModalTTN from './modals/ttn/ModalTTN'
 import ModalTypes from './modals/type/ModalTypes'
 
 const Admin = () => {
   const [isModalProductsOpen, setIsModalProductsOpen] = useState<boolean>(false)
   const [isModalTypesOpen, setIsModalTypesOpen] = useState<boolean>(false)
   const [isModalBrandsOpen, setIsModalBrandsOpen] = useState<boolean>(false)
-  const [isModalTtnOpen, setIsModalTtnOpen] = useState<boolean>(false)
 
   return (
     <>
@@ -38,13 +36,7 @@ const Admin = () => {
         >
           Add / Remove a Brand
         </Button>
-        <Button
-          appearance='primary'
-          className={styles.btn}
-          onClick={() => setIsModalTtnOpen(!isModalTtnOpen)}
-        >
-          Sent TTN
-        </Button>
+        
       </div>
       <ModalProducts
         handleClose={() => setIsModalProductsOpen(!isModalProductsOpen)}
@@ -58,7 +50,6 @@ const Admin = () => {
         handleClose={() => setIsModalBrandsOpen(!isModalBrandsOpen)}
         isOpen={isModalBrandsOpen}
       />
-      <ModalTTN handleClose={() => setIsModalTtnOpen(!isModalTtnOpen)} isOpen={isModalTtnOpen} />
     </>
   )
 }

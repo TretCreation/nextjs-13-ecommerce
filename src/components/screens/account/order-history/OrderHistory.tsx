@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { OrderHistoryItem } from '@/src/components'
 import { IOrderHistory } from '@/src/interfaces/order.interface'
-import { OrderService } from '@/src/services/OrderService'
+import { OrderService } from '@/src/services/order.service'
 import { toastError } from '@/src/utils/api/handleToastError'
 
 import styles from './OrderHistory.module.scss'
@@ -14,11 +14,11 @@ const OrderHistory = () => {
   const [orders, setOrders] = useState<IOrderHistory[]>([])
 
   useEffect(() => {
-    const fetchOrderHistory = async () => {
-      const res = await OrderService.getSearchedProducts(session?.user.id)
-      setOrders(res)
-    }
     if (session?.user) {
+      const fetchOrderHistory = async () => {
+        const res = await OrderService.getSearchedProducts(session?.user.id)
+        setOrders(res)
+      }
       fetchOrderHistory().catch(error => {
         toastError(error, 'Failed to fetch order history')
       })

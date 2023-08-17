@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { Button, Input, SearchBarList } from '@/src/components'
 import useDebounce from '@/src/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { SearchService } from '@/src/services/SearchService'
+import { SearchService } from '@/src/services/search.service'
 
 import { SearchIcon } from '../../../../assets'
 import styles from './HeaderSearchBar.module.scss'

@@ -3,7 +3,7 @@ import { GetStaticProps, NextPage } from 'next'
 import { Home } from '@/src/components'
 
 import { IProductHomeProps } from '../interfaces/product.interface'
-import { ProductService } from '../services/ProductService'
+import { ProductService } from '../services/product.service'
 
 const HomePage: NextPage<IProductHomeProps> = ({ paginatedProducts, countedProducts }) => (
   <Home paginatedProducts={paginatedProducts} countedProducts={countedProducts} />

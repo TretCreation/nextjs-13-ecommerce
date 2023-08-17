@@ -53,6 +53,7 @@
     "react/no-array-index-key": 0,
     "@typescript-eslint/no-shadow": 0,
     "react/button-has-type": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "no-console": 0
   }
 }

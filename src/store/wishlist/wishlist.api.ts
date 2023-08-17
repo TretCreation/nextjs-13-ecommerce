@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { IProduct } from '@/src/interfaces/product.interface'
-import { WishlistService } from '@/src/services/WishlistService'
+import { WishlistService } from '@/src/services/wishlist.service'
 import { toastError } from '@/src/utils/api/handleToastError'
 
 import { RootState } from '../store'

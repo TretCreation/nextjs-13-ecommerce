@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { CrossIcon } from '@/src/assets'
 import { Button, Input, Modal } from '@/src/components'
-import { AdminService } from '@/src/services/AdminService'
+import { AdminService } from '@/src/services/admin.service'
 import { toastError } from '@/src/utils/api/handleToastError'
 
 import styles from './ModalBrands.module.scss'

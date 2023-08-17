@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { ICartStateProps } from '@/src/interfaces/cart.interface'
-import { CartService } from '@/src/services/CartService'
+import { CartService } from '@/src/services/cart.service'
 import { toastError } from '@/src/utils/api/handleToastError'
 
 import { RootState } from '../store'

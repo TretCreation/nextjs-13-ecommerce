@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from 'querystring'
 
 import { ProductPage } from '@/src/components'
 import { IProduct } from '@/src/interfaces/product.interface'
-import { ProductService } from '@/src/services/ProductService'
+import { ProductService } from '@/src/services/product.service'
 
 interface Params extends ParsedUrlQuery {
   id: string

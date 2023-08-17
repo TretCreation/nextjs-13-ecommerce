@@ -5,7 +5,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { WishlistIcon } from '@/src/assets'
 import { IProductPage } from '@/src/interfaces/product.interface'
-import { ProductService } from '@/src/services/ProductService'
+import { ProductService } from '@/src/services/product.service'
 import { addCartProducts } from '@/src/store/cart/cart.api'
 import { actions } from '@/src/store/rootActions'
 import { toggleWishlistProducts } from '@/src/store/wishlist/wishlist.api'
