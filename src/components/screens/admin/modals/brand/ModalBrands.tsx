@@ -17,6 +17,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
   const [removeBrand, setRemoveBrand] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  // ? Doesn't look good
   const onAddSubmit = async () => {
     try {
       const checkBrand = await AdminService.checkBrand(addBrand)
@@ -31,6 +32,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
     }
   }
 
+  // ? Doesn't look good
   const onRemoveSubmit = async () => {
     try {
       const checkBrand = await AdminService.checkBrand(removeBrand)
@@ -45,6 +47,7 @@ const ModalBrands: FC<IModalBrandsProps> = ({ handleClose, isOpen }) => {
     }
   }
 
+  // ? Doesn't look good
   useEffect(() => {
     setError('')
   }, [handleClose])

@@ -12,7 +12,7 @@ export const SortByService = {
     q: TypeId,
     limit: number,
     page: number,
-    brandId?: number | number[] | undefined
+    brandId?: number | undefined
   ) {
     try {
       if (brandId !== undefined) {

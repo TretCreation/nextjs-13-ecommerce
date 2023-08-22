@@ -92,7 +92,6 @@ const Account = () => {
               <Button
                 appearance='solid'
                 className={styles.btn}
-                // eslint-disable-next-line @typescript-eslint/no-misused-promises
                 onClick={() => signOut({ callbackUrl: '/' })}
               >
                 <LogoutIcon className={styles.icon} />
@@ -108,9 +107,7 @@ const Account = () => {
             <OrderHistory />
           ) : component === 'info' ? (
             <ProfileInfo />
-          ) : // ) : component === 'wishlist' ? (
-          // 	<Wishlist />
-          null}
+          ) : null}
         </div>
       </div>
     )

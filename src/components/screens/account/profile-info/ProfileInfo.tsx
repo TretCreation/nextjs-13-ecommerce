@@ -15,13 +15,9 @@ const ProfileInfo = () => {
 
   useEffect(() => {
     if (session?.user) {
-      const fetchProfileInfo = async () => {
-        const res = await AccountService.getInfo(session?.user.id)
-        setInfo(res)
-      }
-      fetchProfileInfo().catch(error => {
-        toastError(error, 'Failed to fetch order history')
-      })
+      AccountService.getInfo(session?.user.id)
+        .then(res => setInfo(res))
+        .catch((error: Error) => toastError(error.message))
     }
   }, [session?.user])
 

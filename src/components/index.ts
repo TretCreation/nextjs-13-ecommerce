@@ -9,16 +9,8 @@ export { default as useScrollBlock } from '../hooks/useScrollBlock'
 // Footer
 export { default as Footer } from './layouts/footer/Footer'
 // Header
-export { default as HeaderPrimaryButtons } from './layouts/header/buttons/HeaderPrimaryButtons'
-export { default as HeaderSecondaryButtons } from './layouts/header/buttons/HeaderSecondaryButtons'
-export { default as HeaderDropdown } from './layouts/header/dropdown/HeaderDropdown'
 export { default as Header } from './layouts/header/Header'
-export { default as HeaderLogo } from './layouts/header/logo/HeaderLogo'
 export { default as PublicHeader } from './layouts/header/PublicHeader'
-// Searchbar
-export { default as HeaderSearchBar } from './layouts/header/searchbar/HeaderSearchBar'
-export { default as SearchBarItem } from './layouts/header/searchbar/searchbar-item/SearchBarItem'
-export { default as SearchBarList } from './layouts/header/searchbar/searchbar-list/SearchBarList'
 
 // //* Screens
 export { default as Home } from './screens/home/Home'

@@ -15,13 +15,9 @@ const OrderHistory = () => {
 
   useEffect(() => {
     if (session?.user) {
-      const fetchOrderHistory = async () => {
-        const res = await OrderService.getSearchedProducts(session?.user.id)
-        setOrders(res)
-      }
-      fetchOrderHistory().catch(error => {
-        toastError(error, 'Failed to fetch order history')
-      })
+      OrderService.getSearchedProducts(session?.user.id)
+        .then(res => setOrders(res))
+        .catch((error: Error) => toastError(error.message))
     }
   }, [session?.user])
 

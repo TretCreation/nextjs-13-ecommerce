@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { Input } from '@/src/components'
 import { useAppSelector } from '@/src/hooks/useAppSelector'
+import { calculateSubtotal } from '@/src/utils/checkout/calculateSubtotal'
 
 import PaypalCheckoutButton from '../paypal-button/PaypalCheckoutButton'
 import styles from './Checkout.module.scss'
@@ -15,15 +16,6 @@ const Checkout = () => {
   const [secondName, setSecondName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [phone, setPhone] = useState<string>('+380')
-
-  const calculateSubtotal = (): number => {
-    let subtotal = 0
-    cartProducts.forEach(product => {
-      subtotal += product.price * product.count
-    })
-
-    return subtotal
-  }
 
   return (
     <div className={styles.checkout}>
@@ -72,7 +64,7 @@ const Checkout = () => {
         />
       </div>
       <PaypalCheckoutButton
-        subtotal={calculateSubtotal()}
+        subtotal={calculateSubtotal(cartProducts)}
         userId={session?.user.id}
         email={email}
         phone={Number(phone.replace('+', ''))}

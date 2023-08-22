@@ -38,18 +38,9 @@ const ProductPage: FC<IProductPageProps> = ({ product }) => {
   const isExistCart = cartProducts.some(p => p.id === product.id)
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await ProductService.getRecommendation(product.id)
-        if (!res) return
-
-        setRecommendsProducts(res)
-      } catch (err) {
-        toastError(err)
-      }
-    }
-    // ?
-    fetchData().catch(() => {})
+    ProductService.getRecommendation(product.id)
+      .then(res => setRecommendsProducts(res))
+      .catch((error: Error) => toastError(error.message))
   }, [product.id])
 
   return (

@@ -6,42 +6,31 @@ import { IProduct } from '@/src/interfaces/product.interface'
 import SearchBarItem from '../searchbar-item/SearchBarItem'
 import styles from './SearchBarList.module.scss'
 
-interface ISearchBarListProps {
-  searchedProducts: IProduct[]
-}
-
-const SearchBarList: FC<ISearchBarListProps> = ({ searchedProducts }) => {
+const SearchBarList: FC<{ searchedProducts: IProduct[] }> = ({ searchedProducts }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (searchedProducts.length > 0) {
-      setIsOpen(true)
-    } else {
-      setIsOpen(false)
-    }
-  }, [searchedProducts])
 
   const handleClose = () => {
     setIsOpen(!isOpen)
   }
 
-  //* Close modal on click outside
-  useOutside(
-    ref,
-    () => {
-      setIsOpen(false)
-    },
-    isOpen
-  )
+  // ?
+  // useEffect(() => {
+  //   console.log('@1', searchedProducts)
+  // }, [searchedProducts])
 
-  //* Close modal on escape
+  useEffect(() => {
+    setIsOpen(searchedProducts.length > 0)
+  }, [searchedProducts])
+
+  //* Close modal on click outside
+  useOutside(ref, handleClose, isOpen)
+
+  // //* Close modal on escape
   useEscape(handleClose, isOpen)
 
   if (!isOpen) return null
-  console.log('searchedProducts', searchedProducts)
-  console.log('isOpen: ', isOpen)
 
   return (
     <div className={styles.list} ref={ref} onClick={handleClose}>

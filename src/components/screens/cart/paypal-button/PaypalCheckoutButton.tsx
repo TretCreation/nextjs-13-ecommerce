@@ -10,10 +10,12 @@ import { AuthService } from '@/src/services/auth.service'
 import { PaymentService } from '@/src/services/payment.service'
 import { clearCartProducts } from '@/src/store/cart/cart.api'
 import { actions } from '@/src/store/rootActions'
+import { toastError } from '@/src/utils/api/handleToastError'
+import { OrderResponseBody } from '@paypal/paypal-js/types/apis/orders'
 
 interface IPaypalCheckoutButtonProps {
   subtotal: number
-  userId?: number
+  userId: number | undefined
   email: string
   phone: number
   cartProducts: ICartPayment[]
@@ -26,28 +28,27 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
   email,
   phone
 }) => {
-  const router = useRouter()
-
-  const [error, setError] = useState<string | null>(null)
-
-  function successPage(orderId: string) {
-    router.push({ pathname: getCheckoutUrl('/success'), query: { orderId } })
-  }
-
   const dispatch = useAppDispatch()
+  const router = useRouter()
   const { status } = useSession()
 
-  const handleApprove = async (order: any) => {
+  function successPage(orderId: string) {
+    router
+      .push({ pathname: getCheckoutUrl('/success'), query: { orderId } })
+      .catch((error: Error) => toastError(error.message))
+  }
+
+  const handleApprove = async (order: OrderResponseBody) => {
     if (!userId) {
       const password = Math.random().toString(36).slice(-8)
       const user = await AuthService.createUser('Unauthorized user', password, null, null, null)
       const paymentData = await PaymentService.approvePayment(
         user.body.id,
-        order?.status as string,
-        order?.id as string,
+        order?.status,
+        order?.id,
         subtotal,
-        order?.create_time as string,
-        order?.update_time as string
+        order?.create_time,
+        order?.update_time
       )
       cartProducts.map(async product => {
         await PaymentService.addOrderProduct(paymentData, product.id, product.count)
@@ -61,11 +62,11 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
     } else {
       const paymentData = await PaymentService.approvePayment(
         userId,
-        order?.status as string,
-        order?.id as string,
+        order?.status,
+        order?.id,
         subtotal,
-        order?.create_time as string,
-        order?.update_time as string
+        order?.create_time,
+        order?.update_time
       )
       cartProducts.map(async product => {
         await PaymentService.addOrderProduct(paymentData, product.id, product.count)
@@ -75,14 +76,13 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
       const resViber = await PaymentService.sendViber(phone, order?.id)
       if (!resViber) await PaymentService.sendSMS(phone, order?.id)
 
+      // ? need clearCartProducts?
       if (status === 'authenticated') {
         dispatch(clearCartProducts(userId))
       }
     }
     successPage(order?.id)
   }
-
-  if (error) alert(error)
 
   return (
     <PayPalScriptProvider
@@ -122,16 +122,13 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
             ]
           })
         }
-        onApprove={async (data, actions) => {
+        onApprove={async (_, actions) => {
           const order = await actions.order?.capture()
-
-          console.log('order', order)
-
-          handleApprove(order)
+          if (order) handleApprove(order).catch((error: Error) => toastError(error.message))
         }}
-        onError={(err: any) => {
-          setError(err)
-          console.log('PayPal Checkout onError', err)
+        // ? Check later (tests)
+        onError={err => {
+          toastError(err)
         }}
       />
     </PayPalScriptProvider>

@@ -1,8 +1,7 @@
 import { NextPage } from 'next'
 
-import { HeaderLogo } from '@/src/components'
-
 import styles from './Header.module.scss'
+import HeaderLogo from './logo/HeaderLogo'
 
 const Header: NextPage = () => (
   <nav className={styles.nav}>

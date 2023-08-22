@@ -1,12 +1,14 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import { Button, Input, SearchBarList } from '@/src/components'
+import { Button, Input } from '@/src/components'
 import useDebounce from '@/src/hooks/useDebounce'
 import { IProduct } from '@/src/interfaces/product.interface'
 import { SearchService } from '@/src/services/search.service'
+import { toastError } from '@/src/utils/api/handleToastError'
 
 import { SearchIcon } from '../../../../assets'
 import styles from './HeaderSearchBar.module.scss'
+import SearchBarList from './searchbar-list/SearchBarList'
 
 const HeaderSearchBar = (): JSX.Element => {
   const [searchedProducts, setSearchedProducts] = useState<IProduct[]>([])
@@ -14,14 +16,11 @@ const HeaderSearchBar = (): JSX.Element => {
 
   const debouncedSearchTerm = useDebounce<string>(searchTerm, 500)
 
-  const fetchData = async (value: string) => {
-    const getSearchedProducts = await SearchService.getSearchedProducts(value)
-    return setSearchedProducts(getSearchedProducts)
-  }
-
   useEffect(() => {
     if (debouncedSearchTerm) {
-      fetchData(debouncedSearchTerm)
+      SearchService.getSearchedProducts(debouncedSearchTerm)
+        .then(res => setSearchedProducts(res))
+        .catch((error: Error) => toastError(error.message))
     }
   }, [debouncedSearchTerm])
 

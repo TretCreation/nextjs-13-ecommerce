@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { CrossIcon } from '@/src/assets'
 import { Button, Modal, NoCartProducts, useAppSelector } from '@/src/components'
 import { getCheckoutHomeUrl } from '@/src/configs/url.config'
+import { calculateSubtotal } from '@/src/utils/checkout/calculateSubtotal'
 
 import CartItem from './cart-item/CartItem'
 import styles from './ModalCart.module.scss'
@@ -15,15 +16,6 @@ interface ICartProps {
 
 const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
   const { cartProducts } = useAppSelector(state => state.cart)
-
-  const calculateSubtotal = (): number => {
-    let subtotal = 0
-    cartProducts.forEach(product => {
-      subtotal += product.price * product.count
-    })
-
-    return subtotal
-  }
 
   if (!isOpen) return null
   return (
@@ -45,7 +37,7 @@ const ModalCart: FC<ICartProps> = ({ handleClose, isOpen }) => {
       )}
       {cartProducts.length !== 0 && (
         <div className={styles.checkout}>
-          <p>Cart Subtotal: ${calculateSubtotal()}</p>
+          <p>Cart Subtotal: ${calculateSubtotal(cartProducts)}</p>
           <Link href={getCheckoutHomeUrl}>
             <Button appearance='primary'>Checkout</Button>
           </Link>

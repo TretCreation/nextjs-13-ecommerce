@@ -6,24 +6,22 @@ import { FC } from 'react'
 import { GarbageIcon } from '@/src/assets'
 import { Button, useAppDispatch } from '@/src/components'
 import { getProductUrl } from '@/src/configs/url.config'
-import { ICartItemProps } from '@/src/interfaces/cart.interface'
+import { ICartItem } from '@/src/interfaces/cart.interface'
 import {
   decrementCountProducts,
   incrementCountProducts,
   removeCartProducts
 } from '@/src/store/cart/cart.api'
 import { actions } from '@/src/store/rootActions'
+import { AppDispatch } from '@/src/store/store'
 
 import styles from './CartItem.module.scss'
 
-interface ICart extends ICartItemProps {
-  handleClose: () => void
-}
-
-const CartItem: FC<ICart> = ({ cartProduct, handleClose }) => {
-  const dispatch = useAppDispatch()
-
+const CartItem: FC<ICartItem> = ({ cartProduct, handleClose }) => {
   const { data: session, status } = useSession()
+
+  // ? useActions
+  const dispatch: AppDispatch = useAppDispatch()
 
   return (
     <div className={styles.product}>

@@ -16,6 +16,7 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
   const [removeType, setRemoveType] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  // ? Doesn't look good
   const onAddSubmit = async () => {
     const checkType = await AdminService.checkType(addType)
 
@@ -26,6 +27,8 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
     }
     setError('type exists')
   }
+
+  // ? Doesn't look good
   const onRemoveSubmit = async () => {
     const checkType = await AdminService.checkType(removeType)
 
@@ -37,6 +40,7 @@ const ModalTypes: FC<IModalTypesProps> = ({ handleClose, isOpen }) => {
     setError('type does not exist')
   }
 
+  // ? Doesn't look good
   useEffect(() => {
     setError('')
   }, [handleClose])
