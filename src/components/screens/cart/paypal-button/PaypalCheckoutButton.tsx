@@ -1,7 +1,8 @@
+import { OrderResponseBody } from '@paypal/paypal-js/types/apis/orders'
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import { useAppDispatch } from '@/src/components'
 import { getCheckoutUrl } from '@/src/configs/url.config'
@@ -11,7 +12,7 @@ import { PaymentService } from '@/src/services/payment.service'
 import { clearCartProducts } from '@/src/store/cart/cart.api'
 import { actions } from '@/src/store/rootActions'
 import { toastError } from '@/src/utils/api/handleToastError'
-import { OrderResponseBody } from '@paypal/paypal-js/types/apis/orders'
+import { generatePassword } from '@/src/utils/auth/generatePassword'
 
 interface IPaypalCheckoutButtonProps {
   subtotal: number
@@ -40,8 +41,10 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 
   const handleApprove = async (order: OrderResponseBody) => {
     if (!userId) {
-      const password = Math.random().toString(36).slice(-8)
-      const user = await AuthService.createUser('Unauthorized user', password, null, null, null)
+      const password = generatePassword()
+
+      const user = await AuthService.createUser('Unauthorized user', email, password)
+
       const paymentData = await PaymentService.approvePayment(
         user.body.id,
         order?.status,

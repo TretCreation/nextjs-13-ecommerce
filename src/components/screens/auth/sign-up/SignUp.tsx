@@ -24,7 +24,7 @@ const SignUp: FC = () => {
   const onSubmit = async () => {
     if (regEx.test(email)) {
       if (password === confirmPassword) {
-        const res = await AuthService.createUser(name, password, email)
+        const res = await AuthService.createUser(name, email, password)
         // ?
         if (res.errorMessage) {
           setError(res.errorMessage)

@@ -16,8 +16,6 @@ model User {
   id            Int        @id @default(autoincrement())
   name          String?
   email         String?    @unique
-  emailGoogle   String?    @unique
-  emailFacebook String?    @unique
   password      String
   img           String     @default("/avatars/default-user-avatar.png")
   wishlist      Wishlist[]

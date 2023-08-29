@@ -27,8 +27,6 @@ const ProfileInfo = () => {
         <Image src={info.img} alt={info.name} width={60} height={0} />
         <p>Name: {info.name}</p>
         <p>{info.email && `Email: ${info.email}`}</p>
-        <p>{info.emailFacebook && `Email Facebook: ${info.emailFacebook}`}</p>
-        <p>{info.emailGoogle && `Email Google: ${info.emailGoogle}`}</p>
       </div>
     )
   return null

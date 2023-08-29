@@ -5,6 +5,7 @@ import GoogleProvider from 'next-auth/providers/google'
 
 import { getAuthUrl } from '@/src/configs/url.config'
 import { AuthService } from '@/src/services/auth.service'
+import { generatePassword } from '@/src/utils/auth/generatePassword'
 
 const {
   GOOGLE_CLIENT_ID = '',
@@ -13,9 +14,7 @@ const {
   FACEBOOK_CLIENT_SECRET = ''
 } = process.env
 
-const hashPassword = async () => {
-  return Math.random().toString(36).slice(-8)
-}
+const password = generatePassword()
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -76,37 +75,27 @@ export const authOptions: NextAuthOptions = {
     async signIn({ profile, account }) {
       if (account?.provider === 'google') {
         try {
-          const userEmailGoogle = await AuthService.findByEmail('google', profile?.email ?? '')
+          // ? (?? '')
+          const userEmailGoogle = await AuthService.findByEmail(profile?.email ?? '')
           if (!userEmailGoogle) {
-            await AuthService.createUser(
-              profile?.name ?? '',
-              await hashPassword(),
-              null,
-              profile?.email,
-              null
-            )
+            await AuthService.createUser(profile?.name ?? '', profile?.email ?? '', password)
           }
           return true
         } catch (error) {
+          // TODO: Add (sorry, account already exists)
           console.log(error)
           throw error
         }
       }
       if (account?.provider === 'facebook') {
         try {
-          const userEmailFacebook = await AuthService.findByEmail('facebook', profile?.email ?? '')
+          const userEmailFacebook = await AuthService.findByEmail(profile?.email ?? '')
           if (!userEmailFacebook) {
-            const res = await AuthService.createUser(
-              profile?.name ?? '',
-              await hashPassword(),
-              null,
-              null,
-              profile?.email ?? ''
-            )
-            res
+            await AuthService.createUser(profile?.name ?? '', profile?.email ?? '', password)
           }
           return true
         } catch (error) {
+          // TODO: Add: "sorry, account already exists"
           console.log(error)
           throw error
         }

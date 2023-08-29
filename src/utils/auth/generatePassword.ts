@@ -1,1 +1,1 @@
-export const generatePassword = async () => Math.random().toString(36).slice(-12)
+export const generatePassword = () => Math.random().toString(36).slice(-12)

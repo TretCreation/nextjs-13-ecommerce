@@ -23,8 +23,6 @@ async function main() {
             password: String(row.password),
             role: row.role as any,
             email: String(row.email),
-            emailFacebook: row.emailFacebook || null,
-            emailGoogle: row.emailGoogle || null,
             img: row.img
           }
         })

@@ -5,19 +5,11 @@ import { IUser, IUserSession } from '../interfaces/user.interface'
 axios.defaults.baseURL = process.env.API_URL
 
 export const AuthService = {
-  async createUser(
-    name: string,
-    password: string,
-    email?: string | null,
-    emailGoogle?: string | null,
-    emailFacebook?: string | null
-  ) {
+  async createUser(name: string, email: string, password: string) {
     try {
       const res = await axios.post<IUser>('/auth/user', {
         name,
-        email: email || null,
-        emailGoogle: emailGoogle || null,
-        emailFacebook: emailFacebook || null,
+        email,
         password
       })
       return res.data
@@ -39,9 +31,9 @@ export const AuthService = {
       throw error
     }
   },
-  async findByEmail(type: string, email: string) {
+  async findByEmail(email: string) {
     try {
-      const res = await axios.get<IUserSession>(`/auth/user?${type}=${email}`)
+      const res = await axios.get<IUserSession>(`/auth/user?email=${email}`)
       return res.data
     } catch (error) {
       console.log(error)
