@@ -58,7 +58,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
         order?.update_time
       )
       cartProducts.map(async product => {
-        await PaymentService.addOrderProduct(paymentData, product.id, product.count)
+        await PaymentService.addOrderProduct(paymentData.id, product.id, product.count)
       })
 
       await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
@@ -76,7 +76,7 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
         order?.update_time
       )
       cartProducts.map(async product => {
-        await PaymentService.addOrderProduct(paymentData, product.id, product.count)
+        await PaymentService.addOrderProduct(paymentData.id, product.id, product.count)
       })
 
       await PaymentService.sendEmail(email, order?.status, subtotal, cartProducts)
