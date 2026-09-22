@@ -2,6 +2,7 @@ export interface IUser {
   hasError: number
   errorMessage?: string
   body?: {
+    id: number
     name: string
     email: string | null
     password: string
