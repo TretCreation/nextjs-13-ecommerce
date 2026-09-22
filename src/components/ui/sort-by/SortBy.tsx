@@ -41,7 +41,14 @@ const SortBy: FC<ISortBy> = ({ limit, q, getProducts, setCurrentPage, currentPag
   useEffect(() => {
     setIsLoading(true)
 
-    SortByService.getSortedProducts(getKey, getValue, q, limit, currentPage, brandId).then(res => {
+    SortByService.getSortedProducts(
+      getKey,
+      getValue,
+      q,
+      limit,
+      currentPage,
+      Array.isArray(brandId) ? brandId[0] : brandId
+    ).then(res => {
       setSortedProducts(currentPage === 1 ? res : [...sortedProducts, ...res])
       getProducts(currentPage === 1 ? res : [...sortedProducts, ...res])
 
