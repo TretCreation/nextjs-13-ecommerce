@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ICartState, ICartStateProps } from '@/src/interfaces/cart.interface'
+import { IProduct } from '@/src/interfaces/product.interface'
 
 const initialState: ICartState = {
   cartProducts: []
@@ -10,7 +11,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    toggleCart(state, { payload: product }: PayloadAction<ICartStateProps>) {
+    toggleCart(state, { payload: product }: PayloadAction<IProduct>) {
       const isExist = state.cartProducts.some(p => p.id === product.id)
 
       if (isExist) {
@@ -23,7 +24,7 @@ export const cartSlice = createSlice({
         state.cartProducts.push(productWithCount)
       }
     },
-    addProduct(state, { payload: product }: PayloadAction<ICartStateProps>) {
+    addProduct(state, { payload: product }: PayloadAction<IProduct>) {
       const productWithCount = { ...product, count: 1 }
       state.cartProducts.push(productWithCount)
     },

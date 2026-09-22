@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { ICartStateProps } from '@/src/interfaces/cart.interface'
+import { IProduct } from '@/src/interfaces/product.interface'
 import { CartService } from '@/src/services/cart.service'
 import { toastError } from '@/src/utils/api/handleToastError'
 
@@ -24,7 +25,7 @@ export const fetchProducts = createAsyncThunk(
 export const toggleCartProducts = createAsyncThunk(
   'cart/toggleCartProducts',
   async (
-    { product, productId, userId }: { product: ICartStateProps; productId: number; userId: number },
+    { product, productId, userId }: { product: IProduct; productId: number; userId: number },
     thunkAPI
   ) => {
     try {
@@ -52,7 +53,7 @@ export const toggleCartProducts = createAsyncThunk(
 export const addCartProducts = createAsyncThunk(
   'cart/addCartProducts',
   async (
-    { product, productId, userId }: { product: ICartStateProps; productId: number; userId: number },
+    { product, productId, userId }: { product: IProduct; productId: number; userId: number },
     thunkAPI
   ) => {
     try {
@@ -69,7 +70,7 @@ export const addCartProducts = createAsyncThunk(
 export const removeCartProducts = createAsyncThunk(
   'cart/removeCartProducts',
   async (
-    { product, productId, userId }: { product: ICartStateProps; productId: number; userId: number },
+    { product, productId, userId }: { product: IProduct; productId: number; userId: number },
     thunkAPI
   ) => {
     const state = thunkAPI.getState() as RootState

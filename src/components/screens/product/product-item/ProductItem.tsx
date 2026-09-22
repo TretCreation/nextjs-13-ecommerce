@@ -67,8 +67,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
               ? () =>
                   dispatch(
                     toggleCartProducts({
-                      //?
-                      product: product,
+                      product,
                       productId: product.id,
                       userId: session.user.id
                     })
