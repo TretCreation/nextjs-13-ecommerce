@@ -13,23 +13,23 @@ async function main() {
     await prisma.$queryRaw`ALTER TABLE User AUTO_INCREMENT = 1`
     console.log('Reset User auto increment to 1')
 
-    fs.createReadStream('prisma/seeds/users.csv')
-      .pipe(csv())
-      .on('data', async row => {
-        await prisma.user.create({
-          data: {
-            id: Number(row.id),
-            name: String(row.name),
-            password: String(row.password),
-            role: row.role as any,
-            email: String(row.email),
-            img: row.img
-          }
-        })
-      })
-      .on('end', () => {
-        console.log('CSV User file successfully processed.')
-      })
+    // fs.createReadStream('prisma/seeds/users.csv')
+    //   .pipe(csv())
+    //   .on('data', async row => {
+    //     await prisma.user.create({
+    //       data: {
+    //         id: Number(row.id),
+    //         name: String(row.name),
+    //         password: String(row.password),
+    //         role: row.role as any,
+    //         email: String(row.email),
+    //         img: row.img
+    //       }
+    //     })
+    //   })
+    //   .on('end', () => {
+    //     console.log('CSV User file successfully processed.')
+    //   })
 
     //* Product_info
     await prisma.product_info.deleteMany()
