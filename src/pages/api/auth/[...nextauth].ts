@@ -47,9 +47,8 @@ export const authOptions: NextAuthOptions = {
 
         if (user) {
           return user
-        } else {
-          return null
         }
+        return null
       }
     }),
     GoogleProvider({
@@ -103,14 +102,12 @@ export const authOptions: NextAuthOptions = {
       return true
     },
     async jwt({ token, user }) {
-      return { ...token, ...user }
+      return { ...token, ...user, id: user?.id ? Number(user.id) : token.id }
     },
-    async session({ session, token, user }) {
-      session.user = token
+    async session({ session, token }) {
       const userId = await AuthService.findBy(token.email as string)
-      //* Update session token
       token.id = userId.id
-
+      session.user = token as typeof session.user
       return session
     }
   }
