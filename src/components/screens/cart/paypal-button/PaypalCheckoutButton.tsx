@@ -45,6 +45,10 @@ const PaypalCheckoutButton: FC<IPaypalCheckoutButtonProps> = ({
 
       const user = await AuthService.createUser('Unauthorized user', email, password)
 
+      if (!user.body) {
+        throw new Error('Failed to create user')
+      }
+
       const paymentData = await PaymentService.approvePayment(
         user.body.id,
         order?.status,
