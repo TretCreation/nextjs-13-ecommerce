@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-type KeyHandler = (KeyboardEvent) => void
+type KeyHandler = (event: KeyboardEvent) => void
 
 const useEscape = (callback: KeyHandler, isOpen: boolean) => {
   useEffect(() => {
