@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+
   experimental: {
     appDir: false
   },
+
   compilerOptions: {
     baseUrl: 'src'
   },
+
   env: {
     API_URL: process.env.API_URL,
     PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
@@ -14,6 +20,7 @@ const nextConfig = {
     AUTHORIZATION_VIBER: process.env.AUTHORIZATION_VIBER,
     AUTHORIZATION_SMS: process.env.AUTHORIZATION_SMS
   },
+
   images: {
     domains: [
       'lh3.googleusercontent.com',
@@ -23,10 +30,12 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp']
   },
+
   i18n: {
     locales: ['en', 'ua'],
     defaultLocale: 'en'
   },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

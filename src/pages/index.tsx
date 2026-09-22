@@ -1,17 +1,22 @@
 import { GetStaticProps, NextPage } from 'next'
 
+import prisma from '@/prisma/client'
 import { Home } from '@/src/components'
 
 import { IProductHomeProps } from '../interfaces/product.interface'
-import { ProductService } from '../services/product.service'
 
 const HomePage: NextPage<IProductHomeProps> = ({ paginatedProducts, countedProducts }) => (
   <Home paginatedProducts={paginatedProducts} countedProducts={countedProducts} />
 )
 
 export const getStaticProps: GetStaticProps<IProductHomeProps> = async () => {
-  const paginatedProducts = await ProductService.getPaginatedProducts(10, 1)
-  const countedProducts = await ProductService.getCountedProducts()
+  const paginatedProducts = await prisma.product.findMany({
+    take: 10,
+    skip: 0
+  })
+
+  const countedProducts = await prisma.product.count()
+
   return {
     props: {
       countedProducts,
