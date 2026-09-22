@@ -22,7 +22,6 @@ export interface IProductPage extends IProduct {
     title: string
     description: string
   }[]
-  count: number
 }
 
 export interface IProductInfo {
