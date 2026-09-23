@@ -22,11 +22,15 @@ const nextConfig = {
   },
 
   images: {
-    domains: [
-      'lh3.googleusercontent.com',
-      'scontent.fiev22-2.fna.fbcdn.net',
-      'z-p3-scontent.flwo7-2.fna.fbcdn.net',
-      'scontent-iev1-1.xx.fbcdn.net'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.fbcdn.net'
+      }
     ],
     formats: ['image/avif', 'image/webp']
   },
